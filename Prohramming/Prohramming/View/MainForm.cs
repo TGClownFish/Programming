@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Prohramming.Model.Classes;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,9 +14,20 @@ namespace Prohramming
 {
     public partial class MainForm : Form
     {
+        Model.Classes.Rectangle[] _rectangles = new Model.Classes.Rectangle[5];
+        Model.Classes.Rectangle _currentRectangle = new Model.Classes.Rectangle();
+        Film[] _films = new Film[5];
+        Film _currentFilm = new Film();
         public MainForm()
         {
             InitializeComponent();
+
+            Random rnd = new Random();
+            for (int i = 0; i < 5; i++)
+            {
+                _rectangles[i] = new Model.Classes.Rectangle(rnd.Next(1, 50), rnd.Next(1, 50), "Blue");
+                _films[i] = new Film("f", rnd.Next(1, 20000), rnd.Next(1990, 2024),"ff",rnd.Next(1, 10));
+            }
         }
 
         private void ValuesListBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -53,15 +65,22 @@ namespace Prohramming
 
         private void ParsingButton_Click(object sender, EventArgs e)
         {
-            bool isParced = Enum.TryParse(ParsingTextBox.Text, out Weekday parced);
-            if (isParced)
+            if (!int.TryParse(ParsingTextBox.Text, out _))
             {
-                int dayNumber = Convert.ToInt32(Enum.Parse(typeof(Weekday), ParsingTextBox.Text));
-                label5.Text = $"Это день недели ({ParsingTextBox.Text} = {Convert.ToString(dayNumber)})";
+                bool isParced = Enum.TryParse(ParsingTextBox.Text, out Weekday parced);
+                if (isParced)
+                {
+                    int dayNumber = Convert.ToInt32(Enum.Parse(typeof(Weekday), ParsingTextBox.Text));
+                    label5.Text = $"Это день недели ({ParsingTextBox.Text} = {Convert.ToString(dayNumber) + 1})";
+                }
+                else
+                {
+                    label5.Text = "Нет такого дня недели";
+                }
             }
             else
             {
-                label5.Text = "Нет такого дня недели";
+                label5.Text = "Введите слово";
             }
         }
 
@@ -70,30 +89,196 @@ namespace Prohramming
             switch (SeasonComboBox.Text)
             {
                 case "Winter":
-                    MessageBox.Show(
-                    "Бррр! Холодно!",
-                    "Сообщение",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.None,
-                    MessageBoxDefaultButton.Button1,
-                    MessageBoxOptions.DefaultDesktopOnly);
+                    MessageBox.Show("Бррр! Холодно!","Сообщение");
                     break;
                 case "Spring":
                     SeasonGroupBox.BackColor = Color.GreenYellow;
                     break;
                 case "Summer":
-                    MessageBox.Show(
-                    "Ура! Солнце!",
-                    "Сообщение",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.None,
-                    MessageBoxDefaultButton.Button1,
-                    MessageBoxOptions.DefaultDesktopOnly);
+                    MessageBox.Show("Ура! Солнце!","Сообщение");
                     break;
                 case "Autumn":
                     SeasonGroupBox.BackColor = Color.Orange;
                     break;
             }
+        }
+
+        private void MainForm_Shown(object sender, EventArgs e)
+        {
+            this.ValuesListBox.Items.AddRange(new object[] {
+            "Red",
+            "Yellow",
+            "Green",
+            "Blue",
+            "White",
+            "Black",
+            "Brown",
+            "Gray"});
+            this.ValuesListBox.SelectedIndex = 0;
+            this.EnumsListBox.SelectedIndex = 0;
+            this.NameTextBox.Text = "0";
+            
+        }
+
+
+        private void rectanglesListBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            _currentRectangle = _rectangles[rectanglesListBox.SelectedIndex];
+            rectanglesLengthTextBox1.Text = Convert.ToString(_currentRectangle.Length);
+            rectanglesWidthTextBox.Text = Convert.ToString(_currentRectangle.Width);
+            rectanglesColourTextBox.Text = _currentRectangle.Colour;
+        }
+
+        private void rectanglesLengthTextBox1_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                _rectangles[rectanglesListBox.SelectedIndex].Length = Convert.ToInt32(rectanglesLengthTextBox1.Text);
+                rectanglesLengthTextBox1.BackColor = Color.White;
+            }
+            catch
+            { 
+                rectanglesLengthTextBox1.BackColor = Color.LightPink; 
+            }
+
+            
+        }
+        private void rectanglesWidthTextBox_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                _rectangles[rectanglesListBox.SelectedIndex].Width = Convert.ToInt32(rectanglesWidthTextBox.Text);
+                rectanglesWidthTextBox.BackColor = Color.White;
+            }
+            catch
+            {
+                rectanglesWidthTextBox.BackColor = Color.LightPink;
+            }
+        }
+
+        private void rectanglesColourTextBox_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                _rectangles[rectanglesListBox.SelectedIndex].Colour = rectanglesColourTextBox.Text;
+                rectanglesColourTextBox.BackColor = Color.White;
+            }
+            catch
+            {
+                rectanglesColourTextBox.BackColor= Color.LightPink;
+            }
+        }
+        private void rectanglesButton_Click(object sender, EventArgs e)
+        {
+            rectanglesListBox.SelectedIndex = FindRectangleWithMaxWidth(_rectangles);
+        }
+        private int FindRectangleWithMaxWidth(Model.Classes.Rectangle[] array)
+        {
+            int MaxIndex = 0;
+            int MaxWidth = 0;
+            for (int i  = 0; i < 5; i++)
+            {
+                if (MaxWidth < array[i].Width)
+                {
+                    MaxWidth = array[i].Width;
+                    MaxIndex = i;
+                }
+            }
+            return MaxIndex;
+        }
+
+        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            _currentFilm = _films[listBox1.SelectedIndex];
+            filmsNameTextBox.Text = Convert.ToString(_currentFilm.Name);
+            durationTextBox.Text = Convert.ToString(_currentFilm.Duration);
+            filmsReleaseYearTextBox.Text = Convert.ToString(_currentFilm.ReleaseYear);
+            genreTextBox.Text = Convert.ToString(_currentFilm.Genre);
+            ratingTextBox.Text = Convert.ToString(_currentFilm.Rating);
+        }
+
+        private void filmsNameTextBox_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                _films[listBox1.SelectedIndex].Name = filmsNameTextBox.Text;
+                filmsNameTextBox.BackColor = Color.White;
+            }
+            catch
+            {
+                filmsNameTextBox.BackColor = Color.LightPink;
+            }
+        }
+
+        private void durationTextBox_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                _films[listBox1.SelectedIndex].Duration = Convert.ToInt32(durationTextBox.Text);
+                durationTextBox.BackColor = Color.White;
+            }
+            catch
+            {
+                durationTextBox.BackColor = Color.LightPink;
+            }
+        }
+
+        private void filmsReleaseYearTextBox_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                _films[listBox1.SelectedIndex].ReleaseYear = Convert.ToInt32(filmsReleaseYearTextBox.Text);
+                filmsReleaseYearTextBox.BackColor = Color.White;
+            }
+            catch
+            {
+                filmsReleaseYearTextBox.BackColor = Color.LightPink;
+            }
+        }
+
+        private void genreTextBox_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                _films[listBox1.SelectedIndex].Genre = genreTextBox.Text;
+                genreTextBox.BackColor = Color.White;
+            }
+            catch
+            {
+                genreTextBox.BackColor = Color.LightPink;
+            }
+        }
+
+        private void ratingTextBox_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                _films[listBox1.SelectedIndex].Rating = Convert.ToInt32(ratingTextBox.Text);
+                ratingTextBox.BackColor = Color.White;
+            }
+            catch
+            {
+                ratingTextBox.BackColor = Color.LightPink;
+            }
+        }
+
+        private void filmsButton_Click(object sender, EventArgs e)
+        {
+            listBox1.SelectedIndex = FindFilmleWithMaxRating(_films);
+        }
+        private int FindFilmleWithMaxRating(Film[] array)
+        {
+            int MaxIndex = 0;
+            int MaxRating = 0;
+            for (int i = 0; i < 5; i++)
+            {
+                if (MaxRating < array[i].Rating)
+                {
+                    MaxRating = array[i].Rating;
+                    MaxIndex = i;
+                }
+            }
+            return MaxIndex;
         }
     }
 }
