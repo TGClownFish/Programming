@@ -6,28 +6,20 @@ using System.Threading.Tasks;
 
 namespace Prohramming.Model.Classes
 {
-    internal class Flight
+    public class Flight
     {
         public string DeparturePoint { get; set; }
 
         public string DestinationPoint { get; set; }
+
         private int _flightTimeMinutes; 
         public int FlightTimeMinutes
         {
-            get
-            {
-                return _flightTimeMinutes;
-            }
+            get { return _flightTimeMinutes; }
             set
             {
-                if (value >= 0 && value <= 60)
-                {
-                    _flightTimeMinutes = value;
-                }
-                else
-                {
-                    throw new ArgumentException("Введите значение между 0 и 60");
-                }
+                Validator.AssertValueInRange(value, 0, 60, nameof(FlightTimeMinutes)); 
+                _flightTimeMinutes = value;
             }
         }
         public Flight(string departurePoint, string destinationPoint, int flightTimeMinutes)

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Prohramming.Model.Classes
 {
-    internal class Subject
+    public class Subject
     {
         public string Name { get; set; }
         public string TeacherName { get; set; }
@@ -15,14 +15,8 @@ namespace Prohramming.Model.Classes
         {
             get { return _grade; }
             set {
-                if (value >= 2 && value <= 5)
-                {
-                    _grade = value;
-                }
-                else
-                {
-                    throw new ArgumentException("Введите значение между 2 и 5");
-                }
+                Validator.AssertValueInRange(value, 2, 5, nameof(Grade));
+                _grade = value;
             }
         }
         public Subject(string name, string teacherName, int grade)

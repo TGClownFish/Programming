@@ -18,6 +18,7 @@ namespace Prohramming
         Model.Classes.Rectangle _currentRectangle = new Model.Classes.Rectangle();
         Film[] _films = new Film[5];
         Film _currentFilm = new Film();
+        //Contact contact = new Contact("ff","1",12);
         public MainForm()
         {
             InitializeComponent();
@@ -25,11 +26,15 @@ namespace Prohramming
             Random rnd = new Random();
             for (int i = 0; i < 5; i++)
             {
-                _rectangles[i] = new Model.Classes.Rectangle(rnd.Next(1, 50), rnd.Next(1, 50), "Blue");
-                _films[i] = new Film("f", rnd.Next(1, 20000), rnd.Next(1990, 2024),"ff",rnd.Next(1, 10));
+                Point2D newCentre = new Point2D(GetRandomDouble(-100, 100, rnd), GetRandomDouble(-100, 100, rnd));
+                _rectangles[i] = new Model.Classes.Rectangle(GetRandomDouble(1, 50,rnd), GetRandomDouble(1, 50, rnd), "Blue", newCentre);
+                _films[i] = new Film("f", rnd.Next(1, 20000), rnd.Next(1990, 2024), "ff", GetRandomDouble(1, 10, rnd) );
             }
         }
-
+        public double GetRandomDouble(double minimum, double maximum, Random random)
+        {
+            return Math.Round((random.NextDouble() * (maximum - minimum) + minimum), 2);
+        }
         private void ValuesListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             NameTextBox.Text = Convert.ToString(ValuesListBox.SelectedIndex);
@@ -124,16 +129,19 @@ namespace Prohramming
         private void rectanglesListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             _currentRectangle = _rectangles[rectanglesListBox.SelectedIndex];
+            rectanglesIdTextBox.Text = Convert.ToString(_currentRectangle.Id);
             rectanglesLengthTextBox1.Text = Convert.ToString(_currentRectangle.Length);
             rectanglesWidthTextBox.Text = Convert.ToString(_currentRectangle.Width);
             rectanglesColourTextBox.Text = _currentRectangle.Colour;
+            rectanglesXTextBox.Text = Convert.ToString(_currentRectangle.Center.X);
+            rectanglesYTextBox.Text = Convert.ToString(_currentRectangle.Center.Y);
         }
 
         private void rectanglesLengthTextBox1_TextChanged(object sender, EventArgs e)
         {
             try
             {
-                _rectangles[rectanglesListBox.SelectedIndex].Length = Convert.ToInt32(rectanglesLengthTextBox1.Text);
+                _rectangles[rectanglesListBox.SelectedIndex].Length = Convert.ToDouble(rectanglesLengthTextBox1.Text);
                 rectanglesLengthTextBox1.BackColor = Color.White;
             }
             catch
@@ -147,7 +155,7 @@ namespace Prohramming
         {
             try
             {
-                _rectangles[rectanglesListBox.SelectedIndex].Width = Convert.ToInt32(rectanglesWidthTextBox.Text);
+                _rectangles[rectanglesListBox.SelectedIndex].Width = Convert.ToDouble(rectanglesWidthTextBox.Text);
                 rectanglesWidthTextBox.BackColor = Color.White;
             }
             catch
@@ -175,7 +183,7 @@ namespace Prohramming
         private int FindRectangleWithMaxWidth(Model.Classes.Rectangle[] array)
         {
             int MaxIndex = 0;
-            int MaxWidth = 0;
+            double MaxWidth = 0;
             for (int i  = 0; i < 5; i++)
             {
                 if (MaxWidth < array[i].Width)
@@ -253,7 +261,7 @@ namespace Prohramming
         {
             try
             {
-                _films[listBox1.SelectedIndex].Rating = Convert.ToInt32(ratingTextBox.Text);
+                _films[listBox1.SelectedIndex].Rating = Convert.ToDouble(ratingTextBox.Text);
                 ratingTextBox.BackColor = Color.White;
             }
             catch
@@ -269,7 +277,7 @@ namespace Prohramming
         private int FindFilmleWithMaxRating(Film[] array)
         {
             int MaxIndex = 0;
-            int MaxRating = 0;
+            double MaxRating = 0;
             for (int i = 0; i < 5; i++)
             {
                 if (MaxRating < array[i].Rating)

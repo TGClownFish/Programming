@@ -3,35 +3,57 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace Prohramming.Model.Classes
 {
-    internal class Contact
+    public class Contact
     {
-        public string LastName { get; set; }
-        public string Name { get; set; }
-        public string Surname { get; set; }
+        private string _surname;
+        public string Surname 
+        {
+            get { return _surname; }
+            set
+            {
+                AssertStringContainsOnlyLetters(value, nameof(Surname));
+                _surname = value;
+            }
+        }
+        private string _name;
+        public string Name 
+        { 
+            get {  return _name; }
+            set
+            {
+                AssertStringContainsOnlyLetters(value, nameof(Name));
+                _name = value;
+            }
+        }
         private long _phoneNumber;
         public long PhoneNumber
         {
             get { return _phoneNumber; }
             set
             {
-                if (value >= 100000000000 && value < 1000000000000)
-                {
-                    _phoneNumber = value;
-                }
-                else
-                {
-                    throw new ArgumentException("Введите значение между 100000000000 и 1000000000000");
-                }
+                Validator.AssertValueInRange(value, 100000000000, 1000000000000, nameof(PhoneNumber));
+                _phoneNumber = value;
             }
         }
-        public Contact(string lastName, string name, string surname, long phoneNumber)
+        private bool AssertStringContainsOnlyLetters(string value, string propertyName)
         {
-            LastName = lastName;
-            Name = name;
+            foreach (var item in value)
+            {
+                if ( (item >= 'A' && item <= 'Z') || (item >= 'a' && item <= 'z') )
+                    continue;
+                else
+                    throw new ArgumentException($"Используйте символы латиского алфавита в свойстве {propertyName}");
+            }
+            return true;
+        }
+        public Contact(string surname, string name, long phoneNumber)
+        {
             Surname = surname;
+            Name = name;
             PhoneNumber = phoneNumber;
         }
         public Contact () { }

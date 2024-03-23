@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Prohramming.Model.Classes
 {
-    internal class Time
+    public class Time
     {
         private int _hour;
         public int Hour
@@ -14,14 +14,8 @@ namespace Prohramming.Model.Classes
             get { return _hour; }
             set
             {
-                if (value >= 0 && value <= 23)
-                {
-                    _hour = value;
-                }
-                else
-                {
-                    throw new ArgumentException("Введите значение между 0 и 23");
-                }
+                Validator.AssertValueInRange(value, 0, 23, nameof(Hour));
+                _hour = value;
             }
         }
         private int _minute;
@@ -30,14 +24,8 @@ namespace Prohramming.Model.Classes
             get { return _minute; }
             set
             {
-                if (value >= 0 && value <= 60)
-                {
-                    _minute = value;
-                }
-                else
-                {
-                    throw new ArgumentException("Введите значение между 0 и 60");
-                }
+                Validator.AssertValueInRange(value, 0, 60, nameof(Minute));
+                _minute = value;
             }
         }
         private int _second;
@@ -46,14 +34,8 @@ namespace Prohramming.Model.Classes
             get { return _second; }
             set
             {
-                if (value >= 0 && value <= 60)
-                {
-                    _second = value;
-                }
-                else
-                {
-                    throw new ArgumentException("Введите значение между 0 и 60");
-                }
+                Validator.AssertValueInRange(value, 0, 60, nameof(Second));
+                _second = value;
             }
         }
         public Time (int hour, int minute, int second)

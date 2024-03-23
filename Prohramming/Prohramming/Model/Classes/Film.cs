@@ -2,44 +2,33 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
+using System.Net.NetworkInformation;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Prohramming.Model.Classes
 {
-    internal class Film
+     public class Film
     {
-        public string _name;
+        private string _name;
         public string Name
         {
             get { return _name; }
             set
             {
-                if (!int.TryParse(value, out _))
-                {
-                    _name = value;
-                }
-                else
-                {
-                    throw new ArgumentException("Введите слово");
-                }
+                Validator.AssertStringContainsOnlyLetters(value, nameof(Name));
+                _name = value;
             }
         }
-
+        
         private int _duration;
         public int Duration
         {
             get { return _duration; }
             set
             {
-                if (value >= 0)
-                {
-                    _duration = value;
-                }
-                else
-                {
-                    throw new ArgumentException("Введите значение выше нуля");
-                }
+                Validator.AssertOnPositiveValue(value, nameof(Duration));
+                _duration = value;
             }
         }
         private int _releaseYear;
@@ -48,14 +37,8 @@ namespace Prohramming.Model.Classes
             get { return _releaseYear; }
             set
             {
-                if (value >= 1990)
-                {
-                    _releaseYear = value;
-                }
-                else
-                {
-                    throw new ArgumentException("Введите значение выше 1990");
-                }
+                Validator.AssertValueInRange(value, 1990, 2024, nameof(ReleaseYear));
+                _releaseYear = value;
             }
         }
         public string _genre;
@@ -64,34 +47,22 @@ namespace Prohramming.Model.Classes
             get { return _genre; }
             set
             {
-                if (!int.TryParse(value, out _))
-                {
-                    _genre = value;
-                }
-                else
-                {
-                    throw new ArgumentException("Введите слово");
-                }
+            Validator.AssertStringContainsOnlyLetters(value, nameof(Genre));
+            _genre = value;
             }
         }
 
-        private int _rating;
-        public int Rating 
+        private double _rating;
+        public double Rating 
         {
             get { return _rating; }
             set
             {
-                if ( 1 <= value && value <= 10)
-                {
-                    _rating = value;
-                }
-                else
-                {
-                    throw new ArgumentException("Введите значение между 1 и 10");
-                }
+                Validator.AssertValueInRange(value, 1, 10, nameof(Rating));
+                _rating = value;
             }
         }
-        public Film (string name, int duration, int releaseYear, string genre, int rating)
+        public Film (string name, int duration, int releaseYear, string genre, double rating)
         {
             Name = name;
             Duration = duration;
