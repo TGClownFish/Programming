@@ -8,27 +8,27 @@ namespace Prohramming.Model.Classes
 {
     public class Point2D
     {
-        private double _x;
-        public double X 
+        private int _x;
+        public int X 
         {
             get { return _x; } 
             private set 
             {
-                Validator.AssertValueInRange(value, -10000, 10000, "X");
+                Validator.AssertOnPositiveValue(value, "X");
                 _x = value; 
             }
         }
-        private double _y;
-        public double Y
+        private int _y;
+        public int Y
         {
             get { return _y; }
             private set
             {
-                Validator.AssertValueInRange(value, -10000, 10000, "Y");
+                Validator.AssertOnPositiveValue(value, "Y");
                 _y = value;
             }
         }
-public Point2D (double x, double y)
+public Point2D (int x, int y)
         {
             X = x;
             Y = y;

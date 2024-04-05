@@ -14,26 +14,35 @@ namespace Prohramming
 {
     public partial class MainForm : Form
     {
-        Model.Classes.Rectangle[] _rectangles = new Model.Classes.Rectangle[5];
+        List<Model.Classes.Rectangle> _rectangles = new List <Model.Classes.Rectangle>();
         Model.Classes.Rectangle _currentRectangle = new Model.Classes.Rectangle();
         Film[] _films = new Film[5];
         Film _currentFilm = new Film();
-        //Contact contact = new Contact("ff","1",12);
+        List<Panel> _rectanglePanels = new List<Panel>();
         public MainForm()
         {
             InitializeComponent();
 
-            Random rnd = new Random();
+           Random rnd = new Random();
             for (int i = 0; i < 5; i++)
             {
-                Point2D newCentre = new Point2D(GetRandomDouble(-100, 100, rnd), GetRandomDouble(-100, 100, rnd));
-                _rectangles[i] = new Model.Classes.Rectangle(GetRandomDouble(1, 50,rnd), GetRandomDouble(1, 50, rnd), "Blue", newCentre);
+                Point2D newCentre = new Point2D(rnd.Next(1, 300), rnd.Next(1, 300));
+                Model.Classes.Rectangle newRectangle = new Model.Classes.Rectangle(GetRandomDouble(1, 150, rnd), GetRandomDouble(1, 150, rnd), "Blue", newCentre);
+                _rectangles.Add(newRectangle);
                 _films[i] = new Film("f", rnd.Next(1, 20000), rnd.Next(1990, 2024), "ff", GetRandomDouble(1, 10, rnd) );
+                listBoxRectangles.Items.Add(TurnRectangleToString(_rectangles.ElementAt(i)));
+                rectanglesListBox.Items.Add($"Прямоугольник {i+1}");
+                CreateNewPanel(newRectangle);
             }
+            FindCollisions(_rectanglePanels,_rectangles);
         }
         public double GetRandomDouble(double minimum, double maximum, Random random)
         {
             return Math.Round((random.NextDouble() * (maximum - minimum) + minimum), 2);
+        }
+        public string TurnRectangleToString(Model.Classes.Rectangle rectangle)
+        {
+            return $"({rectangle.Id}: X={rectangle.Center.X},Y={rectangle.Center.Y},W={rectangle.Width},L={rectangle.Length})";
         }
         private void ValuesListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -128,13 +137,25 @@ namespace Prohramming
 
         private void rectanglesListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            _currentRectangle = _rectangles[rectanglesListBox.SelectedIndex];
-            rectanglesIdTextBox.Text = Convert.ToString(_currentRectangle.Id);
-            rectanglesLengthTextBox1.Text = Convert.ToString(_currentRectangle.Length);
-            rectanglesWidthTextBox.Text = Convert.ToString(_currentRectangle.Width);
-            rectanglesColourTextBox.Text = _currentRectangle.Colour;
-            rectanglesXTextBox.Text = Convert.ToString(_currentRectangle.Center.X);
-            rectanglesYTextBox.Text = Convert.ToString(_currentRectangle.Center.Y);
+            if (rectanglesListBox.SelectedIndex >= 0)
+            {
+                _currentRectangle = _rectangles.ElementAt(rectanglesListBox.SelectedIndex);
+                rectanglesIdTextBox.Text = Convert.ToString(_currentRectangle.Id);
+                rectanglesLengthTextBox1.Text = Convert.ToString(_currentRectangle.Length);
+                rectanglesWidthTextBox.Text = Convert.ToString(_currentRectangle.Width);
+                rectanglesColourTextBox.Text = _currentRectangle.Colour;
+                rectanglesXTextBox.Text = Convert.ToString(_currentRectangle.Center.X);
+                rectanglesYTextBox.Text = Convert.ToString(_currentRectangle.Center.Y);
+            }
+            else
+            {
+                rectanglesIdTextBox.Text = "";
+                rectanglesLengthTextBox1.Text = "";
+                rectanglesWidthTextBox.Text = "";
+                rectanglesColourTextBox.Text = "";
+                rectanglesXTextBox.Text = "";
+                rectanglesYTextBox.Text = "";
+            }
         }
 
         private void rectanglesLengthTextBox1_TextChanged(object sender, EventArgs e)
@@ -155,7 +176,7 @@ namespace Prohramming
         {
             try
             {
-                _rectangles[rectanglesListBox.SelectedIndex].Width = Convert.ToDouble(rectanglesWidthTextBox.Text);
+                _rectangles.ElementAt(rectanglesListBox.SelectedIndex).Width = Convert.ToDouble(rectanglesWidthTextBox.Text);
                 rectanglesWidthTextBox.BackColor = Color.White;
             }
             catch
@@ -168,7 +189,7 @@ namespace Prohramming
         {
             try
             {
-                _rectangles[rectanglesListBox.SelectedIndex].Colour = rectanglesColourTextBox.Text;
+                _rectangles.ElementAt(rectanglesListBox.SelectedIndex).Colour = rectanglesColourTextBox.Text;
                 rectanglesColourTextBox.BackColor = Color.White;
             }
             catch
@@ -180,15 +201,15 @@ namespace Prohramming
         {
             rectanglesListBox.SelectedIndex = FindRectangleWithMaxWidth(_rectangles);
         }
-        private int FindRectangleWithMaxWidth(Model.Classes.Rectangle[] array)
+        private int FindRectangleWithMaxWidth(List <Model.Classes.Rectangle> list)
         {
             int MaxIndex = 0;
             double MaxWidth = 0;
             for (int i  = 0; i < 5; i++)
             {
-                if (MaxWidth < array[i].Width)
+                if (MaxWidth < list.ElementAt(i).Width)
                 {
-                    MaxWidth = array[i].Width;
+                    MaxWidth = list.ElementAt(i).Width;
                     MaxIndex = i;
                 }
             }
@@ -288,5 +309,115 @@ namespace Prohramming
             }
             return MaxIndex;
         }
+
+        private void listBoxRectangles_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (listBoxRectangles.SelectedIndex>=0)
+            {
+                _currentRectangle = _rectangles.ElementAt(listBoxRectangles.SelectedIndex);
+                textBoxRectanglesId.Text = Convert.ToString(_currentRectangle.Id);
+                textBoxRectanglesX.Text = Convert.ToString(_currentRectangle.Center.X);
+                textBoxRectanglesY.Text = Convert.ToString(_currentRectangle.Center.Y);
+                textBoxRectanglesWidth.Text = Convert.ToString(_currentRectangle.Width);
+                textBoxRectanglesLenght.Text = Convert.ToString(_currentRectangle.Length);
+            }
+            else
+            {
+                textBoxRectanglesId.Text = "";
+                textBoxRectanglesX.Text = "";
+                textBoxRectanglesY.Text = "";
+                textBoxRectanglesWidth.Text = "";
+                textBoxRectanglesLenght.Text = "";
+            }
+        }
+
+        private void buttonDeleteRectangle_Click(object sender, EventArgs e)
+        {
+            if (listBoxRectangles.SelectedIndex >= 0)
+            {
+                _rectanglePanels.RemoveAt(listBoxRectangles.SelectedIndex);
+                panelRectangles.Controls.RemoveAt(listBoxRectangles.SelectedIndex);
+                _rectangles.RemoveAt(listBoxRectangles.SelectedIndex);
+                rectanglesListBox.Items.RemoveAt(listBoxRectangles.SelectedIndex);
+                listBoxRectangles.Items.RemoveAt(listBoxRectangles.SelectedIndex);
+                FindCollisions(_rectanglePanels, _rectangles);
+                label25.Visible = false;
+                label26.Visible = false;
+            }
+            else
+            {
+                label25.Visible = true;
+                label26.Visible = true;
+            }
+        }
+
+        private void buttonAddRectangle_Click(object sender, EventArgs e)
+        {
+            Random rnd = new Random();
+            Point2D newCentre = new Point2D(rnd.Next(0, 300), rnd.Next(0, 300));
+            var newRectangle = new Model.Classes.Rectangle(GetRandomDouble(1, 150, rnd), GetRandomDouble(1, 150, rnd), "Blue", newCentre);
+
+            _rectangles.Add(newRectangle);
+            listBoxRectangles.Items.Add(TurnRectangleToString(newRectangle));
+            rectanglesListBox.Items.Add($"Прямоугольник {newRectangle.Id}");
+            CreateNewPanel(newRectangle);
+        }
+
+        public Panel CreateNewPanel(Model.Classes.Rectangle newRectangle) 
+        {
+            Panel newPanel = new Panel();
+            newPanel.Location = new Point(newRectangle.Center.X, newRectangle.Center.Y);
+            newPanel.Width = Convert.ToInt32(newRectangle.Width);
+            newPanel.Height = Convert.ToInt32(newRectangle.Length);
+            newPanel.BackColor = Color.FromArgb(127, 127, 255, 127);
+            panelRectangles.Controls.Add(newPanel);
+            _rectanglePanels.Add(newPanel );
+            return newPanel;
+        }
+
+        private void FindCollisions(List<Panel> _rectanglePanels,List<Model.Classes.Rectangle> _rectangles)
+        {
+
+            for (int i =0; i< _rectanglePanels.Count; i++)
+            {
+                _rectanglePanels[i].BackColor = Color.FromArgb(127, 127, 255, 127);
+            }
+            for (int i = 0; i < _rectanglePanels.Count; i++)
+                for (int j = i+1; j < _rectanglePanels.Count; j++)
+                    if (CollisionManager.IsCollision(_rectangles.ElementAt(i), _rectangles.ElementAt(j)))
+                    {
+                        _rectanglePanels.ElementAt(i).BackColor = Color.FromArgb(127, 255, 127, 127);
+                        _rectanglePanels.ElementAt(j).BackColor = Color.FromArgb(127, 255, 127, 127);
+                    }
+        }
+
+        private void textBoxRectanglesWidth_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                _rectangles.ElementAt(listBoxRectangles.SelectedIndex).Width = Convert.ToDouble(textBoxRectanglesWidth.Text);
+                textBoxRectanglesWidth.BackColor = Color.White;
+                listBoxRectangles.Items[listBoxRectangles.SelectedIndex] = TurnRectangleToString(_rectangles.ElementAt(listBoxRectangles.SelectedIndex));
+            }
+            catch
+            {
+                textBoxRectanglesWidth.BackColor = Color.LightPink;
+            }
+        }
+
+        private void textBoxRectanglesLenght_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                _rectangles.ElementAt(listBoxRectangles.SelectedIndex).Length = Convert.ToDouble(textBoxRectanglesLenght.Text);
+                textBoxRectanglesLenght.BackColor = Color.White;
+                listBoxRectangles.Items[listBoxRectangles.SelectedIndex] = TurnRectangleToString(_rectangles.ElementAt(listBoxRectangles.SelectedIndex));
+            }
+            catch
+            {
+                textBoxRectanglesLenght.BackColor = Color.LightPink;
+            }
+        }
+
     }
 }
