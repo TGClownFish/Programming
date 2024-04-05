@@ -1,4 +1,5 @@
 ﻿using Prohramming.Model.Classes;
+using Prohramming.Model.Classes.Geometry;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,7 +15,7 @@ namespace Prohramming
 {
     public partial class MainForm : Form
     {
-        List<Model.Classes.Rectangle> _rectangles = new List <Model.Classes.Rectangle>();
+        List<Model.Classes.Rectangle> _rectangles = new List<Model.Classes.Rectangle>();
         Model.Classes.Rectangle _currentRectangle = new Model.Classes.Rectangle();
         Film[] _films = new Film[5];
         Film _currentFilm = new Film();
@@ -23,18 +24,17 @@ namespace Prohramming
         {
             InitializeComponent();
 
-           Random rnd = new Random();
+            Random rnd = new Random();
             for (int i = 0; i < 5; i++)
             {
-                Point2D newCentre = new Point2D(rnd.Next(1, 300), rnd.Next(1, 300));
-                Model.Classes.Rectangle newRectangle = new Model.Classes.Rectangle(GetRandomDouble(1, 150, rnd), GetRandomDouble(1, 150, rnd), "Blue", newCentre);
+                Model.Classes.Rectangle newRectangle = RectangleFactory.Randomize(rnd);
                 _rectangles.Add(newRectangle);
-                _films[i] = new Film("f", rnd.Next(1, 20000), rnd.Next(1990, 2024), "ff", GetRandomDouble(1, 10, rnd) );
+                _films[i] = new Film("f", rnd.Next(1, 20000), rnd.Next(1990, 2024), "ff", GetRandomDouble(1, 10, rnd));
                 listBoxRectangles.Items.Add(TurnRectangleToString(_rectangles.ElementAt(i)));
-                rectanglesListBox.Items.Add($"Прямоугольник {i+1}");
+                rectanglesListBox.Items.Add($"Прямоугольник {i + 1}");
                 CreateNewPanel(newRectangle);
             }
-            FindCollisions(_rectanglePanels,_rectangles);
+            FindCollisions(_rectanglePanels, _rectangles);
         }
         public double GetRandomDouble(double minimum, double maximum, Random random)
         {
@@ -103,13 +103,13 @@ namespace Prohramming
             switch (SeasonComboBox.Text)
             {
                 case "Winter":
-                    MessageBox.Show("Бррр! Холодно!","Сообщение");
+                    MessageBox.Show("Бррр! Холодно!", "Сообщение");
                     break;
                 case "Spring":
                     SeasonGroupBox.BackColor = Color.GreenYellow;
                     break;
                 case "Summer":
-                    MessageBox.Show("Ура! Солнце!","Сообщение");
+                    MessageBox.Show("Ура! Солнце!", "Сообщение");
                     break;
                 case "Autumn":
                     SeasonGroupBox.BackColor = Color.Orange;
@@ -131,7 +131,7 @@ namespace Prohramming
             this.ValuesListBox.SelectedIndex = 0;
             this.EnumsListBox.SelectedIndex = 0;
             this.NameTextBox.Text = "0";
-            
+
         }
 
 
@@ -164,13 +164,14 @@ namespace Prohramming
             {
                 _rectangles[rectanglesListBox.SelectedIndex].Length = Convert.ToDouble(rectanglesLengthTextBox1.Text);
                 rectanglesLengthTextBox1.BackColor = Color.White;
+                UpdateRectangleInfo(rectanglesListBox.SelectedIndex);
             }
             catch
-            { 
-                rectanglesLengthTextBox1.BackColor = Color.LightPink; 
+            {
+                rectanglesLengthTextBox1.BackColor = Color.LightPink;
             }
 
-            
+
         }
         private void rectanglesWidthTextBox_TextChanged(object sender, EventArgs e)
         {
@@ -178,6 +179,7 @@ namespace Prohramming
             {
                 _rectangles.ElementAt(rectanglesListBox.SelectedIndex).Width = Convert.ToDouble(rectanglesWidthTextBox.Text);
                 rectanglesWidthTextBox.BackColor = Color.White;
+                UpdateRectangleInfo(rectanglesListBox.SelectedIndex);
             }
             catch
             {
@@ -194,18 +196,18 @@ namespace Prohramming
             }
             catch
             {
-                rectanglesColourTextBox.BackColor= Color.LightPink;
+                rectanglesColourTextBox.BackColor = Color.LightPink;
             }
         }
         private void rectanglesButton_Click(object sender, EventArgs e)
         {
             rectanglesListBox.SelectedIndex = FindRectangleWithMaxWidth(_rectangles);
         }
-        private int FindRectangleWithMaxWidth(List <Model.Classes.Rectangle> list)
+        private int FindRectangleWithMaxWidth(List<Model.Classes.Rectangle> list)
         {
             int MaxIndex = 0;
             double MaxWidth = 0;
-            for (int i  = 0; i < 5; i++)
+            for (int i = 0; i < 5; i++)
             {
                 if (MaxWidth < list.ElementAt(i).Width)
                 {
@@ -312,7 +314,7 @@ namespace Prohramming
 
         private void listBoxRectangles_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (listBoxRectangles.SelectedIndex>=0)
+            if (listBoxRectangles.SelectedIndex >= 0)
             {
                 _currentRectangle = _rectangles.ElementAt(listBoxRectangles.SelectedIndex);
                 textBoxRectanglesId.Text = Convert.ToString(_currentRectangle.Id);
@@ -335,12 +337,7 @@ namespace Prohramming
         {
             if (listBoxRectangles.SelectedIndex >= 0)
             {
-                _rectanglePanels.RemoveAt(listBoxRectangles.SelectedIndex);
-                panelRectangles.Controls.RemoveAt(listBoxRectangles.SelectedIndex);
-                _rectangles.RemoveAt(listBoxRectangles.SelectedIndex);
-                rectanglesListBox.Items.RemoveAt(listBoxRectangles.SelectedIndex);
-                listBoxRectangles.Items.RemoveAt(listBoxRectangles.SelectedIndex);
-                FindCollisions(_rectanglePanels, _rectangles);
+                ClearRectangleInfo();
                 label25.Visible = false;
                 label26.Visible = false;
             }
@@ -354,8 +351,7 @@ namespace Prohramming
         private void buttonAddRectangle_Click(object sender, EventArgs e)
         {
             Random rnd = new Random();
-            Point2D newCentre = new Point2D(rnd.Next(0, 300), rnd.Next(0, 300));
-            var newRectangle = new Model.Classes.Rectangle(GetRandomDouble(1, 150, rnd), GetRandomDouble(1, 150, rnd), "Blue", newCentre);
+            Model.Classes.Rectangle newRectangle = RectangleFactory.Randomize(rnd);
 
             _rectangles.Add(newRectangle);
             listBoxRectangles.Items.Add(TurnRectangleToString(newRectangle));
@@ -363,7 +359,7 @@ namespace Prohramming
             CreateNewPanel(newRectangle);
         }
 
-        public Panel CreateNewPanel(Model.Classes.Rectangle newRectangle) 
+        public Panel CreateNewPanel(Model.Classes.Rectangle newRectangle)
         {
             Panel newPanel = new Panel();
             newPanel.Location = new Point(newRectangle.Center.X, newRectangle.Center.Y);
@@ -371,19 +367,19 @@ namespace Prohramming
             newPanel.Height = Convert.ToInt32(newRectangle.Length);
             newPanel.BackColor = Color.FromArgb(127, 127, 255, 127);
             panelRectangles.Controls.Add(newPanel);
-            _rectanglePanels.Add(newPanel );
+            _rectanglePanels.Add(newPanel);
             return newPanel;
         }
 
-        private void FindCollisions(List<Panel> _rectanglePanels,List<Model.Classes.Rectangle> _rectangles)
+        private void FindCollisions(List<Panel> _rectanglePanels, List<Model.Classes.Rectangle> _rectangles)
         {
 
-            for (int i =0; i< _rectanglePanels.Count; i++)
+            for (int i = 0; i < _rectanglePanels.Count; i++)
             {
                 _rectanglePanels[i].BackColor = Color.FromArgb(127, 127, 255, 127);
             }
             for (int i = 0; i < _rectanglePanels.Count; i++)
-                for (int j = i+1; j < _rectanglePanels.Count; j++)
+                for (int j = i + 1; j < _rectanglePanels.Count; j++)
                     if (CollisionManager.IsCollision(_rectangles.ElementAt(i), _rectangles.ElementAt(j)))
                     {
                         _rectanglePanels.ElementAt(i).BackColor = Color.FromArgb(127, 255, 127, 127);
@@ -397,7 +393,7 @@ namespace Prohramming
             {
                 _rectangles.ElementAt(listBoxRectangles.SelectedIndex).Width = Convert.ToDouble(textBoxRectanglesWidth.Text);
                 textBoxRectanglesWidth.BackColor = Color.White;
-                listBoxRectangles.Items[listBoxRectangles.SelectedIndex] = TurnRectangleToString(_rectangles.ElementAt(listBoxRectangles.SelectedIndex));
+                UpdateRectangleInfo(listBoxRectangles.SelectedIndex);
             }
             catch
             {
@@ -411,13 +407,30 @@ namespace Prohramming
             {
                 _rectangles.ElementAt(listBoxRectangles.SelectedIndex).Length = Convert.ToDouble(textBoxRectanglesLenght.Text);
                 textBoxRectanglesLenght.BackColor = Color.White;
-                listBoxRectangles.Items[listBoxRectangles.SelectedIndex] = TurnRectangleToString(_rectangles.ElementAt(listBoxRectangles.SelectedIndex));
+                UpdateRectangleInfo(listBoxRectangles.SelectedIndex);
             }
             catch
             {
                 textBoxRectanglesLenght.BackColor = Color.LightPink;
             }
         }
-
+        private void UpdateRectangleInfo(int SelectedIndex)
+        {
+            listBoxRectangles.Items[SelectedIndex] = TurnRectangleToString(_rectangles.ElementAt(SelectedIndex));
+            _rectanglePanels.ElementAt(SelectedIndex).Location = new Point(_currentRectangle.Center.X, _currentRectangle.Center.Y);
+            _rectanglePanels.ElementAt(SelectedIndex).Width = Convert.ToInt32(_currentRectangle.Width);
+            _rectanglePanels.ElementAt(SelectedIndex).Height = Convert.ToInt32(_currentRectangle.Length);
+            FindCollisions(_rectanglePanels, _rectangles);
+        }
+        private void ClearRectangleInfo()
+        {
+            _rectanglePanels.RemoveAt(listBoxRectangles.SelectedIndex);
+            panelRectangles.Controls.RemoveAt(listBoxRectangles.SelectedIndex);
+            _rectangles.RemoveAt(listBoxRectangles.SelectedIndex);
+            rectanglesListBox.Items.RemoveAt(listBoxRectangles.SelectedIndex);
+            listBoxRectangles.Items.RemoveAt(listBoxRectangles.SelectedIndex);
+            FindCollisions(_rectanglePanels, _rectangles);
+        }
+                 
     }
 }
