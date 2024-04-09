@@ -6,10 +6,19 @@ using System.Threading.Tasks;
 
 namespace Prohramming.Model.Classes
 {
+    /// <summary>
+    /// Хранит данные колец.
+    /// </summary>
     public class Ring
     {
+        /// <summary>
+        /// Возвращает и задаёт координаты центра кольца. Использует класс <see cref="Point2D"/>.
+        /// </summary>
         public Point2D Center { get; set; }
 
+        /// <summary>
+        /// Длинна 
+        /// </summary>
         private int _innerRadius;
         public int InnerRadius
         {

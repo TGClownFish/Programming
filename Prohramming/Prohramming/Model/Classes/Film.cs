@@ -8,9 +8,18 @@ using System.Threading.Tasks;
 
 namespace Prohramming.Model.Classes
 {
+    /// <summary>
+    /// Хранит данные фильмов.
+    /// </summary>
      public class Film
     {
+        /// <summary>
+        /// Название.
+        /// </summary>
         private string _name;
+        /// <summary>
+        /// Возвращает и задаёт название фильма. Должно состоять из букв латинского алфавита.
+        /// </summary>
         public string Name
         {
             get { return _name; }
@@ -21,7 +30,13 @@ namespace Prohramming.Model.Classes
             }
         }
         
+        /// <summary>
+        /// Длинна в секундах.
+        /// </summary>
         private int _duration;
+        /// <summary>
+        /// Возвращает и задаёт длинну фильма. Должна быть положительна.
+        /// </summary>
         public int Duration
         {
             get { return _duration; }
@@ -31,7 +46,14 @@ namespace Prohramming.Model.Classes
                 _duration = value;
             }
         }
+
+        /// <summary>
+        /// Год выпуска.
+        /// </summary>
         private int _releaseYear;
+        /// <summary>
+        /// Возвращает и задаёт год выпуска фильма. Должен между 1990 и 2024.
+        /// </summary>
         public int ReleaseYear 
         { 
             get { return _releaseYear; }
@@ -41,7 +63,14 @@ namespace Prohramming.Model.Classes
                 _releaseYear = value;
             }
         }
+
+        /// <summary>
+        /// Жанр.
+        /// </summary>
         public string _genre;
+        /// <summary>
+        /// Возвращает и задаёт жанр фильма. Должн состоять из букв латинского алфавита.
+        /// </summary>
         public string Genre
         {
             get { return _genre; }
@@ -52,7 +81,13 @@ namespace Prohramming.Model.Classes
             }
         }
 
+        /// <summary>
+        /// Рейтинг.
+        /// </summary>
         private double _rating;
+        /// <summary>
+        /// Возвращает и задаёт рейтинг фильма. Должен быть между 1 и 10.
+        /// </summary>
         public double Rating 
         {
             get { return _rating; }
@@ -62,6 +97,15 @@ namespace Prohramming.Model.Classes
                 _rating = value;
             }
         }
+
+        /// <summary>
+        /// Создаёт экземляр класса <see cref="Film"/>.
+        /// </summary>
+        /// <param name="name">Название. Должно состоять из букв латинского алфавита.</param>
+        /// <param name="duration">Длинна фильма в секундах. Должна быть положительна.</param>
+        /// <param name="releaseYear">Год выпуска фильма. Должен между 1990 и 2024.</param>
+        /// <param name="genre">Жанр фильма. Должн состоять из букв латинского алфавита.</param>
+        /// <param name="rating">Рейтинг фильма. Должен быть между 1 и 10.</param>
         public Film (string name, int duration, int releaseYear, string genre, double rating)
         {
             Name = name;
@@ -69,8 +113,11 @@ namespace Prohramming.Model.Classes
             ReleaseYear = releaseYear;
             Genre = genre;
             Rating = rating;
-
         }
+
+        /// <summary>
+        /// Создаёт пустой экземляр класса <see cref="Film"/>.
+        /// </summary>
         public Film ()
         { }
 

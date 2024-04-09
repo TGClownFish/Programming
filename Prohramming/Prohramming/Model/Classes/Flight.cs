@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace Prohramming.Model.Classes
 {
+    /// <summary>
+    /// Хранит данные о полёте.
+    /// </summary>
     public class Flight
     {
         public string DeparturePoint { get; set; }

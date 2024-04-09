@@ -16,7 +16,7 @@ namespace Prohramming.Model.Classes
         /// </summary>
         private int _x;
         /// <summary>
-        /// Возвращает из задаёт координату X. Должна быть выше нуля.
+        /// Возвращает из задаёт координату X. Должна быть положительна.
         /// </summary>
         public int X 
         {
@@ -33,7 +33,7 @@ namespace Prohramming.Model.Classes
         /// </summary>
         private int _y;
         /// <summary>
-        /// Возвращает из задаёт координату Y. Должна быть выше нуля.
+        /// Возвращает из задаёт координату Y. Должна быть положительна.
         /// </summary>
         public int Y
         {
@@ -48,8 +48,8 @@ namespace Prohramming.Model.Classes
         /// <summary>
         /// Создаёт экземляр класса <see cref="Point2D"/>
         /// </summary>
-        /// <param name="x"> Возвращает из задаёт координату X. Должна быть выше нуля. </param>
-        /// <param name="y"> Возвращает из задаёт координату Y. Должна быть выше нуля. </param>
+        /// <param name="x">Возвращает из задаёт координату X. Должна быть положительна.</param>
+        /// <param name="y">Возвращает из задаёт координату Y. Должна быть положительна.</param>
         public Point2D (int x, int y)
         {
             X = x;
@@ -57,7 +57,7 @@ namespace Prohramming.Model.Classes
         }
 
         /// <summary>
-        /// Создаёт пустой экземляр класса <see cref="Point2D"/>
+        /// Создаёт пустой экземляр класса <see cref="Point2D"/>.
         /// </summary>
         public Point2D () { }
     }

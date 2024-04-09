@@ -7,8 +7,17 @@ using System.Threading.Tasks;
 
 namespace Prohramming.Model.Classes
 {
+    /// <summary>
+    /// Хранит методы для проверки пересечений двух объектов.
+    /// </summary>
     public static class CollisionManager
     {
+        /// <summary>
+        /// Проверяет, пересекаются ли два объекта.
+        /// </summary>
+        /// <param name="rectangle1">Прямоугольник 1. Объект класса <see cref="Rectangle"/></param>.
+        /// <param name="rectangle2">Прямоугольник 2. Объект класса <see cref="Rectangle"/></param>.</param>
+        /// <returns>Возвращает true, если пересекаются. И false, если нет.</returns>
         public static bool IsCollision(Rectangle rectangle1, Rectangle rectangle2)
         {
             if (Math.Abs(rectangle1.Center.X - rectangle2.Center.X) < (Math.Abs(rectangle1.Width + rectangle2.Width) / 2))
@@ -16,6 +25,13 @@ namespace Prohramming.Model.Classes
                     return true;
             return false;
         }
+
+        /// <summary>
+        /// Проверяет, пересекаются ли два объекта.
+        /// </summary>
+        /// <param name="ring1">Кольцо 1. Объект класса <see cref="Ring"/></param>.
+        /// <param name="ring2">Кольцо 2. Объект класса <see cref="Ring"/></param>.</param>
+        /// <returns>Возвращает true, если пересекаются. И false, если нет.</returns>
         public static bool IsCollision(Ring ring1, Ring ring2)
         { 
             double TriangleLeg1 = Math.Pow(ring1.Center.X - ring2.Center.X, 2);

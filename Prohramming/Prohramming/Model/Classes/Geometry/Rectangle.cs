@@ -39,7 +39,14 @@ namespace Prohramming.Model.Classes
                 _length = value;
             }
         }
+
+        /// <summary>
+        /// Ширина прямоугольника.
+        /// </summary>
         private double _width;
+        /// <summary>
+        /// Возвращает и задаёт ширину прямоугольника. Должна быть положительна.
+        /// </summary>
         public double Width
         {
             get{return _width;}
@@ -49,7 +56,14 @@ namespace Prohramming.Model.Classes
                 _width = value;
             }
         }
+
+        /// <summary>
+        /// Цвет прямоугольника.
+        /// </summary>
         private string _colour;
+        /// <summary>
+        /// Возвращает и задаёт цвет прямоугольника. Должна состоять из букв латинского алфавита.
+        /// </summary>
         public string Colour 
         { 
             get { return _colour; }
@@ -59,14 +73,29 @@ namespace Prohramming.Model.Classes
                 _colour = value;
             }
         }
+        /// <summary>
+        /// Возвращает и задаёт координаты прямоугольника. Объект класса <see cref="Point2D"/>.
+        /// </summary>
         public Point2D Center { get; set; }
 
+        /// <summary>
+        /// Хранит количество созданных прямоугольников.
+        /// </summary>
         private static int _allRectanglesCount;
+        /// <summary>
+        /// Возвращает количество созданных прямоугольников.
+        /// </summary>
         public static int AllRectanglesCount
         {
             get { return _allRectanglesCount; }
         }
-
+        /// <summary>
+        /// Создаёт экземпляр класса <see cref="Rectangle"/>.
+        /// </summary>
+        /// <param name="length">Длинна. Должна быть положительна.</param>
+        /// <param name="width">Ширина. Должна быть положительна.</param>
+        /// <param name="colour">Цвет. Должен состоять из букв латинского алфавита.</param>
+        /// <param name="center">Координаты центра. Объект класса <see cref="Point2D"/>.</param>
         public Rectangle (double length, double width, string colour, Point2D center)
         {
             _id = _allRectanglesCount;
@@ -76,6 +105,10 @@ namespace Prohramming.Model.Classes
             Center = center;
             _allRectanglesCount++;
         }
+
+        /// <summary>
+        /// Создаёт пустой экземпляр класса <see cref="Rectangle"/>.
+        /// </summary>
         public Rectangle () 
         {
             _id = _allRectanglesCount;

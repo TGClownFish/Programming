@@ -6,21 +6,39 @@ using System.Threading.Tasks;
 
 namespace Prohramming.Model.Classes
 {
+    /// <summary>
+    /// Предоставляет методы для валидации значений.
+    /// </summary>
     public static class Validator
     {
+        /// <summary>
+        /// Валидация на позитивность зничения типа int.
+        /// </summary>
+        /// <param name="value">Значение типа int в котором проводится валидация.</param>
+        /// <param name="propertyName">Название поля в котором проводится валидация.</param>
+        /// <returns>Возвращает true, если значение выше или равно нулю.</returns>
+        /// <exception cref="ArgumentException">Если значение ниже нуля.</exception>
         public static bool AssertOnPositiveValue(int value, string propertyName)
         {
             if (value < 0)
                 throw new ArgumentException($"Введите значение выше нуля в свойстве {propertyName}");
             return true;
         }
+
+        /// <summary>
+        /// Валидация на позитивность зничения типа double.
+        /// </summary>
+        /// <param name="value">Значение типа double в котором проводится валидация.</param>
+        /// <param name="propertyName">Название поля в котором проводится валидация.</param>
+        /// <returns>Возвращает true, если значение выше или равно нулю.</returns>
+        /// <exception cref="ArgumentException">Если значение ниже нуля.</exception>
         public static bool AssertOnPositiveValue(double value, string propertyName)
         {
             if (value.CompareTo(0.0) < 0)
                 throw new ArgumentException($"Введите значение выше нуля в свойстве {propertyName}");
             return true;
         }
-        //Validator.AssertOnPositiveValue(value, "");
+
         public static bool AssertValueInRange(int value, int min, int max, string propertyName)
         {
             if (value < min || value > max)

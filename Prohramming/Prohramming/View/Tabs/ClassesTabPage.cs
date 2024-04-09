@@ -45,6 +45,9 @@ namespace Prohramming.View.Tabs
             return MaxIndex;
         }
 
+        /// <summary>
+        /// e
+        /// </summary>
         private void classesPageColourTextBox_TextChanged(object sender, EventArgs e)
         {
             try

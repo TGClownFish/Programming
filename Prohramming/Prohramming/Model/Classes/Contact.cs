@@ -7,6 +7,9 @@ using static System.Net.Mime.MediaTypeNames;
 
 namespace Prohramming.Model.Classes
 {
+    /// <summary>
+    /// Хранит данные о контакте в телефонной книжке.
+    /// </summary>
     public class Contact
     {
         private string _surname;

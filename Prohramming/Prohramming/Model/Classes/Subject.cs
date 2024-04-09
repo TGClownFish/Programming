@@ -8,6 +8,9 @@ namespace Prohramming.Model.Classes
 {
     public class Subject
     {
+        /// <summary>
+        /// Хранит данные о школьном предмете.
+        /// </summary>
         public string Name { get; set; }
         public string TeacherName { get; set; }
         private int _grade;

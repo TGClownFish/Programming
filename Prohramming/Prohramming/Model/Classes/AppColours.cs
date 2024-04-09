@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace Prohramming.Model.Classes
 {
+    /// <summary>
+    /// Хранит возможные цвета.
+    /// </summary>
     public static class AppColours
     {
         public static Color LightPink

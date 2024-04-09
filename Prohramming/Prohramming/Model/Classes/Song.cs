@@ -8,6 +8,9 @@ namespace Prohramming.Model.Classes
 {
     public class Song
     {
+        /// <summary>
+        /// Хранит данные о песне.
+        /// </summary>
         public string Name { get; set; }
         public string MusicianName { get; set; }
 
