@@ -6,14 +6,30 @@ using System.Threading.Tasks;
 
 namespace Prohramming.Model.Classes
 {
+    /// <summary>
+    /// Хранит данные прямоугольников.
+    /// </summary>
     public class Rectangle
     {
+        /// <summary>
+        /// Уникальный идентификатор для всех объектов данного класса.
+        /// </summary>
         private int _id;
+        /// <summary>
+        /// Возвращает уникальный идентификатор объекта.
+        /// </summary>
         public int Id
         { 
             get { return _id; } 
         }
+
+        /// <summary>
+        /// Длинна прямоугольника.
+        /// </summary>
         private double _length;
+        /// <summary>
+        /// Возвращает и задаёт длинну прямоугольника. Должна быть положительна.
+        /// </summary>
         public double Length
         {
             get{return _length;}
