@@ -12,6 +12,9 @@ using System.Windows.Forms;
 
 namespace Prohramming.View.Tabs
 {
+    /// <summary>
+    /// Хранит элементы вкладки Classes.
+    /// </summary>
     public partial class ClassesTabPage : UserControl
     {
         List<Model.Classes.Rectangle> _classesPageRrectangles = new List<Model.Classes.Rectangle>();
@@ -26,27 +29,30 @@ namespace Prohramming.View.Tabs
             }
         }
 
+        /// <summary>
+        /// При нажатии на кнопку classesPageFindButton, 
+        /// находит прямоугольник с наибольшей шириной и
+        /// выделяет его в classesPageListBox.
+        /// </summary>
         private void classesPageFindButton_Click(object sender, EventArgs e)
-        {
-            classesPageListBox.SelectedIndex = FindRectangleWithMaxWidth(_classesPageRrectangles);
-        }
-        private int FindRectangleWithMaxWidth(List<Model.Classes.Rectangle> list)
         {
             int MaxIndex = 0;
             double MaxWidth = 0;
             for (int i = 0; i < 5; i++)
             {
-                if (MaxWidth < list.ElementAt(i).Width)
+                if (MaxWidth < _classesPageRrectangles.ElementAt(i).Width)
                 {
-                    MaxWidth = list.ElementAt(i).Width;
+                    MaxWidth = _classesPageRrectangles.ElementAt(i).Width;
                     MaxIndex = i;
                 }
             }
-            return MaxIndex;
+            classesPageListBox.SelectedIndex = MaxIndex;
         }
 
         /// <summary>
-        /// e
+        /// При изменении текста в classesPageColourTextBox
+        /// пытается изменить поле Color в выбраном прямоугольнике
+        /// на новое значение этого текстбокса.
         /// </summary>
         private void classesPageColourTextBox_TextChanged(object sender, EventArgs e)
         {
@@ -61,6 +67,11 @@ namespace Prohramming.View.Tabs
             }
         }
 
+        /// <summary>
+        /// При изменении текста в classesPageWidthTextBox
+        /// пытается изменить поле Width в выбраном прямоугольнике
+        /// на новое значение этого текстбокса.
+        /// </summary>
         private void classesPageWidthTextBox_TextChanged(object sender, EventArgs e)
         {
             try
@@ -74,6 +85,11 @@ namespace Prohramming.View.Tabs
             }
         }
 
+        /// <summary>
+        /// При изменении текста в classesPageLengthTextBox
+        /// пытается изменить поле Length в выбраном прямоугольнике
+        /// на новое значение этого текстбокса.
+        /// </summary>
         private void classesPageLengthTextBox_TextChanged(object sender, EventArgs e)
         {
             try
@@ -89,6 +105,12 @@ namespace Prohramming.View.Tabs
 
         }
 
+        /// <summary>
+        /// Если в classesPageListBox выбран прямоугольник,
+        /// заменяет текст в текстбоксах на значения соотвествующих полей
+        /// выбранного прямоугольника. 
+        /// Иначе заменяет текст в этих текстбоксах на пустые строки.
+        /// </summary>
         private void classesPageListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (classesPageListBox.SelectedIndex >= 0)

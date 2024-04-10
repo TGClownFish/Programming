@@ -11,17 +11,29 @@ using System.Windows.Forms;
 
 namespace Prohramming.View.Tabs
 {
+    /// <summary>
+    /// Хранит элементы вкладки Enumerations.
+    /// </summary>
     public partial class EnumerationsControl : UserControl
     {
         public EnumerationsControl()
         {
             InitializeComponent();
         }
+
+        /// <summary>
+        /// При изменении выбранного элемента в ValuesListBox,
+        /// выводит в NameTextBox индекс этого элемента в перечислении.
+        /// </summary>
         private void ValuesListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             NameTextBox.Text = Convert.ToString(ValuesListBox.SelectedIndex);
         }
 
+        /// <summary>
+        /// При изменении выбранного элемента в EnumsListBox, 
+        /// выводит в ValuesListBox элементы выбранного перечисления.
+        /// </summary>
         private void EnumsListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             ValuesListBox.Items.Clear();

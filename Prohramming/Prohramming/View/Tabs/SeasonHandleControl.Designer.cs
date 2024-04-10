@@ -63,7 +63,7 @@
             this.SeasonButton.TabIndex = 12;
             this.SeasonButton.Text = "Go!";
             this.SeasonButton.UseVisualStyleBackColor = true;
-            this.SeasonButton.Click += new System.EventHandler(this.button1_Click);
+            this.SeasonButton.Click += new System.EventHandler(this.SeasonButton_Click);
             // 
             // SeasonHandleControl
             // 

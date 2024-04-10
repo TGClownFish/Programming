@@ -12,10 +12,10 @@ namespace Prohramming.Model.Classes
     public static class Validator
     {
         /// <summary>
-        /// Валидация на позитивность зничения типа int.
+        /// Проверяет, является ли значение позитивным.
         /// </summary>
-        /// <param name="value">Значение типа int в котором проводится валидация.</param>
-        /// <param name="propertyName">Название поля в котором проводится валидация.</param>
+        /// <param name="value">Значение в котором проводится проверка.</param>
+        /// <param name="propertyName">Название поля в котором проводится проверка.</param>
         /// <returns>Возвращает true, если значение выше или равно нулю.</returns>
         /// <exception cref="ArgumentException">Если значение ниже нуля.</exception>
         public static bool AssertOnPositiveValue(int value, string propertyName)
@@ -26,10 +26,10 @@ namespace Prohramming.Model.Classes
         }
 
         /// <summary>
-        /// Валидация на позитивность зничения типа double.
+        /// Проверяет, является ли значение позитивным.
         /// </summary>
-        /// <param name="value">Значение типа double в котором проводится валидация.</param>
-        /// <param name="propertyName">Название поля в котором проводится валидация.</param>
+        /// <param name="value">Значение в котором проводится проверка.</param>
+        /// <param name="propertyName">Название поля в котором проводится проверка.</param>
         /// <returns>Возвращает true, если значение выше или равно нулю.</returns>
         /// <exception cref="ArgumentException">Если значение ниже нуля.</exception>
         public static bool AssertOnPositiveValue(double value, string propertyName)
@@ -39,25 +39,59 @@ namespace Prohramming.Model.Classes
             return true;
         }
 
+        /// <summary>
+        /// Проверяет, находиться ли значение в определенном интревале.
+        /// </summary>
+        /// <param name="value">Значение в котором проводится проверка.</param>
+        /// <param name="min">Нижняя граница интревала.</param>
+        /// <param name="max">Верхняя граница интревала.</param>
+        /// <param name="propertyName">Название поля в котором проводится проверка.</param>
+        /// <returns>Возвращает true, если значение в границах интревала.</returns>
+        /// <exception cref="ArgumentException">Если значение не в границах интревала.</exception>
         public static bool AssertValueInRange(int value, int min, int max, string propertyName)
         {
             if (value < min || value > max)
                 throw new ArgumentException($"Введите значение выше {min} и ниже {max} в свойстве {propertyName}");
             return true;
         }
+        /// <summary>
+        /// Проверяет, находиться ли значение в определенном интревале.
+        /// </summary>
+        /// <param name="value">Значение в котором проводится проверка.</param>
+        /// <param name="min">Нижняя граница интревала.</param>
+        /// <param name="max">Верхняя граница интревала.</param>
+        /// <param name="propertyName">Название поля в котором проводится проверка.</param>
+        /// <returns>Возвращает true, если значение в границах интревала.</returns>
+        /// <exception cref="ArgumentException">Если значение не в границах интревала.</exception>
         public static bool AssertValueInRange(long value, long min, long max, string propertyName)
         {
             if (value < min || value > max)
                 throw new ArgumentException($"Введите значение выше {min} и ниже {max} в свойстве {propertyName}");
             return true;
         }
+        /// <summary>
+        /// Проверяет, находиться ли значение в определенном интревале.
+        /// </summary>
+        /// <param name="value">Значение в котором проводится проверка.</param>
+        /// <param name="min">Нижняя граница интревала.</param>
+        /// <param name="max">Верхняя граница интревала.</param>
+        /// <param name="propertyName">Название поля в котором проводится проверка.</param>
+        /// <returns>Возвращает true, если значение в границах интревала.</returns>
+        /// <exception cref="ArgumentException">Если значение не в границах интревала.</exception>
         public static bool AssertValueInRange(double value, double min, double max, string propertyName)
         {
             if (value < min || value > max)
                 throw new ArgumentException($"Введите значение выше {min} и ниже {max} в свойстве {propertyName}");
             return true;
         }
-        //Validator.AssertValueInRange (value, 0, 1, "");
+
+        /// <summary>
+        /// Проверяет, состоит ли строка только из символов латинского алфавита.
+        /// </summary>
+        /// <param name="value">Проверяемая строка.</param>
+        /// <param name="propertyName">Название поля в котором проводится проверка.</param>
+        /// <returns>Возвращает true, если строка состоит только из символов латинского алфавита.</returns>
+        /// <exception cref="ArgumentException">Если в строке есть другие символы.</exception>
         public static bool AssertStringContainsOnlyLetters(string value, string propertyName)
         {
             foreach (var item in value)
@@ -69,6 +103,5 @@ namespace Prohramming.Model.Classes
             }
             return true;
         }
-        //Validator.AssertStringContainsOnlyLetters(value, "");
     }
 }

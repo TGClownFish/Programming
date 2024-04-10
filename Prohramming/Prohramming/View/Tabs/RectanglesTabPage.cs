@@ -12,6 +12,9 @@ using System.Windows.Forms;
 
 namespace Prohramming.View.Tabs
 {
+    /// <summary>
+    /// Хранит элементы вкладки Rectangles.
+    /// </summary>
     public partial class RectanglesTabPage : UserControl
     {
         List<Model.Classes.Rectangle> _rectanglesTabPageRectangles = new List<Model.Classes.Rectangle>();
@@ -31,10 +34,22 @@ namespace Prohramming.View.Tabs
             }
             FindCollisions(_rectanglePanels, _rectanglesTabPageRectangles);
         }
+        /// <summary>
+        /// Выводит поля объекта класса <see cref="Rectangle"/> в виде строки.
+        /// </summary>
+        /// <param name="rectangle">Объект класса <see cref="Rectangle"/></param>
+        /// <returns>Полученная строка.</returns>
         public string TurnRectangleToString(Model.Classes.Rectangle rectangle)
         {
             return $"({rectangle.Id}: X={rectangle.Center.X},Y={rectangle.Center.Y},W={rectangle.Width},L={rectangle.Length})";
         }
+
+        /// <summary>
+        /// Если в rectanglesPageListBox выбран прямоугольник,
+        /// заменяет текст в текстбоксах на значения соотвествующих полей
+        /// выбранного прямоугольника. 
+        /// Иначе заменяет текст в этих текстбоксах на пустые строки.
+        /// </summary>
         private void rectanglesPageListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (rectanglesPageListBox.SelectedIndex >= 0)
@@ -56,6 +71,12 @@ namespace Prohramming.View.Tabs
             }
         }
 
+        /// <summary>
+        /// При нажатии на кнопку rectanglesPageDeleteButton,
+        /// удалает выбранный прямоугольник.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void rectanglesPageDeleteButton_Click(object sender, EventArgs e)
         {
             if (rectanglesPageListBox.SelectedIndex >= 0)
@@ -71,6 +92,11 @@ namespace Prohramming.View.Tabs
             }
         }
 
+        /// <summary>
+        /// При нажатии на кнопку rectanglesPageAddButton,
+        /// создаёт новый прямоугольник и добавляет информацию о нём
+        /// в элементы вкладки.
+        /// </summary>
         private void rectanglesPageAddButton_Click(object sender, EventArgs e)
         {
             Random rnd = new Random();
@@ -81,6 +107,12 @@ namespace Prohramming.View.Tabs
             CreateNewPanel(newRectangle);
         }
 
+        /// <summary>
+        /// Создаёт новый объект класса <see cref="Panel"/>
+        /// на основе данного прямоугольника.
+        /// </summary>
+        /// <param name="newRectangle">Данный прямоугольник. Объект класса <see cref="Rectangle"/></param>
+        /// <returns>Возвращает новую панель.</returns>
         public Panel CreateNewPanel(Model.Classes.Rectangle newRectangle)
         {
             Panel newPanel = new Panel();
@@ -93,6 +125,11 @@ namespace Prohramming.View.Tabs
             return newPanel;
         }
 
+        /// <summary>
+        /// Смотрит, есть ли пересечения между всеми прямоугольниками.
+        /// </summary>
+        /// <param name="_rectanglePanels">Массив панелей. Состоит из объектов класса <see cref="Panel"/></param>
+        /// <param name="_rectangles">Массив прямоугольников. Состоит из объектов класса <see cref="Rectangle"/></param>
         private void FindCollisions(List<Panel> _rectanglePanels, List<Model.Classes.Rectangle> _rectangles)
         {
 
@@ -109,6 +146,11 @@ namespace Prohramming.View.Tabs
                     }
         }
 
+        /// <summary>
+        /// При изменении текста в rectanglesPageWidthTextBox
+        /// пытается изменить поле Width в выбраном прямоугольнике
+        /// на новое значение этого текстбокса.
+        /// </summary>
         private void rectanglesPageWidthTextBox_TextChanged(object sender, EventArgs e)
         {
             try
@@ -123,6 +165,11 @@ namespace Prohramming.View.Tabs
             }
         }
 
+        /// <summary>
+        /// При изменении текста в rectanglesPageLenghtTextBox
+        /// пытается изменить поле Length в выбраном прямоугольнике
+        /// на новое значение этого текстбокса.
+        /// </summary>
         private void rectanglesPageLenghtTextBox_TextChanged(object sender, EventArgs e)
         {
             try
@@ -136,6 +183,12 @@ namespace Prohramming.View.Tabs
                 rectanglesPageLenghtTextBox.BackColor = Color.LightPink;
             }
         }
+
+        /// <summary>
+        /// Обновляет информации о только что созданом прямоугольнике
+        /// и добавляет информацию о нём в элементы вкладки.
+        /// </summary>
+        /// <param name="SelectedIndex">Выбранный индекс текстбокса, в котором изменилась информация о прямоугольнике.</param>
         private void UpdateRectangleInfo(int SelectedIndex)
         {
             rectanglesPageListBox.Items[SelectedIndex] = TurnRectangleToString(_rectanglesTabPageRectangles.ElementAt(SelectedIndex));
@@ -145,6 +198,10 @@ namespace Prohramming.View.Tabs
 
             FindCollisions(_rectanglePanels, _rectanglesTabPageRectangles);
         }
+
+        /// <summary>
+        /// Удаляет информации о выбранном прямоугольнике во всех элементах вкладки.
+        /// </summary>
         private void ClearRectangleInfo()
         {
             _rectanglePanels.RemoveAt(rectanglesPageListBox.SelectedIndex);

@@ -13,12 +13,15 @@ using System.Windows.Forms;
 
 namespace Prohramming
 {
+    /// <summary>
+    /// Главная вкладка программы.
+    /// </summary>
     public partial class MainForm : Form
     {
         public MainForm()
         {
             InitializeComponent();
 
-        }      
+        }
     }
 }

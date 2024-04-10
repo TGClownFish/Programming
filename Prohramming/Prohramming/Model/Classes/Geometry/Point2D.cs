@@ -16,7 +16,7 @@ namespace Prohramming.Model.Classes
         /// </summary>
         private int _x;
         /// <summary>
-        /// Возвращает из задаёт координату X. Должна быть положительна.
+        /// Возвращает и задаёт координату X. Должна быть положительна.
         /// </summary>
         public int X 
         {
@@ -33,7 +33,7 @@ namespace Prohramming.Model.Classes
         /// </summary>
         private int _y;
         /// <summary>
-        /// Возвращает из задаёт координату Y. Должна быть положительна.
+        /// Возвращает и задаёт координату Y. Должна быть положительна.
         /// </summary>
         public int Y
         {

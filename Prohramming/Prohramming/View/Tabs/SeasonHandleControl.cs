@@ -11,13 +11,22 @@ using System.Windows.Forms;
 
 namespace Prohramming.View.Tabs
 {
+    /// <summary>
+    /// Хранит элементы вкладки Enums.
+    /// </summary>
     public partial class SeasonHandleControl : UserControl
     {
         public SeasonHandleControl()
         {
             InitializeComponent();
         }
-        private void button1_Click(object sender, EventArgs e)
+        /// <summary>
+        /// При нажатии кнопки SeasonButton,
+        /// если в SeasonComboBox выбраны поля
+        /// Winter или Summer созадет MessageBox,
+        /// иначе меняет цвет SeasonButton
+        /// </summary>
+        private void SeasonButton_Click(object sender, EventArgs e)
         {
             switch (SeasonComboBox.Text)
             {

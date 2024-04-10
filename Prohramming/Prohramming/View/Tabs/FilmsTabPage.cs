@@ -11,6 +11,9 @@ using System.Windows.Forms;
 
 namespace Prohramming.View.Tabs
 {
+    /// <summary>
+    /// Хранит элементы вкладки Films.
+    /// </summary>
     public partial class FilmsTabPage : UserControl
     {
         Film[] _films = new Film[5];
@@ -26,6 +29,11 @@ namespace Prohramming.View.Tabs
             }
         }
 
+        /// <summary>
+        /// При изменении текста в filmsPageDurationTextBox
+        /// пытается изменить поле Duration в выбраном фильме
+        /// на новое значение этого текстбокса.
+        /// </summary>
         private void filmsPageDurationTextBox_TextChanged(object sender, EventArgs e)
         {
             try
@@ -39,6 +47,11 @@ namespace Prohramming.View.Tabs
             }
         }
 
+        /// <summary>
+        /// При изменении текста в  filmsPageRatingTextBox
+        /// пытается изменить поле Rating в выбраном фильме
+        /// на новое значение этого текстбокса.
+        /// </summary>
         private void filmsPageRatingTextBox_TextChanged(object sender, EventArgs e)
         {
             try
@@ -52,6 +65,11 @@ namespace Prohramming.View.Tabs
             }
         }
 
+        /// <summary>
+        /// При изменении текста в filmsPageGenreTextBox
+        /// пытается изменить поле Genre в выбраном фильме
+        /// на новое значение этого текстбокса.
+        /// </summary>
         private void filmsPageGenreTextBox_TextChanged(object sender, EventArgs e)
         {
             try
@@ -65,26 +83,31 @@ namespace Prohramming.View.Tabs
             }
         }
 
+        /// <summary>
+        /// При нажатии на кнопку filmPageFindButton, 
+        /// находит прямоугольник с наибольшим рейтингом и
+        /// выделяет его в filmsPageListBox.
+        /// </summary>
         private void filmPageFindButton_Click(object sender, EventArgs e)
-        {
-            filmsPageListBox.SelectedIndex = FindFilmWithMaxRating(_films);
-        }
-
-        private int FindFilmWithMaxRating(Film[] array)
         {
             int MaxIndex = 0;
             double MaxRating = 0;
             for (int i = 0; i < 5; i++)
             {
-                if (MaxRating < array[i].Rating)
+                if (MaxRating < _films[i].Rating)
                 {
-                    MaxRating = array[i].Rating;
+                    MaxRating = _films[i].Rating;
                     MaxIndex = i;
                 }
             }
-            return MaxIndex;
+            filmsPageListBox.SelectedIndex = MaxIndex;
         }
 
+        /// <summary>
+        /// При изменении текста в classesPageColourTextBox
+        /// пытается изменить поле Color в выбраном фильме
+        /// на новое значение этого текстбокса.
+        /// </summary>
         private void filmsPageReleaseYearTextBox_TextChanged(object sender, EventArgs e)
         {
             try
@@ -98,6 +121,11 @@ namespace Prohramming.View.Tabs
             }
         }
 
+        /// <summary>
+        /// При изменении текста в classesPageColourTextBox
+        /// пытается изменить поле Color в выбраном фильме
+        /// на новое значение этого текстбокса.
+        /// </summary>
         private void filmsPageNameTextBox_TextChanged(object sender, EventArgs e)
         {
             try
@@ -111,6 +139,11 @@ namespace Prohramming.View.Tabs
             }
         }
 
+        /// <summary>
+        /// При выборе фильма в filmsPageListBox,
+        /// заменяет текст в текстбоксах на значения 
+        /// соотвествующих полей выбранного фильма. 
+        /// </summary>
         private void filmsPageListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             _currentFilm = _films[filmsPageListBox.SelectedIndex];

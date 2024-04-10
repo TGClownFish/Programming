@@ -11,12 +11,21 @@ using System.Windows.Forms;
 
 namespace Prohramming.View.Tabs
 {
+    /// <summary>
+    ///  Хранит элементы вкладки Enums.
+    /// </summary>
     public partial class WeekdayParsingControl : UserControl
     {
         public WeekdayParsingControl()
         {
             InitializeComponent();
         }
+        /// <summary>
+        /// При нажатии кнопки ParsingButton,
+        /// если в ParsingTextBox введёно возможное
+        /// значение <see cref="Weekday"/>, выводит
+        /// в label5 индекс этого значения.
+        /// </summary>
         private void ParsingButton_Click(object sender, EventArgs e)
         {
             if (!int.TryParse(ParsingTextBox.Text, out _))

@@ -33,18 +33,18 @@ namespace Prohramming
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPageEnums = new System.Windows.Forms.TabPage();
             this.SeasonGroupBox = new System.Windows.Forms.GroupBox();
-            this.WeekdayParsingGroupBox = new System.Windows.Forms.GroupBox();
-            this.EnumerationsGroupBox = new System.Windows.Forms.GroupBox();
-            this.tabPageClasses = new System.Windows.Forms.TabPage();
-            this.tabPageFilms = new System.Windows.Forms.TabPage();
-            this.tabPageRectangles = new System.Windows.Forms.TabPage();
-            this.pageSetupDialog1 = new System.Windows.Forms.PageSetupDialog();
-            this.classesTabPage1 = new Prohramming.View.Tabs.ClassesTabPage();
-            this.filmsTabPage1 = new Prohramming.View.Tabs.FilmsTabPage();
-            this.rectanglesTabPage1 = new Prohramming.View.Tabs.RectanglesTabPage();
-            this.enumerationsControl1 = new Prohramming.View.Tabs.EnumerationsControl();
-            this.weekdayParsingControl1 = new Prohramming.View.Tabs.WeekdayParsingControl();
             this.seasonHandleControl1 = new Prohramming.View.Tabs.SeasonHandleControl();
+            this.WeekdayParsingGroupBox = new System.Windows.Forms.GroupBox();
+            this.weekdayParsingControl1 = new Prohramming.View.Tabs.WeekdayParsingControl();
+            this.EnumerationsGroupBox = new System.Windows.Forms.GroupBox();
+            this.enumerationsControl1 = new Prohramming.View.Tabs.EnumerationsControl();
+            this.tabPageClasses = new System.Windows.Forms.TabPage();
+            this.classesTabPage1 = new Prohramming.View.Tabs.ClassesTabPage();
+            this.tabPageFilms = new System.Windows.Forms.TabPage();
+            this.filmsTabPage1 = new Prohramming.View.Tabs.FilmsTabPage();
+            this.tabPageRectangles = new System.Windows.Forms.TabPage();
+            this.rectanglesTabPage1 = new Prohramming.View.Tabs.RectanglesTabPage();
+            this.pageSetupDialog1 = new System.Windows.Forms.PageSetupDialog();
             this.tabControl1.SuspendLayout();
             this.tabPageEnums.SuspendLayout();
             this.SeasonGroupBox.SuspendLayout();
@@ -92,6 +92,13 @@ namespace Prohramming
             this.SeasonGroupBox.TabStop = false;
             this.SeasonGroupBox.Text = "Season handle";
             // 
+            // seasonHandleControl1
+            // 
+            this.seasonHandleControl1.Location = new System.Drawing.Point(0, 25);
+            this.seasonHandleControl1.Name = "seasonHandleControl1";
+            this.seasonHandleControl1.Size = new System.Drawing.Size(212, 66);
+            this.seasonHandleControl1.TabIndex = 0;
+            // 
             // WeekdayParsingGroupBox
             // 
             this.WeekdayParsingGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
@@ -102,6 +109,13 @@ namespace Prohramming
             this.WeekdayParsingGroupBox.TabIndex = 7;
             this.WeekdayParsingGroupBox.TabStop = false;
             this.WeekdayParsingGroupBox.Text = "Weekday parsing";
+            // 
+            // weekdayParsingControl1
+            // 
+            this.weekdayParsingControl1.Location = new System.Drawing.Point(0, 25);
+            this.weekdayParsingControl1.Name = "weekdayParsingControl1";
+            this.weekdayParsingControl1.Size = new System.Drawing.Size(242, 65);
+            this.weekdayParsingControl1.TabIndex = 0;
             // 
             // EnumerationsGroupBox
             // 
@@ -115,6 +129,13 @@ namespace Prohramming
             this.EnumerationsGroupBox.TabStop = false;
             this.EnumerationsGroupBox.Text = "Enumerations";
             // 
+            // enumerationsControl1
+            // 
+            this.enumerationsControl1.Location = new System.Drawing.Point(15, 15);
+            this.enumerationsControl1.Name = "enumerationsControl1";
+            this.enumerationsControl1.Size = new System.Drawing.Size(373, 194);
+            this.enumerationsControl1.TabIndex = 0;
+            // 
             // tabPageClasses
             // 
             this.tabPageClasses.Controls.Add(this.classesTabPage1);
@@ -124,26 +145,6 @@ namespace Prohramming
             this.tabPageClasses.TabIndex = 1;
             this.tabPageClasses.Text = "Classes";
             this.tabPageClasses.UseVisualStyleBackColor = true;
-            // 
-            // tabPageFilms
-            // 
-            this.tabPageFilms.Controls.Add(this.filmsTabPage1);
-            this.tabPageFilms.Location = new System.Drawing.Point(4, 22);
-            this.tabPageFilms.Name = "tabPageFilms";
-            this.tabPageFilms.Size = new System.Drawing.Size(640, 399);
-            this.tabPageFilms.TabIndex = 2;
-            this.tabPageFilms.Text = "Films";
-            this.tabPageFilms.UseVisualStyleBackColor = true;
-            // 
-            // tabPageRectangles
-            // 
-            this.tabPageRectangles.Controls.Add(this.rectanglesTabPage1);
-            this.tabPageRectangles.Location = new System.Drawing.Point(4, 22);
-            this.tabPageRectangles.Name = "tabPageRectangles";
-            this.tabPageRectangles.Size = new System.Drawing.Size(640, 399);
-            this.tabPageRectangles.TabIndex = 3;
-            this.tabPageRectangles.Text = "Rectangles";
-            this.tabPageRectangles.UseVisualStyleBackColor = true;
             // 
             // classesTabPage1
             // 
@@ -155,6 +156,16 @@ namespace Prohramming
             this.classesTabPage1.Size = new System.Drawing.Size(412, 227);
             this.classesTabPage1.TabIndex = 0;
             // 
+            // tabPageFilms
+            // 
+            this.tabPageFilms.Controls.Add(this.filmsTabPage1);
+            this.tabPageFilms.Location = new System.Drawing.Point(4, 22);
+            this.tabPageFilms.Name = "tabPageFilms";
+            this.tabPageFilms.Size = new System.Drawing.Size(640, 399);
+            this.tabPageFilms.TabIndex = 2;
+            this.tabPageFilms.Text = "Films";
+            this.tabPageFilms.UseVisualStyleBackColor = true;
+            // 
             // filmsTabPage1
             // 
             this.filmsTabPage1.Location = new System.Drawing.Point(109, 35);
@@ -162,33 +173,22 @@ namespace Prohramming
             this.filmsTabPage1.Size = new System.Drawing.Size(304, 287);
             this.filmsTabPage1.TabIndex = 0;
             // 
+            // tabPageRectangles
+            // 
+            this.tabPageRectangles.Controls.Add(this.rectanglesTabPage1);
+            this.tabPageRectangles.Location = new System.Drawing.Point(4, 22);
+            this.tabPageRectangles.Name = "tabPageRectangles";
+            this.tabPageRectangles.Size = new System.Drawing.Size(640, 399);
+            this.tabPageRectangles.TabIndex = 3;
+            this.tabPageRectangles.Text = "Rectangles";
+            this.tabPageRectangles.UseVisualStyleBackColor = true;
+            // 
             // rectanglesTabPage1
             // 
             this.rectanglesTabPage1.Location = new System.Drawing.Point(0, 0);
             this.rectanglesTabPage1.Name = "rectanglesTabPage1";
             this.rectanglesTabPage1.Size = new System.Drawing.Size(632, 396);
             this.rectanglesTabPage1.TabIndex = 0;
-            // 
-            // enumerationsControl1
-            // 
-            this.enumerationsControl1.Location = new System.Drawing.Point(15, 15);
-            this.enumerationsControl1.Name = "enumerationsControl1";
-            this.enumerationsControl1.Size = new System.Drawing.Size(373, 194);
-            this.enumerationsControl1.TabIndex = 0;
-            // 
-            // weekdayParsingControl1
-            // 
-            this.weekdayParsingControl1.Location = new System.Drawing.Point(0, 25);
-            this.weekdayParsingControl1.Name = "weekdayParsingControl1";
-            this.weekdayParsingControl1.Size = new System.Drawing.Size(242, 65);
-            this.weekdayParsingControl1.TabIndex = 0;
-            // 
-            // seasonHandleControl1
-            // 
-            this.seasonHandleControl1.Location = new System.Drawing.Point(0, 25);
-            this.seasonHandleControl1.Name = "seasonHandleControl1";
-            this.seasonHandleControl1.Size = new System.Drawing.Size(212, 66);
-            this.seasonHandleControl1.TabIndex = 0;
             // 
             // MainForm
             // 
