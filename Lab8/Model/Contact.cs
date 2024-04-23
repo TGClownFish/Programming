@@ -21,7 +21,11 @@ namespace Lab8.Model
         public string FullName
         {
             get { return _fullName; }
-            set { _fullName = value; }
+            set 
+            {
+                Validator.IsShorterOrEqualThan(value, 150);
+                _fullName = value; 
+            }
         }
 
         /// <summary>
@@ -34,7 +38,11 @@ namespace Lab8.Model
         public DateTime DateBirth
         { 
             get { return _dateBirth; } 
-          set {  _dateBirth = value; } 
+            set 
+            {
+                Validator.IsEarlierThanToday(value);
+                _dateBirth = value; 
+            } 
         }
 
         /// <summary>
@@ -47,7 +55,11 @@ namespace Lab8.Model
         public string PhoneNumber
         {
             get { return _phoneNumber; }
-            set { _phoneNumber = value; }
+            set 
+            { 
+                Validator.IsPhoneNumber(value);
+                _phoneNumber = value; 
+            }
         }
 
         /// <summary>
@@ -64,6 +76,11 @@ namespace Lab8.Model
         }
 
         /// <summary>
+        /// Был ли контакт изменён.
+        /// </summary>
+        private bool _wasChanged;
+
+        /// <summary>
         /// Создаёт экземляр класса Contact.
         /// </summary>
         /// <param name="fullName">Возвращает и задаёт полное имя контакта. Должно быть не больше 150 символов.</param>
@@ -76,11 +93,15 @@ namespace Lab8.Model
             DateBirth = dateBirth;
             PhoneNumber = phoneNumber;
             Link = link;
+            _wasChanged = false;
         }
 
         /// <summary>
         /// Создаёт пустой экземляр класса Contact.
         /// </summary>
-        public Contact() { }
+        public Contact() 
+        {
+            _wasChanged = false;
+        }
     }
 }
