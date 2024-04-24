@@ -50,7 +50,9 @@
             this.Controls.Add(this.mainUserControl1);
             this.MinimumSize = new System.Drawing.Size(504, 350);
             this.Name = "MainForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.MainForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

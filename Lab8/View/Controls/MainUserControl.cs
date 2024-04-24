@@ -4,7 +4,9 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices.ComTypes;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -15,8 +17,9 @@ namespace Lab8.View.Controls
     {
         List<Contact> _contacts = new List<Contact>();
         Contact _curentContact = new Contact();
-        bool haveUnsavedContact=false;
-        int indexOfSelectedControl =0 ;
+        int indexOfSelectedControl =-1 ;
+        //string filePath = "C:\\Users\\5731lis\\AppData\\Local\\Lysenko\\Lab8\\Lab8_data.txt";
+        string filePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Lysenko\\Lab8\\Lab8_data.txt");
         public MainUserControl()
         {
             InitializeComponent();
@@ -24,7 +27,7 @@ namespace Lab8.View.Controls
 
         public void mainUserControlListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (mainUserControlListBox.SelectedIndex > 0)
+            if (mainUserControlListBox.SelectedIndex >= 0)
             {
                 indexOfSelectedControl = mainUserControlListBox.SelectedIndex;
                 _curentContact = _contacts[indexOfSelectedControl];
@@ -97,22 +100,104 @@ namespace Lab8.View.Controls
 
         private void mainUserControlEditElementButton_Click(object sender, EventArgs e)
         {
-            mainUserControlLinkTextBox.ReadOnly= false;
-            mainUserControllDateTimePicker.Enabled = true;
-            mainUserControlPhoneNumberTextBox.ReadOnly = false;
-            mainUserControlNameTextBox.ReadOnly = false;
-            mainUserControlListBox.Enabled = false;
+            if (indexOfSelectedControl >= 0)
+            {
+                mainUserControlLinkTextBox.ReadOnly = false;
+                mainUserControllDateTimePicker.Enabled = true;
+                mainUserControlPhoneNumberTextBox.ReadOnly = false;
+                mainUserControlNameTextBox.ReadOnly = false;
+                mainUserControlListBox.Enabled = false;
+                mainUserControlSaveElementButton.Enabled = true;
+                mainUserControlAddNewElementButton.Enabled = false;
+                mainUserControlDeleteElementButton.Enabled = false;
+                mainUserControlEditElementButton.Enabled = false;
+            }
         }
 
         private void mainUserControlSaveElementButton_Click(object sender, EventArgs e)
         {
-            mainUserControlLinkTextBox.ReadOnly = true;
-            mainUserControllDateTimePicker.Enabled = false;
-            mainUserControlPhoneNumberTextBox.ReadOnly = true;
-            mainUserControlNameTextBox.ReadOnly = true;
-            mainUserControlListBox.Enabled = true;
-
-            mainUserControlListBox.Items[indexOfSelectedControl] = _contacts.ElementAt(indexOfSelectedControl).FullName; 
+            if (mainUserControlNameTextBox.Text == "")
+            {
+                errorLabel.Text = "Enter Name";
+            }
+            else
+            {
+                mainUserControlLinkTextBox.ReadOnly = true;
+                mainUserControllDateTimePicker.Enabled = false;
+                mainUserControlPhoneNumberTextBox.ReadOnly = true;
+                mainUserControlNameTextBox.ReadOnly = true;
+                mainUserControlListBox.Enabled = true;
+                mainUserControlSaveElementButton.Enabled = false;
+                mainUserControlDeleteElementButton.Enabled = true;
+                mainUserControlAddNewElementButton.Enabled = true;
+                mainUserControlEditElementButton.Enabled = true;
+                mainUserControlListBox.Items[indexOfSelectedControl] = _contacts.ElementAt(indexOfSelectedControl).FullName;
+                errorLabel.Text = "";
+                
+            }
         }
+
+        private void mainUserControlDeleteElementButton_Click(object sender, EventArgs e)
+        {
+            if (indexOfSelectedControl>=0)
+            {
+                mainUserControlListBox.Items.RemoveAt(indexOfSelectedControl);
+                mainUserControllDateTimePicker.Value = DateTime.Today.AddDays(-1);
+                mainUserControlLinkTextBox.Text = "";
+                mainUserControlNameTextBox.Text = "";
+                mainUserControlPhoneNumberTextBox.Text = "";
+                _contacts.RemoveAt(indexOfSelectedControl);
+            }
+        }
+
+        public void MainUserControl_Load(object sender, EventArgs e)
+        {
+            int j = 0;
+            string newLine;
+            using (StreamReader reader = new StreamReader(filePath))
+            {
+                while ((newLine=reader.ReadLine()) != null)
+                {
+                    _contacts.Add(new Contact());
+                    _contacts.ElementAt(j).FullName = newLine;
+                    _contacts.ElementAt(j).DateBirth = Convert.ToDateTime(reader.ReadLine());
+                    _contacts.ElementAt(j).PhoneNumber = reader.ReadLine();
+                    _contacts.ElementAt(j).Link = reader.ReadLine();
+                    mainUserControlListBox.Items.Add(_contacts.ElementAt(j).FullName);
+                    j++;
+                }
+            }
+        }
+
+        public void button1_Click(object sender, EventArgs e)
+        {
+            File.Delete(filePath);
+            using (StreamWriter stream = new StreamWriter(File.Create(filePath)))
+            {
+                for (int i = 0; i < _contacts.Count; i++)
+                {
+                    stream.WriteLine(_contacts.ElementAt(i).FullName);
+                    stream.WriteLine(_contacts.ElementAt(i).DateBirth);
+                    stream.WriteLine(_contacts.ElementAt(i).PhoneNumber);
+                    stream.WriteLine(_contacts.ElementAt(i).Link);
+                }
+            }
+
+        }
+        public void MainUserControl_HandleDestroyed(object sender, EventArgs e)
+        {
+            File.Delete(filePath);
+            using (StreamWriter stream = new StreamWriter(File.Create(filePath)))
+            {
+                for (int i = 0; i < _contacts.Count; i++)
+                {
+                    stream.WriteLine(_contacts.ElementAt(i).FullName);
+                    stream.WriteLine(_contacts.ElementAt(i).DateBirth);
+                    stream.WriteLine(_contacts.ElementAt(i).PhoneNumber);
+                    stream.WriteLine(_contacts.ElementAt(i).Link);
+                }
+            }
+        }
+
     }
 }

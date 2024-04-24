@@ -76,11 +76,6 @@ namespace Lab8.Model
         }
 
         /// <summary>
-        /// Был ли контакт изменён.
-        /// </summary>
-        private bool _wasChanged;
-
-        /// <summary>
         /// Создаёт экземляр класса Contact.
         /// </summary>
         /// <param name="fullName">Возвращает и задаёт полное имя контакта. Должно быть не больше 150 символов.</param>
@@ -93,15 +88,11 @@ namespace Lab8.Model
             DateBirth = dateBirth;
             PhoneNumber = phoneNumber;
             Link = link;
-            _wasChanged = false;
         }
 
         /// <summary>
         /// Создаёт пустой экземляр класса Contact.
         /// </summary>
-        public Contact() 
-        {
-            _wasChanged = false;
-        }
+        public Contact() {}
     }
 }

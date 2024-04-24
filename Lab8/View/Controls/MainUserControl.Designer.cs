@@ -78,6 +78,7 @@
             this.mainUserControlDeleteElementButton.TabIndex = 3;
             this.mainUserControlDeleteElementButton.Text = "Del";
             this.mainUserControlDeleteElementButton.UseVisualStyleBackColor = true;
+            this.mainUserControlDeleteElementButton.Click += new System.EventHandler(this.mainUserControlDeleteElementButton_Click);
             // 
             // mainUserControlGroupBox
             // 
@@ -181,7 +182,7 @@
             // 
             // mainUserControlEditElementButton
             // 
-            this.mainUserControlEditElementButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.mainUserControlEditElementButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.mainUserControlEditElementButton.Location = new System.Drawing.Point(397, 248);
             this.mainUserControlEditElementButton.Name = "mainUserControlEditElementButton";
             this.mainUserControlEditElementButton.Size = new System.Drawing.Size(40, 32);
@@ -201,17 +202,20 @@
             // 
             // errorLabel
             // 
+            this.errorLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.errorLabel.AutoSize = true;
             this.errorLabel.ForeColor = System.Drawing.Color.Red;
-            this.errorLabel.Location = new System.Drawing.Point(150, 217);
+            this.errorLabel.Location = new System.Drawing.Point(417, 228);
             this.errorLabel.Name = "errorLabel";
-            this.errorLabel.Size = new System.Drawing.Size(41, 13);
+            this.errorLabel.Size = new System.Drawing.Size(10, 13);
             this.errorLabel.TabIndex = 8;
-            this.errorLabel.Text = "noNext";
+            this.errorLabel.Text = " ";
+            this.errorLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // mainUserControlSaveElementButton
             // 
-            this.mainUserControlSaveElementButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.mainUserControlSaveElementButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.mainUserControlSaveElementButton.Enabled = false;
             this.mainUserControlSaveElementButton.Location = new System.Drawing.Point(443, 248);
             this.mainUserControlSaveElementButton.Name = "mainUserControlSaveElementButton";
             this.mainUserControlSaveElementButton.Size = new System.Drawing.Size(40, 32);
@@ -235,6 +239,8 @@
             this.Controls.Add(this.mainUserControlListBox);
             this.Name = "MainUserControl";
             this.Size = new System.Drawing.Size(504, 307);
+            this.Load += new System.EventHandler(this.MainUserControl_Load);
+            this.HandleDestroyed += new System.EventHandler(this.MainUserControl_HandleDestroyed);
             this.mainUserControlGroupBox.ResumeLayout(false);
             this.mainUserControlGroupBox.PerformLayout();
             this.ResumeLayout(false);
