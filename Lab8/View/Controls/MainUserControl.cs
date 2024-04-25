@@ -24,6 +24,9 @@ namespace Lab8.View.Controls
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Происходит при изменении индекса в mainUserControlListBox. Меняет значения в соответствующих текстбоксах.
+        /// </summary>
         public void mainUserControlListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (mainUserControlListBox.SelectedIndex >= 0)
@@ -37,6 +40,9 @@ namespace Lab8.View.Controls
             }
         }
 
+        /// <summary>
+        /// Происходит при нажатии кнопки mainUserControlAddNewElementButton. Добавляет новый контакт.
+        /// </summary>
         public void mainUserControlAddNewElementButton_Click(object sender, EventArgs e)
         {
             Contact _newContact = new Contact("",DateTime.Today.AddDays(-1), "+","");
@@ -46,6 +52,9 @@ namespace Lab8.View.Controls
             mainUserControlEditElementButton_Click(sender, e);
         }
 
+        /// <summary>
+        /// Происходит при изменении текста в mainUserControlNameTextBox. Меняет соответсвующее значение в новом контакте.
+        /// </summary>
         private void mainUserControlNameTextBox_TextChanged(object sender, EventArgs e)
         {
             try
@@ -59,6 +68,9 @@ namespace Lab8.View.Controls
             }
         }
 
+        /// <summary>
+        /// Происходит при изменении значения в mainUserControllDateTimePicker. Меняет соответсвующее значение в новом контакте
+        /// </summary>
         private void mainUserControllDateTimePicker_ValueChanged(object sender, EventArgs e)
         {
             try
@@ -72,6 +84,9 @@ namespace Lab8.View.Controls
             }
         }
 
+        /// <summary>
+        /// Происходит при изменении текста в mainUserControlPhoneNumberTextBox. Меняет соответсвующее значение в новом контакте
+        /// </summary>
         private void mainUserControlPhoneNumberTextBox_TextChanged(object sender, EventArgs e)
         {
             try
@@ -85,6 +100,9 @@ namespace Lab8.View.Controls
             }
         }
 
+        /// <summary>
+        /// Происходит при изменении текста в mainUserControlLinkTextBox. Меняет соответсвующее значение в новом контакте
+        /// </summary>
         private void mainUserControlLinkTextBox_TextChanged(object sender, EventArgs e)
         {
             try
@@ -98,6 +116,10 @@ namespace Lab8.View.Controls
             }
         }
 
+        /// <summary>
+        /// Происходит при нажатии кнопки mainUserControlEditElementButton или кнопки mainUserControlAddNewElementButton. 
+        /// Включает элементы, нужные для редактирования значений контактов.
+        /// </summary>
         private void mainUserControlEditElementButton_Click(object sender, EventArgs e)
         {
             if (mainUserControlListBox.SelectedIndex >= 0)
@@ -114,6 +136,12 @@ namespace Lab8.View.Controls
             }
         }
 
+        /// <summary>
+        /// Происходит при нажати кнопки mainUserControlSaveElementButton.
+        /// Если в mainUserControlNameTextBox введено корректное значение,
+        /// выключает элементы, нужные для редактирования значений контактов
+        /// и сортирет по алфавиту _contacts( по полю FullName) и mainUserControlListBox.
+        /// </summary>
         private void mainUserControlSaveElementButton_Click(object sender, EventArgs e)
         {
             if (mainUserControlNameTextBox.Text == "")
@@ -143,6 +171,9 @@ namespace Lab8.View.Controls
             }
         }
 
+        /// <summary>
+        /// Происходит при нажатии mainUserControlDeleteElementButton. Удалет данные о контакте.
+        /// </summary>
         private void mainUserControlDeleteElementButton_Click(object sender, EventArgs e)
         {
             if (mainUserControlListBox.SelectedIndex>=0)
@@ -157,6 +188,9 @@ namespace Lab8.View.Controls
             }
         }
 
+        /// <summary>
+        /// Происходит при загрузке MainUserControl. Загружает значения из файла в _contacts и mainUserControlListBox.
+        /// </summary>
         public void MainUserControl_Load(object sender, EventArgs e)
         {
             int i = 0;
@@ -184,6 +218,10 @@ namespace Lab8.View.Controls
                 
             }
         }
+
+        /// <summary>
+        /// Происходит при выгрузке MainUserControl. Загружает значения _contacts в файл.
+        /// </summary>
         public void MainUserControl_HandleDestroyed(object sender, EventArgs e)
         {
             File.Delete(filePath);
