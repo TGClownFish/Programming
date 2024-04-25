@@ -205,7 +205,7 @@
             this.errorLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.errorLabel.AutoSize = true;
             this.errorLabel.ForeColor = System.Drawing.Color.Red;
-            this.errorLabel.Location = new System.Drawing.Point(417, 228);
+            this.errorLabel.Location = new System.Drawing.Point(394, 228);
             this.errorLabel.Name = "errorLabel";
             this.errorLabel.Size = new System.Drawing.Size(10, 13);
             this.errorLabel.TabIndex = 8;

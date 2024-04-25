@@ -34,25 +34,21 @@
             // mainUserControl1
             // 
             this.mainUserControl1.AutoSize = true;
-            this.mainUserControl1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.mainUserControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.mainUserControl1.Location = new System.Drawing.Point(0, 0);
-            this.mainUserControl1.MinimumSize = new System.Drawing.Size(415, 312);
+            this.mainUserControl1.Location = new System.Drawing.Point(0, 1);
             this.mainUserControl1.Name = "mainUserControl1";
-            this.mainUserControl1.Size = new System.Drawing.Size(488, 312);
+            this.mainUserControl1.Size = new System.Drawing.Size(504, 307);
             this.mainUserControl1.TabIndex = 0;
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(488, 311);
+            this.ClientSize = new System.Drawing.Size(525, 311);
             this.Controls.Add(this.mainUserControl1);
             this.MinimumSize = new System.Drawing.Size(504, 350);
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
-            this.Load += new System.EventHandler(this.MainForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
