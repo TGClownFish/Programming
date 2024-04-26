@@ -30,8 +30,7 @@ namespace Lab8.View.Controls
         {
             if (mainUserControlListBox.SelectedIndex >= 0)
             {
-                mainUserControlListBox.SelectedIndex = mainUserControlListBox.SelectedIndex;
-                _curentContact = _contacts[mainUserControlListBox.SelectedIndex];
+                _curentContact = new Contact(_contacts[mainUserControlListBox.SelectedIndex]);
                 mainUserControllDateTimePicker.Text = Convert.ToString(_curentContact.DateBirth);
                 mainUserControlNameTextBox.Text = Convert.ToString(_curentContact.FullName);
                 mainUserControlPhoneNumberTextBox.Text = Convert.ToString(_curentContact.PhoneNumber);

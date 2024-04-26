@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Windows.Forms.LinkLabel;
 
 namespace Lab8.Model
 {
@@ -76,7 +77,23 @@ namespace Lab8.Model
         }
 
         /// <summary>
-        /// Создаёт экземляр класса Contact.
+        /// Создаёт точную копию объекта класса <see cref="Contact"/>.
+        /// </summary>
+        /// <param name="copiedContact">Объекта класса <see cref="Contact"/>, который нужно копировать.</param>
+        /// <param name="fullName">Возвращает и задаёт полное имя контакта. Должно быть не больше 150 символов.</param>
+        /// <param name="dateBirth">Дата рождения. Не может быть выше текущего дня..</param>
+        /// <param name="phoneNumber">Номер телефона. Должен начинаться с '+', остальные символы - цифры.</param>
+        /// <param name="link">Ссылка на страницу в соцсети. Нет валидации.</param>
+        public Contact (Contact copiedContact)
+        {
+            FullName = copiedContact.FullName;
+            DateBirth = copiedContact.DateBirth;
+            PhoneNumber = copiedContact.PhoneNumber;
+            Link = copiedContact.Link;
+        }
+
+        /// <summary>
+        /// Создаёт экземляр класса <see cref="Contact"/>.
         /// </summary>
         /// <param name="fullName">Возвращает и задаёт полное имя контакта. Должно быть не больше 150 символов.</param>
         /// <param name="dateBirth">Дата рождения. Не может быть выше текущего дня..</param>
@@ -91,7 +108,7 @@ namespace Lab8.Model
         }
 
         /// <summary>
-        /// Создаёт пустой экземляр класса Contact.
+        /// Создаёт пустой экземляр класса <see cref="Contact"/>.
         /// </summary>
         public Contact() {}
     }
