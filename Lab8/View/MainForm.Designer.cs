@@ -34,9 +34,10 @@
             // mainUserControl1
             // 
             this.mainUserControl1.AutoSize = true;
-            this.mainUserControl1.Location = new System.Drawing.Point(0, 1);
+            this.mainUserControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.mainUserControl1.Location = new System.Drawing.Point(0, 0);
             this.mainUserControl1.Name = "mainUserControl1";
-            this.mainUserControl1.Size = new System.Drawing.Size(504, 307);
+            this.mainUserControl1.Size = new System.Drawing.Size(525, 311);
             this.mainUserControl1.TabIndex = 0;
             // 
             // MainForm

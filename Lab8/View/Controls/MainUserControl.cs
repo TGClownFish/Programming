@@ -17,7 +17,6 @@ namespace Lab8.View.Controls
     {
         List<Contact> _contacts = new List<Contact>();
         Contact _curentContact = new Contact();
-        //string filePath = "C:\\Users\\5731lis\\AppData\\Local\\Lysenko\\Lab8\\Lab8_data.txt";
         string filePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Lysenko\\Lab8\\Lab8_data.txt");
         public MainUserControl()
         {
@@ -36,7 +35,8 @@ namespace Lab8.View.Controls
                 mainUserControllDateTimePicker.Text = Convert.ToString(_curentContact.DateBirth);
                 mainUserControlNameTextBox.Text = Convert.ToString(_curentContact.FullName);
                 mainUserControlPhoneNumberTextBox.Text = Convert.ToString(_curentContact.PhoneNumber);
-                mainUserControlLinkTextBox.Text = Convert.ToString(_curentContact.Link);   
+                mainUserControlLinkTextBox.Text = Convert.ToString(_curentContact.Link);
+                errorLabel.Text = "";
             }
         }
 
@@ -45,11 +45,14 @@ namespace Lab8.View.Controls
         /// </summary>
         public void mainUserControlAddNewElementButton_Click(object sender, EventArgs e)
         {
-            Contact _newContact = new Contact("",DateTime.Today.AddDays(-1), "+","");
-            _contacts.Add(_newContact);
-            mainUserControlListBox.Items.Add("Empty Contact");
-            mainUserControlListBox.SelectedIndex= mainUserControlListBox.Items.Count-1;
-            mainUserControlEditElementButton_Click(sender, e);
+            errorLabel.Text = "";
+            mainUserControlListBox.SelectedIndex = - 1;
+            _curentContact = new Contact("",DateTime.Today.AddDays(-1), "+","");
+            mainUserControlNameTextBox.Text = "";
+            mainUserControllDateTimePicker.Value = DateTime.Today.AddDays(-1);
+            mainUserControlPhoneNumberTextBox.Text = "+";
+            mainUserControlLinkTextBox.Text = "";
+            EnableElements();
         }
 
         /// <summary>
@@ -59,7 +62,7 @@ namespace Lab8.View.Controls
         {
             try
             {
-                _contacts.ElementAt(mainUserControlListBox.SelectedIndex).FullName = mainUserControlNameTextBox.Text;
+                _curentContact.FullName = mainUserControlNameTextBox.Text;
                 mainUserControlNameTextBox.BackColor = Color.White;
             }
             catch
@@ -75,7 +78,7 @@ namespace Lab8.View.Controls
         {
             try
             {
-                _contacts.ElementAt(mainUserControlListBox.SelectedIndex).DateBirth = mainUserControllDateTimePicker.Value;
+                _curentContact.DateBirth = mainUserControllDateTimePicker.Value;
                 mainUserControllDateTimePicker.BackColor = Color.White;
             }
             catch
@@ -91,7 +94,7 @@ namespace Lab8.View.Controls
         {
             try
             {
-                _contacts.ElementAt(mainUserControlListBox.SelectedIndex).PhoneNumber = mainUserControlPhoneNumberTextBox.Text;
+                _curentContact.PhoneNumber = mainUserControlPhoneNumberTextBox.Text;
                 mainUserControlPhoneNumberTextBox.BackColor = Color.White;
             }
             catch
@@ -107,7 +110,7 @@ namespace Lab8.View.Controls
         {
             try
             {
-                _contacts.ElementAt(mainUserControlListBox.SelectedIndex).Link = mainUserControlLinkTextBox.Text;
+                _curentContact.Link = mainUserControlLinkTextBox.Text;
                 mainUserControlLinkTextBox.BackColor = Color.White;
             }
             catch
@@ -117,23 +120,32 @@ namespace Lab8.View.Controls
         }
 
         /// <summary>
-        /// Происходит при нажатии кнопки mainUserControlEditElementButton или кнопки mainUserControlAddNewElementButton. 
+        /// Происходит при нажатии кнопки mainUserControlEditElementButton. 
         /// Включает элементы, нужные для редактирования значений контактов.
         /// </summary>
         private void mainUserControlEditElementButton_Click(object sender, EventArgs e)
         {
             if (mainUserControlListBox.SelectedIndex >= 0)
             {
-                mainUserControlLinkTextBox.ReadOnly = false;
-                mainUserControllDateTimePicker.Enabled = true;
-                mainUserControlPhoneNumberTextBox.ReadOnly = false;
-                mainUserControlNameTextBox.ReadOnly = false;
-                mainUserControlListBox.Enabled = false;
-                mainUserControlSaveElementButton.Enabled = true;
-                mainUserControlAddNewElementButton.Enabled = false;
-                mainUserControlDeleteElementButton.Enabled = false;
-                mainUserControlEditElementButton.Enabled = false;
+                EnableElements();
             }
+            else
+                errorLabel.Text = "No Contact Chosen!";
+        }
+        /// <summary>
+        /// Включает элементы, нужные для редактирования значений контактов.
+        /// </summary>
+        private void EnableElements()
+        {
+            mainUserControlLinkTextBox.ReadOnly = false;
+            mainUserControllDateTimePicker.Enabled = true;
+            mainUserControlPhoneNumberTextBox.ReadOnly = false;
+            mainUserControlNameTextBox.ReadOnly = false;
+            mainUserControlListBox.Enabled = false;
+            mainUserControlSaveElementButton.Enabled = true;
+            mainUserControlAddNewElementButton.Enabled = false;
+            mainUserControlDeleteElementButton.Enabled = false;
+            mainUserControlEditElementButton.Enabled = false;
         }
 
         /// <summary>
@@ -146,7 +158,7 @@ namespace Lab8.View.Controls
         {
             if (mainUserControlNameTextBox.Text == "")
             {
-                errorLabel.Text = "No Name Entered";
+                errorLabel.Text = "No Name Entered!";
             }
             else
             {
@@ -159,8 +171,10 @@ namespace Lab8.View.Controls
                 mainUserControlDeleteElementButton.Enabled = true;
                 mainUserControlAddNewElementButton.Enabled = true;
                 mainUserControlEditElementButton.Enabled = true;
-                mainUserControlListBox.Items[mainUserControlListBox.SelectedIndex] = _contacts.ElementAt(mainUserControlListBox.SelectedIndex).FullName;
                 errorLabel.Text = "";
+                if (mainUserControlListBox.SelectedIndex>=0)
+                    _contacts.RemoveAt(mainUserControlListBox.SelectedIndex);
+                _contacts.Add(_curentContact);
                 _contacts.Sort((x, y) => x.FullName.CompareTo(y.FullName));
                 mainUserControlListBox.Items.Clear();
                 for (int i = 0; i< _contacts.Count; i++)
@@ -176,7 +190,7 @@ namespace Lab8.View.Controls
         /// </summary>
         private void mainUserControlDeleteElementButton_Click(object sender, EventArgs e)
         {
-            if (mainUserControlListBox.SelectedIndex>=0)
+            if (mainUserControlListBox.SelectedIndex >= 0)
             {
                 mainUserControllDateTimePicker.Value = DateTime.Today.AddDays(-1);
                 mainUserControlLinkTextBox.Text = "";
@@ -186,6 +200,8 @@ namespace Lab8.View.Controls
                 mainUserControlListBox.Items.RemoveAt(mainUserControlListBox.SelectedIndex);
                 mainUserControlListBox.SelectedIndex = -1;
             }
+            else
+                errorLabel.Text = "No Contact Chosen!";
         }
 
         /// <summary>
@@ -207,15 +223,8 @@ namespace Lab8.View.Controls
                     i++;
                 }
                 _contacts.Sort((x, y) => x.FullName.CompareTo(y.FullName));
-                for (i = 0; i < _contacts.Count; i++)
-                {
-                    if (_contacts.ElementAt(i).FullName == "")
-                        mainUserControlListBox.Items.Add("!Empty Contact");
-                    else
-                        mainUserControlListBox.Items.Add(_contacts.ElementAt(i).FullName);
-                    
-                }
-                
+                for (i=0; i < _contacts.Count; i++)
+                    mainUserControlListBox.Items.Add(_contacts.ElementAt(i).FullName);
             }
         }
 
