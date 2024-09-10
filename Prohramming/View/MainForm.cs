@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Prohramming.Model.Classes;
+using Prohramming.Model.Classes.Geometry;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -11,6 +13,9 @@ using System.Windows.Forms;
 
 namespace Prohramming
 {
+    /// <summary>
+    /// Главная вкладка программы.
+    /// </summary>
     public partial class MainForm : Form
     {
         public MainForm()
@@ -65,35 +70,6 @@ namespace Prohramming
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            switch (SeasonComboBox.Text)
-            {
-                case "Winter":
-                    MessageBox.Show(
-                    "Бррр! Холодно!",
-                    "Сообщение",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.None,
-                    MessageBoxDefaultButton.Button1,
-                    MessageBoxOptions.DefaultDesktopOnly);
-                    break;
-                case "Spring":
-                    SeasonGroupBox.BackColor = Color.GreenYellow;
-                    break;
-                case "Summer":
-                    MessageBox.Show(
-                    "Ура! Солнце!",
-                    "Сообщение",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.None,
-                    MessageBoxDefaultButton.Button1,
-                    MessageBoxOptions.DefaultDesktopOnly);
-                    break;
-                case "Autumn":
-                    SeasonGroupBox.BackColor = Color.Orange;
-                    break;
-            }
         }
     }
 }
