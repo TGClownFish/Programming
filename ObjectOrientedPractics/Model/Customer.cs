@@ -35,7 +35,11 @@ namespace ObjectOrientedPractics.Model
         /// </summary>
         public string Name { 
             get { return _name; } 
-            set { _name = value; } 
+            set 
+            { 
+                if (ValueValidator.AssertStringOnLength(value, 200, Name))
+                    _name = value; 
+            } 
         }
 
         /// <summary>
@@ -48,7 +52,11 @@ namespace ObjectOrientedPractics.Model
         public string Address 
         { 
             get { return _address; } 
-            set { _address = value; } 
+            set 
+            {
+                if (ValueValidator.AssertStringOnLength(value, 500, Name))
+                    _address = value; 
+            } 
         }
 
         /// <summary>

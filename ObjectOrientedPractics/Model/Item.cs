@@ -38,7 +38,12 @@ namespace ObjectOrientedPractics.Model
         public string Name
         {
             get { return _name; }
-            set { _name = value; }
+            set 
+            {
+                if (ValueValidator.AssertStringOnLength(value, 200, Name))
+                    _name = value; 
+            }
+
         }
 
         ///<summary>
@@ -51,7 +56,11 @@ namespace ObjectOrientedPractics.Model
         public string Description
         {
             get { return _description; }
-            set { _description = value;  }
+            set 
+            {
+                if (ValueValidator.AssertStringOnLength(value, 1000, Name))
+                    _description = value;  
+            }
         }
 
         ///<summary>
@@ -59,12 +68,16 @@ namespace ObjectOrientedPractics.Model
         ///</summary>
         private int _cost;
         ///<summary>
-        /// Хранит стоимость товара. От 0 до 200000.
+        /// Хранит стоимость товара. От 0 до 100000.
         ///</summary>
         public int Cost
         {
             get { return _cost; }
-            set { _cost = value; }
+            set 
+            { 
+                if (ValueValidator.AssertIntegerOnBeeingInClosedInterval(value, 0, 100000, Name))
+                    _cost = value; 
+            }
         }
 
         /// <summary>

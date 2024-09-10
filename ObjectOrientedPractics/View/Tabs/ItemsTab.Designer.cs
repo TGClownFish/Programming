@@ -36,7 +36,7 @@
             label3 = new Label();
             label2 = new Label();
             label1 = new Label();
-            tbDescrption = new TextBox();
+            tbDescription = new TextBox();
             tbName = new TextBox();
             tbCost = new TextBox();
             tbID = new TextBox();
@@ -54,6 +54,7 @@
             lbItems.Name = "lbItems";
             lbItems.Size = new Size(288, 304);
             lbItems.TabIndex = 0;
+            lbItems.SelectedIndexChanged += lbItems_SelectedIndexChanged;
             // 
             // btnDelete
             // 
@@ -65,6 +66,7 @@
             btnDelete.TabIndex = 1;
             btnDelete.Text = "Delete";
             btnDelete.UseVisualStyleBackColor = true;
+            btnDelete.Click += btnDelete_Click;
             // 
             // btnAddNew
             // 
@@ -76,6 +78,7 @@
             btnAddNew.TabIndex = 2;
             btnAddNew.Text = "Add";
             btnAddNew.UseVisualStyleBackColor = true;
+            btnAddNew.Click += btnAddNew_Click;
             // 
             // gbItems
             // 
@@ -85,7 +88,7 @@
             gbItems.Controls.Add(label3);
             gbItems.Controls.Add(label2);
             gbItems.Controls.Add(label1);
-            gbItems.Controls.Add(tbDescrption);
+            gbItems.Controls.Add(tbDescription);
             gbItems.Controls.Add(tbName);
             gbItems.Controls.Add(tbCost);
             gbItems.Controls.Add(tbID);
@@ -138,16 +141,17 @@
             label1.TabIndex = 4;
             label1.Text = "ID:";
             // 
-            // tbDescrption
+            // tbDescription
             // 
-            tbDescrption.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            tbDescrption.Location = new Point(21, 219);
-            tbDescrption.Margin = new Padding(3, 2, 3, 2);
-            tbDescrption.Multiline = true;
-            tbDescrption.Name = "tbDescrption";
-            tbDescrption.ScrollBars = ScrollBars.Vertical;
-            tbDescrption.Size = new Size(340, 132);
-            tbDescrption.TabIndex = 3;
+            tbDescription.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            tbDescription.Location = new Point(21, 219);
+            tbDescription.Margin = new Padding(3, 2, 3, 2);
+            tbDescription.Multiline = true;
+            tbDescription.Name = "tbDescription";
+            tbDescription.ScrollBars = ScrollBars.Vertical;
+            tbDescription.Size = new Size(340, 132);
+            tbDescription.TabIndex = 3;
+            tbDescription.TextChanged += tbDescrption_TextChanged;
             // 
             // tbName
             // 
@@ -158,6 +162,8 @@
             tbName.Name = "tbName";
             tbName.Size = new Size(340, 80);
             tbName.TabIndex = 2;
+            tbName.TextChanged += tbName_TextChanged;
+            tbName.Leave += tbName_Leave;
             // 
             // tbCost
             // 
@@ -167,6 +173,7 @@
             tbCost.Name = "tbCost";
             tbCost.Size = new Size(94, 23);
             tbCost.TabIndex = 1;
+            tbCost.TextChanged += tbCost_TextChanged;
             // 
             // tbID
             // 
@@ -215,7 +222,7 @@
         private Label label3;
         private Label label2;
         private Label label1;
-        private TextBox tbDescrption;
+        private TextBox tbDescription;
         private TextBox tbName;
         private TextBox tbCost;
         private TextBox tbID;

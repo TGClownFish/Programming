@@ -38,7 +38,7 @@
             tbID = new TextBox();
             btnAddNew = new Button();
             btnDelete = new Button();
-            lbCusomers = new ListBox();
+            lbCustomers = new ListBox();
             gbCusomers.SuspendLayout();
             SuspendLayout();
             // 
@@ -110,6 +110,7 @@
             tbAddress.ScrollBars = ScrollBars.Vertical;
             tbAddress.Size = new Size(330, 99);
             tbAddress.TabIndex = 2;
+            tbAddress.TextChanged += tbAddress_TextChanged;
             // 
             // tbName
             // 
@@ -119,6 +120,8 @@
             tbName.Name = "tbName";
             tbName.Size = new Size(255, 23);
             tbName.TabIndex = 1;
+            tbName.TextChanged += tbName_TextChanged;
+            tbName.Leave += tbName_Leave;
             // 
             // tbID
             // 
@@ -140,6 +143,7 @@
             btnAddNew.TabIndex = 11;
             btnAddNew.Text = "Add";
             btnAddNew.UseVisualStyleBackColor = true;
+            btnAddNew.Click += btnAddNew_Click;
             // 
             // btnDelete
             // 
@@ -151,17 +155,19 @@
             btnDelete.TabIndex = 10;
             btnDelete.Text = "Delete";
             btnDelete.UseVisualStyleBackColor = true;
+            btnDelete.Click += btnDelete_Click;
             // 
-            // lbCusomers
+            // lbCustomers
             // 
-            lbCusomers.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            lbCusomers.FormattingEnabled = true;
-            lbCusomers.ItemHeight = 15;
-            lbCusomers.Location = new Point(18, 31);
-            lbCusomers.Margin = new Padding(3, 2, 3, 2);
-            lbCusomers.Name = "lbCusomers";
-            lbCusomers.Size = new Size(288, 304);
-            lbCusomers.TabIndex = 9;
+            lbCustomers.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            lbCustomers.FormattingEnabled = true;
+            lbCustomers.ItemHeight = 15;
+            lbCustomers.Location = new Point(18, 31);
+            lbCustomers.Margin = new Padding(3, 2, 3, 2);
+            lbCustomers.Name = "lbCustomers";
+            lbCustomers.Size = new Size(288, 304);
+            lbCustomers.TabIndex = 9;
+            lbCustomers.SelectedIndexChanged += lbCusomers_SelectedIndexChanged;
             // 
             // CustomersTab
             // 
@@ -171,7 +177,7 @@
             Controls.Add(gbCusomers);
             Controls.Add(btnAddNew);
             Controls.Add(btnDelete);
-            Controls.Add(lbCusomers);
+            Controls.Add(lbCustomers);
             Margin = new Padding(3, 2, 3, 2);
             Name = "CustomersTab";
             Size = new Size(694, 410);
@@ -193,6 +199,6 @@
         private TextBox tbID;
         private Button btnAddNew;
         private Button btnDelete;
-        private ListBox lbCusomers;
+        private ListBox lbCustomers;
     }
 }
