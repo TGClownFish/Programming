@@ -23,6 +23,6 @@ namespace ObjectOrientedPractics.Model
             else
                 return true;
         }
-        public bool IsIntInffffff;
+        public bool IsIntInffffff;//interval
     }
 }
