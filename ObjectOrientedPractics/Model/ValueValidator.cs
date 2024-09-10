@@ -9,20 +9,36 @@ namespace ObjectOrientedPractics.Model
     internal class ValueValidator
     {
         /// <summary>
-        /// Проверяет, меньше ли длина строки, чем данное значение.
+        /// Проверяет длинну строки.
         /// </summary>
-        /// <param name="value">Проверяемая строка</param>
-        /// <param name="maxLength">Значение, меньше которого должна быть строка </param>
-        /// <param name="propertyName">Провреяемое поле</param>
-        /// <returns>Возвращет true, если длина строки меньше или равно, чем данное значение</returns>
-        /// <exception cref="ArgumentException">Если длина строки больше, чем данное значение</exception>
-        public bool IsStringLessThan (string value, int maxLength, string propertyName)
+        /// <param name="value">Проверяемая строка.</param>
+        /// <param name="maxLength">Значение, с которым сравнивается длинна строки.</param>
+        /// <param name="propertyName">Проверяемое поле.</param>
+        /// <returns>Возвращет true, если длина строки меньше или равно данному значению.</returns>
+        /// <exception cref="ArgumentException">Если длина строки больше, чем данное значение.</exception>
+        public bool AssertStringOnLength (string value, int maxLength, string propertyName)
         {
             if (value.Length > maxLength)
-                throw new ArgumentException($"Значение поля {nameof(propertyName)} должно быть меньше или равно, чем {maxLength}");
+                throw new ArgumentException($"Длинна строки, хранящейся в поле {nameof(propertyName)} должна быть меньше или равно, чем {maxLength}.");
             else
                 return true;
         }
-        public bool IsIntInffffff;//interval
+
+        /// <summary>
+        /// Проверяет число.
+        /// </summary>
+        /// <param name="value">Проверяемое число.</param>
+        /// <param name="minValue">Нижняя граница отрезка.</param>
+        /// <param name="maxValue">Верхняя граница отрезка.</param>
+        /// <param name="propertyName">Проверяемое поле.</param>
+        /// <returns>Возвращает true, если число входит в отрезок (больше или равно меньшему значению и меньше или равно большему значению).</returns>
+        /// <exception cref="ArgumentException">Если число не входит в отрезок.</exception>
+        public bool AssertIntegerOnBeeingInClosedInterval(int value, int minValue, int maxValue, string propertyName)
+        {
+            if (value <= minValue && value >= maxValue)
+                throw new ArgumentException($"Значение, хранящееся в поле {nameof(propertyName)} не входит в отрезок [{minValue},{maxValue}].");
+            else
+                return true;
+        }
     }
 }

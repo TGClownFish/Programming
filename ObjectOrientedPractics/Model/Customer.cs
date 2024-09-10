@@ -7,31 +7,31 @@ using System.Threading.Tasks;
 namespace ObjectOrientedPractics.Model
 {
     /// <summary>
-    /// Хранит данные о покупателе
+    /// Хранит данные о покупателе.
     /// </summary>
     class Customer
     {
        /// <summary>
-       /// ID покупателя
+       /// ID покупателя.
        /// </summary>
         private readonly int _id;
         /// <summary>
-        /// Хранит информацию о ID покупателя. Только для чтения.
+        /// Хранит ID покупателя. Только для чтения.
         /// </summary>
         public int Id 
         { get { return _id; } }
 
         /// <summary>
-        /// Количество покупателей
+        /// Количество покупателей. Статично.
         /// </summary>
-        private static int _amountOfCustomers = 0;
+        private static int _amountOfCustomers = 1;
 
         /// <summary>
-        /// Полное имя покупателя
+        /// Полное имя покупателя.
         /// </summary>
         private string _name;
         /// <summary>
-        /// Хранит информайцию о полном имени покупателя. Не более 200 символов.
+        /// Хранит полное имя покупателя. Не более 200 символов.
         /// </summary>
         public string Name { 
             get { return _name; } 
@@ -39,11 +39,11 @@ namespace ObjectOrientedPractics.Model
         }
 
         /// <summary>
-        /// Адрес покупателя
+        /// Адрес покупателя.
         /// </summary>
         private string _address;
         /// <summary>
-        /// м Хранит информайцию об адресе покупателя. Не более 500 символов.
+        /// Хранит адрес покупателя. Не более 500 символов.
         /// </summary>
         public string Address 
         { 

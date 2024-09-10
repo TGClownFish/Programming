@@ -8,32 +8,32 @@ using static System.Windows.Forms.LinkLabel;
 namespace ObjectOrientedPractics.Model
 {
     ///<summary>
-    /// Хранит данные о товаре
+    /// Хранит данные о товаре.
     ///</summary>
     internal class Item
     {
         ///<summary>
-        /// ID товара
+        /// ID товара.
         ///</summary>
         private readonly int _id;
         ///<summary>
-        /// Хранит информацию о ID. Только для чтения.
+        /// Хранит ID товара. Только для чтения.
         ///</summary>
         public int Id
         { get { return _id; } }
 
         ///<summary>
-        /// Количество товаров
+        /// Количество товаров. Статично.
         ///</summary>
-        private static int _amountOfItems = 0;
+        private static int _amountOfItems = 1;
 
         ///<summary>
-        /// Название товара
+        /// Название товара.
         ///</summary>
         /// Название
         private string _name;
         ///<summary>
-        /// Хранит информацию о названии. Не более 200 символов.
+        /// Хранит  название товара. Не более 200 символов.
         ///</summary>
         public string Name
         {
@@ -42,24 +42,24 @@ namespace ObjectOrientedPractics.Model
         }
 
         ///<summary>
-        /// Информация о товаре
+        /// Описание товара.
         ///</summary>
-        private string _info;
+        private string _description;
         ///<summary>
-        /// Хранит информацию об информации о товаре. Не более 1000 символов.
+        /// Хранит описание товара. Не более 1000 символов.
         ///</summary>
-        public string Info
+        public string Description
         {
-            get { return _info; }
-            set { _info = value;  }
+            get { return _description; }
+            set { _description = value;  }
         }
 
         ///<summary>
-        /// Стоимость товара
+        /// Стоимость товара.
         ///</summary>
         private int _cost;
         ///<summary>
-        /// Хранит информацию о стоимости. От 0 до 200000.
+        /// Хранит стоимость товара. От 0 до 200000.
         ///</summary>
         public int Cost
         {
@@ -70,15 +70,15 @@ namespace ObjectOrientedPractics.Model
         /// <summary>
         /// Создаёт экземпляр класса <see cref="Item"/>.
         /// </summary>
-        /// <param name="name">Название. Не более 200 символов.</param>
-        /// <param name="info">Информация о товаре. Не более 1000 символов.</param>
-        /// <param name="cost">Стоимость. От 0 до 200000.</param>
-        public Item (string name, string info, int cost)
+        /// <param name="name">Название товара. Не более 200 символов.</param>
+        /// <param name="description">Описание товара. Не более 1000 символов.</param>
+        /// <param name="cost">Стоимость товара. От 0 до 200000.</param>
+        public Item (string name, string description, int cost)
         {
             _id = _amountOfItems;
             _amountOfItems += 1;
             Name = name;
-            Info = info;
+            Description = description;
             Cost = cost;
             
         }
