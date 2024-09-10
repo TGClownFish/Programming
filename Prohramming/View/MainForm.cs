@@ -29,22 +29,22 @@ namespace Prohramming
             switch (EnumsListBox.SelectedItem)
             {
                 case "Colour":
-                    ValuesListBox.Items.AddRange(Enum.GetNames(typeof(Colour)));
+                    ValuesListBox.Items.AddRange(Enum.GetNames(typeof(Model.Enums.Colour)));
                     break;
                 case "EducationForm":
-                    ValuesListBox.Items.AddRange(Enum.GetNames(typeof(EducationForm)));
+                    ValuesListBox.Items.AddRange(Enum.GetNames(typeof(Model.Enums.EducationForm)));
                     break;
                 case "Genre":
-                    ValuesListBox.Items.AddRange(Enum.GetNames(typeof(Genre)));
+                    ValuesListBox.Items.AddRange(Enum.GetNames(typeof(Model.Enums.Genre)));
                     break;
                 case "Manufacturer":
-                    ValuesListBox.Items.AddRange(Enum.GetNames(typeof(Manufacturer)));
+                    ValuesListBox.Items.AddRange(Enum.GetNames(typeof(Model.Enums.Manufacturer)));
                     break;
                 case "Season":
-                    ValuesListBox.Items.AddRange(Enum.GetNames(typeof(Season)));
+                    ValuesListBox.Items.AddRange(Enum.GetNames(typeof(Model.Enums.Season)));
                     break;
                 case "Weekday":
-                    ValuesListBox.Items.AddRange(Enum.GetNames(typeof(Weekday)));
+                    ValuesListBox.Items.AddRange(Enum.GetNames(typeof(Model.Enums.Weekday)));
                     break;
             }
             ValuesListBox.SelectedIndex = 0;
@@ -53,10 +53,10 @@ namespace Prohramming
 
         private void ParsingButton_Click(object sender, EventArgs e)
         {
-            bool isParced = Enum.TryParse(ParsingTextBox.Text, out Weekday parced);
+            bool isParced = Enum.TryParse(ParsingTextBox.Text, out Model.Enums.Weekday parced);
             if (isParced)
             {
-                int dayNumber = Convert.ToInt32(Enum.Parse(typeof(Weekday), ParsingTextBox.Text));
+                int dayNumber = Convert.ToInt32(Enum.Parse(typeof(Model.Enums.Weekday), ParsingTextBox.Text));
                 label5.Text = $"Это день недели ({ParsingTextBox.Text} = {Convert.ToString(dayNumber)})";
             }
             else
