@@ -52,7 +52,7 @@
             lbItems.Location = new Point(10, 33);
             lbItems.Margin = new Padding(3, 2, 3, 2);
             lbItems.Name = "lbItems";
-            lbItems.Size = new Size(288, 304);
+            lbItems.Size = new Size(288, 319);
             lbItems.TabIndex = 0;
             lbItems.SelectedIndexChanged += lbItems_SelectedIndexChanged;
             // 

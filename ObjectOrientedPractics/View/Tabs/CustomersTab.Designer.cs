@@ -65,7 +65,7 @@
             gbCusomers.Margin = new Padding(3, 2, 3, 2);
             gbCusomers.Name = "gbCusomers";
             gbCusomers.Padding = new Padding(3, 2, 3, 2);
-            gbCusomers.Size = new Size(368, 234);
+            gbCusomers.Size = new Size(368, 369);
             gbCusomers.TabIndex = 12;
             gbCusomers.TabStop = false;
             gbCusomers.Text = "Selected Customer";
@@ -108,7 +108,7 @@
             tbAddress.Multiline = true;
             tbAddress.Name = "tbAddress";
             tbAddress.ScrollBars = ScrollBars.Vertical;
-            tbAddress.Size = new Size(330, 99);
+            tbAddress.Size = new Size(330, 234);
             tbAddress.TabIndex = 2;
             tbAddress.TextChanged += tbAddress_TextChanged;
             // 
@@ -165,7 +165,7 @@
             lbCustomers.Location = new Point(18, 31);
             lbCustomers.Margin = new Padding(3, 2, 3, 2);
             lbCustomers.Name = "lbCustomers";
-            lbCustomers.Size = new Size(288, 304);
+            lbCustomers.Size = new Size(288, 319);
             lbCustomers.TabIndex = 9;
             lbCustomers.SelectedIndexChanged += lbCusomers_SelectedIndexChanged;
             // 

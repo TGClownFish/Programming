@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace ObjectOrientedPractics.Model
 {
+    /// <summary>
+    /// Содержит методы для вылидации полей.
+    /// </summary>
     internal static class ValueValidator
     {
         /// <summary>
