@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Text.Json;
+using System.IO;
 
 namespace ObjectOrientedPractics.View.Tabs
 {
@@ -105,5 +107,27 @@ namespace ObjectOrientedPractics.View.Tabs
                 lbItems.Items[lbItems.SelectedIndex] = tbName.Text;
             }
         }
+
+        //private void ItemsTab_Load(object sender, EventArgs e)
+        //{
+        //    string newLine;
+        //    string filePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Lysenko\\ObjectOrientedPractics\\Items.json");
+        //    using (StreamReader reader = new StreamReader(filePath))
+        //    {
+        //        newLine = reader.ReadLine();
+        //        Item? item = new JsonSerializer.Deserialize<Item>(newLine));
+        //    }
+        //}
+
+        //private void ItemsTab_Disposed(object sender, EventArgs e)
+        //{
+        //    string filePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Lysenko\\ObjectOrientedPractics\\Items.json");
+        //    File.Delete(filePath);
+        //    using (StreamWriter stream = new StreamWriter(File.Create(filePath)))
+        //    for (int i = 0; i < lbItems.Items.Count; i++)
+        //    {
+        //        stream.WriteLine(JsonSerializer.Serialize(_items[i]));
+        //    }
+        //}
     }
 }
