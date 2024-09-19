@@ -25,13 +25,13 @@ namespace ObjectOrientedPractics.View.Tabs
             {
                 tbID.Text = Convert.ToString(_customers[lbCustomers.SelectedIndex].Id);
                 tbName.Text = Convert.ToString(_customers[lbCustomers.SelectedIndex].Name);
-                tbAddress.Text = Convert.ToString(_customers[lbCustomers.SelectedIndex].Address);
+                //tbAddress.Text = Convert.ToString(_customers[lbCustomers.SelectedIndex].Address);
             }
             else
             {
                 tbID.Text = "";
                 tbName.Text = "";
-                tbAddress.Text = "";
+                //tbAddress.Text = "";
             }
         }
 
@@ -62,19 +62,19 @@ namespace ObjectOrientedPractics.View.Tabs
             }
         }
 
-        private void tbAddress_TextChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                _customers[lbCustomers.SelectedIndex].Address = tbAddress.Text;
-                tbAddress.BackColor = Color.White;
+        //private void tbAddress_TextChanged(object sender, EventArgs e)
+        //{
+        //    try
+        //    {
+        //        _customers[lbCustomers.SelectedIndex].Address = tbAddress.Text;
+        //        tbAddress.BackColor = Color.White;
 
-            }
-            catch
-            {
-                tbAddress.BackColor = Color.LightPink;
-            }
-        }
+        //    }
+        //    catch
+        //    {
+        //        tbAddress.BackColor = Color.LightPink;
+        //    }
+        //}
 
         private void tbName_Leave(object sender, EventArgs e)
         {
