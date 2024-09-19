@@ -15,9 +15,11 @@ namespace ObjectOrientedPractics.View.Tabs
     public partial class ItemsTab : UserControl
     {
         List<Model.Item> _items = new List<Model.Item>();
+        
         public ItemsTab()
         {
             InitializeComponent();
+            cbCategory.Items.AddRange(Enum.GetNames(typeof(Model.Category)));
         }
 
         private void lbItems_SelectedIndexChanged(object sender, EventArgs e)
@@ -40,7 +42,7 @@ namespace ObjectOrientedPractics.View.Tabs
 
         private void btnAddNew_Click(object sender, EventArgs e)
         {
-            _items.Add(new("", "", 0));
+            _items.Add(new("", "", 0, 0));
             lbItems.Items.Add("Unnamed Item");
             lbItems.SelectedIndex = _items.Count - 1;
         }
