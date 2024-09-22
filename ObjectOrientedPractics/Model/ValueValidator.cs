@@ -43,7 +43,13 @@ namespace ObjectOrientedPractics.Model
             else
                 return true;
         }
-
+        /// <summary>
+        /// Проверяет, является ли строка почтовым индексом.
+        /// </summary>
+        /// <param name="value">Проверяемая строка.</param>
+        /// <param name="propertyName">Поле, где хранится строка.</param>
+        /// <returns>Возвращает true, если строка является целым шестизначным числом.</returns>
+        /// <exception cref="ArgumentException">Если строка не является целым шестизначным числом.</exception>
         public static bool ValidateStringOnBeingAPostalIndex(string value, string propertyName)
         {
             if (value.Length != 6)
