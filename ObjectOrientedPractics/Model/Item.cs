@@ -10,7 +10,7 @@ namespace ObjectOrientedPractics.Model
     ///<summary>
     /// Хранит данные о товаре.
     ///</summary>
-    internal class Item
+    class Item
     {
         ///<summary>
         /// ID товара.

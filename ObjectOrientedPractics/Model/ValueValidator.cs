@@ -43,5 +43,17 @@ namespace ObjectOrientedPractics.Model
             else
                 return true;
         }
+
+        public static bool ValidateStringOnBeingAPostalIndex(string value, string propertyName)
+        {
+            if (value.Length != 6)
+                throw new ArgumentException($"Значение, хранящееся в поле {nameof(propertyName)} должно быть целым шестизначным числом.");
+            foreach( char i in value )
+            {
+                if (char.IsNumber(i) == false)
+                    throw new ArgumentException($"Значение, хранящееся в поле {nameof(propertyName)} должно быть целым шестизначным числом.");
+            }
+            return true;
+        }
     }
 }
