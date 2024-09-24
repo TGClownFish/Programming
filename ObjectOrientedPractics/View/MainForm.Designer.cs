@@ -44,20 +44,18 @@
             tabControl1.Controls.Add(tabPage2);
             tabControl1.Dock = DockStyle.Fill;
             tabControl1.Location = new Point(0, 0);
-            tabControl1.Margin = new Padding(3, 2, 3, 2);
             tabControl1.Name = "tabControl1";
             tabControl1.SelectedIndex = 0;
-            tabControl1.Size = new Size(708, 442);
+            tabControl1.Size = new Size(809, 523);
             tabControl1.TabIndex = 0;
             // 
             // tabPage1
             // 
             tabPage1.Controls.Add(itemsTab1);
-            tabPage1.Location = new Point(4, 24);
-            tabPage1.Margin = new Padding(3, 2, 3, 2);
+            tabPage1.Location = new Point(4, 29);
             tabPage1.Name = "tabPage1";
-            tabPage1.Padding = new Padding(3, 2, 3, 2);
-            tabPage1.Size = new Size(700, 414);
+            tabPage1.Padding = new Padding(3);
+            tabPage1.Size = new Size(801, 490);
             tabPage1.TabIndex = 0;
             tabPage1.Text = "Items";
             tabPage1.UseVisualStyleBackColor = true;
@@ -66,20 +64,18 @@
             // 
             itemsTab1.AutoSizeMode = AutoSizeMode.GrowAndShrink;
             itemsTab1.Dock = DockStyle.Fill;
-            itemsTab1.Location = new Point(3, 2);
-            itemsTab1.Margin = new Padding(3, 2, 3, 2);
+            itemsTab1.Location = new Point(3, 3);
             itemsTab1.Name = "itemsTab1";
-            itemsTab1.Size = new Size(694, 410);
+            itemsTab1.Size = new Size(795, 484);
             itemsTab1.TabIndex = 0;
             // 
             // tabPage2
             // 
             tabPage2.Controls.Add(customersTab1);
-            tabPage2.Location = new Point(4, 24);
-            tabPage2.Margin = new Padding(3, 2, 3, 2);
+            tabPage2.Location = new Point(4, 29);
             tabPage2.Name = "tabPage2";
-            tabPage2.Padding = new Padding(3, 2, 3, 2);
-            tabPage2.Size = new Size(700, 414);
+            tabPage2.Padding = new Padding(3);
+            tabPage2.Size = new Size(801, 659);
             tabPage2.TabIndex = 1;
             tabPage2.Text = "Customers";
             tabPage2.UseVisualStyleBackColor = true;
@@ -88,20 +84,18 @@
             // 
             customersTab1.AutoSizeMode = AutoSizeMode.GrowAndShrink;
             customersTab1.Dock = DockStyle.Fill;
-            customersTab1.Location = new Point(3, 2);
-            customersTab1.Margin = new Padding(3, 2, 3, 2);
+            customersTab1.Location = new Point(3, 3);
             customersTab1.Name = "customersTab1";
-            customersTab1.Size = new Size(694, 410);
+            customersTab1.Size = new Size(795, 653);
             customersTab1.TabIndex = 0;
             // 
             // MainForm
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(708, 442);
+            ClientSize = new Size(809, 523);
             Controls.Add(tabControl1);
-            Margin = new Padding(3, 2, 3, 2);
-            MinimumSize = new Size(724, 406);
+            MinimumSize = new Size(825, 526);
             Name = "MainForm";
             Text = "Form1";
             tabControl1.ResumeLayout(false);

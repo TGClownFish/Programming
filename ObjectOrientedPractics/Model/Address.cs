@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.Metrics;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace ObjectOrientedPractics.Model
 {
@@ -133,7 +136,15 @@ namespace ObjectOrientedPractics.Model
         /// <summary>
         /// Создаёт пустой экземпляр класса <see cref="Address"/>.
         /// </summary>
-        public Address () { }
+        public Address () 
+        {
+            _index = "000000";
+            _country = "";
+            _city = "";
+            _street = "";
+            _building = "";
+            _apartment = "";
+        }
     }
 
 }

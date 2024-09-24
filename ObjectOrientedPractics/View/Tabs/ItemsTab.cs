@@ -9,13 +9,14 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Text.Json;
 using System.IO;
+using ObjectOrientedPractics.Model;
 
 namespace ObjectOrientedPractics.View.Tabs
 {
     public partial class ItemsTab : UserControl
     {
         List<Model.Item> _items = new List<Model.Item>();
-        
+
         public ItemsTab()
         {
             InitializeComponent();
@@ -30,6 +31,7 @@ namespace ObjectOrientedPractics.View.Tabs
                 tbCost.Text = Convert.ToString(_items[lbItems.SelectedIndex].Cost);
                 tbName.Text = Convert.ToString(_items[lbItems.SelectedIndex].Name);
                 tbDescription.Text = Convert.ToString(_items[lbItems.SelectedIndex].Description);
+                cbCategory.SelectedIndex = (int) _items[lbItems.SelectedIndex].Category;
             }
             else
             {
@@ -37,6 +39,7 @@ namespace ObjectOrientedPractics.View.Tabs
                 tbCost.Text = "";
                 tbName.Text = "";
                 tbDescription.Text = "";
+                cbCategory.SelectedIndex = -1;
             }
         }
 
@@ -110,10 +113,27 @@ namespace ObjectOrientedPractics.View.Tabs
             }
         }
 
+        private void cbCategory_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (lbItems.SelectedIndex >= 0)
+            {
+                try
+                {
+                    _items[lbItems.SelectedIndex].Category = (Category) cbCategory.SelectedIndex;
+                    cbCategory.BackColor = Color.White;
+                }
+                catch
+                {
+                    cbCategory.BackColor = Color.LightPink;
+                }
+            }
+        }
+
         //private void ItemsTab_Load(object sender, EventArgs e)
         //{
         //    string newLine;
-        //    string filePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Lysenko\\ObjectOrientedPractics\\Items.json");
+        //    string filePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
+        //      "Lysenko\\ObjectOrientedPractics\\Items.json");
         //    using (StreamReader reader = new StreamReader(filePath))
         //    {
         //        newLine = reader.ReadLine();
@@ -123,13 +143,14 @@ namespace ObjectOrientedPractics.View.Tabs
 
         //private void ItemsTab_Disposed(object sender, EventArgs e)
         //{
-        //    string filePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Lysenko\\ObjectOrientedPractics\\Items.json");
+        //    string filePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
+        //      "Lysenko\\ObjectOrientedPractics\\Items.json");
         //    File.Delete(filePath);
         //    using (StreamWriter stream = new StreamWriter(File.Create(filePath)))
-        //    for (int i = 0; i < lbItems.Items.Count; i++)
-        //    {
-        //        stream.WriteLine(JsonSerializer.Serialize(_items[i]));
-        //    }
+        //        for (int i = 0; i < lbItems.Items.Count; i++)
+        //        {
+        //            stream.WriteLine(JsonSerializer.Serialize(_items[i]));
+        //        }
         //}
     }
 }

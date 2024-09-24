@@ -13,6 +13,7 @@ namespace ObjectOrientedPractics.Model
     /// </summary>
     enum Category
     {
+        None,
         Electronics,
         Food,
         Toys,
