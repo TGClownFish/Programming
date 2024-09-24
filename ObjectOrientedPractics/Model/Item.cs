@@ -96,5 +96,13 @@ namespace ObjectOrientedPractics.Model
             
         }
 
+        public Item ()
+        {
+            _id =0;
+            _amountOfItems += 1;
+            Name = "";
+            Description = "";
+            Cost = 0;
+        }
     }
 }

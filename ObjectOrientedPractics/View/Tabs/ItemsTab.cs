@@ -108,26 +108,30 @@ namespace ObjectOrientedPractics.View.Tabs
             }
         }
 
-        //private void ItemsTab_Load(object sender, EventArgs e)
-        //{
-        //    string newLine;
-        //    string filePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Lysenko\\ObjectOrientedPractics\\Items.json");
-        //    using (StreamReader reader = new StreamReader(filePath))
-        //    {
-        //        newLine = reader.ReadLine();
-        //        Item? item = new JsonSerializer.Deserialize<Item>(newLine));
-        //    }
-        //}
+        private void ItemsTab_Load(object sender, EventArgs e)
+        {
+            //string? newLine;
+            //string filePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
+            //  "Lysenko\\ObjectOrientedPractics\\Items.json");
+            //using (StreamReader reader = new StreamReader(filePath))
+            //    //newLine = await reader.ReadLine();
+            //    while  ((newLine = await reader.ReadLineAsync()) != null)
+            //    {
+            //    _items.Add(JsonSerializer.Deserialize<Model.Item>(newLine));
+            //    //newLine = await reader.ReadLine();
+            //}
+        }
 
-        //private void ItemsTab_Disposed(object sender, EventArgs e)
-        //{
-        //    string filePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Lysenko\\ObjectOrientedPractics\\Items.json");
-        //    File.Delete(filePath);
-        //    using (StreamWriter stream = new StreamWriter(File.Create(filePath)))
-        //    for (int i = 0; i < lbItems.Items.Count; i++)
-        //    {
-        //        stream.WriteLine(JsonSerializer.Serialize(_items[i]));
-        //    }
-        //}
+        private void ItemsTab_Disposed(object sender, EventArgs e)
+        {
+            string filePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), 
+                "Lysenko\\ObjectOrientedPractics\\Items.json");
+            //File.Delete(filePath);
+            using (StreamWriter stream = new StreamWriter(filePath, false))
+            for (int i = 0; i < lbItems.Items.Count; i++)
+            {
+                stream.WriteLine(JsonSerializer.Serialize(_items[i]));
+            }
+        }
     }
 }
