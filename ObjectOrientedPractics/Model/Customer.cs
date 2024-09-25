@@ -71,5 +71,15 @@ namespace ObjectOrientedPractics.Model
             Name = name;
             Address = address;
         }
+        /// <summary>
+        /// Создаёт пустой экземпляр класса <see cref="Customer"/>.
+        /// </summary>
+        public Customer ()
+        {
+            _id = _amountOfCustomers;
+            _amountOfCustomers +=1;
+            Name = "";
+            Address = "";
+        }
     }
 }

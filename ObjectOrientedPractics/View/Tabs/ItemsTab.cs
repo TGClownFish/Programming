@@ -50,6 +50,7 @@ namespace ObjectOrientedPractics.View.Tabs
         {
             _items.RemoveAt(lbItems.SelectedIndex);
             lbItems.Items.RemoveAt(lbItems.SelectedIndex);
+            Save();
         }
 
         private void tbCost_TextChanged(object sender, EventArgs e)
@@ -60,6 +61,7 @@ namespace ObjectOrientedPractics.View.Tabs
                 {
                     _items[lbItems.SelectedIndex].Cost = Convert.ToInt32(tbCost.Text);
                     tbCost.BackColor = Color.White;
+                    Save();
                 }
                 catch
                 {
@@ -76,6 +78,7 @@ namespace ObjectOrientedPractics.View.Tabs
                 {
                     _items[lbItems.SelectedIndex].Name = tbName.Text;
                     tbCost.BackColor = Color.White;
+                    Save();
 
                 }
                 catch
@@ -93,6 +96,7 @@ namespace ObjectOrientedPractics.View.Tabs
                 {
                     _items[lbItems.SelectedIndex].Description = tbDescription.Text;
                     tbCost.BackColor = Color.White;
+                    Save();
                 }
                 catch
                 {
@@ -109,41 +113,36 @@ namespace ObjectOrientedPractics.View.Tabs
             }
         }
 
-        //private void ItemsTab_Load(object sender, EventArgs e)
-        //{
-        //    string? newLine;
-        //    string filePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
-        //      "Lysenko\\ObjectOrientedPractics\\Items.json");
-        //    using (StreamReader reader = new StreamReader(filePath))
-        //    {
-        //        newLine = reader.ReadLine();
-        //        if (newLine == "_items:")
-        //        {
-        //            while (newLine != "" && newLine != null && newLine != "_customers:")
-        //            {
-        //                _items.Add(JsonSerializer.Deserialize<Model.Item>(newLine));
-        //                newLine = reader.ReadLine();
-        //            }
-        //        }
-        //    }
-        //    foreach (var i in _items)
-        //    {
-        //        lbItems.Items.Add(i.Name);
-        //    }
-        //}
-
-        //private void ItemsTab_Disposed(object sender, EventArgs e)
-        //{
-        //    string filePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), 
-        //        "Lysenko\\ObjectOrientedPractics\\Items.json");
-        //    using (StreamWriter stream = new StreamWriter(filePath, false))
-        //    {
-        //        stream.WriteLine("_items:");
-        //        for (int i = 0; i < lbItems.Items.Count; i++)
-        //        {
-        //            stream.WriteLine(JsonSerializer.Serialize(_items[i]));
-        //        }
-        //    }
-        //}
+        private void ItemsTab_Load(object sender, EventArgs e)
+        {
+            string newLine;
+            string filePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
+              "Lysenko\\ObjectOrientedPractics\\Items.json");
+            using (StreamReader reader = new StreamReader(filePath))
+            {
+                newLine = reader.ReadLine();
+                while (newLine != "" && newLine != null)
+                {
+                    _items.Add(JsonSerializer.Deserialize<Model.Item>(newLine));
+                    newLine = reader.ReadLine();
+                }
+                foreach (var i in _items)
+                {
+                    lbItems.Items.Add(i.Name);
+                }
+            }
+        }
+        public void Save()
+        {
+            string filePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
+                "Lysenko\\ObjectOrientedPractics\\Items.json");
+            using (StreamWriter stream = new StreamWriter(filePath, false))
+            {
+                for (int i = 0; i < lbItems.Items.Count; i++)
+                {
+                    stream.WriteLine(JsonSerializer.Serialize(_items[i]));
+                }
+            }
+        }
     }
 }

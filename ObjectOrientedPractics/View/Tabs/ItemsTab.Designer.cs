@@ -206,6 +206,7 @@
             Margin = new Padding(3, 2, 3, 2);
             Name = "ItemsTab";
             Size = new Size(694, 410);
+            Load += ItemsTab_Load;
             gbItems.ResumeLayout(false);
             gbItems.PerformLayout();
             ResumeLayout(false);

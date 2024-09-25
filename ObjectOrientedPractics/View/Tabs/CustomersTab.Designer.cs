@@ -181,6 +181,7 @@
             Margin = new Padding(3, 2, 3, 2);
             Name = "CustomersTab";
             Size = new Size(694, 410);
+            Load += CustomersTab_Load;
             gbCusomers.ResumeLayout(false);
             gbCusomers.PerformLayout();
             ResumeLayout(false);
