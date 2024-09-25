@@ -55,7 +55,7 @@ namespace ObjectOrientedPractics.View.Tabs
 
         private void tbCost_TextChanged(object sender, EventArgs e)
         {
-            if (lbItems.SelectedIndex > 0)
+            if (lbItems.SelectedIndex >= 0)
             {
                 try
                 {
