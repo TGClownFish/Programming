@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Text.Json;
 using System.IO;
+using System.Security.Policy;
 
 namespace ObjectOrientedPractics.View.Tabs
 {
@@ -108,30 +109,41 @@ namespace ObjectOrientedPractics.View.Tabs
             }
         }
 
-        private void ItemsTab_Load(object sender, EventArgs e)
-        {
-            //string? newLine;
-            //string filePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
-            //  "Lysenko\\ObjectOrientedPractics\\Items.json");
-            //using (StreamReader reader = new StreamReader(filePath))
-            //    //newLine = await reader.ReadLine();
-            //    while  ((newLine = await reader.ReadLineAsync()) != null)
-            //    {
-            //    _items.Add(JsonSerializer.Deserialize<Model.Item>(newLine));
-            //    //newLine = await reader.ReadLine();
-            //}
-        }
+        //private void ItemsTab_Load(object sender, EventArgs e)
+        //{
+        //    string? newLine;
+        //    string filePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
+        //      "Lysenko\\ObjectOrientedPractics\\Items.json");
+        //    using (StreamReader reader = new StreamReader(filePath))
+        //    {
+        //        newLine = reader.ReadLine();
+        //        if (newLine == "_items:")
+        //        {
+        //            while (newLine != "" && newLine != null && newLine != "_customers:")
+        //            {
+        //                _items.Add(JsonSerializer.Deserialize<Model.Item>(newLine));
+        //                newLine = reader.ReadLine();
+        //            }
+        //        }
+        //    }
+        //    foreach (var i in _items)
+        //    {
+        //        lbItems.Items.Add(i.Name);
+        //    }
+        //}
 
-        private void ItemsTab_Disposed(object sender, EventArgs e)
-        {
-            string filePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), 
-                "Lysenko\\ObjectOrientedPractics\\Items.json");
-            //File.Delete(filePath);
-            using (StreamWriter stream = new StreamWriter(filePath, false))
-            for (int i = 0; i < lbItems.Items.Count; i++)
-            {
-                stream.WriteLine(JsonSerializer.Serialize(_items[i]));
-            }
-        }
+        //private void ItemsTab_Disposed(object sender, EventArgs e)
+        //{
+        //    string filePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), 
+        //        "Lysenko\\ObjectOrientedPractics\\Items.json");
+        //    using (StreamWriter stream = new StreamWriter(filePath, false))
+        //    {
+        //        stream.WriteLine("_items:");
+        //        for (int i = 0; i < lbItems.Items.Count; i++)
+        //        {
+        //            stream.WriteLine(JsonSerializer.Serialize(_items[i]));
+        //        }
+        //    }
+        //}
     }
 }

@@ -98,7 +98,7 @@ namespace ObjectOrientedPractics.Model
 
         public Item ()
         {
-            _id =0;
+            _id = _amountOfItems;
             _amountOfItems += 1;
             Name = "";
             Description = "";
