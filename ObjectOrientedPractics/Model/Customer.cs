@@ -78,6 +78,7 @@ namespace ObjectOrientedPractics.Model
             _id = _amountOfCustomers;
             _amountOfCustomers += 1;
             Name = name;
+            Address = new Address();
         }
         /// <summary>
         /// Создаёт пустой экземпляр класса <see cref="Customer"/>.

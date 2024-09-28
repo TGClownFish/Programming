@@ -138,7 +138,7 @@ namespace ObjectOrientedPractics.Model
         /// </summary>
         public Address () 
         {
-            _index = "";
+            _index = "000000";
             _country = "";
             _city = "";
             _street = "";

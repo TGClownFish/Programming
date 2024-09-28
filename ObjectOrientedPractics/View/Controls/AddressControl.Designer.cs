@@ -134,6 +134,7 @@
             tbBuilding.Name = "tbBuilding";
             tbBuilding.Size = new Size(80, 23);
             tbBuilding.TabIndex = 24;
+            tbBuilding.TextChanged += tbBuilding_TextChanged;
             // 
             // tbApartment
             // 
@@ -143,6 +144,7 @@
             tbApartment.Name = "tbApartment";
             tbApartment.Size = new Size(94, 23);
             tbApartment.TabIndex = 23;
+            tbApartment.TextChanged += tbApartment_TextChanged;
             // 
             // tbCity
             // 
@@ -152,6 +154,7 @@
             tbCity.Name = "tbCity";
             tbCity.Size = new Size(103, 23);
             tbCity.TabIndex = 22;
+            tbCity.TextChanged += tbCity_TextChanged;
             // 
             // tbStreet
             // 
@@ -161,6 +164,7 @@
             tbStreet.Name = "tbStreet";
             tbStreet.Size = new Size(255, 23);
             tbStreet.TabIndex = 21;
+            tbStreet.TextChanged += tbStreet_TextChanged;
             // 
             // tbCountry
             // 
@@ -170,6 +174,7 @@
             tbCountry.Name = "tbCountry";
             tbCountry.Size = new Size(109, 23);
             tbCountry.TabIndex = 20;
+            tbCountry.TextChanged += tbCountry_TextChanged;
             // 
             // tbPostIndex
             // 
@@ -180,6 +185,7 @@
             tbPostIndex.Size = new Size(109, 23);
             tbPostIndex.TabIndex = 19;
             tbPostIndex.Text = "000000";
+            tbPostIndex.TextChanged += tbPostIndex_TextChanged;
             // 
             // AddressControl
             // 

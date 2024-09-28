@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Text.Json;
+using ObjectOrientedPractics.Model;
 
 namespace ObjectOrientedPractics.View.Tabs
 {
@@ -25,7 +26,7 @@ namespace ObjectOrientedPractics.View.Tabs
             {
                 tbID.Text = Convert.ToString(_customers[lbCustomers.SelectedIndex].Id);
                 tbName.Text = Convert.ToString(_customers[lbCustomers.SelectedIndex].Name);
-                //tbAddress.Text = Convert.ToString(_customers[lbCustomers.SelectedIndex].Address);
+                View.Controls.AddressControl.Address = _customers[lbCustomers.SelectedIndex].Address;
                 Save();
             }
             else
