@@ -89,22 +89,22 @@ namespace ObjectOrientedPractics.View.Tabs
         }
         private void CustomersTab_Load(object sender, EventArgs e)
         {
-            string newLine;
-            string filePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
-              "Lysenko\\ObjectOrientedPractics\\Customers.json");
-            using (StreamReader reader = new StreamReader(filePath))
-            {
-                newLine = reader.ReadLine();
-                while (newLine != "" && newLine != null)
-                {
-                    _customers.Add(JsonSerializer.Deserialize<Model.Customer>(newLine));
-                    newLine = reader.ReadLine();
-                }
-                foreach (var i in _customers)
-                {
-                    lbCustomers.Items.Add(i.Name);
-                }
-            }
+            //string newLine;
+            //string filePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
+            //  "Lysenko\\ObjectOrientedPractics\\Customers.json");
+            //using (StreamReader reader = new StreamReader(filePath))
+            //{
+            //    newLine = reader.ReadLine();
+            //    while (newLine != "" && newLine != null)
+            //    {
+            //        _customers.Add(JsonSerializer.Deserialize<Model.Customer>(newLine));
+            //        newLine = reader.ReadLine();
+            //    }
+            //    foreach (var i in _customers)
+            //    {
+            //        lbCustomers.Items.Add(i.Name);
+            //    }
+            //}
         }
         public void Save()
         {
