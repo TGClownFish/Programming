@@ -101,6 +101,18 @@ namespace ObjectOrientedPractics.Model
             Cost = cost;
             Category = category;
         }
+        /// <summary>
+        /// Создаёт пустой экземпляр класса <see cref="Item"/>.
+        /// </summary>
+        public Item() 
+        { 
+            _id = _amountOfItems;
+            _amountOfItems += 1;
+            Name = "";
+            Description = "";
+            Cost = 0;
+            Category = 0;
+        }
 
     }
 }

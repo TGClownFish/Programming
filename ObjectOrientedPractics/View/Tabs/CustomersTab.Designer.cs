@@ -154,7 +154,8 @@
             Controls.Add(btnDelete);
             Controls.Add(lbCustomers);
             Name = "CustomersTab";
-            Size = new Size(793, 547);
+            Size = new Size(694, 410);
+            Load += CustomersTab_Load;
             gbCusomers.ResumeLayout(false);
             gbCusomers.PerformLayout();
             ResumeLayout(false);

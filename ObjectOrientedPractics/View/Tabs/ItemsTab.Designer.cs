@@ -218,7 +218,8 @@
             Controls.Add(btnDelete);
             Controls.Add(lbItems);
             Name = "ItemsTab";
-            Size = new Size(793, 547);
+            Size = new Size(694, 410);
+            Load += ItemsTab_Load;
             gbItems.ResumeLayout(false);
             gbItems.PerformLayout();
             ResumeLayout(false);
