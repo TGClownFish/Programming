@@ -46,7 +46,7 @@ namespace ObjectOrientedPractics.Model
         /// <summary>
         /// Адрес покупателя.
         /// </summary>
-        private string _address;
+        private Address _address;
         /// <summary>
         /// Хранит адрес покупателя. Является объектом класса <see cref="Address"/>.
         /// </summary>

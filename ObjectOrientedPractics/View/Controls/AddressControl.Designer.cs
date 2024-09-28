@@ -179,6 +179,7 @@
             tbPostIndex.Name = "tbPostIndex";
             tbPostIndex.Size = new Size(109, 23);
             tbPostIndex.TabIndex = 19;
+            tbPostIndex.Text = "000000";
             // 
             // AddressControl
             // 

@@ -12,8 +12,8 @@ namespace ObjectOrientedPractics.View.Controls
 {
     public partial class AddressControl : UserControl
     {
-        Model.Address _address = new Model.Address();
-        //public Model.Address 
+        private Model.Address _address;
+        public Model.Address Address {get; set;}
         public AddressControl()
         {
             InitializeComponent();

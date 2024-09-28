@@ -10,7 +10,7 @@ using System.Windows.Forms;
 namespace ObjectOrientedPractics.Model
 {
     //Хранит данные об адрессе покупателя. 
-    class Address
+    public class Address
     {
         /// <summary>
         /// Почтовый индекс.
