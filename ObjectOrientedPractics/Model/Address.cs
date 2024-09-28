@@ -133,7 +133,15 @@ namespace ObjectOrientedPractics.Model
         /// <summary>
         /// Создаёт пустой экземпляр класса <see cref="Address"/>.
         /// </summary>
-        public Address () { }
+        public Address () 
+        {
+            _index = "";
+            _country = "";
+            _city = "";
+            _street = "";
+            _building = "";
+            _apartment = "";
+        }
     }
 
 }

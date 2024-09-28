@@ -9,13 +9,14 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Text.Json;
 using System.IO;
+using ObjectOrientedPractics.Model;
 
 namespace ObjectOrientedPractics.View.Tabs
 {
     public partial class ItemsTab : UserControl
     {
         List<Model.Item> _items = new List<Model.Item>();
-        
+
         public ItemsTab()
         {
             InitializeComponent();
@@ -30,6 +31,7 @@ namespace ObjectOrientedPractics.View.Tabs
                 tbCost.Text = Convert.ToString(_items[lbItems.SelectedIndex].Cost);
                 tbName.Text = Convert.ToString(_items[lbItems.SelectedIndex].Name);
                 tbDescription.Text = Convert.ToString(_items[lbItems.SelectedIndex].Description);
+                cbCategory.SelectedIndex = (int) _items[lbItems.SelectedIndex].Category;
                 Save();
             }
             else
@@ -38,12 +40,13 @@ namespace ObjectOrientedPractics.View.Tabs
                 tbCost.Text = "";
                 tbName.Text = "";
                 tbDescription.Text = "";
+                cbCategory.SelectedIndex = -1;
             }
         }
 
         private void btnAddNew_Click(object sender, EventArgs e)
         {
-            _items.Add(new("", "", 0, 0));
+            _items.Add(new());
             lbItems.Items.Add("Unnamed Item");
             lbItems.SelectedIndex = _items.Count - 1;
         }
@@ -106,6 +109,22 @@ namespace ObjectOrientedPractics.View.Tabs
                 }
             }
         }
+        private void cbCategory_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (lbItems.SelectedIndex >= 0)
+            {
+                try
+                {
+                    _items[lbItems.SelectedIndex].Category = (Category) cbCategory.SelectedIndex;
+                    cbCategory.BackColor = Color.White;
+                    Save();
+                }
+                catch
+                {
+                    cbCategory.BackColor = Color.LightPink;
+                }
+            }
+        }
 
         private void tbName_Leave(object sender, EventArgs e)
         {
@@ -146,5 +165,7 @@ namespace ObjectOrientedPractics.View.Tabs
                 }
             }
         }
+
+
     }
 }

@@ -38,7 +38,7 @@ namespace ObjectOrientedPractics.View.Tabs
 
         private void btnAddNew_Click(object sender, EventArgs e)
         {
-            _customers.Add(new("", ""));
+            _customers.Add(new());
             lbCustomers.Items.Add("Unnamed Customer");
             lbCustomers.SelectedIndex = _customers.Count - 1;
         }

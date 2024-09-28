@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace ObjectOrientedPractics.Model
 {
@@ -47,29 +48,47 @@ namespace ObjectOrientedPractics.Model
         /// </summary>
         private string _address;
         /// <summary>
-        /// Хранит адрес покупателя. Не более 500 символов.
+        /// Хранит адрес покупателя. Является объектом класса <see cref="Address"/>.
         /// </summary>
-        public string Address 
-        { 
-            get { return _address; } 
-            set 
-            {
-                if (ValueValidator.AssertStringOnLength(value, 500, Name))
-                    _address = value; 
-            } 
-        }
+        public Address Address { get; set; }
 
         /// <summary>
         /// Создаёт экземпляр класса <see cref="Customer"/>.
         /// </summary>
         /// <param name="name">Полное имя покупателя. Не более 200 символов.</param>
-        /// <param name="address">Адрес покупателя. Не более 500 символов.</param>
-        public Customer (string name,string address)
+        /// <param name="index">Почтовый индекс. Целое шестизначное число.</param>
+        /// <param name="country">Страна/регион. Не более 50 символов.</param>
+        /// <param name="city">Город (населенный пункт). Не более 50 символов.</param>
+        /// <param name="street">Улица. Не более 100 символов.</param>
+        /// <param name="building">Номер дома. Не более 10 символов.</param>
+        /// <param name="apartment">Номер квартиры/помещения. Не более 10 символов.</param>
+        public Customer (string name, string index, string country, string city, string street, string building, string apartment)
         {
             _id = _amountOfCustomers;
             _amountOfCustomers += 1;
             Name = name;
-            Address = address;
+            Address = new Address(index, country, city, street, building, apartment);
+        }
+        /// <summary>
+        /// Создаёт экземпляр класса <see cref="Customer"/>.
+        /// </summary>
+        /// <param name="name">Полное имя покупателя. Не более 200 символов.</param>
+        public Customer (string name)
+        {
+            _id = _amountOfCustomers;
+            _amountOfCustomers += 1;
+            Name = name;
+        }
+        /// <summary>
+        /// Создаёт пустой экземпляр класса <see cref="Customer"/>.
+        /// </summary>
+        public Customer ()
+        {
+            _id = _amountOfCustomers;
+            _amountOfCustomers += 1;
+            Name = "";
+            Address = new Address();
+
         }
     }
 }

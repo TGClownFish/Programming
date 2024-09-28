@@ -122,6 +122,7 @@
             cbCategory.Name = "cbCategory";
             cbCategory.Size = new Size(112, 23);
             cbCategory.TabIndex = 8;
+            cbCategory.SelectedIndexChanged += cbCategory_SelectedIndexChanged;
             // 
             // label4
             // 
