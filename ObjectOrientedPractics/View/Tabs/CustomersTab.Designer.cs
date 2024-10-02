@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            Model.Address address1 = new Model.Address();
+            Model.Address address3 = new Model.Address();
             label5 = new Label();
             gbCusomers = new GroupBox();
             addressControl = new Controls.AddressControl();
@@ -47,9 +47,9 @@
             label5.AutoSize = true;
             label5.Location = new Point(18, 16);
             label5.Name = "label5";
-            label5.Size = new Size(60, 15);
+            label5.Size = new Size(67, 15);
             label5.TabIndex = 13;
-            label5.Text = "Cusomers";
+            label5.Text = "Customers:";
             // 
             // gbCusomers
             // 
@@ -71,13 +71,13 @@
             // 
             // addressControl
             // 
-            address1.Apartment = "";
-            address1.Building = "";
-            address1.City = "";
-            address1.Country = "";
-            address1.Index = "000000";
-            address1.Street = "";
-            addressControl.Address = address1;
+            address3.Apartment = "";
+            address3.Building = "";
+            address3.City = "";
+            address3.Country = "";
+            address3.Index = "000000";
+            address3.Street = "";
+            addressControl.Address = address3;
             addressControl.Location = new Point(6, 100);
             addressControl.Margin = new Padding(3, 2, 3, 2);
             addressControl.Name = "addressControl";
@@ -110,7 +110,7 @@
             tbName.Location = new Point(95, 62);
             tbName.Margin = new Padding(3, 2, 3, 2);
             tbName.Name = "tbName";
-            tbName.Size = new Size(181, 23);
+            tbName.Size = new Size(281, 23);
             tbName.TabIndex = 1;
             tbName.TextChanged += tbName_TextChanged;
             tbName.Leave += tbName_Leave;
@@ -153,6 +153,7 @@
             // 
             lbCustomers.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             lbCustomers.FormattingEnabled = true;
+            lbCustomers.HorizontalScrollbar = true;
             lbCustomers.ItemHeight = 15;
             lbCustomers.Location = new Point(18, 33);
             lbCustomers.Margin = new Padding(3, 2, 3, 2);

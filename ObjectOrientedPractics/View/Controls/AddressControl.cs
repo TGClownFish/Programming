@@ -33,11 +33,6 @@ namespace ObjectOrientedPractics.View.Controls
             }
         }
 
-        public void UpdateInfo(Model.Address address)
-        {
-
-        }
-
         public AddressControl()
         {
             InitializeComponent();

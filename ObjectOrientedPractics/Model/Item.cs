@@ -10,7 +10,7 @@ namespace ObjectOrientedPractics.Model
     ///<summary>
     /// Хранит данные о товаре.
     ///</summary>
-    class Item
+    public class Item
     {
         ///<summary>
         /// ID товара.
@@ -25,7 +25,7 @@ namespace ObjectOrientedPractics.Model
         ///<summary>
         /// Количество товаров. Статично.
         ///</summary>
-        private static int _amountOfItems = 1;
+        private static int _amountOfItems = 0;
 
         ///<summary>
         /// Название товара.

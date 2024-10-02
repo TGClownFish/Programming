@@ -15,8 +15,19 @@ namespace ObjectOrientedPractics.View.Tabs
 {
     public partial class CustomersTab : UserControl
     {
-        List<Model.Customer> _customers = new List<Model.Customer>();
-        Customer _cureentCustomer;
+        private List<Model.Customer> _customers;
+        public List<Model.Customer> Customers 
+        { 
+            get
+            {
+                return _customers;
+            }
+            set 
+            { 
+                _customers = value; 
+            }
+        }
+        private Customer _currentCustomer;
         public CustomersTab()
         {
             InitializeComponent();
@@ -26,10 +37,10 @@ namespace ObjectOrientedPractics.View.Tabs
         {
             if (lbCustomers.SelectedIndex >= 0)
             {
-                _cureentCustomer = _customers[lbCustomers.SelectedIndex];
-                tbID.Text = Convert.ToString(_cureentCustomer.Id);
-                tbName.Text = Convert.ToString(_cureentCustomer.Name);
-                addressControl.Address = _cureentCustomer.Address;
+                _currentCustomer = Customers[lbCustomers.SelectedIndex];
+                tbID.Text = Convert.ToString(_currentCustomer.Id);
+                tbName.Text = Convert.ToString(_currentCustomer.Name);
+                addressControl.Address = _currentCustomer.Address;
             }
             else
             {
@@ -41,28 +52,31 @@ namespace ObjectOrientedPractics.View.Tabs
 
         private void btnAddNew_Click(object sender, EventArgs e)
         {
-            _customers.Add(new());
+            Customers.Add(new());
             lbCustomers.Items.Add("Unnamed Customer");
-            lbCustomers.SelectedIndex = _customers.Count - 1;
+            lbCustomers.SelectedIndex = Customers.Count - 1;
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            _customers.RemoveAt(lbCustomers.SelectedIndex);
+            Customers.RemoveAt(lbCustomers.SelectedIndex);
             lbCustomers.Items.RemoveAt(lbCustomers.SelectedIndex);
         }
 
         private void tbName_TextChanged(object sender, EventArgs e)
         {
-            try
+            if (lbCustomers.SelectedIndex >= 0)
             {
-                _customers[lbCustomers.SelectedIndex].Name = tbName.Text;
-                tbName.BackColor = Color.White;
+                try
+                {
+                    _currentCustomer.Name = tbName.Text;
+                    tbName.BackColor = Color.White;
 
-            }
-            catch
-            {
-                tbName.BackColor = Color.LightPink;
+                }
+                catch
+                {
+                    tbName.BackColor = Color.LightPink;
+                }
             }
         }
 

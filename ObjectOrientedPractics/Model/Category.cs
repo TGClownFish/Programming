@@ -11,7 +11,7 @@ namespace ObjectOrientedPractics.Model
     /// <summary>
     /// Хранит данные о категории товара.
     /// </summary>
-    enum Category
+    public enum Category
     {
         None,
         Electronics,

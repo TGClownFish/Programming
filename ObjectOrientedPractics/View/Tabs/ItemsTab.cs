@@ -15,8 +15,20 @@ namespace ObjectOrientedPractics.View.Tabs
 {
     public partial class ItemsTab : UserControl
     {
-        List<Model.Item> _items = new List<Model.Item>();
-        Item _currentItem;
+        private List<Model.Item> _items;
+        public List<Model.Item> Items 
+        { 
+            get 
+            { 
+                return _items; 
+            } 
+            set 
+            { 
+                _items = value; 
+
+            }
+        }
+        private Item _currentItem;
 
         public ItemsTab()
         {
@@ -28,7 +40,7 @@ namespace ObjectOrientedPractics.View.Tabs
         {
             if (lbItems.SelectedIndex >= 0)
             {
-                _currentItem = _items[lbItems.SelectedIndex];
+                _currentItem = Items[lbItems.SelectedIndex];
                 tbID.Text = Convert.ToString(_currentItem.Id);
                 tbCost.Text = Convert.ToString(_currentItem.Cost);
                 tbName.Text = Convert.ToString(_currentItem.Name);
@@ -47,14 +59,14 @@ namespace ObjectOrientedPractics.View.Tabs
 
         private void btnAddNew_Click(object sender, EventArgs e)
         {
-            _items.Add(new());
+            Items.Add(new());
             lbItems.Items.Add("Unnamed Item");
-            lbItems.SelectedIndex = _items.Count - 1;
+            lbItems.SelectedIndex = Items.Count - 1;
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            _items.RemoveAt(lbItems.SelectedIndex);
+            Items.RemoveAt(lbItems.SelectedIndex);
             lbItems.Items.RemoveAt(lbItems.SelectedIndex);
         }
 
@@ -81,12 +93,12 @@ namespace ObjectOrientedPractics.View.Tabs
                 try
                 {
                     _currentItem.Name = tbName.Text;
-                    tbCost.BackColor = Color.White;
+                    tbName.BackColor = Color.White;
 
                 }
                 catch
                 {
-                    tbCost.BackColor = Color.LightPink;
+                    tbName.BackColor = Color.LightPink;
                 }
             }
         }
@@ -98,11 +110,11 @@ namespace ObjectOrientedPractics.View.Tabs
                 try
                 {
                     _currentItem.Description = tbDescription.Text;
-                    tbCost.BackColor = Color.White;
+                    tbDescription.BackColor = Color.White;
                 }
                 catch
                 {
-                    tbCost.BackColor = Color.LightPink;
+                    tbDescription.BackColor = Color.LightPink;
                 }
             }
         }
