@@ -70,17 +70,6 @@ namespace ObjectOrientedPractics.Model
             Address = new Address(index, country, city, street, building, apartment);
         }
         /// <summary>
-        /// Создаёт экземпляр класса <see cref="Customer"/>.
-        /// </summary>
-        /// <param name="name">Полное имя покупателя. Не более 200 символов.</param>
-        public Customer (string name)
-        {
-            _id = _amountOfCustomers;
-            _amountOfCustomers += 1;
-            Name = name;
-            Address = new Address();
-        }
-        /// <summary>
         /// Создаёт пустой экземпляр класса <see cref="Customer"/>.
         /// </summary>
         public Customer ()

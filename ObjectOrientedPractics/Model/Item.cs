@@ -80,6 +80,10 @@ namespace ObjectOrientedPractics.Model
             }
         }
         /// <summary>
+        /// Rатегория товара.
+        /// </summary>
+        private Category _category;
+        /// <summary>
         /// Хранит категорию товара. Является перечилсением типа <see cref="Category"/>.
         /// </summary>
         public Category Category
