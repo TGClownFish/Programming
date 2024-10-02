@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            Model.Address address1 = new Model.Address();
             label5 = new Label();
             gbCusomers = new GroupBox();
             addressControl = new Controls.AddressControl();
@@ -70,6 +71,13 @@
             // 
             // addressControl
             // 
+            address1.Apartment = "";
+            address1.Building = "";
+            address1.City = "";
+            address1.Country = "";
+            address1.Index = "000000";
+            address1.Street = "";
+            addressControl.Address = address1;
             addressControl.Location = new Point(6, 100);
             addressControl.Margin = new Padding(3, 2, 3, 2);
             addressControl.Name = "addressControl";
@@ -105,6 +113,7 @@
             tbName.Size = new Size(181, 23);
             tbName.TabIndex = 1;
             tbName.TextChanged += tbName_TextChanged;
+            tbName.Leave += tbName_Leave;
             // 
             // tbID
             // 

@@ -16,6 +16,7 @@ namespace ObjectOrientedPractics.View.Tabs
     public partial class CustomersTab : UserControl
     {
         List<Model.Customer> _customers = new List<Model.Customer>();
+        Customer _cureentCustomer;
         public CustomersTab()
         {
             InitializeComponent();
@@ -25,9 +26,10 @@ namespace ObjectOrientedPractics.View.Tabs
         {
             if (lbCustomers.SelectedIndex >= 0)
             {
-                tbID.Text = Convert.ToString(_customers[lbCustomers.SelectedIndex].Id);
-                tbName.Text = Convert.ToString(_customers[lbCustomers.SelectedIndex].Name);
-                addressControl.Address = _customers[lbCustomers.SelectedIndex].Address;
+                _cureentCustomer = _customers[lbCustomers.SelectedIndex];
+                tbID.Text = Convert.ToString(_cureentCustomer.Id);
+                tbName.Text = Convert.ToString(_cureentCustomer.Name);
+                addressControl.Address = _cureentCustomer.Address;
             }
             else
             {
@@ -64,5 +66,12 @@ namespace ObjectOrientedPractics.View.Tabs
             }
         }
 
+        private void tbName_Leave(object sender, EventArgs e)
+        {
+            if (lbCustomers.SelectedIndex >= 0)
+            {
+                lbCustomers.Items[lbCustomers.SelectedIndex] = tbName.Text;
+            }
+        }
     }
 }

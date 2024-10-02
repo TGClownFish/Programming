@@ -16,6 +16,7 @@ namespace ObjectOrientedPractics.View.Tabs
     public partial class ItemsTab : UserControl
     {
         List<Model.Item> _items = new List<Model.Item>();
+        Item _currentItem;
 
         public ItemsTab()
         {
@@ -27,11 +28,12 @@ namespace ObjectOrientedPractics.View.Tabs
         {
             if (lbItems.SelectedIndex >= 0)
             {
-                tbID.Text = Convert.ToString(_items[lbItems.SelectedIndex].Id);
-                tbCost.Text = Convert.ToString(_items[lbItems.SelectedIndex].Cost);
-                tbName.Text = Convert.ToString(_items[lbItems.SelectedIndex].Name);
-                tbDescription.Text = Convert.ToString(_items[lbItems.SelectedIndex].Description);
-                cbCategory.SelectedIndex = (int) _items[lbItems.SelectedIndex].Category;
+                _currentItem = _items[lbItems.SelectedIndex];
+                tbID.Text = Convert.ToString(_currentItem.Id);
+                tbCost.Text = Convert.ToString(_currentItem.Cost);
+                tbName.Text = Convert.ToString(_currentItem.Name);
+                tbDescription.Text = Convert.ToString(_currentItem.Description);
+                cbCategory.SelectedIndex = (int) _currentItem.Category;
             }
             else
             {
@@ -62,7 +64,7 @@ namespace ObjectOrientedPractics.View.Tabs
             {
                 try
                 {
-                    _items[lbItems.SelectedIndex].Cost = Convert.ToInt32(tbCost.Text);
+                    _currentItem.Cost = Convert.ToInt32(tbCost.Text);
                     tbCost.BackColor = Color.White;
                 }
                 catch
@@ -78,7 +80,7 @@ namespace ObjectOrientedPractics.View.Tabs
             {
                 try
                 {
-                    _items[lbItems.SelectedIndex].Name = tbName.Text;
+                    _currentItem.Name = tbName.Text;
                     tbCost.BackColor = Color.White;
 
                 }
@@ -95,7 +97,7 @@ namespace ObjectOrientedPractics.View.Tabs
             {
                 try
                 {
-                    _items[lbItems.SelectedIndex].Description = tbDescription.Text;
+                    _currentItem.Description = tbDescription.Text;
                     tbCost.BackColor = Color.White;
                 }
                 catch
@@ -110,7 +112,7 @@ namespace ObjectOrientedPractics.View.Tabs
             {
                 try
                 {
-                    _items[lbItems.SelectedIndex].Category = (Category) cbCategory.SelectedIndex;
+                    _currentItem.Category = (Category) cbCategory.SelectedIndex;
                     cbCategory.BackColor = Color.White;
                 }
                 catch

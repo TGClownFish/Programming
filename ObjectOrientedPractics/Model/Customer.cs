@@ -25,7 +25,7 @@ namespace ObjectOrientedPractics.Model
         /// <summary>
         /// Количество покупателей. Статично.
         /// </summary>
-        private static int _amountOfCustomers = 1;
+        private static int _amountOfCustomers = 0;
 
         /// <summary>
         /// Полное имя покупателя.
