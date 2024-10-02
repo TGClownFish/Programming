@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -13,38 +14,38 @@ namespace ObjectOrientedPractics.View.Controls
 {
     public partial class AddressControl : UserControl
     {
-        private Model.Address _address = new Model.Address();
-        public Model.Address Address
+        private Model.Address  _address = new Model.Address();
+        public  Model.Address Address
         {
-            get
-            {
-                return _address;
-            }
-            set
-            {
-                _address = value;
-                tbPostIndex.Text = Address.Index;
-                tbCountry.Text = Address.Country;
-                tbCity.Text = Address.City;
-                tbStreet.Text = Address.Street;
-                tbBuilding.Text = Address.Building;
-                tbApartment.Text = Address.Apartment;
-            }
+            get { return _address; } 
+            set { _address = value; }
         }
 
-        public static void SetAddress(Model.Address address)
+        public void SetAddress(Model.Address address)
         {
             Address = address;
+            UpdateData();
+
         }
 
-        public static Address GetAddress()
+        public void UpdateData()
+        {
+            tbPostIndex.Text = Address.Index;
+            tbCountry.Text = Address.Country;
+            tbCity.Text = Address.City;
+            tbStreet.Text = Address.Street;
+            tbBuilding.Text = Address.Building;
+            tbApartment.Text = Address.Apartment;
+        }
+
+        public Address GetAddress()
         {
             return Address;
         }
 
         public AddressControl()
         {
-            Address = new Model.Address();
+            //Address = new Model.Address();
             InitializeComponent();
             
         }
