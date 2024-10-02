@@ -15,7 +15,13 @@ namespace ObjectOrientedPractics.View.Tabs
 {
     public partial class CustomersTab : UserControl
     {
+        /// <summary>
+        /// Список покупателей.
+        /// </summary>
         private List<Model.Customer> _customers;
+        /// <summary>
+        /// Хранит список покупателей. 
+        /// </summary>
         public List<Model.Customer> Customers 
         { 
             get
@@ -27,7 +33,11 @@ namespace ObjectOrientedPractics.View.Tabs
                 _customers = value; 
             }
         }
+        /// <summary>
+        /// Выбранный покупатель.
+        /// </summary>
         private Customer _currentCustomer;
+
         public CustomersTab()
         {
             InitializeComponent();

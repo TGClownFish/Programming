@@ -30,13 +30,13 @@
         {
             gbAddress = new GroupBox();
             label10 = new Label();
-            label9 = new Label();
             label8 = new Label();
+            tbApartment = new TextBox();
+            tbBuilding = new TextBox();
+            label9 = new Label();
             label7 = new Label();
             label6 = new Label();
             label4 = new Label();
-            tbBuilding = new TextBox();
-            tbApartment = new TextBox();
             tbCity = new TextBox();
             tbStreet = new TextBox();
             tbCountry = new TextBox();
@@ -47,60 +47,81 @@
             // gbAddress
             // 
             gbAddress.Controls.Add(label10);
-            gbAddress.Controls.Add(label9);
             gbAddress.Controls.Add(label8);
+            gbAddress.Controls.Add(tbApartment);
+            gbAddress.Controls.Add(tbBuilding);
+            gbAddress.Controls.Add(label9);
             gbAddress.Controls.Add(label7);
             gbAddress.Controls.Add(label6);
             gbAddress.Controls.Add(label4);
-            gbAddress.Controls.Add(tbBuilding);
-            gbAddress.Controls.Add(tbApartment);
             gbAddress.Controls.Add(tbCity);
             gbAddress.Controls.Add(tbStreet);
             gbAddress.Controls.Add(tbCountry);
             gbAddress.Controls.Add(tbPostIndex);
-            gbAddress.Location = new Point(3, 3);
+            gbAddress.Dock = DockStyle.Fill;
+            gbAddress.Location = new Point(0, 0);
             gbAddress.Name = "gbAddress";
-            gbAddress.Size = new Size(368, 160);
+            gbAddress.Size = new Size(319, 233);
             gbAddress.TabIndex = 20;
             gbAddress.TabStop = false;
             gbAddress.Text = "Address:";
             // 
             // label10
             // 
-            label10.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            label10.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
             label10.AutoSize = true;
-            label10.Location = new Point(182, 123);
+            label10.Location = new Point(20, 190);
             label10.Name = "label10";
             label10.Size = new Size(67, 15);
             label10.TabIndex = 30;
             label10.Text = "Apartment:";
             // 
-            // label9
-            // 
-            label9.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            label9.AutoSize = true;
-            label9.Location = new Point(209, 60);
-            label9.Name = "label9";
-            label9.Size = new Size(31, 15);
-            label9.TabIndex = 29;
-            label9.Text = "City:";
-            // 
             // label8
             // 
-            label8.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            label8.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
             label8.AutoSize = true;
             label8.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 1, true);
-            label8.Location = new Point(20, 123);
+            label8.Location = new Point(20, 158);
             label8.Name = "label8";
             label8.Size = new Size(54, 15);
             label8.TabIndex = 28;
             label8.Text = "Building:";
             // 
+            // tbApartment
+            // 
+            tbApartment.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
+            tbApartment.Location = new Point(93, 187);
+            tbApartment.Margin = new Padding(3, 2, 3, 2);
+            tbApartment.Name = "tbApartment";
+            tbApartment.Size = new Size(106, 23);
+            tbApartment.TabIndex = 23;
+            tbApartment.TextChanged += tbApartment_TextChanged;
+            // 
+            // tbBuilding
+            // 
+            tbBuilding.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
+            tbBuilding.Location = new Point(93, 155);
+            tbBuilding.Margin = new Padding(3, 2, 3, 2);
+            tbBuilding.Name = "tbBuilding";
+            tbBuilding.Size = new Size(106, 23);
+            tbBuilding.TabIndex = 24;
+            tbBuilding.TextChanged += tbBuilding_TextChanged;
+            // 
+            // label9
+            // 
+            label9.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            label9.AutoSize = true;
+            label9.Location = new Point(20, 94);
+            label9.Name = "label9";
+            label9.Size = new Size(31, 15);
+            label9.TabIndex = 29;
+            label9.Text = "City:";
+            // 
             // label7
             // 
             label7.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             label7.AutoSize = true;
-            label7.Location = new Point(20, 90);
+            label7.Location = new Point(20, 126);
             label7.Name = "label7";
             label7.Size = new Size(40, 15);
             label7.TabIndex = 27;
@@ -110,7 +131,7 @@
             // 
             label6.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             label6.AutoSize = true;
-            label6.Location = new Point(20, 60);
+            label6.Location = new Point(20, 62);
             label6.Name = "label6";
             label6.Size = new Size(53, 15);
             label6.TabIndex = 26;
@@ -126,53 +147,33 @@
             label4.TabIndex = 25;
             label4.Text = "Post Index:";
             // 
-            // tbBuilding
-            // 
-            tbBuilding.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
-            tbBuilding.Location = new Point(94, 117);
-            tbBuilding.Margin = new Padding(3, 2, 3, 2);
-            tbBuilding.Name = "tbBuilding";
-            tbBuilding.Size = new Size(80, 23);
-            tbBuilding.TabIndex = 24;
-            tbBuilding.TextChanged += tbBuilding_TextChanged;
-            // 
-            // tbApartment
-            // 
-            tbApartment.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
-            tbApartment.Location = new Point(255, 120);
-            tbApartment.Margin = new Padding(3, 2, 3, 2);
-            tbApartment.Name = "tbApartment";
-            tbApartment.Size = new Size(94, 23);
-            tbApartment.TabIndex = 23;
-            tbApartment.TextChanged += tbApartment_TextChanged;
-            // 
             // tbCity
             // 
-            tbCity.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
-            tbCity.Location = new Point(246, 57);
+            tbCity.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            tbCity.Location = new Point(93, 91);
             tbCity.Margin = new Padding(3, 2, 3, 2);
             tbCity.Name = "tbCity";
-            tbCity.Size = new Size(103, 23);
+            tbCity.Size = new Size(198, 23);
             tbCity.TabIndex = 22;
             tbCity.TextChanged += tbCity_TextChanged;
             // 
             // tbStreet
             // 
-            tbStreet.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
-            tbStreet.Location = new Point(94, 87);
+            tbStreet.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            tbStreet.Location = new Point(94, 123);
             tbStreet.Margin = new Padding(3, 2, 3, 2);
             tbStreet.Name = "tbStreet";
-            tbStreet.Size = new Size(255, 23);
+            tbStreet.Size = new Size(197, 23);
             tbStreet.TabIndex = 21;
             tbStreet.TextChanged += tbStreet_TextChanged;
             // 
             // tbCountry
             // 
-            tbCountry.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
-            tbCountry.Location = new Point(94, 57);
+            tbCountry.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            tbCountry.Location = new Point(94, 59);
             tbCountry.Margin = new Padding(3, 2, 3, 2);
             tbCountry.Name = "tbCountry";
-            tbCountry.Size = new Size(109, 23);
+            tbCountry.Size = new Size(196, 23);
             tbCountry.TabIndex = 20;
             tbCountry.TextChanged += tbCountry_TextChanged;
             // 
@@ -182,7 +183,7 @@
             tbPostIndex.Location = new Point(94, 27);
             tbPostIndex.Margin = new Padding(3, 2, 3, 2);
             tbPostIndex.Name = "tbPostIndex";
-            tbPostIndex.Size = new Size(109, 23);
+            tbPostIndex.Size = new Size(105, 23);
             tbPostIndex.TabIndex = 19;
             tbPostIndex.TextChanged += tbPostIndex_TextChanged;
             // 
@@ -193,7 +194,7 @@
             Controls.Add(gbAddress);
             Margin = new Padding(3, 2, 3, 2);
             Name = "AddressControl";
-            Size = new Size(376, 169);
+            Size = new Size(319, 233);
             gbAddress.ResumeLayout(false);
             gbAddress.PerformLayout();
             ResumeLayout(false);

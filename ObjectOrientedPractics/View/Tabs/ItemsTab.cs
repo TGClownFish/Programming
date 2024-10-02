@@ -15,7 +15,13 @@ namespace ObjectOrientedPractics.View.Tabs
 {
     public partial class ItemsTab : UserControl
     {
+        /// <summary>
+        /// Список товаров.
+        /// </summary>
         private List<Model.Item> _items;
+        /// <summary>
+        /// Хранит список товаров.
+        /// </summary>
         public List<Model.Item> Items 
         { 
             get 
@@ -28,6 +34,9 @@ namespace ObjectOrientedPractics.View.Tabs
 
             }
         }
+        /// <summary>
+        /// Выбранный товар.
+        /// </summary>
         private Item _currentItem;
 
         public ItemsTab()
