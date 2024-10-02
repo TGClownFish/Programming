@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ObjectOrientedPractics.Model;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,14 +14,14 @@ namespace ObjectOrientedPractics.View.Controls
     public partial class AddressControl : UserControl
     {
         private Model.Address _address = new Model.Address();
-        public Model.Address Address 
+        public Model.Address Address
         {
-            get 
-            { 
-                return _address; 
+            get
+            {
+                return _address;
             }
-            set 
-            {  
+            set
+            {
                 _address = value;
                 tbPostIndex.Text = Address.Index;
                 tbCountry.Text = Address.Country;
@@ -30,6 +31,17 @@ namespace ObjectOrientedPractics.View.Controls
                 tbApartment.Text = Address.Apartment;
             }
         }
+
+        public static void SetAddress(Model.Address address)
+        {
+            Address = address;
+        }
+
+        public static Address GetAddress()
+        {
+            return Address;
+        }
+
         public AddressControl()
         {
             Address = new Model.Address();

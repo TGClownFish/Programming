@@ -26,7 +26,7 @@ namespace ObjectOrientedPractics.View.Tabs
             {
                 tbID.Text = Convert.ToString(_customers[lbCustomers.SelectedIndex].Id);
                 tbName.Text = Convert.ToString(_customers[lbCustomers.SelectedIndex].Name);
-                View.Controls.AddressControl.Address = _customers[lbCustomers.SelectedIndex].Address;
+                View.Controls.AddressControl.SetAddress(_customers[lbCustomers.SelectedIndex].Address);
                 Save();
             }
             else
