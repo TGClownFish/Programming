@@ -30,7 +30,7 @@
         {
             label5 = new Label();
             gbCusomers = new GroupBox();
-            addressControl2 = new Controls.AddressControl();
+            addressControl = new Controls.AddressControl();
             label2 = new Label();
             label1 = new Label();
             tbName = new TextBox();
@@ -54,7 +54,7 @@
             // 
             gbCusomers.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
             gbCusomers.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            gbCusomers.Controls.Add(addressControl2);
+            gbCusomers.Controls.Add(addressControl);
             gbCusomers.Controls.Add(label2);
             gbCusomers.Controls.Add(label1);
             gbCusomers.Controls.Add(tbName);
@@ -68,13 +68,13 @@
             gbCusomers.TabStop = false;
             gbCusomers.Text = "Selected Customer:";
             // 
-            // addressControl2
+            // addressControl
             // 
-            addressControl2.Location = new Point(6, 100);
-            addressControl2.Margin = new Padding(3, 2, 3, 2);
-            addressControl2.Name = "addressControl2";
-            addressControl2.Size = new Size(390, 172);
-            addressControl2.TabIndex = 6;
+            addressControl.Location = new Point(6, 100);
+            addressControl.Margin = new Padding(3, 2, 3, 2);
+            addressControl.Name = "addressControl";
+            addressControl.Size = new Size(390, 172);
+            addressControl.TabIndex = 6;
             // 
             // label2
             // 
@@ -105,7 +105,6 @@
             tbName.Size = new Size(181, 23);
             tbName.TabIndex = 1;
             tbName.TextChanged += tbName_TextChanged;
-            tbName.Leave += tbName_Leave;
             // 
             // tbID
             // 
@@ -165,7 +164,6 @@
             Margin = new Padding(3, 2, 3, 2);
             Name = "CustomersTab";
             Size = new Size(625, 424);
-            Load += CustomersTab_Load;
             gbCusomers.ResumeLayout(false);
             gbCusomers.PerformLayout();
             ResumeLayout(false);
@@ -184,6 +182,6 @@
         private Button btnDelete;
         private ListBox lbCustomers;
         private Controls.AddressControl addressControl1;
-        private Controls.AddressControl addressControl2;
+        public Controls.AddressControl addressControl;
     }
 }
