@@ -27,14 +27,14 @@ namespace ObjectOrientedPractics.Model.Classes
         {
             get
             {
-                if (_items.Count == 0 || _items == null)
+                if (Items.Count == 0 || Items == null)
                 {
                     return 0.0;
                 }
                 else
                 {
                     double count = 0;
-                    foreach (var i in _items)
+                    foreach (var i in Items)
                     {
                         count += i.Cost;
                     }

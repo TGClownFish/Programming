@@ -207,6 +207,7 @@
             cbCategory.Name = "cbCategory";
             cbCategory.Size = new Size(112, 23);
             cbCategory.TabIndex = 8;
+            cbCategory.TextChanged += cbCategory_SelectedIndexChanged;
             // 
             // label4
             // 
@@ -258,6 +259,7 @@
             tbDescription.ScrollBars = ScrollBars.Vertical;
             tbDescription.Size = new Size(404, 250);
             tbDescription.TabIndex = 3;
+            tbDescription.TextChanged += tbDescrption_TextChanged;
             // 
             // tbName
             // 
@@ -269,6 +271,8 @@
             tbName.ScrollBars = ScrollBars.Vertical;
             tbName.Size = new Size(404, 80);
             tbName.TabIndex = 2;
+            tbName.TextChanged += tbName_TextChanged;
+            tbName.Leave += tbName_Leave;
             // 
             // tbCost
             // 
@@ -278,6 +282,7 @@
             tbCost.Name = "tbCost";
             tbCost.Size = new Size(112, 23);
             tbCost.TabIndex = 1;
+            tbCost.TextChanged += tbCost_TextChanged;
             // 
             // tbID
             // 

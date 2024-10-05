@@ -63,6 +63,15 @@ namespace ObjectOrientedPractics.Model.Classes
         public Cart Cart { get; set; }
 
         /// <summary>
+        /// Спиок заказов покупателя.
+        /// </summary>
+        private List<Order> _orders;
+        /// <summary>
+        /// Хранит Спиок обектов вида <see cref="Model.Classes.Order"/>.
+        /// </summary>
+        public List<Order> Orders { get; set; }
+
+        /// <summary>
         /// Создаёт экземпляр класса <see cref="Customer"/>.
         /// </summary>
         /// <param name="name">Полное имя покупателя. Не более 200 символов.</param>
@@ -78,7 +87,23 @@ namespace ObjectOrientedPractics.Model.Classes
             _amountOfCustomers += 1;
             Name = name;
             Address = new Address(index, country, city, street, building, apartment);
-            _cart = new Cart();
+            Cart = new Cart();
+            Orders = new List<Order>();
+        }
+
+        /// <summary>
+        /// Создаёт экземпляр класса <see cref="Customer"/>.
+        /// </summary>
+        /// <param name="name">Полное имя покупателя. Не более 200 символов.</param>
+        /// <param name="address">Адрес покупателя. Объект класса <see cref="Classes.Address"/>.</param>
+        public Customer (string name, Address address)
+        {
+            _id = _amountOfCustomers;
+            _amountOfCustomers += 1;
+            Name = name;
+            Address = address;
+            Cart = new Cart();
+            Orders = new List<Order>();
         }
         /// <summary>
         /// Создаёт пустой экземпляр класса <see cref="Customer"/>.
@@ -89,7 +114,8 @@ namespace ObjectOrientedPractics.Model.Classes
             _amountOfCustomers += 1;
             Name = "";
             Address = new Address();
-            _cart = new Cart();
+            Cart = new Cart();
+            Orders = new List<Order>();
 
         }
     }

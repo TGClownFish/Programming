@@ -57,7 +57,6 @@
             labelAmount.Size = new Size(39, 25);
             labelAmount.TabIndex = 23;
             labelAmount.Text = "0,0";
-            labelAmount.Click += labelAmount_Click;
             // 
             // label4
             // 
@@ -107,6 +106,7 @@
             cbCustomers.Name = "cbCustomers";
             cbCustomers.Size = new Size(373, 23);
             cbCustomers.TabIndex = 18;
+            cbCustomers.SelectedIndexChanged += cbCustomers_SelectedIndexChanged;
             // 
             // btnClearCart
             // 
@@ -117,6 +117,7 @@
             btnClearCart.TabIndex = 17;
             btnClearCart.Text = "Clear Cart";
             btnClearCart.UseVisualStyleBackColor = true;
+            btnClearCart.Click += btnClearCart_Click;
             // 
             // btnRemoveItem
             // 
@@ -127,6 +128,7 @@
             btnRemoveItem.TabIndex = 16;
             btnRemoveItem.Text = "Remove Item";
             btnRemoveItem.UseVisualStyleBackColor = true;
+            btnRemoveItem.Click += btnRemoveItem_Click;
             // 
             // btnCreateOrder
             // 
@@ -137,6 +139,7 @@
             btnCreateOrder.TabIndex = 15;
             btnCreateOrder.Text = "Create Order";
             btnCreateOrder.UseVisualStyleBackColor = true;
+            btnCreateOrder.Click += btnCreateOrder_Click;
             // 
             // btnAddToCart
             // 
@@ -148,6 +151,7 @@
             btnAddToCart.TabIndex = 14;
             btnAddToCart.Text = "Add To Cart";
             btnAddToCart.UseVisualStyleBackColor = true;
+            btnAddToCart.Click += btnAddToCart_Click;
             // 
             // lbCart
             // 

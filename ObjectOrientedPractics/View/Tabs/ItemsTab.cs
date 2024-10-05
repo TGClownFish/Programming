@@ -71,6 +71,7 @@ namespace ObjectOrientedPractics.View.Tabs
             Items.Add(new());
             lbItems.Items.Add("Unnamed Item");
             lbItems.SelectedIndex = Items.Count - 1;
+        
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
