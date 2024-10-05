@@ -1,4 +1,6 @@
-﻿namespace ObjectOrientedPractics.View.Tabs
+﻿using ObjectOrientedPractics.Model.Classes;
+
+namespace ObjectOrientedPractics.View.Tabs
 {
     partial class CustomersTab
     {
@@ -28,7 +30,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            Model.Address address1 = new Model.Address();
+            Address address1 = new Address();
             label5 = new Label();
             btnAddNew = new Button();
             btnDelete = new Button();

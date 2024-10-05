@@ -5,21 +5,21 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 
-namespace ObjectOrientedPractics.Model
+namespace ObjectOrientedPractics.Model.Classes
 {
     /// <summary>
     /// Хранит данные о покупателе.
     /// </summary>
     public class Customer
     {
-       /// <summary>
-       /// ID покупателя.
-       /// </summary>
+        /// <summary>
+        /// ID покупателя.
+        /// </summary>
         private readonly int _id;
         /// <summary>
         /// Хранит ID покупателя. Только для чтения.
         /// </summary>
-        public int Id 
+        public int Id
         { get { return _id; } }
 
         /// <summary>
@@ -34,13 +34,14 @@ namespace ObjectOrientedPractics.Model
         /// <summary>
         /// Хранит полное имя покупателя. Не более 200 символов.
         /// </summary>
-        public string Name { 
-            get { return _name; } 
-            set 
-            { 
+        public string Name
+        {
+            get { return _name; }
+            set
+            {
                 if (ValueValidator.AssertStringOnLength(value, 200, Name))
-                    _name = value; 
-            } 
+                    _name = value;
+            }
         }
 
         /// <summary>
@@ -48,9 +49,18 @@ namespace ObjectOrientedPractics.Model
         /// </summary>
         private Address _address;
         /// <summary>
-        /// Хранит адрес покупателя. Является объектом класса <see cref="Address"/>.
+        /// Хранит адрес покупателя. Является объектом класса <see cref="Classes.Address"/>.
         /// </summary>
         public Address Address { get; set; }
+
+        /// <summary>
+        /// Корзина.
+        /// </summary>
+        private Cart _cart;
+        /// <summary>
+        /// Хранит данные о корзине. Является объектом класса <see cref="Classes.Cart"/>.
+        /// </summary>
+        public Cart Cart { get; set; }
 
         /// <summary>
         /// Создаёт экземпляр класса <see cref="Customer"/>.
@@ -62,22 +72,24 @@ namespace ObjectOrientedPractics.Model
         /// <param name="street">Улица. Не более 100 символов.</param>
         /// <param name="building">Номер дома. Не более 10 символов.</param>
         /// <param name="apartment">Номер квартиры/помещения. Не более 10 символов.</param>
-        public Customer (string name, string index, string country, string city, string street, string building, string apartment)
+        public Customer(string name, string index, string country, string city, string street, string building, string apartment)
         {
             _id = _amountOfCustomers;
             _amountOfCustomers += 1;
             Name = name;
             Address = new Address(index, country, city, street, building, apartment);
+            _cart = new Cart();
         }
         /// <summary>
         /// Создаёт пустой экземпляр класса <see cref="Customer"/>.
         /// </summary>
-        public Customer ()
+        public Customer()
         {
             _id = _amountOfCustomers;
             _amountOfCustomers += 1;
             Name = "";
             Address = new Address();
+            _cart = new Cart();
 
         }
     }

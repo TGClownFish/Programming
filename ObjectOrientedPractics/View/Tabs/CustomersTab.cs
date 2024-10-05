@@ -8,8 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Text.Json;
-using ObjectOrientedPractics.Model;
 using ObjectOrientedPractics.View.Controls;
+using ObjectOrientedPractics.Model.Classes;
 
 namespace ObjectOrientedPractics.View.Tabs
 {
@@ -18,11 +18,11 @@ namespace ObjectOrientedPractics.View.Tabs
         /// <summary>
         /// Список покупателей.
         /// </summary>
-        private List<Model.Customer> _customers;
+        private List<Customer> _customers;
         /// <summary>
         /// Хранит список покупателей. 
         /// </summary>
-        public List<Model.Customer> Customers 
+        public List<Customer> Customers 
         { 
             get
             {

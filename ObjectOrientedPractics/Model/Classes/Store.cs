@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ObjectOrientedPractics.Model.Classes;
 
 namespace ObjectOrientedPractics.Model
 {
@@ -18,11 +19,11 @@ namespace ObjectOrientedPractics.Model
         public List<Item> Items { get; set; }
 
         /// <summary>
-        /// Список объектов класса <see cref="Model.Customer"/>.
+        /// Список объектов класса <see cref="Classes.Customer"/>.
         /// </summary>
         private List<Customer> _customers = new List<Customer>();
         /// <summary>
-        /// Хранит список объектов класса <see cref="Model.Customer"/>.
+        /// Хранит список объектов класса <see cref="Classes.Customer"/>.
         /// </summary>
         public List <Customer> Customers { get; set; }
 

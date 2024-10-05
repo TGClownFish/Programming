@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace ObjectOrientedPractics.Model
+namespace ObjectOrientedPractics.Model.Classes
 {
     //Хранит данные об адрессе покупателя. 
     public class Address
@@ -19,13 +19,13 @@ namespace ObjectOrientedPractics.Model
         /// <summary>
         /// Хранит данные об почтовый индексе. Целое шестизначное число.
         /// </summary>
-        public string Index 
+        public string Index
         {
             get { return _index; }
-            set 
-            { 
-                if (ValueValidator.ValidateStringOnBeingAPostalIndex(value,Index))
-                    _index = value; 
+            set
+            {
+                if (ValueValidator.ValidateStringOnBeingAPostalIndex(value, Index))
+                    _index = value;
             }
         }
 
@@ -123,7 +123,7 @@ namespace ObjectOrientedPractics.Model
         /// <param name="street">Улица. Не более 100 символов.</param>
         /// <param name="building">Номер дома. Не более 10 символов.</param>
         /// <param name="apartment">Номер квартиры/помещения. Не более 10 символов.</param>
-        public Address (string index, string country, string city, string street, string building, string apartment)
+        public Address(string index, string country, string city, string street, string building, string apartment)
         {
             _index = index;
             _country = country;
@@ -136,7 +136,7 @@ namespace ObjectOrientedPractics.Model
         /// <summary>
         /// Создаёт пустой экземпляр класса <see cref="Address"/>.
         /// </summary>
-        public Address () 
+        public Address()
         {
             _index = "000000";
             _country = "";

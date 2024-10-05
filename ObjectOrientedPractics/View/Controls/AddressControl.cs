@@ -1,4 +1,4 @@
-﻿using ObjectOrientedPractics.Model;
+﻿using ObjectOrientedPractics.Model.Classes;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,8 +14,8 @@ namespace ObjectOrientedPractics.View.Controls
 {
     public partial class AddressControl : UserControl
     {
-        private Model.Address  _address = new Model.Address();
-        public Model.Address Address
+        private Address  _address = new Address();
+        public Address Address
         {
             get 
             { 
