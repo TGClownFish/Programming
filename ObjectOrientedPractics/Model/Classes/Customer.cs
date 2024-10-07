@@ -12,15 +12,11 @@ namespace ObjectOrientedPractics.Model.Classes
     /// </summary>
     public class Customer
     {
-        /// <summary>
-        /// ID покупателя.
-        /// </summary>
-        private readonly int _id;
+
         /// <summary>
         /// Хранит ID покупателя. Только для чтения.
         /// </summary>
-        public int Id
-        { get { return _id; } }
+        public int Id { get; }
 
         /// <summary>
         /// Количество покупателей. Статично.
@@ -83,7 +79,7 @@ namespace ObjectOrientedPractics.Model.Classes
         /// <param name="apartment">Номер квартиры/помещения. Не более 10 символов.</param>
         public Customer(string name, string index, string country, string city, string street, string building, string apartment)
         {
-            _id = _amountOfCustomers;
+            Id = _amountOfCustomers;
             _amountOfCustomers += 1;
             Name = name;
             Address = new Address(index, country, city, street, building, apartment);
@@ -98,7 +94,7 @@ namespace ObjectOrientedPractics.Model.Classes
         /// <param name="address">Адрес покупателя. Объект класса <see cref="Classes.Address"/>.</param>
         public Customer (string name, Address address)
         {
-            _id = _amountOfCustomers;
+            Id = _amountOfCustomers;
             _amountOfCustomers += 1;
             Name = name;
             Address = address;
@@ -110,7 +106,7 @@ namespace ObjectOrientedPractics.Model.Classes
         /// </summary>
         public Customer()
         {
-            _id = _amountOfCustomers;
+            Id = _amountOfCustomers;
             _amountOfCustomers += 1;
             Name = "";
             Address = new Address();

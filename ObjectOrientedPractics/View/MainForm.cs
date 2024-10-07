@@ -15,14 +15,19 @@ namespace ObjectOrientedPractics
             customersTab.Customers = Store.Customers;
             cartsTab1.Items = Store.Items;
             cartsTab1.Customers = Store.Customers;
+            ordersTab1.Customers = Store.Customers;
         }
 
         private void tabControl1_TabIndexChanged(object sender, EventArgs e)
         {
-            //if (tabControl1.SelectedIndex == 2)
-            //{
-            cartsTab1.RefreshData();
-            //}
+            if (tabControl1.SelectedIndex == 2)
+            {
+                cartsTab1.RefreshData();
+            }
+            if (tabControl1.SelectedIndex == 3)
+            {
+                ordersTab1.RefreshData();
+            }
         }
     }
 }

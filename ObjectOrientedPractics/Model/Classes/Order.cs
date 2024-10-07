@@ -11,10 +11,7 @@ namespace ObjectOrientedPractics.Model.Classes
     /// </summary>
     public class Order
     {
-        /// <summary>
-        /// ID покупателя.
-        /// </summary>
-        private int _id;
+
         /// <summary>
         /// Хранит данные об ID покупателя.
         /// </summary>
@@ -26,27 +23,15 @@ namespace ObjectOrientedPractics.Model.Classes
         private static int _amountOfOrders = 0;
 
         /// <summary>
-        /// Дата создания.
-        /// </summary>
-        private DateTime _createDate;
-        /// <summary>
         /// Хранит данные о дате создания.
         /// </summary>
         public DateTime CreateDate { get;}
 
         /// <summary>
-        /// Адресс покупателя.
-        /// </summary>
-        private Address _address;
-        /// <summary>
         /// Хранит данные об адрессе покупателя. Объект класса <see cref="Classes.Address"/>.
         /// </summary>
         public Address Address { get; set; }
 
-        /// <summary>
-        /// Список товаров.
-        /// </summary>
-        private List<Item> _items;
         /// <summary>
         /// Хранит список объектов класса <see cref="Item"/>.
         /// </summary>
@@ -59,14 +44,14 @@ namespace ObjectOrientedPractics.Model.Classes
         {
             get
             {
-                if (_items.Count == 0 || _items == null)
+                if (Items.Count == 0 || Items == null)
                 {
                     return 0.0;
                 }
                 else
                 {
                     double count = 0;
-                    foreach (var i in _items)
+                    foreach (var i in Items)
                     {
                         count += i.Cost;
                     }
@@ -94,7 +79,7 @@ namespace ObjectOrientedPractics.Model.Classes
         /// </summary>
         public Order ()
         {
-            _id = _amountOfOrders;
+            Id = _amountOfOrders;
             _amountOfOrders++;
             CreateDate= DateTime.Today;
             Address = new Address();

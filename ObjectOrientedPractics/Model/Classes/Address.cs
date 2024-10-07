@@ -114,6 +114,11 @@ namespace ObjectOrientedPractics.Model.Classes
             }
         }
 
+        public string ConvertToString()
+        {
+            return (Index + ", " + Country + ", " + City + ", " + Street + ", " + Building + ", " + Apartment);
+        }
+
         /// <summary>
         /// Создаёт экземпляр класса <see cref="Address"/>.
         /// </summary>
