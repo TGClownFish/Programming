@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ObjectOrientedPractics.Model.Enums;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -59,6 +60,10 @@ namespace ObjectOrientedPractics.Model.Classes
                 }
             }
         }
+        /// <summary>
+        /// Хранит данные о статусе заказа. Является перечислением типа <see cref="OrderStatus"/>.
+        /// </summary>
+        public OrderStatus Status { get; set; }
 
         /// <summary>
         /// Создаёт объект класса <see cref="Order"/>.
@@ -69,9 +74,10 @@ namespace ObjectOrientedPractics.Model.Classes
         {
             Id = _amountOfOrders;
             _amountOfOrders++;
-            CreateDate = DateTime.Today;
+            CreateDate = DateTime.Now;
             Address = address;
             Items = items;
+            Status = 0;
         }
 
         /// <summary>
@@ -81,9 +87,10 @@ namespace ObjectOrientedPractics.Model.Classes
         {
             Id = _amountOfOrders;
             _amountOfOrders++;
-            CreateDate= DateTime.Today;
+            CreateDate= DateTime.Now;
             Address = new Address();
             Items = new List<Item>();
+            Status = 0;
         }
     }
 }

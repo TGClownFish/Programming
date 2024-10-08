@@ -194,8 +194,10 @@ namespace ObjectOrientedPractics.View.Tabs
             dgvOrders.Location = new Point(3, 21);
             dgvOrders.MultiSelect = false;
             dgvOrders.Name = "dgvOrders";
+            dgvOrders.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvOrders.Size = new Size(304, 387);
             dgvOrders.TabIndex = 31;
+            dgvOrders.CellContentClick += dgvOrders_CellContentClick;
             // 
             // ColumnId
             // 

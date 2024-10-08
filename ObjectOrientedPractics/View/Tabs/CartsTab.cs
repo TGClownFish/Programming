@@ -28,7 +28,7 @@ namespace ObjectOrientedPractics.View.Tabs
             if (cbCustomers.SelectedIndex >= 0)
             {
                 _curentCustomer = Customers[cbCustomers.SelectedIndex];
-                if (_curentCustomer.Cart.Items.Count > 0 || _curentCustomer.Cart != null)
+                if (_curentCustomer.Cart.Items.Count > 0 && _curentCustomer.Cart != null)
                 {
                     lbCart.Items.Clear();
                     foreach (var i in _curentCustomer.Cart.Items)
@@ -42,7 +42,7 @@ namespace ObjectOrientedPractics.View.Tabs
 
         private void btnAddToCart_Click(object sender, EventArgs e)
         {
-            if (lbItems.SelectedIndex >= 0 || _curentCustomer.Cart != null)
+            if (lbItems.SelectedIndex >= 0 && _curentCustomer.Cart != null)
             {
                 _curentCustomer.Cart.Items.Add(Items[lbItems.SelectedIndex]);
                 lbCart.Items.Add(Items[lbItems.SelectedIndex].Name);
@@ -54,7 +54,7 @@ namespace ObjectOrientedPractics.View.Tabs
         {
             if (lbCart.Items.Count > 0)
             {
-                _curentCustomer.Orders.Add(new Model.Classes.Order(_curentCustomer.Address, _curentCustomer.Cart.Items));
+                _curentCustomer.Orders.Add(new Model.Classes.Order(_curentCustomer.Address, new List<Model.Item>(_curentCustomer.Cart.Items)));
                 _curentCustomer.Cart.Items.Clear();
                 lbCart.Items.Clear();
             }
