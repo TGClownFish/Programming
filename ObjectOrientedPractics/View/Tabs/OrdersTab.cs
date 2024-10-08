@@ -36,9 +36,6 @@ namespace ObjectOrientedPractics.View.Tabs
                     }
                 }
             }
-            //if (this.dgvOrders.CurrentCell.Selected!=null)
-            this.dgvOrders.CurrentRow.Selected = false;
-
         }
 
         private void dgvOrders_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -61,6 +58,7 @@ namespace ObjectOrientedPractics.View.Tabs
                 cbStatus.Text = "";
                 addressControl1.Address = new Address();
                 lbOrderItems.Items.Clear();
+                labelAmount.Text = "0.0";
             }
         }
     }
