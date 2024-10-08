@@ -68,6 +68,7 @@ namespace ObjectOrientedPractics.View.Tabs
             tbId.Dock = DockStyle.Fill;
             tbId.Location = new Point(3, 18);
             tbId.Name = "tbId";
+            tbId.ReadOnly = true;
             tbId.Size = new Size(116, 23);
             tbId.TabIndex = 1;
             // 
@@ -101,6 +102,7 @@ namespace ObjectOrientedPractics.View.Tabs
             tbCreated.Dock = DockStyle.Fill;
             tbCreated.Location = new Point(125, 18);
             tbCreated.Name = "tbCreated";
+            tbCreated.ReadOnly = true;
             tbCreated.Size = new Size(116, 23);
             tbCreated.TabIndex = 2;
             // 
