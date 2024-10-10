@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             tabPage2 = new TabPage();
             customersTab = new View.Tabs.CustomersTab();
             tabPage1 = new TabPage();
@@ -140,6 +141,7 @@
             // ordersTab1
             // 
             ordersTab1.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            ordersTab1.Customers = null;
             ordersTab1.Dock = DockStyle.Fill;
             ordersTab1.Location = new Point(0, 0);
             ordersTab1.Name = "ordersTab1";
@@ -155,6 +157,7 @@
             Margin = new Padding(3, 2, 3, 2);
             MinimumSize = new Size(724, 461);
             Name = "MainForm";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Form1";
             tabPage2.ResumeLayout(false);
             tabPage1.ResumeLayout(false);

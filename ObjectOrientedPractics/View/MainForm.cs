@@ -9,8 +9,7 @@ namespace ObjectOrientedPractics
         public MainForm()
         {
             InitializeComponent();
-            Store.Items.Add(new Model.Item("f", "", 42, 0));
-            Store.Customers.Add(new Model.Classes.Customer("4",new Model.Classes.Address()));
+            //AddDefaultData();
             itemsTab.Items = Store.Items;
             customersTab.Customers = Store.Customers;
             cartsTab1.Items = Store.Items;
@@ -28,6 +27,12 @@ namespace ObjectOrientedPractics
             {
                 ordersTab1.RefreshData();
             }
+        }
+
+        public void AddDefaultData()
+        {
+            Store.Items.Add(new Model.Item("f", "", 42, 0));
+            Store.Customers.Add(new Model.Classes.Customer("4", new Model.Classes.Address("000100", "4", "55", "11", "ff", "aa")));
         }
     }
 }

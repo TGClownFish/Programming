@@ -31,7 +31,7 @@ namespace ObjectOrientedPractics.View.Tabs
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            Address address1 = new Address();
+            Address address2 = new Address();
             tbId = new TextBox();
             cbStatus = new ComboBox();
             addressControl1 = new Controls.AddressControl();
@@ -80,16 +80,17 @@ namespace ObjectOrientedPractics.View.Tabs
             cbStatus.Name = "cbStatus";
             cbStatus.Size = new Size(116, 23);
             cbStatus.TabIndex = 3;
+            cbStatus.SelectedIndexChanged += cbStatus_SelectedIndexChanged;
             // 
             // addressControl1
             // 
-            address1.Apartment = "";
-            address1.Building = "";
-            address1.City = "";
-            address1.Country = "";
-            address1.Index = "000000";
-            address1.Street = "";
-            addressControl1.Address = address1;
+            address2.Apartment = "";
+            address2.Building = "";
+            address2.City = "";
+            address2.Country = "";
+            address2.Index = "000000";
+            address2.Street = "";
+            addressControl1.Address = address2;
             addressControl1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             addressControl1.Location = new Point(3, 49);
             addressControl1.Margin = new Padding(3, 2, 3, 2);
@@ -118,11 +119,11 @@ namespace ObjectOrientedPractics.View.Tabs
             // 
             // labelAmount
             // 
-            labelAmount.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            labelAmount.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             labelAmount.AutoSize = true;
             labelAmount.Font = new Font("Segoe UI", 14F, FontStyle.Bold);
             labelAmount.ImageAlign = ContentAlignment.MiddleRight;
-            labelAmount.Location = new Point(268, 426);
+            labelAmount.Location = new Point(4, 432);
             labelAmount.Name = "labelAmount";
             labelAmount.Size = new Size(39, 25);
             labelAmount.TabIndex = 25;
@@ -133,7 +134,7 @@ namespace ObjectOrientedPractics.View.Tabs
             label4.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            label4.Location = new Point(252, 411);
+            label4.Location = new Point(4, 417);
             label4.Name = "label4";
             label4.Size = new Size(55, 15);
             label4.TabIndex = 24;
@@ -196,10 +197,11 @@ namespace ObjectOrientedPractics.View.Tabs
             dgvOrders.Location = new Point(3, 21);
             dgvOrders.MultiSelect = false;
             dgvOrders.Name = "dgvOrders";
+            dgvOrders.ReadOnly = true;
             dgvOrders.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvOrders.Size = new Size(304, 387);
             dgvOrders.TabIndex = 31;
-            dgvOrders.CellContentClick += dgvOrders_CellContentClick;
+            dgvOrders.CurrentCellChanged += dgvOrders_CurrentCellChanged;
             // 
             // ColumnId
             // 

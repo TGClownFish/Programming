@@ -58,11 +58,11 @@
             // 
             // labelAmount
             // 
-            labelAmount.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            labelAmount.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             labelAmount.AutoSize = true;
             labelAmount.Font = new Font("Segoe UI", 14F, FontStyle.Bold);
             labelAmount.ImageAlign = ContentAlignment.MiddleRight;
-            labelAmount.Location = new Point(350, 68);
+            labelAmount.Location = new Point(3, 68);
             labelAmount.Name = "labelAmount";
             labelAmount.Size = new Size(39, 25);
             labelAmount.TabIndex = 23;
@@ -73,7 +73,7 @@
             label4.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            label4.Location = new Point(334, 53);
+            label4.Location = new Point(3, 53);
             label4.Name = "label4";
             label4.Size = new Size(55, 15);
             label4.TabIndex = 22;

@@ -12,10 +12,17 @@ namespace ObjectOrientedPractics.View.Tabs
 {
     public partial class CartsTab : UserControl
     {
+        /// <summary>
+        /// Хранит данные о товарах. Является списком типа <see cref="Model.Item"/>.
+        /// </summary>
         public List<Model.Item> Items { get; set; }
-
+        /// <summary>
+        /// Хранит данные о покупателях. Является списком типа <see cref="Model.Classes.Customer"/>.
+        /// </summary>
         public List<Model.Classes.Customer> Customers { get; set; }
-
+        /// <summary>
+        /// Выбранные покупатель.
+        /// </summary>
         private Model.Classes.Customer _curentCustomer;
         public CartsTab()
         {
@@ -77,7 +84,7 @@ namespace ObjectOrientedPractics.View.Tabs
             labelAmount.Text = "0.0";
         }
 
-        public void RefreshData ()
+        public void RefreshData()
         {
             lbItems.Items.Clear();
             cbCustomers.Items.Clear();
