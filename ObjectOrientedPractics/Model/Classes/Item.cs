@@ -13,14 +13,13 @@ namespace ObjectOrientedPractics.Model
     public class Item
     {
         ///<summary>
-        /// ID товара.
+        /// ID товара. Только для чтения.
         ///</summary>
         private readonly int _id;
         ///<summary>
         /// Хранит ID товара. Только для чтения.
         ///</summary>
-        public int Id
-        { get { return _id; } }
+        public int Id { get; }
 
         ///<summary>
         /// Количество товаров. Статично.
@@ -79,15 +78,11 @@ namespace ObjectOrientedPractics.Model
                     _cost = value; 
             }
         }
-        /// <summary>
-        /// Rатегория товара.
-        /// </summary>
-        private Category _category;
+
         /// <summary>
         /// Хранит категорию товара. Является перечилсением типа <see cref="Category"/>.
         /// </summary>
-        public Category Category
-        { get; set; }
+        public Category Category { get; set; }
 
         /// <summary>
         /// Создаёт экземпляр класса <see cref="Item"/>.
@@ -98,7 +93,7 @@ namespace ObjectOrientedPractics.Model
         /// <param name="category">Хранит категорию товара. Является перечилсением типа <see cref="Category"/>.</param>
         public Item (string name, string description, int cost, Category category)
         {
-            _id = _amountOfItems;
+            Id = _amountOfItems;
             _amountOfItems += 1;
             Name = name;
             Description = description;
@@ -110,7 +105,7 @@ namespace ObjectOrientedPractics.Model
         /// </summary>
         public Item() 
         { 
-            _id = _amountOfItems;
+            Id = _amountOfItems;
             _amountOfItems += 1;
             Name = "";
             Description = "";

@@ -41,27 +41,15 @@ namespace ObjectOrientedPractics.Model.Classes
         }
 
         /// <summary>
-        /// Адрес покупателя.
-        /// </summary>
-        private Address _address;
-        /// <summary>
         /// Хранит адрес покупателя. Является объектом класса <see cref="Classes.Address"/>.
         /// </summary>
         public Address Address { get; set; }
 
         /// <summary>
-        /// Корзина.
-        /// </summary>
-        private Cart _cart;
-        /// <summary>
         /// Хранит данные о корзине. Является объектом класса <see cref="Classes.Cart"/>.
         /// </summary>
         public Cart Cart { get; set; }
 
-        /// <summary>
-        /// Спиок заказов покупателя.
-        /// </summary>
-        private List<Order> _orders;
         /// <summary>
         /// Хранит Спиок обектов вида <see cref="Model.Classes.Order"/>.
         /// </summary>

@@ -11,10 +11,7 @@ namespace ObjectOrientedPractics.Model.Classes
     /// </summary>
     public class Cart
     {
-        /// <summary>
-        /// Список товаров.
-        /// </summary>
-        private List<Item> _items;
+
         /// <summary>
         /// Хранит список объектов класса <see cref="Item"/>.
         /// </summary>

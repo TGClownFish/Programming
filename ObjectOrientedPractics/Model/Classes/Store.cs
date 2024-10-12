@@ -9,19 +9,12 @@ namespace ObjectOrientedPractics.Model
 {
     public class Store
     {
-        /// <summary>
-        /// Список объектов класса <see cref="Item"/>.
-        /// </summary>
-        private List<Item> _items = new List<Item>();
+
         /// <summary>
         /// Хранит список объектов класса <see cref="Model.Item"/>.
         /// </summary>
         public List<Item> Items { get; set; }
 
-        /// <summary>
-        /// Список объектов класса <see cref="Classes.Customer"/>.
-        /// </summary>
-        private List<Customer> _customers = new List<Customer>();
         /// <summary>
         /// Хранит список объектов класса <see cref="Classes.Customer"/>.
         /// </summary>
