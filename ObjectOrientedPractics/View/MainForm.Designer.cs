@@ -116,7 +116,7 @@
             tabPageCarts.Controls.Add(cartsTab1);
             tabPageCarts.Location = new Point(4, 24);
             tabPageCarts.Name = "tabPageCarts";
-            tabPageCarts.Size = new Size(192, 72);
+            tabPageCarts.Size = new Size(700, 394);
             tabPageCarts.TabIndex = 2;
             tabPageCarts.Text = "Carts";
             tabPageCarts.UseVisualStyleBackColor = true;
@@ -129,7 +129,7 @@
             cartsTab1.Items = null;
             cartsTab1.Location = new Point(0, 0);
             cartsTab1.Name = "cartsTab1";
-            cartsTab1.Size = new Size(192, 72);
+            cartsTab1.Size = new Size(700, 394);
             cartsTab1.TabIndex = 0;
             // 
             // tabPageOrders
@@ -137,7 +137,7 @@
             tabPageOrders.Controls.Add(ordersTab1);
             tabPageOrders.Location = new Point(4, 24);
             tabPageOrders.Name = "tabPageOrders";
-            tabPageOrders.Size = new Size(192, 72);
+            tabPageOrders.Size = new Size(700, 394);
             tabPageOrders.TabIndex = 3;
             tabPageOrders.Text = "Orders";
             tabPageOrders.UseVisualStyleBackColor = true;
@@ -149,7 +149,7 @@
             ordersTab1.Dock = DockStyle.Fill;
             ordersTab1.Location = new Point(0, 0);
             ordersTab1.Name = "ordersTab1";
-            ordersTab1.Size = new Size(192, 72);
+            ordersTab1.Size = new Size(700, 394);
             ordersTab1.TabIndex = 0;
             // 
             // tabPage3
@@ -158,7 +158,7 @@
             tabPage3.Location = new Point(4, 24);
             tabPage3.Name = "tabPage3";
             tabPage3.Padding = new Padding(3);
-            tabPage3.Size = new Size(700, 394);
+            tabPage3.Size = new Size(192, 72);
             tabPage3.TabIndex = 4;
             tabPage3.Text = "tabPage3";
             tabPage3.UseVisualStyleBackColor = true;
@@ -168,7 +168,7 @@
             priorityOrdersTab1.Dock = DockStyle.Fill;
             priorityOrdersTab1.Location = new Point(3, 3);
             priorityOrdersTab1.Name = "priorityOrdersTab1";
-            priorityOrdersTab1.Size = new Size(694, 388);
+            priorityOrdersTab1.Size = new Size(186, 66);
             priorityOrdersTab1.TabIndex = 0;
             // 
             // MainForm

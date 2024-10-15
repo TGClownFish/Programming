@@ -40,10 +40,10 @@
             tableLayoutPanel2 = new TableLayoutPanel();
             splitContainer1 = new SplitContainer();
             splitContainer2 = new SplitContainer();
-            btnClearCart = new Button();
-            btnRemoveItem = new Button();
-            btnCreateOrder = new Button();
             tableLayoutPanel1 = new TableLayoutPanel();
+            btnCreateOrder = new Button();
+            btnRemoveItem = new Button();
+            btnClearCart = new Button();
             tableLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
             splitContainer1.Panel1.SuspendLayout();
@@ -70,7 +70,6 @@
             // 
             // label4
             // 
-            label4.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             label4.Location = new Point(3, 53);
@@ -206,39 +205,6 @@
             splitContainer2.SplitterDistance = 338;
             splitContainer2.TabIndex = 25;
             // 
-            // btnClearCart
-            // 
-            btnClearCart.Dock = DockStyle.Fill;
-            btnClearCart.Location = new Point(305, 3);
-            btnClearCart.Name = "btnClearCart";
-            btnClearCart.Size = new Size(84, 41);
-            btnClearCart.TabIndex = 17;
-            btnClearCart.Text = "Clear Cart";
-            btnClearCart.UseVisualStyleBackColor = true;
-            btnClearCart.Click += btnClearCart_Click;
-            // 
-            // btnRemoveItem
-            // 
-            btnRemoveItem.Dock = DockStyle.Fill;
-            btnRemoveItem.Location = new Point(217, 3);
-            btnRemoveItem.Name = "btnRemoveItem";
-            btnRemoveItem.Size = new Size(82, 41);
-            btnRemoveItem.TabIndex = 16;
-            btnRemoveItem.Text = "Remove Item";
-            btnRemoveItem.UseVisualStyleBackColor = true;
-            btnRemoveItem.Click += btnRemoveItem_Click;
-            // 
-            // btnCreateOrder
-            // 
-            btnCreateOrder.Dock = DockStyle.Fill;
-            btnCreateOrder.Location = new Point(3, 3);
-            btnCreateOrder.Name = "btnCreateOrder";
-            btnCreateOrder.Size = new Size(82, 41);
-            btnCreateOrder.TabIndex = 15;
-            btnCreateOrder.Text = "Create Order";
-            btnCreateOrder.UseVisualStyleBackColor = true;
-            btnCreateOrder.Click += btnCreateOrder_Click;
-            // 
             // tableLayoutPanel1
             // 
             tableLayoutPanel1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
@@ -256,6 +222,39 @@
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
             tableLayoutPanel1.Size = new Size(392, 47);
             tableLayoutPanel1.TabIndex = 24;
+            // 
+            // btnCreateOrder
+            // 
+            btnCreateOrder.Dock = DockStyle.Fill;
+            btnCreateOrder.Location = new Point(3, 3);
+            btnCreateOrder.Name = "btnCreateOrder";
+            btnCreateOrder.Size = new Size(82, 41);
+            btnCreateOrder.TabIndex = 15;
+            btnCreateOrder.Text = "Create Order";
+            btnCreateOrder.UseVisualStyleBackColor = true;
+            btnCreateOrder.Click += btnCreateOrder_Click;
+            // 
+            // btnRemoveItem
+            // 
+            btnRemoveItem.Dock = DockStyle.Fill;
+            btnRemoveItem.Location = new Point(217, 3);
+            btnRemoveItem.Name = "btnRemoveItem";
+            btnRemoveItem.Size = new Size(82, 41);
+            btnRemoveItem.TabIndex = 16;
+            btnRemoveItem.Text = "Remove Item";
+            btnRemoveItem.UseVisualStyleBackColor = true;
+            btnRemoveItem.Click += btnRemoveItem_Click;
+            // 
+            // btnClearCart
+            // 
+            btnClearCart.Dock = DockStyle.Fill;
+            btnClearCart.Location = new Point(305, 3);
+            btnClearCart.Name = "btnClearCart";
+            btnClearCart.Size = new Size(84, 41);
+            btnClearCart.TabIndex = 17;
+            btnClearCart.Text = "Clear Cart";
+            btnClearCart.UseVisualStyleBackColor = true;
+            btnClearCart.Click += btnClearCart_Click;
             // 
             // CartsTab
             // 
