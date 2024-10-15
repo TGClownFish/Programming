@@ -10,22 +10,21 @@ namespace ObjectOrientedPractics.Model
     ///<summary>
     /// Хранит данные о товаре.
     ///</summary>
-    internal class Item
+    public class Item
     {
         ///<summary>
-        /// ID товара.
+        /// ID товара. Только для чтения.
         ///</summary>
         private readonly int _id;
         ///<summary>
         /// Хранит ID товара. Только для чтения.
         ///</summary>
-        public int Id
-        { get { return _id; } }
+        public int Id { get; }
 
         ///<summary>
         /// Количество товаров. Статично.
         ///</summary>
-        private static int _amountOfItems = 1;
+        private static int _amountOfItems = 0;
 
         ///<summary>
         /// Название товара.
@@ -81,19 +80,37 @@ namespace ObjectOrientedPractics.Model
         }
 
         /// <summary>
+        /// Хранит категорию товара. Является перечилсением типа <see cref="Category"/>.
+        /// </summary>
+        public Category Category { get; set; }
+
+        /// <summary>
         /// Создаёт экземпляр класса <see cref="Item"/>.
         /// </summary>
         /// <param name="name">Название товара. Не более 200 символов.</param>
         /// <param name="description">Описание товара. Не более 1000 символов.</param>
         /// <param name="cost">Стоимость товара. От 0 до 200000.</param>
-        public Item (string name, string description, int cost)
+        /// <param name="category">Хранит категорию товара. Является перечилсением типа <see cref="Category"/>.</param>
+        public Item (string name, string description, int cost, Category category)
         {
-            _id = _amountOfItems;
+            Id = _amountOfItems;
             _amountOfItems += 1;
             Name = name;
             Description = description;
             Cost = cost;
-            
+            Category = category;
+        }
+        /// <summary>
+        /// Создаёт пустой экземпляр класса <see cref="Item"/>.
+        /// </summary>
+        public Item() 
+        { 
+            Id = _amountOfItems;
+            _amountOfItems += 1;
+            Name = "";
+            Description = "";
+            Cost = 0;
+            Category = 0;
         }
 
         public Item ()

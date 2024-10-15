@@ -9,26 +9,52 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Text.Json;
 using System.IO;
-using System.Security.Policy;
+using ObjectOrientedPractics.Model;
 
 namespace ObjectOrientedPractics.View.Tabs
 {
     public partial class ItemsTab : UserControl
     {
-        List<Model.Item> _items = new List<Model.Item>();
+        /// <summary>
+        /// Список товаров.
+        /// </summary>
+        private List<Model.Item> _items;
+        /// <summary>
+        /// Хранит список товаров.
+        /// </summary>
+        public List<Model.Item> Items 
+        { 
+            get 
+            { 
+                return _items; 
+            } 
+            set 
+            { 
+                _items = value; 
+
+            }
+        }
+        /// <summary>
+        /// Выбранный товар.
+        /// </summary>
+        private Item _currentItem;
+
         public ItemsTab()
         {
             InitializeComponent();
+            cbCategory.Items.AddRange(Enum.GetNames(typeof(Model.Category)));
         }
 
         private void lbItems_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (lbItems.SelectedIndex >= 0)
             {
-                tbID.Text = Convert.ToString(_items[lbItems.SelectedIndex].Id);
-                tbCost.Text = Convert.ToString(_items[lbItems.SelectedIndex].Cost);
-                tbName.Text = Convert.ToString(_items[lbItems.SelectedIndex].Name);
-                tbDescription.Text = Convert.ToString(_items[lbItems.SelectedIndex].Description);
+                _currentItem = Items[lbItems.SelectedIndex];
+                tbID.Text = Convert.ToString(_currentItem.Id);
+                tbCost.Text = Convert.ToString(_currentItem.Cost);
+                tbName.Text = Convert.ToString(_currentItem.Name);
+                tbDescription.Text = Convert.ToString(_currentItem.Description);
+                cbCategory.SelectedIndex = (int) _currentItem.Category;
             }
             else
             {
@@ -36,21 +62,22 @@ namespace ObjectOrientedPractics.View.Tabs
                 tbCost.Text = "";
                 tbName.Text = "";
                 tbDescription.Text = "";
+                cbCategory.SelectedIndex = -1;
             }
         }
 
         private void btnAddNew_Click(object sender, EventArgs e)
         {
-            _items.Add(new("", "", 0));
+            Items.Add(new());
             lbItems.Items.Add("Unnamed Item");
-            lbItems.SelectedIndex = _items.Count - 1;
+            lbItems.SelectedIndex = Items.Count - 1;
+        
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            _items.RemoveAt(lbItems.SelectedIndex);
+            Items.RemoveAt(lbItems.SelectedIndex);
             lbItems.Items.RemoveAt(lbItems.SelectedIndex);
-            Save();
         }
 
         private void tbCost_TextChanged(object sender, EventArgs e)
@@ -59,9 +86,8 @@ namespace ObjectOrientedPractics.View.Tabs
             {
                 try
                 {
-                    _items[lbItems.SelectedIndex].Cost = Convert.ToInt32(tbCost.Text);
+                    _currentItem.Cost = Convert.ToInt32(tbCost.Text);
                     tbCost.BackColor = Color.White;
-                    Save();
                 }
                 catch
                 {
@@ -76,14 +102,13 @@ namespace ObjectOrientedPractics.View.Tabs
             {
                 try
                 {
-                    _items[lbItems.SelectedIndex].Name = tbName.Text;
-                    tbCost.BackColor = Color.White;
-                    Save();
+                    _currentItem.Name = tbName.Text;
+                    tbName.BackColor = Color.White;
 
                 }
                 catch
                 {
-                    tbCost.BackColor = Color.LightPink;
+                    tbName.BackColor = Color.LightPink;
                 }
             }
         }
@@ -94,13 +119,27 @@ namespace ObjectOrientedPractics.View.Tabs
             {
                 try
                 {
-                    _items[lbItems.SelectedIndex].Description = tbDescription.Text;
-                    tbCost.BackColor = Color.White;
-                    Save();
+                    _currentItem.Description = tbDescription.Text;
+                    tbDescription.BackColor = Color.White;
                 }
                 catch
                 {
-                    tbCost.BackColor = Color.LightPink;
+                    tbDescription.BackColor = Color.LightPink;
+                }
+            }
+        }
+        private void cbCategory_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (lbItems.SelectedIndex >= 0)
+            {
+                try
+                {
+                    _currentItem.Category = (Category) cbCategory.SelectedIndex;
+                    cbCategory.BackColor = Color.White;
+                }
+                catch
+                {
+                    cbCategory.BackColor = Color.LightPink;
                 }
             }
         }
@@ -110,38 +149,6 @@ namespace ObjectOrientedPractics.View.Tabs
             if (lbItems.SelectedIndex >= 0)
             {
                 lbItems.Items[lbItems.SelectedIndex] = tbName.Text;
-            }
-        }
-
-        private void ItemsTab_Load(object sender, EventArgs e)
-        {
-            string newLine;
-            string filePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
-              "Lysenko\\ObjectOrientedPractics\\Items.json");
-            using (StreamReader reader = new StreamReader(filePath))
-            {
-                newLine = reader.ReadLine();
-                while (newLine != "" && newLine != null)
-                {
-                    _items.Add(JsonSerializer.Deserialize<Model.Item>(newLine));
-                    newLine = reader.ReadLine();
-                }
-                foreach (var i in _items)
-                {
-                    lbItems.Items.Add(i.Name);
-                }
-            }
-        }
-        public void Save()
-        {
-            string filePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
-                "Lysenko\\ObjectOrientedPractics\\Items.json");
-            using (StreamWriter stream = new StreamWriter(filePath, false))
-            {
-                for (int i = 0; i < lbItems.Items.Count; i++)
-                {
-                    stream.WriteLine(JsonSerializer.Serialize(_items[i]));
-                }
             }
         }
     }
