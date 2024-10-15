@@ -14,15 +14,15 @@ namespace ObjectOrientedPractics.View.Controls
 {
     public partial class AddressControl : UserControl
     {
-        private Address  _address = new Address();
+        private Address _address = new Address();
         public Address Address
         {
-            get 
-            { 
-                return _address; 
+            get
+            {
+                return _address;
             }
             set
-            { 
+            {
                 _address = value;
                 tbPostIndex.Text = _address.Index;
                 tbCountry.Text = _address.Country;
@@ -36,7 +36,7 @@ namespace ObjectOrientedPractics.View.Controls
         public AddressControl()
         {
             InitializeComponent();
-            
+
         }
 
         private void tbPostIndex_TextChanged(object sender, EventArgs e)
@@ -46,7 +46,7 @@ namespace ObjectOrientedPractics.View.Controls
                 _address.Index = tbPostIndex.Text;
                 tbPostIndex.BackColor = Color.White;
             }
-            catch 
+            catch
             {
                 tbPostIndex.BackColor = Color.LightPink;
             }

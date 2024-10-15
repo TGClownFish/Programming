@@ -34,18 +34,17 @@
             label2 = new Label();
             label1 = new Label();
             cbCustomers = new ComboBox();
-            btnClearCart = new Button();
-            btnRemoveItem = new Button();
-            btnCreateOrder = new Button();
             btnAddToCart = new Button();
             lbCart = new ListBox();
             lbItems = new ListBox();
             tableLayoutPanel2 = new TableLayoutPanel();
-            tableLayoutPanel1 = new TableLayoutPanel();
             splitContainer1 = new SplitContainer();
             splitContainer2 = new SplitContainer();
+            btnClearCart = new Button();
+            btnRemoveItem = new Button();
+            btnCreateOrder = new Button();
+            tableLayoutPanel1 = new TableLayoutPanel();
             tableLayoutPanel2.SuspendLayout();
-            tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
             splitContainer1.Panel1.SuspendLayout();
             splitContainer1.Panel2.SuspendLayout();
@@ -54,6 +53,7 @@
             splitContainer2.Panel1.SuspendLayout();
             splitContainer2.Panel2.SuspendLayout();
             splitContainer2.SuspendLayout();
+            tableLayoutPanel1.SuspendLayout();
             SuspendLayout();
             // 
             // labelAmount
@@ -118,39 +118,6 @@
             cbCustomers.TabIndex = 18;
             cbCustomers.SelectedIndexChanged += cbCustomers_SelectedIndexChanged;
             // 
-            // btnClearCart
-            // 
-            btnClearCart.Dock = DockStyle.Fill;
-            btnClearCart.Location = new Point(305, 3);
-            btnClearCart.Name = "btnClearCart";
-            btnClearCart.Size = new Size(84, 41);
-            btnClearCart.TabIndex = 17;
-            btnClearCart.Text = "Clear Cart";
-            btnClearCart.UseVisualStyleBackColor = true;
-            btnClearCart.Click += btnClearCart_Click;
-            // 
-            // btnRemoveItem
-            // 
-            btnRemoveItem.Dock = DockStyle.Fill;
-            btnRemoveItem.Location = new Point(217, 3);
-            btnRemoveItem.Name = "btnRemoveItem";
-            btnRemoveItem.Size = new Size(82, 41);
-            btnRemoveItem.TabIndex = 16;
-            btnRemoveItem.Text = "Remove Item";
-            btnRemoveItem.UseVisualStyleBackColor = true;
-            btnRemoveItem.Click += btnRemoveItem_Click;
-            // 
-            // btnCreateOrder
-            // 
-            btnCreateOrder.Dock = DockStyle.Fill;
-            btnCreateOrder.Location = new Point(3, 3);
-            btnCreateOrder.Name = "btnCreateOrder";
-            btnCreateOrder.Size = new Size(82, 41);
-            btnCreateOrder.TabIndex = 15;
-            btnCreateOrder.Text = "Create Order";
-            btnCreateOrder.UseVisualStyleBackColor = true;
-            btnCreateOrder.Click += btnCreateOrder_Click;
-            // 
             // btnAddToCart
             // 
             btnAddToCart.AutoSizeMode = AutoSizeMode.GrowAndShrink;
@@ -197,24 +164,6 @@
             tableLayoutPanel2.Size = new Size(285, 40);
             tableLayoutPanel2.TabIndex = 25;
             // 
-            // tableLayoutPanel1
-            // 
-            tableLayoutPanel1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            tableLayoutPanel1.ColumnCount = 4;
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 22.5490189F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 32.35294F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 22.5490189F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 22.5490189F));
-            tableLayoutPanel1.Controls.Add(btnCreateOrder, 0, 0);
-            tableLayoutPanel1.Controls.Add(btnRemoveItem, 2, 0);
-            tableLayoutPanel1.Controls.Add(btnClearCart, 3, 0);
-            tableLayoutPanel1.Location = new Point(0, 3);
-            tableLayoutPanel1.Name = "tableLayoutPanel1";
-            tableLayoutPanel1.RowCount = 1;
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel1.Size = new Size(392, 47);
-            tableLayoutPanel1.TabIndex = 24;
-            // 
             // splitContainer1
             // 
             splitContainer1.Dock = DockStyle.Fill;
@@ -257,6 +206,57 @@
             splitContainer2.SplitterDistance = 338;
             splitContainer2.TabIndex = 25;
             // 
+            // btnClearCart
+            // 
+            btnClearCart.Dock = DockStyle.Fill;
+            btnClearCart.Location = new Point(305, 3);
+            btnClearCart.Name = "btnClearCart";
+            btnClearCart.Size = new Size(84, 41);
+            btnClearCart.TabIndex = 17;
+            btnClearCart.Text = "Clear Cart";
+            btnClearCart.UseVisualStyleBackColor = true;
+            btnClearCart.Click += btnClearCart_Click;
+            // 
+            // btnRemoveItem
+            // 
+            btnRemoveItem.Dock = DockStyle.Fill;
+            btnRemoveItem.Location = new Point(217, 3);
+            btnRemoveItem.Name = "btnRemoveItem";
+            btnRemoveItem.Size = new Size(82, 41);
+            btnRemoveItem.TabIndex = 16;
+            btnRemoveItem.Text = "Remove Item";
+            btnRemoveItem.UseVisualStyleBackColor = true;
+            btnRemoveItem.Click += btnRemoveItem_Click;
+            // 
+            // btnCreateOrder
+            // 
+            btnCreateOrder.Dock = DockStyle.Fill;
+            btnCreateOrder.Location = new Point(3, 3);
+            btnCreateOrder.Name = "btnCreateOrder";
+            btnCreateOrder.Size = new Size(82, 41);
+            btnCreateOrder.TabIndex = 15;
+            btnCreateOrder.Text = "Create Order";
+            btnCreateOrder.UseVisualStyleBackColor = true;
+            btnCreateOrder.Click += btnCreateOrder_Click;
+            // 
+            // tableLayoutPanel1
+            // 
+            tableLayoutPanel1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            tableLayoutPanel1.ColumnCount = 4;
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 22.5490189F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 32.35294F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 22.5490189F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 22.5490189F));
+            tableLayoutPanel1.Controls.Add(btnCreateOrder, 0, 0);
+            tableLayoutPanel1.Controls.Add(btnRemoveItem, 2, 0);
+            tableLayoutPanel1.Controls.Add(btnClearCart, 3, 0);
+            tableLayoutPanel1.Location = new Point(0, 3);
+            tableLayoutPanel1.Name = "tableLayoutPanel1";
+            tableLayoutPanel1.RowCount = 1;
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            tableLayoutPanel1.Size = new Size(392, 47);
+            tableLayoutPanel1.TabIndex = 24;
+            // 
             // CartsTab
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -265,7 +265,6 @@
             Name = "CartsTab";
             Size = new Size(690, 512);
             tableLayoutPanel2.ResumeLayout(false);
-            tableLayoutPanel1.ResumeLayout(false);
             splitContainer1.Panel1.ResumeLayout(false);
             splitContainer1.Panel1.PerformLayout();
             splitContainer1.Panel2.ResumeLayout(false);
@@ -277,6 +276,7 @@
             splitContainer2.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)splitContainer2).EndInit();
             splitContainer2.ResumeLayout(false);
+            tableLayoutPanel1.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -288,15 +288,15 @@
         private Label label2;
         private Label label1;
         private ComboBox cbCustomers;
-        private Button btnClearCart;
-        private Button btnRemoveItem;
-        private Button btnCreateOrder;
         private Button btnAddToCart;
         private ListBox lbCart;
         private ListBox lbItems;
-        private TableLayoutPanel tableLayoutPanel1;
         private TableLayoutPanel tableLayoutPanel2;
         private SplitContainer splitContainer1;
         private SplitContainer splitContainer2;
+        private TableLayoutPanel tableLayoutPanel1;
+        private Button btnCreateOrder;
+        private Button btnRemoveItem;
+        private Button btnClearCart;
     }
 }

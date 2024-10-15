@@ -13,7 +13,7 @@ using System.Windows.Forms;
 namespace ObjectOrientedPractics.View.Tabs
 {
     public partial class OrdersTab : UserControl
-    {        
+    {
         /// <summary>
         /// Хранит данные о покупателях. Является списком типа <see cref="Model.Classes.Customer"/>.
         /// </summary>

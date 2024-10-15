@@ -30,7 +30,7 @@ namespace ObjectOrientedPractics.View.Tabs
         /// </summary>
         private void InitializeComponent()
         {
-            Address address1 = new Address();
+            Address address2 = new Address();
             label5 = new Label();
             btnAddNew = new Button();
             btnDelete = new Button();
@@ -44,6 +44,7 @@ namespace ObjectOrientedPractics.View.Tabs
             label2 = new Label();
             tbID = new TextBox();
             tbName = new TextBox();
+            chbPriority = new CheckBox();
             addressControl = new Controls.AddressControl();
             ((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
             splitContainer1.Panel1.SuspendLayout();
@@ -78,7 +79,7 @@ namespace ObjectOrientedPractics.View.Tabs
             btnAddNew.Location = new Point(0, 0);
             btnAddNew.Margin = new Padding(3, 2, 3, 2);
             btnAddNew.Name = "btnAddNew";
-            btnAddNew.Size = new Size(95, 32);
+            btnAddNew.Size = new Size(95, 29);
             btnAddNew.TabIndex = 11;
             btnAddNew.Text = "Add";
             btnAddNew.UseVisualStyleBackColor = true;
@@ -90,7 +91,7 @@ namespace ObjectOrientedPractics.View.Tabs
             btnDelete.Location = new Point(0, 0);
             btnDelete.Margin = new Padding(3, 2, 3, 2);
             btnDelete.Name = "btnDelete";
-            btnDelete.Size = new Size(99, 32);
+            btnDelete.Size = new Size(99, 29);
             btnDelete.TabIndex = 10;
             btnDelete.Text = "Delete";
             btnDelete.UseVisualStyleBackColor = true;
@@ -105,7 +106,7 @@ namespace ObjectOrientedPractics.View.Tabs
             lbCustomers.Location = new Point(3, 27);
             lbCustomers.Margin = new Padding(3, 2, 3, 2);
             lbCustomers.Name = "lbCustomers";
-            lbCustomers.Size = new Size(233, 439);
+            lbCustomers.Size = new Size(233, 379);
             lbCustomers.TabIndex = 9;
             lbCustomers.SelectedIndexChanged += lbCusomers_SelectedIndexChanged;
             // 
@@ -123,7 +124,7 @@ namespace ObjectOrientedPractics.View.Tabs
             // splitContainer1.Panel2
             // 
             splitContainer1.Panel2.Controls.Add(splitContainer2);
-            splitContainer1.Size = new Size(690, 512);
+            splitContainer1.Size = new Size(690, 457);
             splitContainer1.SplitterDistance = 244;
             splitContainer1.TabIndex = 7;
             // 
@@ -143,8 +144,8 @@ namespace ObjectOrientedPractics.View.Tabs
             // splitContainer4.Panel2
             // 
             splitContainer4.Panel2.Controls.Add(splitContainer3);
-            splitContainer4.Size = new Size(244, 512);
-            splitContainer4.SplitterDistance = 476;
+            splitContainer4.Size = new Size(244, 457);
+            splitContainer4.SplitterDistance = 424;
             splitContainer4.TabIndex = 15;
             // 
             // splitContainer3
@@ -161,7 +162,7 @@ namespace ObjectOrientedPractics.View.Tabs
             // splitContainer3.Panel2
             // 
             splitContainer3.Panel2.Controls.Add(btnDelete);
-            splitContainer3.Size = new Size(244, 32);
+            splitContainer3.Size = new Size(244, 29);
             splitContainer3.SplitterDistance = 95;
             splitContainer3.SplitterIncrement = 5;
             splitContainer3.SplitterWidth = 50;
@@ -185,9 +186,10 @@ namespace ObjectOrientedPractics.View.Tabs
             // 
             // splitContainer2.Panel2
             // 
+            splitContainer2.Panel2.Controls.Add(chbPriority);
             splitContainer2.Panel2.Controls.Add(addressControl);
-            splitContainer2.Size = new Size(442, 512);
-            splitContainer2.SplitterDistance = 109;
+            splitContainer2.Size = new Size(442, 457);
+            splitContainer2.SplitterDistance = 97;
             splitContainer2.TabIndex = 7;
             // 
             // label3
@@ -242,20 +244,30 @@ namespace ObjectOrientedPractics.View.Tabs
             tbName.TextChanged += tbName_TextChanged;
             tbName.Leave += tbName_Leave;
             // 
+            // chbPriority
+            // 
+            chbPriority.AutoSize = true;
+            chbPriority.Location = new Point(3, 196);
+            chbPriority.Name = "chbPriority";
+            chbPriority.Size = new Size(75, 19);
+            chbPriority.TabIndex = 7;
+            chbPriority.Text = "Is Priority";
+            chbPriority.UseVisualStyleBackColor = false;
+            // 
             // addressControl
             // 
-            address1.Apartment = "";
-            address1.Building = "";
-            address1.City = "";
-            address1.Country = "";
-            address1.Index = "000000";
-            address1.Street = "";
-            addressControl.Address = address1;
+            address2.Apartment = "";
+            address2.Building = "";
+            address2.City = "";
+            address2.Country = "";
+            address2.Index = "000000";
+            address2.Street = "";
+            addressControl.Address = address2;
             addressControl.Dock = DockStyle.Fill;
             addressControl.Location = new Point(0, 0);
             addressControl.Margin = new Padding(3, 2, 3, 2);
             addressControl.Name = "addressControl";
-            addressControl.Size = new Size(442, 399);
+            addressControl.Size = new Size(442, 356);
             addressControl.TabIndex = 6;
             // 
             // CustomersTab
@@ -265,7 +277,7 @@ namespace ObjectOrientedPractics.View.Tabs
             Controls.Add(splitContainer1);
             Margin = new Padding(3, 2, 3, 2);
             Name = "CustomersTab";
-            Size = new Size(690, 512);
+            Size = new Size(690, 457);
             splitContainer1.Panel1.ResumeLayout(false);
             splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)splitContainer1).EndInit();
@@ -282,6 +294,7 @@ namespace ObjectOrientedPractics.View.Tabs
             splitContainer2.Panel1.ResumeLayout(false);
             splitContainer2.Panel1.PerformLayout();
             splitContainer2.Panel2.ResumeLayout(false);
+            splitContainer2.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)splitContainer2).EndInit();
             splitContainer2.ResumeLayout(false);
             ResumeLayout(false);
@@ -304,5 +317,6 @@ namespace ObjectOrientedPractics.View.Tabs
         public Controls.AddressControl addressControl;
         private SplitContainer splitContainer3;
         private SplitContainer splitContainer4;
+        private CheckBox chbPriority;
     }
 }
