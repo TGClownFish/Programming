@@ -29,4 +29,6 @@ namespace ObjectOrientedPractics.Model
             Customers = new List<Customer>();
         }
     }
+
+    ///useless comment
 }
