@@ -14,15 +14,15 @@ namespace ObjectOrientedPractics.View.Controls
 {
     public partial class AddressControl : UserControl
     {
-        private Address  _address = new Address();
+        private Address _address = new Address();
         public Address Address
         {
-            get 
-            { 
-                return _address; 
+            get
+            {
+                return _address;
             }
             set
-            { 
+            {
                 _address = value;
                 tbPostIndex.Text = _address.Index;
                 tbCountry.Text = _address.Country;
@@ -30,13 +30,32 @@ namespace ObjectOrientedPractics.View.Controls
                 tbStreet.Text = _address.Street;
                 tbBuilding.Text = _address.Building;
                 tbApartment.Text = _address.Apartment;
+                if (IsReadOnly)
+                {
+                    tbPostIndex.ReadOnly = true;
+                    tbCountry.ReadOnly = true;
+                    tbCity.ReadOnly = true;
+                    tbStreet.ReadOnly = true;
+                    tbBuilding.ReadOnly = true;
+                    tbApartment.ReadOnly = true;
+                }
+                else
+                {
+                    tbPostIndex.ReadOnly = false;
+                    tbCountry.ReadOnly = false;
+                    tbCity.ReadOnly = false;
+                    tbStreet.ReadOnly = false;
+                    tbBuilding.ReadOnly = false;
+                    tbApartment.ReadOnly = false;
+                }
             }
         }
+        public bool IsReadOnly { get; set; } = false;
 
         public AddressControl()
         {
             InitializeComponent();
-            
+
         }
 
         private void tbPostIndex_TextChanged(object sender, EventArgs e)
@@ -46,7 +65,7 @@ namespace ObjectOrientedPractics.View.Controls
                 _address.Index = tbPostIndex.Text;
                 tbPostIndex.BackColor = Color.White;
             }
-            catch 
+            catch
             {
                 tbPostIndex.BackColor = Color.LightPink;
             }

@@ -22,15 +22,15 @@ namespace ObjectOrientedPractics.View.Tabs
         /// <summary>
         /// Хранит список покупателей. 
         /// </summary>
-        public List<Customer> Customers 
-        { 
+        public List<Customer> Customers
+        {
             get
             {
                 return _customers;
             }
-            set 
-            { 
-                _customers = value; 
+            set
+            {
+                _customers = value;
             }
         }
         /// <summary>
@@ -43,7 +43,7 @@ namespace ObjectOrientedPractics.View.Tabs
             InitializeComponent();
         }
 
-        private void lbCusomers_SelectedIndexChanged(object sender, EventArgs e)
+        private void lbCustomers_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (lbCustomers.SelectedIndex >= 0)
             {
@@ -51,12 +51,14 @@ namespace ObjectOrientedPractics.View.Tabs
                 tbID.Text = Convert.ToString(_currentCustomer.Id);
                 tbName.Text = Convert.ToString(_currentCustomer.Name);
                 addressControl.Address = _currentCustomer.Address;
+                chbPriority.Checked = _currentCustomer.IsPriority;
             }
             else
             {
                 tbID.Text = "";
                 tbName.Text = "";
                 addressControl.Address = new Address();
+                chbPriority.Checked = false;
             }
         }
 
@@ -119,6 +121,23 @@ namespace ObjectOrientedPractics.View.Tabs
             if (lbCustomers.SelectedIndex >= 0)
             {
                 lbCustomers.Items[lbCustomers.SelectedIndex] = tbName.Text;
+            }
+        }
+
+        public void RefreshData()
+        {
+            lbCustomers.Items.Clear();
+            for (int i = 0; i < Customers.Count; i++)
+            {
+                lbCustomers.Items.Add(Convert.ToString(Customers[i].Name));
+            }
+        }
+
+        private void chbPriority_CheckedChanged(object sender, EventArgs e)
+        {
+            if (lbCustomers.SelectedIndex >= 0)
+            {
+                _currentCustomer.IsPriority = chbPriority.Checked;
             }
         }
     }

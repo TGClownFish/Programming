@@ -15,7 +15,7 @@ namespace ObjectOrientedPractics.View.Tabs
         /// <summary>
         /// Хранит данные о товарах. Является списком типа <see cref="Model.Item"/>.
         /// </summary>
-        public List<Model.Item> Items { get; set; }
+        public List<Model.Classes.Item> Items { get; set; }
         /// <summary>
         /// Хранит данные о покупателях. Является списком типа <see cref="Model.Classes.Customer"/>.
         /// </summary>
@@ -61,7 +61,16 @@ namespace ObjectOrientedPractics.View.Tabs
         {
             if (lbCart.Items.Count > 0)
             {
-                _curentCustomer.Orders.Add(new Model.Classes.Order(_curentCustomer.Address, new List<Model.Item>(_curentCustomer.Cart.Items)));
+                if (_curentCustomer.IsPriority == true)
+                {
+                    _curentCustomer.Orders.Add(new Model.Classes.PriorityOrder(
+                        _curentCustomer.Address, new List<Model.Classes.Item>(_curentCustomer.Cart.Items)));
+                }
+                else
+                {
+                    _curentCustomer.Orders.Add(new Model.Classes.Order(
+                        _curentCustomer.Address, new List<Model.Classes.Item>(_curentCustomer.Cart.Items)));
+                }
                 _curentCustomer.Cart.Items.Clear();
                 lbCart.Items.Clear();
             }
