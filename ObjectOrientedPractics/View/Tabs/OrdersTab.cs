@@ -31,6 +31,7 @@ namespace ObjectOrientedPractics.View.Tabs
         {
             InitializeComponent();
             cbStatus.Items.AddRange(Enum.GetNames(typeof(Model.Enums.OrderStatus)));
+            addressControl1.IsReadOnly = true;
         }
         public void RefreshData()
         {
@@ -61,7 +62,7 @@ namespace ObjectOrientedPractics.View.Tabs
                 cbStatus.Text = Convert.ToString(_curentOrder.Status);
                 addressControl1.Address = _curentOrder.Address;
                 lbOrderItems.Items.Clear();
-                foreach (Model.Item item in _curentOrder.Items)
+                foreach (Model.Classes.Item item in _curentOrder.Items)
                 {
                     lbOrderItems.Items.Add(item.Name);
                 }

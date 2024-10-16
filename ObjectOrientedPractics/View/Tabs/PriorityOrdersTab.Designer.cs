@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            Model.Classes.Address address1 = new Model.Classes.Address();
+            Model.Classes.Address address2 = new Model.Classes.Address();
             addressControl1 = new Controls.AddressControl();
             cbStatus = new ComboBox();
             tableLayoutPanel1 = new TableLayoutPanel();
@@ -42,7 +42,7 @@
             labelAmount = new Label();
             lbOrderItems = new ListBox();
             tableLayoutPanel2 = new TableLayoutPanel();
-            btnCreateOrder = new Button();
+            btnAddItem = new Button();
             btnRemoveItem = new Button();
             btnClearCart = new Button();
             tableLayoutPanel1.SuspendLayout();
@@ -51,14 +51,15 @@
             // 
             // addressControl1
             // 
-            address1.Apartment = "";
-            address1.Building = "";
-            address1.City = "";
-            address1.Country = "";
-            address1.Index = "000000";
-            address1.Street = "";
-            addressControl1.Address = address1;
+            address2.Apartment = "";
+            address2.Building = "";
+            address2.City = "";
+            address2.Country = "";
+            address2.Index = "000000";
+            address2.Street = "";
+            addressControl1.Address = address2;
             addressControl1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            addressControl1.IsReadOnly = false;
             addressControl1.Location = new Point(9, 97);
             addressControl1.Margin = new Padding(3, 2, 3, 2);
             addressControl1.Name = "addressControl1";
@@ -73,6 +74,7 @@
             cbStatus.Name = "cbStatus";
             cbStatus.Size = new Size(327, 23);
             cbStatus.TabIndex = 3;
+            cbStatus.SelectedIndexChanged += cbStatus_SelectedIndexChanged;
             // 
             // tableLayoutPanel1
             // 
@@ -108,6 +110,7 @@
             cbDeliveryTime.Name = "cbDeliveryTime";
             cbDeliveryTime.Size = new Size(327, 23);
             cbDeliveryTime.TabIndex = 31;
+            cbDeliveryTime.SelectedIndexChanged += cbDeliveryTime_SelectedIndexChanged;
             // 
             // tbCreated
             // 
@@ -198,7 +201,7 @@
             tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 32.35294F));
             tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 22.5490189F));
             tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 22.5490189F));
-            tableLayoutPanel2.Controls.Add(btnCreateOrder, 0, 0);
+            tableLayoutPanel2.Controls.Add(btnAddItem, 0, 0);
             tableLayoutPanel2.Controls.Add(btnRemoveItem, 2, 0);
             tableLayoutPanel2.Controls.Add(btnClearCart, 3, 0);
             tableLayoutPanel2.Controls.Add(labelAmount, 1, 0);
@@ -209,15 +212,16 @@
             tableLayoutPanel2.Size = new Size(666, 47);
             tableLayoutPanel2.TabIndex = 38;
             // 
-            // btnCreateOrder
+            // btnAddItem
             // 
-            btnCreateOrder.Dock = DockStyle.Fill;
-            btnCreateOrder.Location = new Point(3, 3);
-            btnCreateOrder.Name = "btnCreateOrder";
-            btnCreateOrder.Size = new Size(144, 41);
-            btnCreateOrder.TabIndex = 15;
-            btnCreateOrder.Text = "Create Order";
-            btnCreateOrder.UseVisualStyleBackColor = true;
+            btnAddItem.Dock = DockStyle.Fill;
+            btnAddItem.Location = new Point(3, 3);
+            btnAddItem.Name = "btnAddItem";
+            btnAddItem.Size = new Size(144, 41);
+            btnAddItem.TabIndex = 15;
+            btnAddItem.Text = "Add Item";
+            btnAddItem.UseVisualStyleBackColor = true;
+            btnAddItem.Click += btnAddItem_Click;
             // 
             // btnRemoveItem
             // 
@@ -228,6 +232,7 @@
             btnRemoveItem.TabIndex = 16;
             btnRemoveItem.Text = "Remove Item";
             btnRemoveItem.UseVisualStyleBackColor = true;
+            btnRemoveItem.Click += btnRemoveItem_Click;
             // 
             // btnClearCart
             // 
@@ -238,6 +243,7 @@
             btnClearCart.TabIndex = 17;
             btnClearCart.Text = "Clear Cart";
             btnClearCart.UseVisualStyleBackColor = true;
+            btnClearCart.Click += btnClearCart_Click;
             // 
             // PriorityOrdersTab
             // 
@@ -271,7 +277,7 @@
         private Label labelAmount;
         private ListBox lbOrderItems;
         private TableLayoutPanel tableLayoutPanel2;
-        private Button btnCreateOrder;
+        private Button btnAddItem;
         private Button btnRemoveItem;
         private Button btnClearCart;
     }

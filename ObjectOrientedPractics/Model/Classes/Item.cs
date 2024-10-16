@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using static System.Windows.Forms.LinkLabel;
 
-namespace ObjectOrientedPractics.Model
+namespace ObjectOrientedPractics.Model.Classes
 {
     ///<summary>
     /// Хранит данные о товаре.

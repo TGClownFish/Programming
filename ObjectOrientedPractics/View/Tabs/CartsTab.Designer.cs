@@ -203,6 +203,7 @@
             splitContainer2.Panel2.Controls.Add(tableLayoutPanel1);
             splitContainer2.Size = new Size(395, 512);
             splitContainer2.SplitterDistance = 338;
+            splitContainer2.SplitterWidth = 10;
             splitContainer2.TabIndex = 25;
             // 
             // tableLayoutPanel1

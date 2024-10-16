@@ -97,5 +97,14 @@ namespace ObjectOrientedPractics.View.Tabs
                 lbCustomers.Items[lbCustomers.SelectedIndex] = tbName.Text;
             }
         }
+
+        public void RefreshData()
+        {
+            lbCustomers.Items.Clear();
+            for (int i = 0; i < Customers.Count; i++)
+            {
+                lbCustomers.Items.Add(Convert.ToString(Customers[i].Name));
+            }
+        }
     }
 }

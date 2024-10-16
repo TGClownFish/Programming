@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using System.Text.Json;
 using System.IO;
 using ObjectOrientedPractics.Model;
+using ObjectOrientedPractics.Model.Classes;
 
 namespace ObjectOrientedPractics.View.Tabs
 {
@@ -18,11 +19,11 @@ namespace ObjectOrientedPractics.View.Tabs
         /// <summary>
         /// Список товаров.
         /// </summary>
-        private List<Model.Item> _items;
+        private List<Model.Classes.Item> _items;
         /// <summary>
         /// Хранит список товаров.
         /// </summary>
-        public List<Model.Item> Items 
+        public List<Model.Classes.Item> Items 
         { 
             get 
             { 
@@ -37,7 +38,7 @@ namespace ObjectOrientedPractics.View.Tabs
         /// <summary>
         /// Выбранный товар.
         /// </summary>
-        private Item _currentItem;
+        private Model.Classes.Item _currentItem;
 
         public ItemsTab()
         {
@@ -149,6 +150,15 @@ namespace ObjectOrientedPractics.View.Tabs
             if (lbItems.SelectedIndex >= 0)
             {
                 lbItems.Items[lbItems.SelectedIndex] = tbName.Text;
+            }
+        }
+
+        public void RefreshData()
+        {
+            lbItems.Items.Clear();
+            for (int i = 0; i < Items.Count; i++)
+            {
+                lbItems.Items.Add(Convert.ToString(Items[i].Name));
             }
         }
     }
