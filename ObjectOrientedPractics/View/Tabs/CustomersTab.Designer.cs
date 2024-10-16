@@ -30,7 +30,7 @@ namespace ObjectOrientedPractics.View.Tabs
         /// </summary>
         private void InitializeComponent()
         {
-            Address address2 = new Address();
+            Address address1 = new Address();
             label5 = new Label();
             btnAddNew = new Button();
             btnDelete = new Button();
@@ -108,7 +108,7 @@ namespace ObjectOrientedPractics.View.Tabs
             lbCustomers.Name = "lbCustomers";
             lbCustomers.Size = new Size(233, 379);
             lbCustomers.TabIndex = 9;
-            lbCustomers.SelectedIndexChanged += lbCusomers_SelectedIndexChanged;
+            lbCustomers.SelectedIndexChanged += lbCustomers_SelectedIndexChanged;
             // 
             // splitContainer1
             // 
@@ -178,6 +178,7 @@ namespace ObjectOrientedPractics.View.Tabs
             // 
             // splitContainer2.Panel1
             // 
+            splitContainer2.Panel1.Controls.Add(chbPriority);
             splitContainer2.Panel1.Controls.Add(label3);
             splitContainer2.Panel1.Controls.Add(label1);
             splitContainer2.Panel1.Controls.Add(label2);
@@ -186,7 +187,6 @@ namespace ObjectOrientedPractics.View.Tabs
             // 
             // splitContainer2.Panel2
             // 
-            splitContainer2.Panel2.Controls.Add(chbPriority);
             splitContainer2.Panel2.Controls.Add(addressControl);
             splitContainer2.Size = new Size(442, 457);
             splitContainer2.SplitterDistance = 97;
@@ -247,23 +247,25 @@ namespace ObjectOrientedPractics.View.Tabs
             // chbPriority
             // 
             chbPriority.AutoSize = true;
-            chbPriority.Location = new Point(3, 196);
+            chbPriority.Location = new Point(192, 27);
             chbPriority.Name = "chbPriority";
             chbPriority.Size = new Size(75, 19);
             chbPriority.TabIndex = 7;
             chbPriority.Text = "Is Priority";
             chbPriority.UseVisualStyleBackColor = false;
+            chbPriority.CheckedChanged += chbPriority_CheckedChanged;
             // 
             // addressControl
             // 
-            address2.Apartment = "";
-            address2.Building = "";
-            address2.City = "";
-            address2.Country = "";
-            address2.Index = "000000";
-            address2.Street = "";
-            addressControl.Address = address2;
+            address1.Apartment = "";
+            address1.Building = "";
+            address1.City = "";
+            address1.Country = "";
+            address1.Index = "000000";
+            address1.Street = "";
+            addressControl.Address = address1;
             addressControl.Dock = DockStyle.Fill;
+            addressControl.IsReadOnly = false;
             addressControl.Location = new Point(0, 0);
             addressControl.Margin = new Padding(3, 2, 3, 2);
             addressControl.Name = "addressControl";
@@ -294,7 +296,6 @@ namespace ObjectOrientedPractics.View.Tabs
             splitContainer2.Panel1.ResumeLayout(false);
             splitContainer2.Panel1.PerformLayout();
             splitContainer2.Panel2.ResumeLayout(false);
-            splitContainer2.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)splitContainer2).EndInit();
             splitContainer2.ResumeLayout(false);
             ResumeLayout(false);

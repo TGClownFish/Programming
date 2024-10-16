@@ -1,4 +1,5 @@
 ﻿using ObjectOrientedPractics.Model.Classes;
+using ObjectOrientedPractics.Model.Enums;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -27,6 +28,8 @@ namespace ObjectOrientedPractics.View.Tabs
         /// </summary>
         private Order _curentOrder;
 
+        private PriorityOrder _curentPriorityOrder;
+
         public OrdersTab()
         {
             InitializeComponent();
@@ -43,7 +46,8 @@ namespace ObjectOrientedPractics.View.Tabs
                 {
                     foreach (Order order in customer.Orders)
                     {
-                        dgvOrders.Rows.Add(order.Id, order.CreateDate.ToString("dd.MM.yyyy"), customer.Name, order.Address.ConvertToString(),
+                        dgvOrders.Rows.Add(order.Id, order.CreateDate.ToString("dd.MM.yyyy"), 
+                            customer.Name, order.Address.ConvertToString(),
                             order.Amount, order.Status);
                         Orders.Add(order);
                     }
@@ -66,6 +70,18 @@ namespace ObjectOrientedPractics.View.Tabs
                 {
                     lbOrderItems.Items.Add(item.Name);
                 }
+                if (_curentOrder is PriorityOrder)
+                {
+                    label7.Visible = true;
+                    cbDeliveryTime.Visible = true;
+                    _curentPriorityOrder = (PriorityOrder) _curentOrder;
+                    cbDeliveryTime.SelectedIndex = (int)_curentPriorityOrder.DesiredDeliveryTime;
+                }
+                else
+                {
+                    label7.Visible = false;
+                    cbDeliveryTime.Visible = false;
+                }
             }
             else
             {
@@ -75,6 +91,8 @@ namespace ObjectOrientedPractics.View.Tabs
                 addressControl1.Address = new Address();
                 lbOrderItems.Items.Clear();
                 labelAmount.Text = "0.0";
+                label7.Visible = false;
+                cbDeliveryTime.Visible = false;
             }
         }
 
@@ -83,8 +101,14 @@ namespace ObjectOrientedPractics.View.Tabs
             if (this.dgvOrders.CurrentCell != null)
             {
                 _curentOrder.Status = (Model.Enums.OrderStatus)cbStatus.SelectedIndex;
-                this.dgvOrders.Rows[this.dgvOrders.CurrentCell.RowIndex].Cells[5].Value = Convert.ToString(_curentOrder.Status);
+                this.dgvOrders.Rows[this.dgvOrders.CurrentCell.RowIndex].Cells[5].Value = 
+                    Convert.ToString(_curentOrder.Status);
             }
+        }
+
+        private void cbDeliveryTime_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            _curentPriorityOrder.DesiredDeliveryTime = (PriorityOrderDeliveryTime)cbDeliveryTime.SelectedIndex;
         }
     }
 }

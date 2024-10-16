@@ -61,7 +61,16 @@ namespace ObjectOrientedPractics.View.Tabs
         {
             if (lbCart.Items.Count > 0)
             {
-                _curentCustomer.Orders.Add(new Model.Classes.Order(_curentCustomer.Address, new List<Model.Classes.Item>(_curentCustomer.Cart.Items)));
+                if (_curentCustomer.IsPriority == true)
+                {
+                    _curentCustomer.Orders.Add(new Model.Classes.PriorityOrder(
+                        _curentCustomer.Address, new List<Model.Classes.Item>(_curentCustomer.Cart.Items)));
+                }
+                else
+                {
+                    _curentCustomer.Orders.Add(new Model.Classes.Order(
+                        _curentCustomer.Address, new List<Model.Classes.Item>(_curentCustomer.Cart.Items)));
+                }
                 _curentCustomer.Cart.Items.Clear();
                 lbCart.Items.Clear();
             }

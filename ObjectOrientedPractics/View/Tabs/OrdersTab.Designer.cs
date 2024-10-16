@@ -53,6 +53,7 @@ namespace ObjectOrientedPractics.View.Tabs
             ColumnStatus = new DataGridViewTextBoxColumn();
             orderBindingSource = new BindingSource(components);
             splitContainer1 = new SplitContainer();
+            tableLayoutPanel2 = new TableLayoutPanel();
             tableLayoutPanel1 = new TableLayoutPanel();
             cbDeliveryTime = new ComboBox();
             label7 = new Label();
@@ -62,6 +63,7 @@ namespace ObjectOrientedPractics.View.Tabs
             splitContainer1.Panel1.SuspendLayout();
             splitContainer1.Panel2.SuspendLayout();
             splitContainer1.SuspendLayout();
+            tableLayoutPanel2.SuspendLayout();
             tableLayoutPanel1.SuspendLayout();
             SuspendLayout();
             // 
@@ -71,16 +73,16 @@ namespace ObjectOrientedPractics.View.Tabs
             tbId.Location = new Point(3, 18);
             tbId.Name = "tbId";
             tbId.ReadOnly = true;
-            tbId.Size = new Size(177, 23);
+            tbId.Size = new Size(179, 23);
             tbId.TabIndex = 1;
             // 
             // cbStatus
             // 
             cbStatus.Dock = DockStyle.Fill;
             cbStatus.FormattingEnabled = true;
-            cbStatus.Location = new Point(3, 63);
+            cbStatus.Location = new Point(3, 62);
             cbStatus.Name = "cbStatus";
-            cbStatus.Size = new Size(177, 23);
+            cbStatus.Size = new Size(179, 23);
             cbStatus.TabIndex = 3;
             cbStatus.SelectedIndexChanged += cbStatus_SelectedIndexChanged;
             // 
@@ -93,30 +95,31 @@ namespace ObjectOrientedPractics.View.Tabs
             address1.Index = "000000";
             address1.Street = "";
             addressControl1.Address = address1;
-            addressControl1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            addressControl1.Location = new Point(4, 97);
+            addressControl1.Dock = DockStyle.Fill;
+            addressControl1.IsReadOnly = false;
+            addressControl1.Location = new Point(3, 96);
             addressControl1.Margin = new Padding(3, 2, 3, 2);
             addressControl1.Name = "addressControl1";
-            addressControl1.Size = new Size(366, 153);
+            addressControl1.Size = new Size(370, 153);
             addressControl1.TabIndex = 4;
             // 
             // tbCreated
             // 
             tbCreated.Dock = DockStyle.Fill;
-            tbCreated.Location = new Point(186, 18);
+            tbCreated.Location = new Point(188, 18);
             tbCreated.Name = "tbCreated";
             tbCreated.ReadOnly = true;
-            tbCreated.Size = new Size(177, 23);
+            tbCreated.Size = new Size(179, 23);
             tbCreated.TabIndex = 2;
             // 
             // lbOrderItems
             // 
-            lbOrderItems.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            lbOrderItems.Dock = DockStyle.Fill;
             lbOrderItems.FormattingEnabled = true;
             lbOrderItems.ItemHeight = 15;
-            lbOrderItems.Location = new Point(3, 274);
+            lbOrderItems.Location = new Point(3, 271);
             lbOrderItems.Name = "lbOrderItems";
-            lbOrderItems.Size = new Size(366, 169);
+            lbOrderItems.Size = new Size(370, 183);
             lbOrderItems.TabIndex = 5;
             // 
             // labelAmount
@@ -164,7 +167,7 @@ namespace ObjectOrientedPractics.View.Tabs
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(186, 0);
+            label3.Location = new Point(188, 0);
             label3.Name = "label3";
             label3.Size = new Size(51, 15);
             label3.TabIndex = 28;
@@ -174,7 +177,7 @@ namespace ObjectOrientedPractics.View.Tabs
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(3, 44);
+            label5.Location = new Point(3, 43);
             label5.Name = "label5";
             label5.Size = new Size(42, 15);
             label5.TabIndex = 29;
@@ -184,7 +187,7 @@ namespace ObjectOrientedPractics.View.Tabs
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(4, 252);
+            label6.Location = new Point(3, 251);
             label6.Name = "label6";
             label6.Size = new Size(72, 15);
             label6.TabIndex = 30;
@@ -284,17 +287,32 @@ namespace ObjectOrientedPractics.View.Tabs
             // 
             // splitContainer1.Panel2
             // 
-            splitContainer1.Panel2.Controls.Add(tableLayoutPanel1);
-            splitContainer1.Panel2.Controls.Add(lbOrderItems);
-            splitContainer1.Panel2.Controls.Add(label6);
-            splitContainer1.Panel2.Controls.Add(addressControl1);
+            splitContainer1.Panel2.Controls.Add(tableLayoutPanel2);
             splitContainer1.Size = new Size(690, 457);
             splitContainer1.SplitterDistance = 310;
             splitContainer1.TabIndex = 32;
             // 
+            // tableLayoutPanel2
+            // 
+            tableLayoutPanel2.ColumnCount = 1;
+            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            tableLayoutPanel2.Controls.Add(tableLayoutPanel1, 0, 0);
+            tableLayoutPanel2.Controls.Add(lbOrderItems, 0, 3);
+            tableLayoutPanel2.Controls.Add(addressControl1, 0, 1);
+            tableLayoutPanel2.Controls.Add(label6, 0, 2);
+            tableLayoutPanel2.Dock = DockStyle.Fill;
+            tableLayoutPanel2.Location = new Point(0, 0);
+            tableLayoutPanel2.Name = "tableLayoutPanel2";
+            tableLayoutPanel2.RowCount = 4;
+            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Absolute, 94F));
+            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Absolute, 157F));
+            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Absolute, 17F));
+            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            tableLayoutPanel2.Size = new Size(376, 457);
+            tableLayoutPanel2.TabIndex = 32;
+            // 
             // tableLayoutPanel1
             // 
-            tableLayoutPanel1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             tableLayoutPanel1.AutoSizeMode = AutoSizeMode.GrowAndShrink;
             tableLayoutPanel1.ColumnCount = 2;
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
@@ -307,14 +325,15 @@ namespace ObjectOrientedPractics.View.Tabs
             tableLayoutPanel1.Controls.Add(label5, 0, 2);
             tableLayoutPanel1.Controls.Add(tbId, 0, 1);
             tableLayoutPanel1.Controls.Add(label7, 1, 2);
-            tableLayoutPanel1.Location = new Point(7, 3);
+            tableLayoutPanel1.Dock = DockStyle.Fill;
+            tableLayoutPanel1.Location = new Point(3, 3);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
             tableLayoutPanel1.RowCount = 4;
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 15F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 16F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel1.Size = new Size(366, 89);
+            tableLayoutPanel1.Size = new Size(370, 88);
             tableLayoutPanel1.TabIndex = 31;
             // 
             // cbDeliveryTime
@@ -322,15 +341,16 @@ namespace ObjectOrientedPractics.View.Tabs
             cbDeliveryTime.Dock = DockStyle.Fill;
             cbDeliveryTime.FormattingEnabled = true;
             cbDeliveryTime.Items.AddRange(new object[] { "None", "9:00 – 11:00", "11:00 – 13:00", "13:00 – 15:00", "15:00 – 17:00", "17:00 – 19:00", "19:00 – 21:00" });
-            cbDeliveryTime.Location = new Point(186, 63);
+            cbDeliveryTime.Location = new Point(188, 62);
             cbDeliveryTime.Name = "cbDeliveryTime";
-            cbDeliveryTime.Size = new Size(177, 23);
+            cbDeliveryTime.Size = new Size(179, 23);
             cbDeliveryTime.TabIndex = 31;
+            cbDeliveryTime.SelectedIndexChanged += cbDeliveryTime_SelectedIndexChanged;
             // 
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(186, 44);
+            label7.Location = new Point(188, 43);
             label7.Name = "label7";
             label7.Size = new Size(81, 15);
             label7.TabIndex = 30;
@@ -349,9 +369,10 @@ namespace ObjectOrientedPractics.View.Tabs
             splitContainer1.Panel1.ResumeLayout(false);
             splitContainer1.Panel1.PerformLayout();
             splitContainer1.Panel2.ResumeLayout(false);
-            splitContainer1.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)splitContainer1).EndInit();
             splitContainer1.ResumeLayout(false);
+            tableLayoutPanel2.ResumeLayout(false);
+            tableLayoutPanel2.PerformLayout();
             tableLayoutPanel1.ResumeLayout(false);
             tableLayoutPanel1.PerformLayout();
             ResumeLayout(false);
@@ -382,5 +403,6 @@ namespace ObjectOrientedPractics.View.Tabs
         private DataGridViewTextBoxColumn ColumnStatus;
         private Label label7;
         private ComboBox cbDeliveryTime;
+        private TableLayoutPanel tableLayoutPanel2;
     }
 }

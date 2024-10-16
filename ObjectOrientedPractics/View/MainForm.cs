@@ -45,7 +45,7 @@ namespace ObjectOrientedPractics
             Store.Items.Add(new Model.Classes.Item("f111", "faaf", 42222, Category.Furniture));
             Store.Items.Add(new Model.Classes.Item("fdffdf", "arafr", 42333, Category.Shoes));
             Store.Customers.Add(new Model.Classes.Customer("4", new Model.Classes.Address("000100", "4", "55", "11", "ff", "aa")));
-            Store.Customers.Add(new Model.Classes.Customer("FFFFF", new Model.Classes.Address("100100", "4FF", "5AA5", "1SDSS1", "fFFf", "aSSa")));
+            Store.Customers.Add(new Model.Classes.Customer("FFFFF", new Model.Classes.Address("100100", "4FF", "5AA5", "1SDSS1", "fFFf", "aSSa"),true));
         }
     }
 }

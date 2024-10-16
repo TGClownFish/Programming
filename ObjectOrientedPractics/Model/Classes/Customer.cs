@@ -56,6 +56,11 @@ namespace ObjectOrientedPractics.Model.Classes
         public List<Order> Orders { get; set; }
 
         /// <summary>
+        /// Хранит данные о приоритетности покупателя.
+        /// </summary>
+        public bool IsPriority { get; set; }
+
+        /// <summary>
         /// Создаёт экземпляр класса <see cref="Customer"/>.
         /// </summary>
         /// <param name="name">Полное имя покупателя. Не более 200 символов.</param>
@@ -73,6 +78,7 @@ namespace ObjectOrientedPractics.Model.Classes
             Address = new Address(index, country, city, street, building, apartment);
             Cart = new Cart();
             Orders = new List<Order>();
+            IsPriority = false;
         }
 
         /// <summary>
@@ -88,6 +94,24 @@ namespace ObjectOrientedPractics.Model.Classes
             Address = address;
             Cart = new Cart();
             Orders = new List<Order>();
+            IsPriority = false;
+        }
+
+        /// <summary>
+        /// Создаёт экземпляр класса <see cref="Customer"/>.
+        /// </summary>
+        /// <param name="name">Полное имя покупателя. Не более 200 символов.</param>
+        /// <param name="address">Адрес покупателя. Объект класса <see cref="Classes.Address"/>.</param>
+        /// <param name="isPriority">Приоритетность покупателя.</param>
+        public Customer(string name, Address address, bool isPriority)
+        {
+            Id = _amountOfCustomers;
+            _amountOfCustomers += 1;
+            Name = name;
+            Address = address;
+            Cart = new Cart();
+            Orders = new List<Order>();
+            IsPriority = isPriority;
         }
         /// <summary>
         /// Создаёт пустой экземпляр класса <see cref="Customer"/>.
@@ -100,7 +124,7 @@ namespace ObjectOrientedPractics.Model.Classes
             Address = new Address();
             Cart = new Cart();
             Orders = new List<Order>();
-
+            IsPriority = false;
         }
     }
 }
