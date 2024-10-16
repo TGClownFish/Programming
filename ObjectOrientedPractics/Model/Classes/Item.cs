@@ -112,14 +112,5 @@ namespace ObjectOrientedPractics.Model.Classes
             Cost = 0;
             Category = 0;
         }
-
-        public Item ()
-        {
-            _id = _amountOfItems;
-            _amountOfItems += 1;
-            Name = "";
-            Description = "";
-            Cost = 0;
-        }
     }
 }

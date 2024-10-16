@@ -79,29 +79,6 @@ namespace ObjectOrientedPractics.View.Tabs
         {
             if (lbCustomers.SelectedIndex >= 0)
             {
-<<<<<<< HEAD
-                _customers[lbCustomers.SelectedIndex].Name = tbName.Text;
-                tbName.BackColor = Color.White;
-
-            }
-            catch
-            {
-                tbName.BackColor = Color.LightPink;
-            }
-        }
-
-        private void tbAddress_TextChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                _customers[lbCustomers.SelectedIndex].Address = tbAddress.Text;
-                tbAddress.BackColor = Color.White;
-
-            }
-            catch
-            {
-                tbAddress.BackColor = Color.LightPink;
-=======
                 try
                 {
                     _currentCustomer.Name = tbName.Text;
@@ -112,7 +89,6 @@ namespace ObjectOrientedPractics.View.Tabs
                 {
                     tbName.BackColor = Color.LightPink;
                 }
->>>>>>> Tasks/3_agregation
             }
         }
 

@@ -86,7 +86,7 @@ namespace ObjectOrientedPractics.Model.Classes
         /// </summary>
         /// <param name="name">Полное имя покупателя. Не более 200 символов.</param>
         /// <param name="address">Адрес покупателя. Объект класса <see cref="Classes.Address"/>.</param>
-        public Customer (string name, Address address)
+        public Customer(string name, Address address)
         {
             Id = _amountOfCustomers;
             _amountOfCustomers += 1;

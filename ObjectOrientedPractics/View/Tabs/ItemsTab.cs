@@ -23,15 +23,15 @@ namespace ObjectOrientedPractics.View.Tabs
         /// <summary>
         /// Хранит список товаров.
         /// </summary>
-        public List<Model.Classes.Item> Items 
-        { 
-            get 
-            { 
-                return _items; 
-            } 
-            set 
-            { 
-                _items = value; 
+        public List<Model.Classes.Item> Items
+        {
+            get
+            {
+                return _items;
+            }
+            set
+            {
+                _items = value;
 
             }
         }
@@ -55,7 +55,7 @@ namespace ObjectOrientedPractics.View.Tabs
                 tbCost.Text = Convert.ToString(_currentItem.Cost);
                 tbName.Text = Convert.ToString(_currentItem.Name);
                 tbDescription.Text = Convert.ToString(_currentItem.Description);
-                cbCategory.SelectedIndex = (int) _currentItem.Category;
+                cbCategory.SelectedIndex = (int)_currentItem.Category;
             }
             else
             {
@@ -72,7 +72,7 @@ namespace ObjectOrientedPractics.View.Tabs
             Items.Add(new());
             lbItems.Items.Add("Unnamed Item");
             lbItems.SelectedIndex = Items.Count - 1;
-        
+
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
@@ -135,7 +135,7 @@ namespace ObjectOrientedPractics.View.Tabs
             {
                 try
                 {
-                    _currentItem.Category = (Category) cbCategory.SelectedIndex;
+                    _currentItem.Category = (Category)cbCategory.SelectedIndex;
                     cbCategory.BackColor = Color.White;
                 }
                 catch

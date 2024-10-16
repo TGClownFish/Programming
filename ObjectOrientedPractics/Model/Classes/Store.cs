@@ -18,17 +18,15 @@ namespace ObjectOrientedPractics.Model
         /// <summary>
         /// Хранит список объектов класса <see cref="Classes.Customer"/>.
         /// </summary>
-        public List <Customer> Customers { get; set; }
+        public List<Model.Classes.Customer> Customers { get; set; }
 
         /// <summary>
         /// Создаёт пустой экземпляр класса <see cref="Store"/>.
         /// </summary>
-        public Store() 
-        { 
+        public Store()
+        {
             Items = new List<Item>();
-            Customers = new List<Customer>();
+            Customers = new List<Model.Classes.Customer>();
         }
     }
-
-    ///useless comment
 }
