@@ -136,7 +136,7 @@
             lbCart.ItemHeight = 15;
             lbCart.Location = new Point(3, 65);
             lbCart.Name = "lbCart";
-            lbCart.Size = new Size(386, 259);
+            lbCart.Size = new Size(386, 304);
             lbCart.TabIndex = 13;
             // 
             // lbItems
@@ -202,7 +202,7 @@
             splitContainer2.Panel2.Controls.Add(labelAmount);
             splitContainer2.Panel2.Controls.Add(tableLayoutPanel1);
             splitContainer2.Size = new Size(395, 512);
-            splitContainer2.SplitterDistance = 338;
+            splitContainer2.SplitterDistance = 373;
             splitContainer2.SplitterWidth = 10;
             splitContainer2.TabIndex = 25;
             // 
