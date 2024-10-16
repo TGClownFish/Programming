@@ -14,10 +14,15 @@ namespace ObjectOrientedPractics.View.Tabs
 {
     public partial class PriorityOrdersTab : UserControl
     {
+        private Model.Classes.PriorityOrder _priorityOrder;
         /// <summary>
         /// Хранит данные о приоритетном заказе.
         /// </summary>
-        public Model.Classes.PriorityOrder PriorityOrder { get; set; }
+        public Model.Classes.PriorityOrder PriorityOrder
+        {
+            get { return _priorityOrder; }
+            set { _priorityOrder = value; }
+        }
 
         public List<Model.Classes.Item> Items { get; set; }
 
@@ -25,9 +30,10 @@ namespace ObjectOrientedPractics.View.Tabs
         public PriorityOrdersTab()
         {
             InitializeComponent();
-            PriorityOrder = new Model.Classes.PriorityOrder();
+            //PriorityOrder = new Model.Classes.PriorityOrder();
             cbStatus.Items.AddRange(Enum.GetNames(typeof(Model.Enums.OrderStatus)));
             addressControl1.IsReadOnly = true;
+            PriorityOrder = new Model.Classes.PriorityOrder();
             OrderChanged();
         }
         public void OrderChanged()
@@ -42,7 +48,9 @@ namespace ObjectOrientedPractics.View.Tabs
 
         private void btnAddItem_Click(object sender, EventArgs e)
         {
-            lbOrderItems.Items.Add(Items[_random.Next(Items.Count)].Name);
+            PriorityOrder.Items.Add(Items[_random.Next(Items.Count)]);
+            lbOrderItems.Items.Add(PriorityOrder.Items[PriorityOrder.Items.Count - 1].Name);
+            labelAmount.Text = Convert.ToString(PriorityOrder.Amount);
         }
 
         private void btnRemoveItem_Click(object sender, EventArgs e)
@@ -62,18 +70,12 @@ namespace ObjectOrientedPractics.View.Tabs
 
         private void cbStatus_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (PriorityOrder != null)
-            {
-                PriorityOrder.Status = (OrderStatus)cbStatus.SelectedIndex;
-            }
+            PriorityOrder.Status = (OrderStatus)cbStatus.SelectedIndex;
         }
 
         private void cbDeliveryTime_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (PriorityOrder != null)
-            {
-                PriorityOrder.DesiredDeliveryTime = (PriorityOrderDeliveryTime)cbDeliveryTime.SelectedIndex;
-            }
+            PriorityOrder.DesiredDeliveryTime = (PriorityOrderDeliveryTime)cbDeliveryTime.SelectedIndex;
         }
     }
 }

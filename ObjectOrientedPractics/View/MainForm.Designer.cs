@@ -169,7 +169,6 @@
             priorityOrdersTab1.Items = null;
             priorityOrdersTab1.Location = new Point(3, 3);
             priorityOrdersTab1.Name = "priorityOrdersTab1";
-            priorityOrdersTab1.PriorityOrder = null;
             priorityOrdersTab1.Size = new Size(186, 66);
             priorityOrdersTab1.TabIndex = 0;
             // 

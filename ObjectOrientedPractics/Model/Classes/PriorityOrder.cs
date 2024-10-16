@@ -32,14 +32,14 @@ namespace ObjectOrientedPractics.Model.Classes
             Items = items;
         }
 
-            /// <summary>
-            /// Создаёт экземпляр класса <see cref="PriorityOrder"/>.
-            /// </summary>
-            /// <param name="desiredDeliveyDate">Желаемая дата доставки 
-            /// приоритетного товара.</param>
-            /// <param name="priorityOrderDeliveryDate">Желаемое время доставки 
-            /// приоритетного товара.</param>
-            public PriorityOrder (DateTime desiredDeliveyDate, 
+        /// <summary>
+        /// Создаёт экземпляр класса <see cref="PriorityOrder"/>.
+        /// </summary>
+        /// <param name="desiredDeliveyDate">Желаемая дата доставки 
+        /// приоритетного товара.</param>
+        /// <param name="priorityOrderDeliveryDate">Желаемое время доставки 
+        /// приоритетного товара.</param>
+        public PriorityOrder (DateTime desiredDeliveyDate, 
             Enums.PriorityOrderDeliveryTime priorityOrderDeliveryDate) : base ()
         {
             DesiredDeliveryDate = desiredDeliveyDate;
