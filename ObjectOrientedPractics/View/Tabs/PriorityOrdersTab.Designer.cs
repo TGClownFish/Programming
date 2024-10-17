@@ -69,7 +69,7 @@
             address1.Street = "";
             addressControl1.Address = address1;
             addressControl1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            addressControl1.IsReadOnly = false;
+            addressControl1.IsReadOnly = true;
             addressControl1.Location = new Point(0, 95);
             addressControl1.Margin = new Padding(3, 2, 3, 2);
             addressControl1.Name = "addressControl1";
@@ -186,7 +186,7 @@
             labelAmount.AutoSize = true;
             labelAmount.Font = new Font("Segoe UI", 14F, FontStyle.Bold);
             labelAmount.ImageAlign = ContentAlignment.MiddleRight;
-            labelAmount.Location = new Point(158, 10);
+            labelAmount.Location = new Point(158, 19);
             labelAmount.Name = "labelAmount";
             labelAmount.Size = new Size(217, 25);
             labelAmount.TabIndex = 35;
@@ -200,7 +200,7 @@
             lbOrderItems.ItemHeight = 15;
             lbOrderItems.Location = new Point(0, 0);
             lbOrderItems.Name = "lbOrderItems";
-            lbOrderItems.Size = new Size(690, 154);
+            lbOrderItems.Size = new Size(690, 110);
             lbOrderItems.TabIndex = 37;
             // 
             // tableLayoutPanel2
@@ -219,7 +219,7 @@
             tableLayoutPanel2.Name = "tableLayoutPanel2";
             tableLayoutPanel2.RowCount = 1;
             tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel2.Size = new Size(690, 35);
+            tableLayoutPanel2.Size = new Size(690, 44);
             tableLayoutPanel2.TabIndex = 38;
             // 
             // btnAddItem
@@ -227,7 +227,7 @@
             btnAddItem.Dock = DockStyle.Fill;
             btnAddItem.Location = new Point(3, 3);
             btnAddItem.Name = "btnAddItem";
-            btnAddItem.Size = new Size(149, 29);
+            btnAddItem.Size = new Size(149, 38);
             btnAddItem.TabIndex = 15;
             btnAddItem.Text = "Add Item";
             btnAddItem.UseVisualStyleBackColor = true;
@@ -238,7 +238,7 @@
             btnRemoveItem.Dock = DockStyle.Fill;
             btnRemoveItem.Location = new Point(381, 3);
             btnRemoveItem.Name = "btnRemoveItem";
-            btnRemoveItem.Size = new Size(149, 29);
+            btnRemoveItem.Size = new Size(149, 38);
             btnRemoveItem.TabIndex = 16;
             btnRemoveItem.Text = "Remove Item";
             btnRemoveItem.UseVisualStyleBackColor = true;
@@ -249,7 +249,7 @@
             btnClearCart.Dock = DockStyle.Fill;
             btnClearCart.Location = new Point(536, 3);
             btnClearCart.Name = "btnClearCart";
-            btnClearCart.Size = new Size(151, 29);
+            btnClearCart.Size = new Size(151, 38);
             btnClearCart.TabIndex = 17;
             btnClearCart.Text = "Clear Cart";
             btnClearCart.UseVisualStyleBackColor = true;
@@ -271,7 +271,7 @@
             // 
             splitContainer1.Panel2.Controls.Add(splitContainer2);
             splitContainer1.Size = new Size(690, 457);
-            splitContainer1.SplitterDistance = 260;
+            splitContainer1.SplitterDistance = 295;
             splitContainer1.TabIndex = 39;
             // 
             // splitContainer2
@@ -288,8 +288,8 @@
             // splitContainer2.Panel2
             // 
             splitContainer2.Panel2.Controls.Add(tableLayoutPanel2);
-            splitContainer2.Size = new Size(690, 193);
-            splitContainer2.SplitterDistance = 154;
+            splitContainer2.Size = new Size(690, 158);
+            splitContainer2.SplitterDistance = 110;
             splitContainer2.TabIndex = 39;
             // 
             // PriorityOrdersTab

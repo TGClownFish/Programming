@@ -29,10 +29,11 @@ namespace ObjectOrientedPractics.View.Tabs
         private Random _random = new Random();
         public PriorityOrdersTab()
         {
+            //addressControl1.IsReadOnly = true;
             InitializeComponent();
             //PriorityOrder = new Model.Classes.PriorityOrder();
             cbStatus.Items.AddRange(Enum.GetNames(typeof(Model.Enums.OrderStatus)));
-            addressControl1.IsReadOnly = true;
+            
             PriorityOrder = new Model.Classes.PriorityOrder();
             OrderChanged();
         }

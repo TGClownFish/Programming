@@ -96,7 +96,7 @@ namespace ObjectOrientedPractics.View.Tabs
             address1.Street = "";
             addressControl1.Address = address1;
             addressControl1.Dock = DockStyle.Fill;
-            addressControl1.IsReadOnly = false;
+            addressControl1.IsReadOnly = true;
             addressControl1.Location = new Point(3, 96);
             addressControl1.Margin = new Padding(3, 2, 3, 2);
             addressControl1.Name = "addressControl1";

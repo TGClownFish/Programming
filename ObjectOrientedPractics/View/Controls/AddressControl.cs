@@ -30,32 +30,23 @@ namespace ObjectOrientedPractics.View.Controls
                 tbStreet.Text = _address.Street;
                 tbBuilding.Text = _address.Building;
                 tbApartment.Text = _address.Apartment;
-                if (IsReadOnly)
-                {
-                    tbPostIndex.ReadOnly = true;
-                    tbCountry.ReadOnly = true;
-                    tbCity.ReadOnly = true;
-                    tbStreet.ReadOnly = true;
-                    tbBuilding.ReadOnly = true;
-                    tbApartment.ReadOnly = true;
-                }
-                else
-                {
-                    tbPostIndex.ReadOnly = false;
-                    tbCountry.ReadOnly = false;
-                    tbCity.ReadOnly = false;
-                    tbStreet.ReadOnly = false;
-                    tbBuilding.ReadOnly = false;
-                    tbApartment.ReadOnly = false;
-                }
             }
         }
-        public bool IsReadOnly { get; set; } = false;
+        public bool IsReadOnly { get; set; }
 
         public AddressControl()
         {
+            
             InitializeComponent();
-
+            if (IsReadOnly != null && IsReadOnly == true)
+            {
+                tbPostIndex.ReadOnly = true;
+                tbCountry.ReadOnly = true;
+                tbCity.ReadOnly = true;
+                tbStreet.ReadOnly = true;
+                tbBuilding.ReadOnly = true;
+                tbApartment.ReadOnly = true;
+            }
         }
 
         private void tbPostIndex_TextChanged(object sender, EventArgs e)

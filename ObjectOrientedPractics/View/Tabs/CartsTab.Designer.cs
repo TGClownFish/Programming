@@ -215,7 +215,6 @@
             tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Absolute, 53F));
             tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Absolute, 18F));
             tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Absolute, 30F));
-            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
             tableLayoutPanel3.Size = new Size(395, 512);
             tableLayoutPanel3.TabIndex = 26;
             // 

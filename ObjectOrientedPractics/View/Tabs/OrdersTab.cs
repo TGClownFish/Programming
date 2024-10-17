@@ -34,7 +34,6 @@ namespace ObjectOrientedPractics.View.Tabs
         {
             InitializeComponent();
             cbStatus.Items.AddRange(Enum.GetNames(typeof(Model.Enums.OrderStatus)));
-            addressControl1.IsReadOnly = true;
         }
         public void RefreshData()
         {
