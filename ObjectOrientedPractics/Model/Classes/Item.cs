@@ -39,7 +39,7 @@ namespace ObjectOrientedPractics.Model.Classes
             get { return _name; }
             set 
             {
-                if (ValueValidator.AssertStringOnLength(value, 200, Name))
+                if (ValueValidator.IsLessThanOrEqual(value, 200, Name))
                     _name = value; 
             }
 
@@ -57,7 +57,7 @@ namespace ObjectOrientedPractics.Model.Classes
             get { return _description; }
             set 
             {
-                if (ValueValidator.AssertStringOnLength(value, 1000, Name))
+                if (ValueValidator.IsLessThanOrEqual(value, 1000, Name))
                     _description = value;  
             }
         }
@@ -74,7 +74,7 @@ namespace ObjectOrientedPractics.Model.Classes
             get { return _cost; }
             set 
             { 
-                if (ValueValidator.AssertIntegerOnBeeingInClosedInterval(value, 0, 100000, Name))
+                if (ValueValidator.IsInInterval(value, 0, 100000, Name))
                     _cost = value; 
             }
         }

@@ -9,7 +9,7 @@ namespace ObjectOrientedPractics.Model.Enums
     /// <summary>
     /// Хранит время доставки для приоритетного заказа.
     /// </summary>
-    public enum PriorityOrderDeliveryTime
+    public enum DeliveryTime
     {
         None,
         NineAMToElevenAM,

@@ -107,7 +107,7 @@ namespace ObjectOrientedPractics.View.Tabs
 
         private void cbDeliveryTime_SelectedIndexChanged(object sender, EventArgs e)
         {
-            _curentPriorityOrder.DesiredDeliveryTime = (PriorityOrderDeliveryTime)cbDeliveryTime.SelectedIndex;
+            _curentPriorityOrder.DesiredDeliveryTime = (DeliveryTime)cbDeliveryTime.SelectedIndex;
         }
     }
 }

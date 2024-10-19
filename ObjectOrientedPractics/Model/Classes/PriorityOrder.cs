@@ -19,7 +19,7 @@ namespace ObjectOrientedPractics.Model.Classes
         /// <summary>
         /// Желаемое время доставки приоритетного товара.
         /// </summary>
-        public Enums.PriorityOrderDeliveryTime DesiredDeliveryTime { get; set; }
+        public Enums.DeliveryTime DesiredDeliveryTime { get; set; }
 
         /// <summary>
         /// Создаёт объект класса <see cref="PriorityOrder"/>.
@@ -40,7 +40,7 @@ namespace ObjectOrientedPractics.Model.Classes
         /// <param name="priorityOrderDeliveryDate">Желаемое время доставки 
         /// приоритетного товара.</param>
         public PriorityOrder (DateTime desiredDeliveyDate, 
-            Enums.PriorityOrderDeliveryTime priorityOrderDeliveryDate) : base ()
+            Enums.DeliveryTime priorityOrderDeliveryDate) : base ()
         {
             DesiredDeliveryDate = desiredDeliveyDate;
             DesiredDeliveryTime = priorityOrderDeliveryDate;

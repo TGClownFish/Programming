@@ -24,7 +24,7 @@ namespace ObjectOrientedPractics.Model.Classes
             get { return _index; }
             set
             {
-                if (ValueValidator.ValidateStringOnBeingAPostalIndex(value, Index))
+                if (ValueValidator.IsPostalIndex(value, Index))
                     _index = value;
             }
         }
@@ -41,7 +41,7 @@ namespace ObjectOrientedPractics.Model.Classes
             get { return _country; }
             set
             {
-                if (ValueValidator.AssertStringOnLength(value, 50, Country))
+                if (ValueValidator.IsLessThanOrEqual(value, 50, Country))
                     _country = value;
             }
         }
@@ -58,7 +58,7 @@ namespace ObjectOrientedPractics.Model.Classes
             get { return _city; }
             set
             {
-                if (ValueValidator.AssertStringOnLength(value, 50, City))
+                if (ValueValidator.IsLessThanOrEqual(value, 50, City))
                     _city = value;
             }
         }
@@ -75,7 +75,7 @@ namespace ObjectOrientedPractics.Model.Classes
             get { return _street; }
             set
             {
-                if (ValueValidator.AssertStringOnLength(value, 100, Street))
+                if (ValueValidator.IsLessThanOrEqual(value, 100, Street))
                     _street = value;
             }
         }
@@ -92,7 +92,7 @@ namespace ObjectOrientedPractics.Model.Classes
             get { return _building; }
             set
             {
-                if (ValueValidator.AssertStringOnLength(value, 10, Building))
+                if (ValueValidator.IsLessThanOrEqual(value, 10, Building))
                     _building = value;
             }
         }
@@ -109,7 +109,7 @@ namespace ObjectOrientedPractics.Model.Classes
             get { return _apartment; }
             set
             {
-                if (ValueValidator.AssertStringOnLength(value, 50, Apartment))
+                if (ValueValidator.IsLessThanOrEqual(value, 50, Apartment))
                     _apartment = value;
             }
         }

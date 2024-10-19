@@ -35,7 +35,7 @@ namespace ObjectOrientedPractics.Model.Classes
             get { return _name; }
             set
             {
-                if (ValueValidator.AssertStringOnLength(value, 200, Name))
+                if (ValueValidator.IsLessThanOrEqual(value, 200, Name))
                     _name = value;
             }
         }
