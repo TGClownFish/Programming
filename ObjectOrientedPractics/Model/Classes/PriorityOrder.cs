@@ -37,13 +37,13 @@ namespace ObjectOrientedPractics.Model.Classes
         /// </summary>
         /// <param name="desiredDeliveyDate">Желаемая дата доставки 
         /// приоритетного товара.</param>
-        /// <param name="priorityOrderDeliveryDate">Желаемое время доставки 
+        /// <param name="desiredDeliveryTime">Желаемое время доставки 
         /// приоритетного товара.</param>
         public PriorityOrder (DateTime desiredDeliveyDate, 
-            Enums.DeliveryTime priorityOrderDeliveryDate) : base ()
+            Enums.DeliveryTime desiredDeliveryTime) : base ()
         {
             DesiredDeliveryDate = desiredDeliveyDate;
-            DesiredDeliveryTime = priorityOrderDeliveryDate;
+            DesiredDeliveryTime = desiredDeliveryTime;
         }
         /// <summary>
         /// Создаёт пустой экземпляр класса <see cref="PriorityOrder"/>.

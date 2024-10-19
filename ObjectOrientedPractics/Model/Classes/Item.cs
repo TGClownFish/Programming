@@ -12,10 +12,7 @@ namespace ObjectOrientedPractics.Model.Classes
     ///</summary>
     public class Item
     {
-        ///<summary>
-        /// ID товара. Только для чтения.
-        ///</summary>
-        private readonly int _id;
+
         ///<summary>
         /// Хранит ID товара. Только для чтения.
         ///</summary>
