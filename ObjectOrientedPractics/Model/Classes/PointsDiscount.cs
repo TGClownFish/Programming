@@ -39,7 +39,7 @@ namespace ObjectOrientedPractics.Model.Classes
             {
                 fullCost += items[i].Cost;
             }
-            double percentage = fullCost / Points;
+            double percentage = Points / fullCost;
             if (percentage >= 0.3)
             {
                 return 0.3;
@@ -57,8 +57,13 @@ namespace ObjectOrientedPractics.Model.Classes
         /// <returns>Возвращает размер скидки (не может быть выше 0.3).</returns>
         public double Apply(List<Item> items)
         {
+            double fullCost = 0;
+            for (int i = 0; i < items.Count; i++)
+            {
+                fullCost += items[i].Cost;
+            }
             double discount = Calculate(items);
-            Points -= Convert.ToInt32(Points * discount);
+            Points -= Convert.ToInt32(fullCost * discount);
             return discount;
         }
 
@@ -80,7 +85,7 @@ namespace ObjectOrientedPractics.Model.Classes
         /// Создаёт экземпляр класса <see cref="PointsDiscount"./>
         /// </summary>
         /// <param name="points">Количество баллов.</param>
-        PointsDiscount(int points)
+        public PointsDiscount(int points)
         {
             Points = points;
         }
@@ -88,7 +93,7 @@ namespace ObjectOrientedPractics.Model.Classes
         /// <summary>
         /// Создаёт пустой экземпляр класса <see cref="PointsDiscount"./>
         /// </summary>
-        PointsDiscount()
+        public PointsDiscount()
         {
             Points = 0;
         }

@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
+            Model.Classes.PriorityOrder priorityOrder1 = new Model.Classes.PriorityOrder();
+            Model.Classes.Address address1 = new Model.Classes.Address();
             tabPage2 = new TabPage();
             customersTab = new View.Tabs.CustomersTab();
             tabPage1 = new TabPage();
@@ -40,12 +42,15 @@
             ordersTab1 = new View.Tabs.OrdersTab();
             tabPage3 = new TabPage();
             priorityOrdersTab1 = new View.Tabs.PriorityOrdersTab();
+            tabPage4 = new TabPage();
+            discountTab21 = new View.Tabs.DiscountTab2();
             tabPage2.SuspendLayout();
             tabPage1.SuspendLayout();
             tabControl1.SuspendLayout();
             tabPageCarts.SuspendLayout();
             tabPageOrders.SuspendLayout();
             tabPage3.SuspendLayout();
+            tabPage4.SuspendLayout();
             SuspendLayout();
             // 
             // tabPage2
@@ -101,6 +106,7 @@
             tabControl1.Controls.Add(tabPageCarts);
             tabControl1.Controls.Add(tabPageOrders);
             tabControl1.Controls.Add(tabPage3);
+            tabControl1.Controls.Add(tabPage4);
             tabControl1.Dock = DockStyle.Fill;
             tabControl1.Location = new Point(0, 0);
             tabControl1.Margin = new Padding(3, 2, 3, 2);
@@ -116,7 +122,7 @@
             tabPageCarts.Controls.Add(cartsTab1);
             tabPageCarts.Location = new Point(4, 24);
             tabPageCarts.Name = "tabPageCarts";
-            tabPageCarts.Size = new Size(192, 72);
+            tabPageCarts.Size = new Size(700, 394);
             tabPageCarts.TabIndex = 2;
             tabPageCarts.Text = "Carts";
             tabPageCarts.UseVisualStyleBackColor = true;
@@ -129,7 +135,7 @@
             cartsTab1.Items = null;
             cartsTab1.Location = new Point(0, 0);
             cartsTab1.Name = "cartsTab1";
-            cartsTab1.Size = new Size(192, 72);
+            cartsTab1.Size = new Size(700, 394);
             cartsTab1.TabIndex = 0;
             // 
             // tabPageOrders
@@ -137,7 +143,7 @@
             tabPageOrders.Controls.Add(ordersTab1);
             tabPageOrders.Location = new Point(4, 24);
             tabPageOrders.Name = "tabPageOrders";
-            tabPageOrders.Size = new Size(192, 72);
+            tabPageOrders.Size = new Size(700, 394);
             tabPageOrders.TabIndex = 3;
             tabPageOrders.Text = "Orders";
             tabPageOrders.UseVisualStyleBackColor = true;
@@ -149,7 +155,7 @@
             ordersTab1.Dock = DockStyle.Fill;
             ordersTab1.Location = new Point(0, 0);
             ordersTab1.Name = "ordersTab1";
-            ordersTab1.Size = new Size(192, 72);
+            ordersTab1.Size = new Size(700, 394);
             ordersTab1.TabIndex = 0;
             // 
             // tabPage3
@@ -158,7 +164,7 @@
             tabPage3.Location = new Point(4, 24);
             tabPage3.Name = "tabPage3";
             tabPage3.Padding = new Padding(3);
-            tabPage3.Size = new Size(192, 72);
+            tabPage3.Size = new Size(700, 394);
             tabPage3.TabIndex = 4;
             tabPage3.Text = "tabPage3";
             tabPage3.UseVisualStyleBackColor = true;
@@ -169,8 +175,37 @@
             priorityOrdersTab1.Items = null;
             priorityOrdersTab1.Location = new Point(3, 3);
             priorityOrdersTab1.Name = "priorityOrdersTab1";
-            priorityOrdersTab1.Size = new Size(186, 66);
+            address1.Apartment = "";
+            address1.Building = "";
+            address1.City = "";
+            address1.Country = "";
+            address1.Index = "000000";
+            address1.Street = "";
+            priorityOrder1.Address = address1;
+            priorityOrder1.DesiredDeliveryDate = new DateTime(2024, 10, 20, 0, 0, 0, 0);
+            priorityOrder1.DesiredDeliveryTime = Model.Enums.DeliveryTime.None;
+            priorityOrder1.Status = Model.Enums.OrderStatus.New;
+            priorityOrdersTab1.PriorityOrder = priorityOrder1;
+            priorityOrdersTab1.Size = new Size(694, 388);
             priorityOrdersTab1.TabIndex = 0;
+            // 
+            // tabPage4
+            // 
+            tabPage4.Controls.Add(discountTab21);
+            tabPage4.Location = new Point(4, 24);
+            tabPage4.Name = "tabPage4";
+            tabPage4.Size = new Size(700, 394);
+            tabPage4.TabIndex = 5;
+            tabPage4.Text = "tabPage4";
+            tabPage4.UseVisualStyleBackColor = true;
+            // 
+            // discountTab21
+            // 
+            discountTab21.Dock = DockStyle.Fill;
+            discountTab21.Location = new Point(0, 0);
+            discountTab21.Name = "discountTab21";
+            discountTab21.Size = new Size(700, 394);
+            discountTab21.TabIndex = 0;
             // 
             // MainForm
             // 
@@ -189,6 +224,7 @@
             tabPageCarts.ResumeLayout(false);
             tabPageOrders.ResumeLayout(false);
             tabPage3.ResumeLayout(false);
+            tabPage4.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -205,5 +241,7 @@
         private View.Tabs.CartsTab cartsTab1;
         private TabPage tabPage3;
         private View.Tabs.PriorityOrdersTab priorityOrdersTab1;
+        private TabPage tabPage4;
+        private View.Tabs.DiscountTab2 discountTab21;
     }
 }
