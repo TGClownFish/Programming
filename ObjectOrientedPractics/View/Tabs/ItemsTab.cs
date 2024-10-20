@@ -23,18 +23,8 @@ namespace ObjectOrientedPractics.View.Tabs
         /// <summary>
         /// Хранит список товаров.
         /// </summary>
-        public List<Model.Classes.Item> Items
-        {
-            get
-            {
-                return _items;
-            }
-            set
-            {
-                _items = value;
+        public List<Model.Classes.Item> Items { get; set; }
 
-            }
-        }
         /// <summary>
         /// Выбранный товар.
         /// </summary>

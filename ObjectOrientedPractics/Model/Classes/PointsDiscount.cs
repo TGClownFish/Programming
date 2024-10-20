@@ -12,9 +12,30 @@ namespace ObjectOrientedPractics.Model.Classes
     public class PointsDiscount
     {
         /// <summary>
+        /// Количество баллов.
+        /// </summary>
+        private int _points;
+        /// <summary>
         /// Хранит количество баллов.
         /// </summary>
-        public int Points { get; set; }
+        public int Points 
+        { 
+            get
+            {
+                return _points;
+            }
+            set
+            {
+                if (value < 0)
+                {
+                    throw new ArgumentException($"Значение в поле {nameof(Points)} не должно быть ниже нуля.");
+                }
+                else
+                {
+                    _points = value;
+                }
+            } 
+        }
 
         /// <summary>
         /// Выводит информацию о скидке.
