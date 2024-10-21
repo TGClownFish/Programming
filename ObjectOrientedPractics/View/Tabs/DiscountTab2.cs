@@ -93,13 +93,13 @@ namespace ObjectOrientedPractics.View.Tabs
 
         private void btnUpdate2_Click(object sender, EventArgs e)
         {
-            PercentDiscounts[0].Update();
-            PercentDiscounts[1].Update();
-            PercentDiscounts[2].Update();
-            PercentDiscounts[3].Update();
-            PercentDiscounts[4].Update();
-            PercentDiscounts[5].Update();
-            PercentDiscounts[6].Update();
+            PercentDiscounts[0].Update(Items);
+            PercentDiscounts[1].Update(Items);
+            PercentDiscounts[2].Update(Items);
+            PercentDiscounts[3].Update(Items);
+            PercentDiscounts[4].Update(Items);
+            PercentDiscounts[5].Update(Items);
+            PercentDiscounts[6].Update(Items);
 
             label1.Text = Convert.ToString(PercentDiscounts[0].Info);
             label3.Text = Convert.ToString(PercentDiscounts[1].Info);

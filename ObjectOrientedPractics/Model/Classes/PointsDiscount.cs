@@ -9,7 +9,7 @@ namespace ObjectOrientedPractics.Model.Classes
     /// <summary>
     /// Хранит данные и методы, связанные с накопительной скидкой.
     /// </summary>
-    public class PointsDiscount
+    public class PointsDiscount : IDiscount
     {
         /// <summary>
         /// Количество баллов.

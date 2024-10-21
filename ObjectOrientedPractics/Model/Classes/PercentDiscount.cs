@@ -9,7 +9,7 @@ namespace ObjectOrientedPractics.Model.Classes
     /// <summary>
     /// Хранит данные и методы, связанные с процентной скидкой.
     /// </summary>
-    public class PercentDiscount
+    public class PercentDiscount : IDiscount
     {
         /// <summary>
         /// Хранит категорию товара, к которой вычисляется скидка.
@@ -76,7 +76,7 @@ namespace ObjectOrientedPractics.Model.Classes
         /// </summary>
         /// <param name="items">Список товаров.</param>
         /// <returns>Возвращает процент скидки скидки (не может быть выше 10).</returns>
-        public int Calculate(List<Item> items)
+        public double Calculate(List<Item> items)
         {
             double spent = 0;
             for (int i = 0; i < items.Count; i++)
@@ -97,33 +97,36 @@ namespace ObjectOrientedPractics.Model.Classes
         }
 
         /// <summary>
-        /// Добавляет необходимое количество к сумме потраченных товаров.
+        /// Добавляет необходимое количество процентов и возвращает размер скидки.
         /// </summary>
         /// <param name="items">Список товаров.</param>
         /// <returns>Возвращает размер скидки (не может быть выше 10).</returns>
-        public int Apply(List<Item> items)
+        public double Apply(List<Item> items)
         {
-            for (int i = 0; i < items.Count; i++)
-            {
-                if (items[i].Category == Category)
-                {
-                    AmountSpent += items[i].Cost;
-                    Update();
-                }
-            }
-            return Calculate(items);
-        }
-
-        /// <summary>
-        /// Добавляет необходимое количество процентов.
-        /// </summary>
-        public void Update()
-        {
+            Update(items);
             // if AmountSpent == 10000 than (AmountSpent / 1000) + 1 == 11
             if (AmountSpent < 10000)
             {
                 Percent = Convert.ToInt32(Math.Floor(AmountSpent / 1000.0) + 1);
             }
+            return Calculate(items);
+        }
+
+        /// <summary>
+        /// Добавляет необходимое количество к сумме потраченных товаров.
+
+        /// <param name="items">Список товаров.</param>
+        /// </summary>
+        public void Update(List<Item> items)
+        {
+            for (int i = 0; i < items.Count; i++)
+            {
+                if (items[i].Category == Category)
+                {
+                    AmountSpent += items[i].Cost;   
+                }
+            }
+
         }
 
         /// <summary>
