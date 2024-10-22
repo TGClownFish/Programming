@@ -1,5 +1,6 @@
 using ObjectOrientedPractics.Model;
 using System.Windows.Forms;
+using ObjectOrientedPractics.Model.Enums;
 
 namespace ObjectOrientedPractics
 {

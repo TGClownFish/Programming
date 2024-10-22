@@ -11,6 +11,7 @@ using System.Text.Json;
 using ObjectOrientedPractics.View.Controls;
 using ObjectOrientedPractics.Model.Classes;
 using ObjectOrientedPractics.Model;
+using ObjectOrientedPractics.Model.Classes.Discounts;
 
 namespace ObjectOrientedPractics.View.Tabs
 {
@@ -131,19 +132,27 @@ namespace ObjectOrientedPractics.View.Tabs
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            FormAddDiscount formAddDiscount = new FormAddDiscount();
-            formAddDiscount.ShowDialog();
-            foreach(Category category in Category)
+            if (lbCustomers.SelectedIndex >= 0)
             {
-                if (category in )
-                formAddDiscount.Categoties.Add(Convert.ToString(category));
+                FormAddDiscount formAddDiscount = new FormAddDiscount();
+                formAddDiscount.Categoties.AddRange(Enum.GetNames(typeof(Model.Enums.Category)));
+                formAddDiscount.Categoties.RemoveAt(0);
+                formAddDiscount.ShowDialog();
+                if (formAddDiscount.DialogResult == DialogResult.OK)
+                {
+                    _currentCustomer.Discounts.Add(new PercentDiscount(formAddDiscount.ChosenCategory));
+                    lbDiscount.Items.Add(_currentCustomer.Discounts.Last().Info);
+                }
+                
             }
-            
-
         }
 
         private void btnDelete2_Click(object sender, EventArgs e)
         {
+            if (lbCustomers.SelectedIndex >= 0 && lbDiscount.SelectedIndex >= 0)
+            {
+
+            }
 
         }
     }

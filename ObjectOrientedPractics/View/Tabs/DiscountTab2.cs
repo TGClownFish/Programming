@@ -1,6 +1,7 @@
 ﻿using ObjectOrientedPractics.Model;
 using ObjectOrientedPractics.Model.Classes;
 using ObjectOrientedPractics.Model.Classes.Discounts;
+using ObjectOrientedPractics.Model.Enums;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

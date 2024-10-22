@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using static System.Windows.Forms.LinkLabel;
+using ObjectOrientedPractics.Model.Enums;
 
 namespace ObjectOrientedPractics.Model.Classes
 {

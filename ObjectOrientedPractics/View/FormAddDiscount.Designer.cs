@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             label1 = new Label();
-            cbControl = new ComboBox();
+            cbCategory = new ComboBox();
             btnOk = new Button();
             btnCancel = new Button();
             SuspendLayout();
@@ -37,51 +37,56 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(68, 30);
+            label1.Location = new Point(122, 25);
             label1.Name = "label1";
-            label1.Size = new Size(153, 20);
+            label1.Size = new Size(123, 15);
             label1.TabIndex = 0;
             label1.Text = "Choose The Category:";
             // 
             // cbControl
             // 
-            cbControl.FormattingEnabled = true;
-            cbControl.Location = new Point(67, 73);
-            cbControl.Name = "cbControl";
-            cbControl.Size = new Size(259, 28);
-            cbControl.TabIndex = 1;
-            cbControl.SelectedIndexChanged += comboBox1_SelectedIndexChanged;
+            cbCategory.FormattingEnabled = true;
+            cbCategory.Location = new Point(59, 55);
+            cbCategory.Margin = new Padding(3, 2, 3, 2);
+            cbCategory.Name = "cbControl";
+            cbCategory.Size = new Size(227, 23);
+            cbCategory.TabIndex = 1;
+            cbCategory.SelectedIndexChanged += cbControl_SelectedIndexChanged;
             // 
             // btnOk
             // 
-            btnOk.Location = new Point(67, 138);
+            btnOk.Location = new Point(59, 104);
+            btnOk.Margin = new Padding(3, 2, 3, 2);
             btnOk.Name = "btnOk";
-            btnOk.Size = new Size(94, 29);
+            btnOk.Size = new Size(82, 22);
             btnOk.TabIndex = 3;
             btnOk.Text = "Ok";
             btnOk.UseVisualStyleBackColor = true;
             // 
             // btnCancel
             // 
-            btnCancel.Location = new Point(232, 144);
+            btnCancel.Location = new Point(204, 104);
+            btnCancel.Margin = new Padding(3, 2, 3, 2);
             btnCancel.Name = "btnCancel";
-            btnCancel.Size = new Size(94, 29);
+            btnCancel.Size = new Size(82, 22);
             btnCancel.TabIndex = 4;
             btnCancel.Text = "Cancel";
             btnCancel.UseVisualStyleBackColor = true;
             // 
             // FormAddDiscount
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(408, 201);
+            ClientSize = new Size(357, 151);
             Controls.Add(btnCancel);
             Controls.Add(btnOk);
-            Controls.Add(cbControl);
+            Controls.Add(cbCategory);
             Controls.Add(label1);
+            Margin = new Padding(3, 2, 3, 2);
             Name = "FormAddDiscount";
             StartPosition = FormStartPosition.CenterParent;
             Text = "Add Discount";
+            Load += FormAddDiscount_Load;
             ResumeLayout(false);
             PerformLayout();
         }
@@ -89,7 +94,7 @@
         #endregion
 
         private Label label1;
-        private ComboBox cbControl;
+        private ComboBox cbCategory;
         private Button btnOk;
         private Button btnCancel;
     }

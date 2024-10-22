@@ -1,4 +1,6 @@
-﻿using System;
+﻿using ObjectOrientedPractics.Model.Enums;
+using ObjectOrientedPractics.Model;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,18 +14,27 @@ namespace ObjectOrientedPractics.View
 {
     public partial class FormAddDiscount : Form
     {
-        public List<string> Categoties {  get; set; }
+        public List<string> Categoties { get; set; } = new List<string>();
+        public Category ChosenCategory { get; set; }
         public FormAddDiscount()
         {
             InitializeComponent();
-            btnOk.DialogResult = DialogResult.OK;
-            btnCancel.DialogResult = DialogResult.Cancel;
-            foreach (Category category in _)
+
         }
 
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        private void FormAddDiscount_Load(object sender, EventArgs e)
         {
+            btnOk.DialogResult = DialogResult.OK;
+            btnCancel.DialogResult = DialogResult.Cancel;
+            foreach (string category in Categoties)
+            {
+                cbCategory.Items.Add(category);
+            }
+        }
 
+        private void cbControl_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ChosenCategory = (Category)cbCategory.SelectedIndex + 1;
         }
     }
 }

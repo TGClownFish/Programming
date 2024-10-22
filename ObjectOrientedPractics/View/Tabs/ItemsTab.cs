@@ -11,6 +11,7 @@ using System.Text.Json;
 using System.IO;
 using ObjectOrientedPractics.Model;
 using ObjectOrientedPractics.Model.Classes;
+using ObjectOrientedPractics.Model.Enums;
 
 namespace ObjectOrientedPractics.View.Tabs
 {
@@ -19,21 +20,21 @@ namespace ObjectOrientedPractics.View.Tabs
         /// <summary>
         /// Список товаров.
         /// </summary>
-        private List<Model.Classes.Item> _items;
+        private List<Item> _items;
         /// <summary>
         /// Хранит список товаров.
         /// </summary>
-        public List<Model.Classes.Item> Items { get; set; }
+        public List<Item> Items { get; set; }
 
         /// <summary>
         /// Выбранный товар.
         /// </summary>
-        private Model.Classes.Item _currentItem;
+        private Item _currentItem;
 
         public ItemsTab()
         {
             InitializeComponent();
-            cbCategory.Items.AddRange(Enum.GetNames(typeof(Model.Category)));
+            cbCategory.Items.AddRange(Enum.GetNames(typeof(Category)));
         }
 
         private void lbItems_SelectedIndexChanged(object sender, EventArgs e)
