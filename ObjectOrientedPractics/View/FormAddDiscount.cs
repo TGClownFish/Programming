@@ -34,7 +34,10 @@ namespace ObjectOrientedPractics.View
 
         private void cbControl_SelectedIndexChanged(object sender, EventArgs e)
         {
-            ChosenCategory = (Category)cbCategory.SelectedIndex + 1;
+            if (cbCategory.SelectedIndex >= 0)
+            { 
+                ChosenCategory = (Category)Enum.Parse(typeof(Category), Convert.ToString(cbCategory.SelectedItem), true); 
+            }
         }
     }
 }

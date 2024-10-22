@@ -31,9 +31,10 @@ namespace ObjectOrientedPractics.View.Tabs
         private void InitializeComponent()
         {
             Address address1 = new Address();
+            labelError = new Label();
             label5 = new Label();
-            btnAddNew = new Button();
-            btnDelete = new Button();
+            btnAddCustomer = new Button();
+            btnDeleteCustomer = new Button();
             lbCustomers = new ListBox();
             splitContainer1 = new SplitContainer();
             splitContainer4 = new SplitContainer();
@@ -47,8 +48,8 @@ namespace ObjectOrientedPractics.View.Tabs
             tbName = new TextBox();
             addressControl = new Controls.AddressControl();
             label4 = new Label();
-            btnAdd = new Button();
-            btnDelete2 = new Button();
+            btnAddDiscount = new Button();
+            btnDeleteDiscount = new Button();
             lbDiscount = new ListBox();
             ((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
             splitContainer1.Panel1.SuspendLayout();
@@ -65,6 +66,17 @@ namespace ObjectOrientedPractics.View.Tabs
             tableLayoutPanel1.SuspendLayout();
             SuspendLayout();
             // 
+            // labelError
+            // 
+            labelError.AutoSize = true;
+            labelError.Font = new Font("Segoe UI", 9F);
+            labelError.ForeColor = Color.Red;
+            labelError.Location = new Point(3, 349);
+            labelError.Name = "labelError";
+            labelError.Size = new Size(10, 15);
+            labelError.TabIndex = 12;
+            labelError.Text = " ";
+            // 
             // label5
             // 
             label5.AutoSize = true;
@@ -74,29 +86,29 @@ namespace ObjectOrientedPractics.View.Tabs
             label5.TabIndex = 13;
             label5.Text = "Customers:";
             // 
-            // btnAddNew
+            // btnAddCustomer
             // 
-            btnAddNew.Dock = DockStyle.Fill;
-            btnAddNew.Location = new Point(0, 0);
-            btnAddNew.Margin = new Padding(3, 2, 3, 2);
-            btnAddNew.Name = "btnAddNew";
-            btnAddNew.Size = new Size(93, 30);
-            btnAddNew.TabIndex = 11;
-            btnAddNew.Text = "Add";
-            btnAddNew.UseVisualStyleBackColor = true;
-            btnAddNew.Click += btnAddNew_Click;
+            btnAddCustomer.Dock = DockStyle.Fill;
+            btnAddCustomer.Location = new Point(0, 0);
+            btnAddCustomer.Margin = new Padding(3, 2, 3, 2);
+            btnAddCustomer.Name = "btnAddCustomer";
+            btnAddCustomer.Size = new Size(93, 30);
+            btnAddCustomer.TabIndex = 11;
+            btnAddCustomer.Text = "Add";
+            btnAddCustomer.UseVisualStyleBackColor = true;
+            btnAddCustomer.Click += btnAddCustomer_Click;
             // 
-            // btnDelete
+            // btnDeleteCustomer
             // 
-            btnDelete.Dock = DockStyle.Fill;
-            btnDelete.Location = new Point(0, 0);
-            btnDelete.Margin = new Padding(3, 2, 3, 2);
-            btnDelete.Name = "btnDelete";
-            btnDelete.Size = new Size(99, 30);
-            btnDelete.TabIndex = 10;
-            btnDelete.Text = "Delete";
-            btnDelete.UseVisualStyleBackColor = true;
-            btnDelete.Click += btnDelete_Click;
+            btnDeleteCustomer.Dock = DockStyle.Fill;
+            btnDeleteCustomer.Location = new Point(0, 0);
+            btnDeleteCustomer.Margin = new Padding(3, 2, 3, 2);
+            btnDeleteCustomer.Name = "btnDeleteCustomer";
+            btnDeleteCustomer.Size = new Size(99, 30);
+            btnDeleteCustomer.TabIndex = 10;
+            btnDeleteCustomer.Text = "Delete";
+            btnDeleteCustomer.UseVisualStyleBackColor = true;
+            btnDeleteCustomer.Click += btnDeleteCustomer_Click;
             // 
             // lbCustomers
             // 
@@ -107,7 +119,7 @@ namespace ObjectOrientedPractics.View.Tabs
             lbCustomers.Location = new Point(3, 31);
             lbCustomers.Margin = new Padding(3, 2, 3, 2);
             lbCustomers.Name = "lbCustomers";
-            lbCustomers.Size = new Size(237, 364);
+            lbCustomers.Size = new Size(237, 394);
             lbCustomers.TabIndex = 9;
             lbCustomers.SelectedIndexChanged += lbCustomers_SelectedIndexChanged;
             // 
@@ -158,11 +170,11 @@ namespace ObjectOrientedPractics.View.Tabs
             // 
             // splitContainer3.Panel1
             // 
-            splitContainer3.Panel1.Controls.Add(btnAddNew);
+            splitContainer3.Panel1.Controls.Add(btnAddCustomer);
             // 
             // splitContainer3.Panel2
             // 
-            splitContainer3.Panel2.Controls.Add(btnDelete);
+            splitContainer3.Panel2.Controls.Add(btnDeleteCustomer);
             splitContainer3.Size = new Size(242, 30);
             splitContainer3.SplitterDistance = 93;
             splitContainer3.SplitterIncrement = 5;
@@ -182,29 +194,31 @@ namespace ObjectOrientedPractics.View.Tabs
             tableLayoutPanel1.Controls.Add(tbName, 1, 2);
             tableLayoutPanel1.Controls.Add(addressControl, 0, 4);
             tableLayoutPanel1.Controls.Add(label4, 0, 5);
-            tableLayoutPanel1.Controls.Add(btnAdd, 0, 6);
-            tableLayoutPanel1.Controls.Add(btnDelete2, 0, 7);
-            tableLayoutPanel1.Controls.Add(lbDiscount, 1, 6);
+            tableLayoutPanel1.Controls.Add(btnAddDiscount, 0, 6);
+            tableLayoutPanel1.Controls.Add(btnDeleteDiscount, 0, 7);
+            tableLayoutPanel1.Controls.Add(lbDiscount, 1, 5);
+            tableLayoutPanel1.Controls.Add(labelError, 0, 8);
             tableLayoutPanel1.Dock = DockStyle.Fill;
             tableLayoutPanel1.Location = new Point(0, 0);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
-            tableLayoutPanel1.RowCount = 9;
+            tableLayoutPanel1.RowCount = 10;
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 22F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 22F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 22F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 25F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 25F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 26F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 159F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 22F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 36F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 36F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle());
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 34F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 2F));
             tableLayoutPanel1.Size = new Size(444, 457);
             tableLayoutPanel1.TabIndex = 27;
             // 
             // chbPriority
             // 
             chbPriority.AutoSize = true;
-            chbPriority.Location = new Point(3, 69);
+            chbPriority.Location = new Point(3, 75);
             chbPriority.Name = "chbPriority";
             chbPriority.Size = new Size(75, 19);
             chbPriority.TabIndex = 7;
@@ -227,7 +241,7 @@ namespace ObjectOrientedPractics.View.Tabs
             label2.Anchor = AnchorStyles.Left;
             label2.AutoSize = true;
             label2.ImageAlign = ContentAlignment.MiddleLeft;
-            label2.Location = new Point(3, 47);
+            label2.Location = new Point(3, 52);
             label2.Name = "label2";
             label2.Size = new Size(64, 15);
             label2.TabIndex = 5;
@@ -238,7 +252,7 @@ namespace ObjectOrientedPractics.View.Tabs
             label1.Anchor = AnchorStyles.Left;
             label1.AutoSize = true;
             label1.ImageAlign = ContentAlignment.MiddleLeft;
-            label1.Location = new Point(3, 25);
+            label1.Location = new Point(3, 27);
             label1.Name = "label1";
             label1.Size = new Size(21, 15);
             label1.TabIndex = 4;
@@ -257,11 +271,11 @@ namespace ObjectOrientedPractics.View.Tabs
             // tbName
             // 
             tbName.Dock = DockStyle.Fill;
-            tbName.Location = new Point(119, 46);
+            tbName.Location = new Point(119, 49);
             tbName.Margin = new Padding(3, 2, 3, 2);
             tbName.Multiline = true;
             tbName.Name = "tbName";
-            tbName.Size = new Size(322, 18);
+            tbName.Size = new Size(322, 21);
             tbName.TabIndex = 1;
             tbName.TextChanged += tbName_TextChanged;
             tbName.Leave += tbName_Leave;
@@ -276,45 +290,46 @@ namespace ObjectOrientedPractics.View.Tabs
             address1.Street = "";
             addressControl.Address = address1;
             tableLayoutPanel1.SetColumnSpan(addressControl, 2);
+            addressControl.Dock = DockStyle.Fill;
             addressControl.IsReadOnly = false;
-            addressControl.Location = new Point(3, 94);
+            addressControl.Location = new Point(3, 100);
             addressControl.Margin = new Padding(3, 2, 3, 2);
             addressControl.Name = "addressControl";
-            addressControl.Size = new Size(437, 151);
+            addressControl.Size = new Size(438, 155);
             addressControl.TabIndex = 6;
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(3, 251);
+            label4.Location = new Point(3, 257);
             label4.Name = "label4";
             label4.Size = new Size(62, 15);
             label4.TabIndex = 8;
             label4.Text = "Discounts:";
             // 
-            // btnAdd
+            // btnAddDiscount
             // 
-            btnAdd.Dock = DockStyle.Fill;
-            btnAdd.Location = new Point(3, 275);
-            btnAdd.Margin = new Padding(3, 2, 3, 2);
-            btnAdd.Name = "btnAdd";
-            btnAdd.Size = new Size(110, 32);
-            btnAdd.TabIndex = 9;
-            btnAdd.Text = "Add";
-            btnAdd.UseVisualStyleBackColor = true;
-            btnAdd.Click += btnAdd_Click;
+            btnAddDiscount.Dock = DockStyle.Fill;
+            btnAddDiscount.Location = new Point(3, 281);
+            btnAddDiscount.Margin = new Padding(3, 2, 3, 2);
+            btnAddDiscount.Name = "btnAddDiscount";
+            btnAddDiscount.Size = new Size(110, 32);
+            btnAddDiscount.TabIndex = 9;
+            btnAddDiscount.Text = "Add";
+            btnAddDiscount.UseVisualStyleBackColor = true;
+            btnAddDiscount.Click += btnAddDiscount_Click;
             // 
-            // btnDelete2
+            // btnDeleteDiscount
             // 
-            btnDelete2.Dock = DockStyle.Fill;
-            btnDelete2.Location = new Point(3, 311);
-            btnDelete2.Margin = new Padding(3, 2, 3, 2);
-            btnDelete2.Name = "btnDelete2";
-            btnDelete2.Size = new Size(110, 32);
-            btnDelete2.TabIndex = 10;
-            btnDelete2.Text = "btnDelete";
-            btnDelete2.UseVisualStyleBackColor = true;
-            btnDelete2.Click += btnDelete2_Click;
+            btnDeleteDiscount.Dock = DockStyle.Fill;
+            btnDeleteDiscount.Location = new Point(3, 317);
+            btnDeleteDiscount.Margin = new Padding(3, 2, 3, 2);
+            btnDeleteDiscount.Name = "btnDeleteDiscount";
+            btnDeleteDiscount.Size = new Size(110, 30);
+            btnDeleteDiscount.TabIndex = 10;
+            btnDeleteDiscount.Text = "Delete";
+            btnDeleteDiscount.UseVisualStyleBackColor = true;
+            btnDeleteDiscount.Click += btnDeleteDiscount_Click;
             // 
             // lbDiscount
             // 
@@ -322,11 +337,11 @@ namespace ObjectOrientedPractics.View.Tabs
             lbDiscount.ForeColor = SystemColors.WindowText;
             lbDiscount.FormattingEnabled = true;
             lbDiscount.ItemHeight = 15;
-            lbDiscount.Location = new Point(119, 275);
+            lbDiscount.Location = new Point(119, 259);
             lbDiscount.Margin = new Padding(3, 2, 3, 2);
             lbDiscount.Name = "lbDiscount";
-            tableLayoutPanel1.SetRowSpan(lbDiscount, 3);
-            lbDiscount.Size = new Size(322, 180);
+            tableLayoutPanel1.SetRowSpan(lbDiscount, 4);
+            lbDiscount.Size = new Size(322, 194);
             lbDiscount.TabIndex = 11;
             lbDiscount.SelectedIndexChanged += lbDiscount_SelectedIndexChanged;
             // 
@@ -359,8 +374,8 @@ namespace ObjectOrientedPractics.View.Tabs
         #endregion
 
         private Label label5;
-        private Button btnAddNew;
-        private Button btnDelete;
+        private Button btnAddCustomer;
+        private Button btnDeleteCustomer;
         private ListBox lbCustomers;
         private Controls.AddressControl addressControl1;
         private SplitContainer splitContainer1;
@@ -375,8 +390,9 @@ namespace ObjectOrientedPractics.View.Tabs
         private CheckBox chbPriority;
         private TableLayoutPanel tableLayoutPanel1;
         private Label label4;
-        private Button btnAdd;
-        private Button btnDelete2;
+        private Button btnAddDiscount;
+        private Button btnDeleteDiscount;
         private ListBox lbDiscount;
+        private Label labelError;
     }
 }

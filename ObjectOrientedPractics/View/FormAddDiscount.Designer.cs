@@ -37,18 +37,18 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(122, 25);
+            label1.Location = new Point(59, 22);
             label1.Name = "label1";
             label1.Size = new Size(123, 15);
             label1.TabIndex = 0;
             label1.Text = "Choose The Category:";
             // 
-            // cbControl
+            // cbCategory
             // 
             cbCategory.FormattingEnabled = true;
             cbCategory.Location = new Point(59, 55);
             cbCategory.Margin = new Padding(3, 2, 3, 2);
-            cbCategory.Name = "cbControl";
+            cbCategory.Name = "cbCategory";
             cbCategory.Size = new Size(227, 23);
             cbCategory.TabIndex = 1;
             cbCategory.SelectedIndexChanged += cbControl_SelectedIndexChanged;
