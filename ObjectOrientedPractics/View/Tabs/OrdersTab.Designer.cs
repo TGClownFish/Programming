@@ -1,4 +1,5 @@
 ﻿using ObjectOrientedPractics.Model.Classes;
+using ObjectOrientedPractics.Model.Classes.Orders;
 
 namespace ObjectOrientedPractics.View.Tabs
 {

@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-            Model.Classes.PriorityOrder priorityOrder1 = new Model.Classes.PriorityOrder();
+            Model.Classes.Orders.PriorityOrder priorityOrder1 = new Model.Classes.Orders.PriorityOrder();
             Model.Classes.Address address1 = new Model.Classes.Address();
             tabPage2 = new TabPage();
             customersTab = new View.Tabs.CustomersTab();

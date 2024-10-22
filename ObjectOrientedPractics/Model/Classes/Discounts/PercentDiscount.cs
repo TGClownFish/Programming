@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ObjectOrientedPractics.Model.Classes
+namespace ObjectOrientedPractics.Model.Classes.Discounts
 {
     /// <summary>
     /// Хранит данные и методы, связанные с процентной скидкой.
@@ -23,21 +23,21 @@ namespace ObjectOrientedPractics.Model.Classes
         /// <summary>
         /// Хранит процент скидки.
         /// </summary>
-        public int Percent 
-        { 
-            get 
-            { 
-                return _percent; 
-            } 
-            set 
-            { 
+        public int Percent
+        {
+            get
+            {
+                return _percent;
+            }
+            set
+            {
                 if (value < 0 || value > 10)
                 {
                     throw new ArgumentException($"Значение в поле {nameof(Percent)} не должно быть " +
                         $"ниже 1 или выше 10 (Категория: {Category}).");
                 }
-                _percent = value; 
-            } 
+                _percent = value;
+            }
         }
 
         /// <summary>
@@ -123,7 +123,7 @@ namespace ObjectOrientedPractics.Model.Classes
             {
                 if (items[i].Category == Category)
                 {
-                    AmountSpent += items[i].Cost;   
+                    AmountSpent += items[i].Cost;
                 }
             }
 
@@ -133,7 +133,7 @@ namespace ObjectOrientedPractics.Model.Classes
         /// Создаёт экземпляр класса <see cref="PercentDiscount"/>.
         /// </summary>
         /// <param name="category">Категория товара, к которой вычисляется скидка.</param>
-        public PercentDiscount (Category category)
+        public PercentDiscount(Category category)
         {
             Category = category;
             Percent = 1;

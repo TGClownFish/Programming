@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ObjectOrientedPractics.Model.Classes
+namespace ObjectOrientedPractics.Model.Classes.Orders
 {
     /// <summary>
     /// Хранит данные о заказе покупателя.
@@ -26,7 +26,7 @@ namespace ObjectOrientedPractics.Model.Classes
         /// <summary>
         /// Хранит данные о дате создания.
         /// </summary>
-        public DateTime CreateDate { get;}
+        public DateTime CreateDate { get; }
 
         /// <summary>
         /// Хранит данные об адрессе покупателя. Объект класса <see cref="Classes.Address"/>.
@@ -66,11 +66,34 @@ namespace ObjectOrientedPractics.Model.Classes
         public OrderStatus Status { get; set; }
 
         /// <summary>
+        /// Хранит размер скидки.
+        /// </summary>
+        public double DiscountAmount { get; set; }
+
+        /// <summary>
+        /// Возвращает стоимость заказа с применненой скидкой.
+        /// </summary>
+        public double Total
+        {
+            get
+            {
+                if (Amount == 0)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return Amount - Total;
+                }
+            }
+        }
+
+        /// <summary>
         /// Создаёт объект класса <see cref="Order"/>.
         /// </summary>
         /// <param name="address">Хранит данные об адрессе покупателя. Объект класса <see cref="Classes.Address"/>.</param>
         /// <param name="items">Хранит список объектов класса <see cref="Item"/>.</param>
-        public Order (Address address, List<Item> items)
+        public Order(Address address, List<Item> items)
         {
             Id = _amountOfOrders;
             _amountOfOrders++;
@@ -78,19 +101,21 @@ namespace ObjectOrientedPractics.Model.Classes
             Address = address;
             Items = items;
             Status = 0;
+            DiscountAmount = 0;
         }
 
         /// <summary>
         /// Создаёт пустой объект класса <see cref="Order"/>.
         /// </summary>
-        public Order ()
+        public Order()
         {
             Id = _amountOfOrders;
             _amountOfOrders++;
-            CreateDate= DateTime.Now;
+            CreateDate = DateTime.Now;
             Address = new Address();
             Items = new List<Item>();
             Status = 0;
+            DiscountAmount = 0;
         }
     }
 }

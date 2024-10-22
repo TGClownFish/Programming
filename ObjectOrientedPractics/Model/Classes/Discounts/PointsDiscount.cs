@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ObjectOrientedPractics.Model.Classes
+namespace ObjectOrientedPractics.Model.Classes.Discounts
 {
     /// <summary>
     /// Хранит данные и методы, связанные с накопительной скидкой.
@@ -18,8 +18,8 @@ namespace ObjectOrientedPractics.Model.Classes
         /// <summary>
         /// Хранит количество баллов.
         /// </summary>
-        public int Points 
-        { 
+        public int Points
+        {
             get
             {
                 return _points;
@@ -34,7 +34,7 @@ namespace ObjectOrientedPractics.Model.Classes
                 {
                     _points = value;
                 }
-            } 
+            }
         }
 
         /// <summary>
@@ -53,10 +53,10 @@ namespace ObjectOrientedPractics.Model.Classes
         /// </summary>
         /// <param name="items">Список товаров.</param>
         /// <returns>Возвращает размер скидки (не может быть выше 0.3).</returns>
-        public double Calculate (List<Item> items)
+        public double Calculate(List<Item> items)
         {
             double fullCost = 0;
-            for (int i = 0;i<items.Count; i++)
+            for (int i = 0; i < items.Count; i++)
             {
                 fullCost += items[i].Cost;
             }

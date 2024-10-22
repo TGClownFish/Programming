@@ -63,12 +63,12 @@ namespace ObjectOrientedPractics.View.Tabs
             {
                 if (_curentCustomer.IsPriority == true)
                 {
-                    _curentCustomer.Orders.Add(new Model.Classes.PriorityOrder(
+                    _curentCustomer.Orders.Add(new Model.Classes.Orders.PriorityOrder(
                         _curentCustomer.Address, new List<Model.Classes.Item>(_curentCustomer.Cart.Items)));
                 }
                 else
                 {
-                    _curentCustomer.Orders.Add(new Model.Classes.Order(
+                    _curentCustomer.Orders.Add(new Model.Classes.Orders.Order(
                         _curentCustomer.Address, new List<Model.Classes.Item>(_curentCustomer.Cart.Items)));
                 }
                 _curentCustomer.Cart.Items.Clear();

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ObjectOrientedPractics.Model.Classes
+namespace ObjectOrientedPractics.Model.Classes.Orders
 {
     /// <summary>
     /// Хранит данные о приоритетном товаре.
@@ -24,7 +24,7 @@ namespace ObjectOrientedPractics.Model.Classes
         /// <summary>
         /// Создаёт объект класса <see cref="PriorityOrder"/>.
         /// </summary>
-        /// <param name="address">Хранит данные об адрессе покупателя. Объект класса <see cref="Classes.Address"/>.</param>
+        /// <param name="address">Хранит данные об адрессе покупателя. Объект класса <see cref="Address"/>.</param>
         /// <param name="items">Хранит список объектов класса <see cref="Item"/>.</param>
         public PriorityOrder(Address address, List<Item> items) : base()
         {
@@ -39,8 +39,8 @@ namespace ObjectOrientedPractics.Model.Classes
         /// приоритетного товара.</param>
         /// <param name="desiredDeliveryTime">Желаемое время доставки 
         /// приоритетного товара.</param>
-        public PriorityOrder (DateTime desiredDeliveyDate, 
-            Enums.DeliveryTime desiredDeliveryTime) : base ()
+        public PriorityOrder(DateTime desiredDeliveyDate,
+            Enums.DeliveryTime desiredDeliveryTime) : base()
         {
             DesiredDeliveryDate = desiredDeliveyDate;
             DesiredDeliveryTime = desiredDeliveryTime;

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
+using ObjectOrientedPractics.Model.Classes.Orders;
 
 namespace ObjectOrientedPractics.Model.Classes
 {
@@ -51,7 +52,12 @@ namespace ObjectOrientedPractics.Model.Classes
         public Cart Cart { get; set; }
 
         /// <summary>
-        /// Хранит Спиок обектов вида <see cref="Model.Classes.Order"/>.
+        /// Хранит данные о скидках.
+        /// </summary>
+        public List<IDiscount> Discounts { get; set; }
+
+        /// <summary>
+        /// Хранит Спиок обектов вида <see cref="Orders.Order"/>.
         /// </summary>
         public List<Order> Orders { get; set; }
 
@@ -79,6 +85,8 @@ namespace ObjectOrientedPractics.Model.Classes
             Cart = new Cart();
             Orders = new List<Order>();
             IsPriority = false;
+            Discounts = new List<IDiscount>();
+            Discounts.Add(new Discounts.PointsDiscount());
         }
 
         /// <summary>
@@ -95,6 +103,8 @@ namespace ObjectOrientedPractics.Model.Classes
             Cart = new Cart();
             Orders = new List<Order>();
             IsPriority = false;
+            Discounts = new List<IDiscount>();
+            Discounts.Add(new Discounts.PointsDiscount());
         }
 
         /// <summary>
@@ -112,6 +122,8 @@ namespace ObjectOrientedPractics.Model.Classes
             Cart = new Cart();
             Orders = new List<Order>();
             IsPriority = isPriority;
+            Discounts= new List<IDiscount>();
+            Discounts.Add(new Discounts.PointsDiscount());
         }
         /// <summary>
         /// Создаёт пустой экземпляр класса <see cref="Customer"/>.
@@ -125,6 +137,8 @@ namespace ObjectOrientedPractics.Model.Classes
             Cart = new Cart();
             Orders = new List<Order>();
             IsPriority = false;
+            Discounts = new List<IDiscount>();
+            Discounts.Add(new Discounts.PointsDiscount());
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using ObjectOrientedPractics.Model;
+using ObjectOrientedPractics.Model.Classes.Orders;
 using ObjectOrientedPractics.Model.Enums;
 using System;
 using System.Collections.Generic;
@@ -14,11 +15,11 @@ namespace ObjectOrientedPractics.View.Tabs
 {
     public partial class PriorityOrdersTab : UserControl
     {
-        private Model.Classes.PriorityOrder _priorityOrder;
+        private PriorityOrder _priorityOrder;
         /// <summary>
         /// Хранит данные о приоритетном заказе.
         /// </summary>
-        public Model.Classes.PriorityOrder PriorityOrder
+        public PriorityOrder PriorityOrder
         {
             get { return _priorityOrder; }
             set { _priorityOrder = value; }
@@ -34,7 +35,7 @@ namespace ObjectOrientedPractics.View.Tabs
             //PriorityOrder = new Model.Classes.PriorityOrder();
             cbStatus.Items.AddRange(Enum.GetNames(typeof(Model.Enums.OrderStatus)));
             
-            PriorityOrder = new Model.Classes.PriorityOrder();
+            PriorityOrder = new Model.Classes.Orders.PriorityOrder();
             OrderChanged();
         }
         public void OrderChanged()
@@ -65,7 +66,7 @@ namespace ObjectOrientedPractics.View.Tabs
 
         private void btnClearCart_Click(object sender, EventArgs e)
         {
-            PriorityOrder = new Model.Classes.PriorityOrder();
+            PriorityOrder = new Model.Classes.Orders.PriorityOrder();
             OrderChanged();
         }
 

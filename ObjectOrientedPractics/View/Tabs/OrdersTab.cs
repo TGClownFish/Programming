@@ -1,4 +1,5 @@
 ﻿using ObjectOrientedPractics.Model.Classes;
+using ObjectOrientedPractics.Model.Classes.Orders;
 using ObjectOrientedPractics.Model.Enums;
 using System;
 using System.Collections.Generic;
@@ -20,7 +21,7 @@ namespace ObjectOrientedPractics.View.Tabs
         /// </summary>
         public List<Customer> Customers { get; set; }
         /// <summary>
-        /// Хранит данные о заказах. Является списком типа <see cref="Model.Classes.Order"/>.
+        /// Хранит данные о заказах. Является списком типа <see cref="Model.Classes.Orders.Order"/>.
         /// </summary>
         public List<Order> Orders { get; set; } = new List<Order>();
         /// <summary>
