@@ -39,13 +39,17 @@ namespace ObjectOrientedPractics.View.Tabs
             splitContainer4 = new SplitContainer();
             splitContainer3 = new SplitContainer();
             tableLayoutPanel1 = new TableLayoutPanel();
-            addressControl = new Controls.AddressControl();
             chbPriority = new CheckBox();
             label3 = new Label();
             label2 = new Label();
             label1 = new Label();
             tbID = new TextBox();
             tbName = new TextBox();
+            addressControl = new Controls.AddressControl();
+            label4 = new Label();
+            btnAdd = new Button();
+            btnDelete2 = new Button();
+            lbDiscount = new ListBox();
             ((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
             splitContainer1.Panel1.SuspendLayout();
             splitContainer1.Panel2.SuspendLayout();
@@ -171,47 +175,38 @@ namespace ObjectOrientedPractics.View.Tabs
             tableLayoutPanel1.ColumnCount = 2;
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 133F));
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 373F));
-            tableLayoutPanel1.Controls.Add(addressControl, 0, 4);
             tableLayoutPanel1.Controls.Add(chbPriority, 0, 3);
             tableLayoutPanel1.Controls.Add(label3, 0, 0);
             tableLayoutPanel1.Controls.Add(label2, 0, 2);
             tableLayoutPanel1.Controls.Add(label1, 0, 1);
             tableLayoutPanel1.Controls.Add(tbID, 1, 1);
             tableLayoutPanel1.Controls.Add(tbName, 1, 2);
+            tableLayoutPanel1.Controls.Add(addressControl, 0, 4);
+            tableLayoutPanel1.Controls.Add(label4, 0, 5);
+            tableLayoutPanel1.Controls.Add(btnAdd, 0, 6);
+            tableLayoutPanel1.Controls.Add(btnDelete2, 0, 7);
+            tableLayoutPanel1.Controls.Add(lbDiscount, 1, 6);
             tableLayoutPanel1.Dock = DockStyle.Fill;
             tableLayoutPanel1.Location = new Point(0, 0);
             tableLayoutPanel1.Margin = new Padding(3, 4, 3, 4);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
-            tableLayoutPanel1.RowCount = 5;
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 28F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 41F));
+            tableLayoutPanel1.RowCount = 9;
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 30F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 30F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 30F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 35F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 40F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 456F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 212F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 30F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 48F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 48F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle());
             tableLayoutPanel1.Size = new Size(505, 609);
             tableLayoutPanel1.TabIndex = 27;
-            // 
-            // addressControl
-            // 
-            address1.Apartment = "";
-            address1.Building = "";
-            address1.City = "";
-            address1.Country = "";
-            address1.Index = "000000";
-            address1.Street = "";
-            addressControl.Address = address1;
-            tableLayoutPanel1.SetColumnSpan(addressControl, 2);
-            addressControl.Dock = DockStyle.Fill;
-            addressControl.IsReadOnly = false;
-            addressControl.Location = new Point(3, 147);
-            addressControl.Name = "addressControl";
-            addressControl.Size = new Size(500, 459);
-            addressControl.TabIndex = 6;
             // 
             // chbPriority
             // 
             chbPriority.AutoSize = true;
-            chbPriority.Location = new Point(3, 108);
+            chbPriority.Location = new Point(3, 94);
             chbPriority.Margin = new Padding(3, 4, 3, 4);
             chbPriority.Name = "chbPriority";
             chbPriority.Size = new Size(92, 24);
@@ -226,7 +221,7 @@ namespace ObjectOrientedPractics.View.Tabs
             label3.AutoSize = true;
             label3.Location = new Point(3, 0);
             label3.Name = "label3";
-            label3.Size = new Size(127, 28);
+            label3.Size = new Size(127, 30);
             label3.TabIndex = 6;
             label3.Text = "Selected Customer:";
             // 
@@ -235,7 +230,7 @@ namespace ObjectOrientedPractics.View.Tabs
             label2.Anchor = AnchorStyles.Left;
             label2.AutoSize = true;
             label2.ImageAlign = ContentAlignment.MiddleLeft;
-            label2.Location = new Point(3, 76);
+            label2.Location = new Point(3, 65);
             label2.Name = "label2";
             label2.Size = new Size(79, 20);
             label2.TabIndex = 5;
@@ -246,7 +241,7 @@ namespace ObjectOrientedPractics.View.Tabs
             label1.Anchor = AnchorStyles.Left;
             label1.AutoSize = true;
             label1.ImageAlign = ContentAlignment.MiddleLeft;
-            label1.Location = new Point(3, 38);
+            label1.Location = new Point(3, 35);
             label1.Name = "label1";
             label1.Size = new Size(27, 20);
             label1.TabIndex = 4;
@@ -255,7 +250,7 @@ namespace ObjectOrientedPractics.View.Tabs
             // tbID
             // 
             tbID.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
-            tbID.Location = new Point(136, 31);
+            tbID.Location = new Point(136, 33);
             tbID.Name = "tbID";
             tbID.ReadOnly = true;
             tbID.Size = new Size(124, 27);
@@ -264,13 +259,72 @@ namespace ObjectOrientedPractics.View.Tabs
             // tbName
             // 
             tbName.Dock = DockStyle.Fill;
-            tbName.Location = new Point(136, 72);
+            tbName.Location = new Point(136, 63);
             tbName.Multiline = true;
             tbName.Name = "tbName";
-            tbName.Size = new Size(367, 29);
+            tbName.Size = new Size(367, 24);
             tbName.TabIndex = 1;
             tbName.TextChanged += tbName_TextChanged;
             tbName.Leave += tbName_Leave;
+            // 
+            // addressControl
+            // 
+            address1.Apartment = "";
+            address1.Building = "";
+            address1.City = "";
+            address1.Country = "";
+            address1.Index = "000000";
+            address1.Street = "";
+            addressControl.Address = address1;
+            tableLayoutPanel1.SetColumnSpan(addressControl, 2);
+            addressControl.IsReadOnly = false;
+            addressControl.Location = new Point(3, 128);
+            addressControl.Name = "addressControl";
+            addressControl.Size = new Size(500, 201);
+            addressControl.TabIndex = 6;
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Location = new Point(3, 337);
+            label4.Name = "label4";
+            label4.Size = new Size(76, 20);
+            label4.TabIndex = 8;
+            label4.Text = "Discounts:";
+            // 
+            // btnAdd
+            // 
+            btnAdd.Dock = DockStyle.Fill;
+            btnAdd.Location = new Point(3, 370);
+            btnAdd.Name = "btnAdd";
+            btnAdd.Size = new Size(127, 42);
+            btnAdd.TabIndex = 9;
+            btnAdd.Text = "Add";
+            btnAdd.UseVisualStyleBackColor = true;
+            btnAdd.Click += btnAdd_Click;
+            // 
+            // btnDelete2
+            // 
+            btnDelete2.Dock = DockStyle.Fill;
+            btnDelete2.Location = new Point(3, 418);
+            btnDelete2.Name = "btnDelete2";
+            btnDelete2.Size = new Size(127, 42);
+            btnDelete2.TabIndex = 10;
+            btnDelete2.Text = "btnDelete";
+            btnDelete2.UseVisualStyleBackColor = true;
+            btnDelete2.Click += btnDelete2_Click;
+            // 
+            // lbDiscount
+            // 
+            lbDiscount.Dock = DockStyle.Fill;
+            lbDiscount.ForeColor = SystemColors.WindowText;
+            lbDiscount.FormattingEnabled = true;
+            lbDiscount.Location = new Point(136, 370);
+            lbDiscount.Name = "lbDiscount";
+            tableLayoutPanel1.SetRowSpan(lbDiscount, 3);
+            lbDiscount.Size = new Size(367, 236);
+            lbDiscount.TabIndex = 11;
+            lbDiscount.SelectedIndexChanged += lbDiscount_SelectedIndexChanged;
             // 
             // CustomersTab
             // 
@@ -315,5 +369,9 @@ namespace ObjectOrientedPractics.View.Tabs
         private SplitContainer splitContainer4;
         private CheckBox chbPriority;
         private TableLayoutPanel tableLayoutPanel1;
+        private Label label4;
+        private Button btnAdd;
+        private Button btnDelete2;
+        private ListBox lbDiscount;
     }
 }

@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using System.Text.Json;
 using ObjectOrientedPractics.View.Controls;
 using ObjectOrientedPractics.Model.Classes;
+using ObjectOrientedPractics.Model;
 
 namespace ObjectOrientedPractics.View.Tabs
 {
@@ -52,6 +53,11 @@ namespace ObjectOrientedPractics.View.Tabs
                 tbName.Text = Convert.ToString(_currentCustomer.Name);
                 addressControl.Address = _currentCustomer.Address;
                 chbPriority.Checked = _currentCustomer.IsPriority;
+                lbDiscount.Items.Clear();
+                foreach (IDiscount discount in _currentCustomer.Discounts)
+                {
+                    lbDiscount.Items.Add(discount.Info);
+                }
             }
             else
             {
@@ -59,6 +65,7 @@ namespace ObjectOrientedPractics.View.Tabs
                 tbName.Text = "";
                 addressControl.Address = new Address();
                 chbPriority.Checked = false;
+                lbDiscount.Items.Clear();
             }
         }
 
@@ -115,6 +122,29 @@ namespace ObjectOrientedPractics.View.Tabs
             {
                 _currentCustomer.IsPriority = chbPriority.Checked;
             }
+        }
+
+        private void lbDiscount_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            FormAddDiscount formAddDiscount = new FormAddDiscount();
+            formAddDiscount.ShowDialog();
+            foreach(Category category in Category)
+            {
+                if (category in )
+                formAddDiscount.Categoties.Add(Convert.ToString(category));
+            }
+            
+
+        }
+
+        private void btnDelete2_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
