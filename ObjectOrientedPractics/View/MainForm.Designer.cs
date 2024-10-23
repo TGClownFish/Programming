@@ -31,6 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             Model.Classes.Orders.PriorityOrder priorityOrder1 = new Model.Classes.Orders.PriorityOrder();
             Model.Classes.Address address1 = new Model.Classes.Address();
+            Model.Classes.Discounts.PointsDiscount pointsDiscount1 = new Model.Classes.Discounts.PointsDiscount();
             tabPage2 = new TabPage();
             customersTab = new View.Tabs.CustomersTab();
             tabPage1 = new TabPage();
@@ -60,20 +61,21 @@
             tabPage2.Margin = new Padding(3, 2, 3, 2);
             tabPage2.Name = "tabPage2";
             tabPage2.Padding = new Padding(3, 2, 3, 2);
-            tabPage2.Size = new Size(700, 394);
+            tabPage2.Size = new Size(192, 72);
             tabPage2.TabIndex = 1;
             tabPage2.Text = "Customers";
             tabPage2.UseVisualStyleBackColor = true;
             // 
             // customersTab
             // 
+            customersTab.AddedCategoryNames = (List<string>)resources.GetObject("customersTab.AddedCategoryNames");
             customersTab.AutoSizeMode = AutoSizeMode.GrowAndShrink;
             customersTab.Customers = null;
             customersTab.Dock = DockStyle.Fill;
             customersTab.Location = new Point(3, 2);
             customersTab.Margin = new Padding(3, 2, 3, 2);
             customersTab.Name = "customersTab";
-            customersTab.Size = new Size(694, 390);
+            customersTab.Size = new Size(186, 68);
             customersTab.TabIndex = 0;
             // 
             // tabPage1
@@ -83,7 +85,7 @@
             tabPage1.Margin = new Padding(3, 2, 3, 2);
             tabPage1.Name = "tabPage1";
             tabPage1.Padding = new Padding(3, 2, 3, 2);
-            tabPage1.Size = new Size(700, 394);
+            tabPage1.Size = new Size(700, 433);
             tabPage1.TabIndex = 0;
             tabPage1.Text = "Items";
             tabPage1.UseVisualStyleBackColor = true;
@@ -96,7 +98,7 @@
             itemsTab.Location = new Point(3, 2);
             itemsTab.Margin = new Padding(3, 2, 3, 2);
             itemsTab.Name = "itemsTab";
-            itemsTab.Size = new Size(694, 390);
+            itemsTab.Size = new Size(694, 429);
             itemsTab.TabIndex = 0;
             // 
             // tabControl1
@@ -112,7 +114,7 @@
             tabControl1.Margin = new Padding(3, 2, 3, 2);
             tabControl1.Name = "tabControl1";
             tabControl1.SelectedIndex = 0;
-            tabControl1.Size = new Size(708, 422);
+            tabControl1.Size = new Size(708, 461);
             tabControl1.TabIndex = 0;
             tabControl1.SelectedIndexChanged += tabControl1_TabIndexChanged;
             tabControl1.TabIndexChanged += tabControl1_TabIndexChanged;
@@ -122,7 +124,7 @@
             tabPageCarts.Controls.Add(cartsTab1);
             tabPageCarts.Location = new Point(4, 24);
             tabPageCarts.Name = "tabPageCarts";
-            tabPageCarts.Size = new Size(700, 394);
+            tabPageCarts.Size = new Size(192, 72);
             tabPageCarts.TabIndex = 2;
             tabPageCarts.Text = "Carts";
             tabPageCarts.UseVisualStyleBackColor = true;
@@ -135,7 +137,7 @@
             cartsTab1.Items = null;
             cartsTab1.Location = new Point(0, 0);
             cartsTab1.Name = "cartsTab1";
-            cartsTab1.Size = new Size(700, 394);
+            cartsTab1.Size = new Size(192, 72);
             cartsTab1.TabIndex = 0;
             // 
             // tabPageOrders
@@ -143,7 +145,7 @@
             tabPageOrders.Controls.Add(ordersTab1);
             tabPageOrders.Location = new Point(4, 24);
             tabPageOrders.Name = "tabPageOrders";
-            tabPageOrders.Size = new Size(700, 394);
+            tabPageOrders.Size = new Size(192, 72);
             tabPageOrders.TabIndex = 3;
             tabPageOrders.Text = "Orders";
             tabPageOrders.UseVisualStyleBackColor = true;
@@ -155,7 +157,7 @@
             ordersTab1.Dock = DockStyle.Fill;
             ordersTab1.Location = new Point(0, 0);
             ordersTab1.Name = "ordersTab1";
-            ordersTab1.Size = new Size(700, 394);
+            ordersTab1.Size = new Size(192, 72);
             ordersTab1.TabIndex = 0;
             // 
             // tabPage3
@@ -164,7 +166,7 @@
             tabPage3.Location = new Point(4, 24);
             tabPage3.Name = "tabPage3";
             tabPage3.Padding = new Padding(3);
-            tabPage3.Size = new Size(700, 394);
+            tabPage3.Size = new Size(192, 72);
             tabPage3.TabIndex = 4;
             tabPage3.Text = "tabPage3";
             tabPage3.UseVisualStyleBackColor = true;
@@ -184,9 +186,10 @@
             priorityOrder1.Address = address1;
             priorityOrder1.DesiredDeliveryDate = new DateTime(2024, 10, 20, 0, 0, 0, 0);
             priorityOrder1.DesiredDeliveryTime = Model.Enums.DeliveryTime.None;
+            priorityOrder1.DiscountAmount = 0D;
             priorityOrder1.Status = Model.Enums.OrderStatus.New;
             priorityOrdersTab1.PriorityOrder = priorityOrder1;
-            priorityOrdersTab1.Size = new Size(694, 388);
+            priorityOrdersTab1.Size = new Size(186, 66);
             priorityOrdersTab1.TabIndex = 0;
             // 
             // tabPage4
@@ -194,7 +197,7 @@
             tabPage4.Controls.Add(discountTab21);
             tabPage4.Location = new Point(4, 24);
             tabPage4.Name = "tabPage4";
-            tabPage4.Size = new Size(700, 394);
+            tabPage4.Size = new Size(192, 72);
             tabPage4.TabIndex = 5;
             tabPage4.Text = "tabPage4";
             tabPage4.UseVisualStyleBackColor = true;
@@ -204,17 +207,19 @@
             discountTab21.Dock = DockStyle.Fill;
             discountTab21.Location = new Point(0, 0);
             discountTab21.Name = "discountTab21";
-            discountTab21.Size = new Size(700, 394);
+            pointsDiscount1.Points = 300;
+            discountTab21.PointsDiscount = pointsDiscount1;
+            discountTab21.Size = new Size(192, 72);
             discountTab21.TabIndex = 0;
             // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(708, 422);
+            ClientSize = new Size(708, 461);
             Controls.Add(tabControl1);
             Margin = new Padding(3, 2, 3, 2);
-            MinimumSize = new Size(724, 461);
+            MinimumSize = new Size(724, 470);
             Name = "MainForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Form1";

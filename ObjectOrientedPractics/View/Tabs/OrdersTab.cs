@@ -34,7 +34,7 @@ namespace ObjectOrientedPractics.View.Tabs
         public OrdersTab()
         {
             InitializeComponent();
-            cbStatus.Items.AddRange(Enum.GetNames(typeof(Model.Enums.OrderStatus)));
+            cbStatus.Items.AddRange(Enum.GetNames(typeof(OrderStatus)));
         }
         public void RefreshData()
         {
@@ -48,7 +48,7 @@ namespace ObjectOrientedPractics.View.Tabs
                     {
                         dgvOrders.Rows.Add(order.Id, order.CreateDate.ToString("dd.MM.yyyy"), 
                             customer.Name, order.Address.ConvertToString(),
-                            order.Amount, order.Status);
+                            order.Amount, order.Amount - order.DiscountAmount, order.Status);
                         Orders.Add(order);
                     }
                 }
@@ -66,7 +66,7 @@ namespace ObjectOrientedPractics.View.Tabs
                 cbStatus.Text = Convert.ToString(_curentOrder.Status);
                 addressControl1.Address = _curentOrder.Address;
                 lbOrderItems.Items.Clear();
-                foreach (Model.Classes.Item item in _curentOrder.Items)
+                foreach (Item item in _curentOrder.Items)
                 {
                     lbOrderItems.Items.Add(item.Name);
                 }
@@ -100,7 +100,7 @@ namespace ObjectOrientedPractics.View.Tabs
         {
             if (this.dgvOrders.CurrentCell != null)
             {
-                _curentOrder.Status = (Model.Enums.OrderStatus)cbStatus.SelectedIndex;
+                _curentOrder.Status = (OrderStatus)cbStatus.SelectedIndex;
                 this.dgvOrders.Rows[this.dgvOrders.CurrentCell.RowIndex].Cells[5].Value = 
                     Convert.ToString(_curentOrder.Status);
             }

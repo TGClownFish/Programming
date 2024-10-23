@@ -44,6 +44,11 @@
             btnCreateOrder = new Button();
             btnRemoveItem = new Button();
             btnClearCart = new Button();
+            clbDiscounts = new CheckedListBox();
+            label15 = new Label();
+            labelDiscount = new Label();
+            label8 = new Label();
+            labelTotal = new Label();
             tableLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
             splitContainer1.Panel1.SuspendLayout();
@@ -57,23 +62,21 @@
             // 
             labelAmount.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             labelAmount.AutoSize = true;
-            tableLayoutPanel3.SetColumnSpan(labelAmount, 2);
             labelAmount.Font = new Font("Segoe UI", 14F, FontStyle.Bold);
             labelAmount.ImageAlign = ContentAlignment.MiddleLeft;
-            labelAmount.Location = new Point(3, 482);
+            labelAmount.Location = new Point(100, 14);
             labelAmount.Name = "labelAmount";
-            labelAmount.Size = new Size(69, 25);
+            labelAmount.Size = new Size(118, 25);
             labelAmount.TabIndex = 23;
-            labelAmount.Text = "0,0";
+            labelAmount.Text = "0";
             // 
             // label4
             // 
             label4.AutoSize = true;
-            tableLayoutPanel3.SetColumnSpan(label4, 2);
             label4.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            label4.Location = new Point(3, 464);
+            label4.Location = new Point(100, 0);
             label4.Name = "label4";
-            label4.Size = new Size(55, 15);
+            label4.Size = new Size(55, 14);
             label4.TabIndex = 22;
             label4.Text = "Amount:";
             // 
@@ -82,7 +85,7 @@
             label3.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             label3.AutoSize = true;
             label3.ImageAlign = ContentAlignment.MiddleLeft;
-            label3.Location = new Point(3, 6);
+            label3.Location = new Point(3, 28);
             label3.Name = "label3";
             label3.Size = new Size(32, 15);
             label3.TabIndex = 21;
@@ -95,7 +98,7 @@
             label2.AutoSize = true;
             tableLayoutPanel3.SetColumnSpan(label2, 2);
             label2.ImageAlign = ContentAlignment.MiddleLeft;
-            label2.Location = new Point(3, 28);
+            label2.Location = new Point(3, 6);
             label2.Name = "label2";
             label2.Size = new Size(69, 15);
             label2.TabIndex = 20;
@@ -113,12 +116,11 @@
             // 
             // cbCustomers
             // 
-            tableLayoutPanel3.SetColumnSpan(cbCustomers, 2);
             cbCustomers.Dock = DockStyle.Fill;
             cbCustomers.FormattingEnabled = true;
-            cbCustomers.Location = new Point(42, 3);
+            cbCustomers.Location = new Point(78, 3);
             cbCustomers.Name = "cbCustomers";
-            cbCustomers.Size = new Size(350, 23);
+            cbCustomers.Size = new Size(314, 23);
             cbCustomers.TabIndex = 18;
             cbCustomers.SelectedIndexChanged += cbCustomers_SelectedIndexChanged;
             // 
@@ -142,7 +144,7 @@
             lbCart.ItemHeight = 15;
             lbCart.Location = new Point(3, 46);
             lbCart.Name = "lbCart";
-            lbCart.Size = new Size(389, 349);
+            lbCart.Size = new Size(389, 169);
             lbCart.TabIndex = 13;
             // 
             // lbItems
@@ -198,23 +200,27 @@
             tableLayoutPanel3.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 39F));
             tableLayoutPanel3.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 36F));
             tableLayoutPanel3.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
-            tableLayoutPanel3.Controls.Add(label4, 0, 4);
-            tableLayoutPanel3.Controls.Add(label2, 0, 1);
-            tableLayoutPanel3.Controls.Add(label3, 0, 0);
-            tableLayoutPanel3.Controls.Add(labelAmount, 0, 5);
-            tableLayoutPanel3.Controls.Add(tableLayoutPanel1, 1, 2);
             tableLayoutPanel3.Controls.Add(cbCustomers, 1, 0);
             tableLayoutPanel3.Controls.Add(lbCart, 0, 2);
+            tableLayoutPanel3.Controls.Add(tableLayoutPanel1, 0, 3);
+            tableLayoutPanel3.Controls.Add(clbDiscounts, 0, 4);
+            tableLayoutPanel3.Controls.Add(label15, 0, 5);
+            tableLayoutPanel3.Controls.Add(labelDiscount, 2, 5);
+            tableLayoutPanel3.Controls.Add(label8, 0, 6);
+            tableLayoutPanel3.Controls.Add(labelTotal, 2, 6);
+            tableLayoutPanel3.Controls.Add(label2, 0, 0);
+            tableLayoutPanel3.Controls.Add(label3, 0, 1);
             tableLayoutPanel3.Dock = DockStyle.Fill;
             tableLayoutPanel3.Location = new Point(0, 0);
             tableLayoutPanel3.Name = "tableLayoutPanel3";
-            tableLayoutPanel3.RowCount = 6;
+            tableLayoutPanel3.RowCount = 7;
             tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Absolute, 21F));
             tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Absolute, 22F));
-            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Absolute, 53F));
-            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Absolute, 18F));
-            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Absolute, 30F));
+            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 49.8398743F));
+            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Absolute, 47F));
+            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 50.1601257F));
+            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Absolute, 22F));
+            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Absolute, 23F));
             tableLayoutPanel3.Size = new Size(395, 512);
             tableLayoutPanel3.TabIndex = 26;
             // 
@@ -223,18 +229,22 @@
             tableLayoutPanel1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             tableLayoutPanel1.ColumnCount = 4;
             tableLayoutPanel3.SetColumnSpan(tableLayoutPanel1, 3);
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 22.5490189F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 32.35294F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 22.5490189F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 22.5490189F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 24.9357319F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 31.876606F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 24.1645241F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 18.4828033F));
+            tableLayoutPanel1.Controls.Add(label4, 1, 0);
             tableLayoutPanel1.Controls.Add(btnCreateOrder, 0, 0);
             tableLayoutPanel1.Controls.Add(btnRemoveItem, 2, 0);
             tableLayoutPanel1.Controls.Add(btnClearCart, 3, 0);
-            tableLayoutPanel1.Location = new Point(3, 414);
+            tableLayoutPanel1.Controls.Add(labelAmount, 1, 1);
+            tableLayoutPanel1.Location = new Point(3, 233);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
-            tableLayoutPanel1.RowCount = 1;
+            tableLayoutPanel1.RowCount = 2;
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel1.Size = new Size(389, 46);
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 26F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
+            tableLayoutPanel1.Size = new Size(389, 40);
             tableLayoutPanel1.TabIndex = 24;
             // 
             // btnCreateOrder
@@ -242,7 +252,8 @@
             btnCreateOrder.Dock = DockStyle.Fill;
             btnCreateOrder.Location = new Point(3, 3);
             btnCreateOrder.Name = "btnCreateOrder";
-            btnCreateOrder.Size = new Size(81, 40);
+            tableLayoutPanel1.SetRowSpan(btnCreateOrder, 2);
+            btnCreateOrder.Size = new Size(91, 34);
             btnCreateOrder.TabIndex = 15;
             btnCreateOrder.Text = "Create Order";
             btnCreateOrder.UseVisualStyleBackColor = true;
@@ -251,9 +262,10 @@
             // btnRemoveItem
             // 
             btnRemoveItem.Dock = DockStyle.Fill;
-            btnRemoveItem.Location = new Point(215, 3);
+            btnRemoveItem.Location = new Point(224, 3);
             btnRemoveItem.Name = "btnRemoveItem";
-            btnRemoveItem.Size = new Size(81, 40);
+            tableLayoutPanel1.SetRowSpan(btnRemoveItem, 2);
+            btnRemoveItem.Size = new Size(88, 34);
             btnRemoveItem.TabIndex = 16;
             btnRemoveItem.Text = "Remove Item";
             btnRemoveItem.UseVisualStyleBackColor = true;
@@ -262,13 +274,74 @@
             // btnClearCart
             // 
             btnClearCart.Dock = DockStyle.Fill;
-            btnClearCart.Location = new Point(302, 3);
+            btnClearCart.Location = new Point(318, 3);
             btnClearCart.Name = "btnClearCart";
-            btnClearCart.Size = new Size(84, 40);
+            tableLayoutPanel1.SetRowSpan(btnClearCart, 2);
+            btnClearCart.Size = new Size(68, 34);
             btnClearCart.TabIndex = 17;
             btnClearCart.Text = "Clear Cart";
             btnClearCart.UseVisualStyleBackColor = true;
             btnClearCart.Click += btnClearCart_Click;
+            // 
+            // clbDiscounts
+            // 
+            clbDiscounts.BackColor = SystemColors.Control;
+            clbDiscounts.BorderStyle = BorderStyle.None;
+            clbDiscounts.CheckOnClick = true;
+            tableLayoutPanel3.SetColumnSpan(clbDiscounts, 3);
+            clbDiscounts.Dock = DockStyle.Fill;
+            clbDiscounts.FormattingEnabled = true;
+            clbDiscounts.Location = new Point(3, 280);
+            clbDiscounts.Name = "clbDiscounts";
+            clbDiscounts.Size = new Size(389, 183);
+            clbDiscounts.TabIndex = 29;
+            clbDiscounts.SelectedIndexChanged += clbDiscounts_SelectedIndexChanged;
+            // 
+            // label15
+            // 
+            label15.AutoSize = true;
+            tableLayoutPanel3.SetColumnSpan(label15, 2);
+            label15.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            label15.Location = new Point(3, 466);
+            label15.Name = "label15";
+            label15.Size = new Size(59, 15);
+            label15.TabIndex = 27;
+            label15.Text = "Discount:";
+            // 
+            // labelDiscount
+            // 
+            labelDiscount.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            labelDiscount.AutoSize = true;
+            labelDiscount.Font = new Font("Segoe UI", 14F, FontStyle.Bold);
+            labelDiscount.ImageAlign = ContentAlignment.MiddleLeft;
+            labelDiscount.Location = new Point(78, 466);
+            labelDiscount.Name = "labelDiscount";
+            labelDiscount.Size = new Size(314, 22);
+            labelDiscount.TabIndex = 28;
+            labelDiscount.Text = "0";
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            tableLayoutPanel3.SetColumnSpan(label8, 2);
+            label8.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            label8.Location = new Point(3, 488);
+            label8.Name = "label8";
+            label8.Size = new Size(37, 15);
+            label8.TabIndex = 25;
+            label8.Text = "Total:";
+            // 
+            // labelTotal
+            // 
+            labelTotal.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            labelTotal.AutoSize = true;
+            labelTotal.Font = new Font("Segoe UI", 14F, FontStyle.Bold);
+            labelTotal.ImageAlign = ContentAlignment.MiddleLeft;
+            labelTotal.Location = new Point(78, 488);
+            labelTotal.Name = "labelTotal";
+            labelTotal.Size = new Size(314, 24);
+            labelTotal.TabIndex = 26;
+            labelTotal.Text = "0";
             // 
             // CartsTab
             // 
@@ -286,6 +359,7 @@
             tableLayoutPanel3.ResumeLayout(false);
             tableLayoutPanel3.PerformLayout();
             tableLayoutPanel1.ResumeLayout(false);
+            tableLayoutPanel1.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -307,5 +381,10 @@
         private Button btnRemoveItem;
         private Button btnClearCart;
         private TableLayoutPanel tableLayoutPanel3;
+        private Label label8;
+        private Label labelTotal;
+        private Label label15;
+        private Label labelDiscount;
+        private CheckedListBox clbDiscounts;
     }
 }

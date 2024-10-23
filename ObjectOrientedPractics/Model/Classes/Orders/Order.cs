@@ -47,12 +47,12 @@ namespace ObjectOrientedPractics.Model.Classes.Orders
             {
                 if (Items.Count == 0 || Items == null)
                 {
-                    return 0.0;
+                    return 0;
                 }
                 else
                 {
                     double count = 0;
-                    foreach (var i in Items)
+                    foreach (Item i in Items)
                     {
                         count += i.Cost;
                     }
@@ -86,6 +86,23 @@ namespace ObjectOrientedPractics.Model.Classes.Orders
                     return Amount - Total;
                 }
             }
+        }
+
+        /// <summary>
+        /// Создаёт объект класса <see cref="Order"/>.
+        /// </summary>
+        /// <param name="address">Данные об адрессе покупателя. Объект класса <see cref="Classes.Address"/>.</param>
+        /// <param name="items">Список объектов класса <see cref="Item"/>.</param>
+        /// /// <param name="discountAmount">Размер скидки.</param>
+        public Order(Address address, List<Item> items, double discountAmount)
+        {
+            Id = _amountOfOrders;
+            _amountOfOrders++;
+            CreateDate = DateTime.Now;
+            Address = address;
+            Items = items;
+            Status = 0;
+            DiscountAmount = discountAmount;
         }
 
         /// <summary>

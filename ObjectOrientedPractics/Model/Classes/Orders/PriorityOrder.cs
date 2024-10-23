@@ -26,10 +26,12 @@ namespace ObjectOrientedPractics.Model.Classes.Orders
         /// </summary>
         /// <param name="address">Хранит данные об адрессе покупателя. Объект класса <see cref="Address"/>.</param>
         /// <param name="items">Хранит список объектов класса <see cref="Item"/>.</param>
-        public PriorityOrder(Address address, List<Item> items) : base()
+        /// <param name="discountAmount">Размер скидки.</param>
+        public PriorityOrder(Address address, List<Item> items, double discountAmount) : base()
         {
             Address = address;
             Items = items;
+            DiscountAmount = discountAmount;
         }
 
         /// <summary>

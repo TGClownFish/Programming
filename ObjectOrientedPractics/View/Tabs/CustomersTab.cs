@@ -151,10 +151,11 @@ namespace ObjectOrientedPractics.View.Tabs
                 labelError.Text = "";
                 FormAddDiscount formAddDiscount = new FormAddDiscount();
                 formAddDiscount.Categoties.AddRange(Enum.GetNames(typeof(Category)));
-                foreach (string addedName in AddedCategoryNames)
-                {
-                    formAddDiscount.Categoties.Remove(addedName);
-                }
+                //foreach (string addedName in AddedCategoryNames)
+                //{
+                //    formAddDiscount.Categoties.Remove(addedName);
+                //}
+
                 // if formAddDiscount.Categoties.Count == 1, than its only have "None" element
                 if (formAddDiscount.Categoties.Count == 1)
                 {

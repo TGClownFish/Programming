@@ -60,14 +60,18 @@ namespace ObjectOrientedPractics.Model.Classes.Discounts
             {
                 fullCost += items[i].Cost;
             }
+            if (Points == 0 || fullCost ==0)
+            {
+                return 0;
+            }
             double percentage = Points / fullCost;
             if (percentage >= 0.3)
             {
-                return 0.3;
+                return Math.Ceiling( fullCost * 0.3);
             }
             else
             {
-                return percentage;
+                return Math.Ceiling(fullCost * percentage);
             }
         }
 
@@ -78,13 +82,8 @@ namespace ObjectOrientedPractics.Model.Classes.Discounts
         /// <returns>Возвращает размер скидки (не может быть выше 0.3).</returns>
         public double Apply(List<Item> items)
         {
-            double fullCost = 0;
-            for (int i = 0; i < items.Count; i++)
-            {
-                fullCost += items[i].Cost;
-            }
             double discount = Calculate(items);
-            Points -= Convert.ToInt32(fullCost * discount);
+            Points -= Convert.ToInt32(discount);
             return discount;
         }
 

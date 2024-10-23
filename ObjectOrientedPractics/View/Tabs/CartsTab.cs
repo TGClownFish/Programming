@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ObjectOrientedPractics.Model.Classes;
+using ObjectOrientedPractics.Model.Classes.Orders;
 
 namespace ObjectOrientedPractics.View.Tabs
 {
@@ -16,14 +18,17 @@ namespace ObjectOrientedPractics.View.Tabs
         /// Хранит данные о товарах. Является списком типа <see cref="Model.Item"/>.
         /// </summary>
         public List<Model.Classes.Item> Items { get; set; }
+
         /// <summary>
         /// Хранит данные о покупателях. Является списком типа <see cref="Model.Classes.Customer"/>.
         /// </summary>
         public List<Model.Classes.Customer> Customers { get; set; }
+
         /// <summary>
         /// Выбранные покупатель.
         /// </summary>
         private Model.Classes.Customer _curentCustomer;
+
         public CartsTab()
         {
             InitializeComponent();
@@ -35,15 +40,50 @@ namespace ObjectOrientedPractics.View.Tabs
             if (cbCustomers.SelectedIndex >= 0)
             {
                 _curentCustomer = Customers[cbCustomers.SelectedIndex];
+                lbCart.Items.Clear();
                 if (_curentCustomer.Cart.Items.Count > 0 && _curentCustomer.Cart != null)
                 {
-                    lbCart.Items.Clear();
-                    foreach (var i in _curentCustomer.Cart.Items)
+                    foreach (Item item in _curentCustomer.Cart.Items)
                     {
-                        lbCart.Items.Add(i.Name);
+                        lbCart.Items.Add(item.Name);
                     }
-
                 }
+                UpdateDiscountInfo();
+                CalculateAmounts();
+            }
+        }
+
+        private void CalculateAmounts()
+        {
+            if (_curentCustomer != null)
+            {
+                labelAmount.Text = _curentCustomer.Cart.Amount.ToString();
+                double discountAmount = 0;
+                for (int i = 0; i < clbDiscounts.Items.Count; i++)
+                {
+                    if (clbDiscounts.GetItemChecked(i) == true)
+                    {
+                        discountAmount += _curentCustomer.Discounts[i].Calculate(_curentCustomer.Cart.Items);
+                    }
+                }
+                labelDiscount.Text = discountAmount.ToString();
+                labelTotal.Text = Convert.ToString(_curentCustomer.Cart.Amount - discountAmount);
+            }
+            else
+            {
+                labelAmount.Text = "0";
+                labelDiscount.Text = "0";
+                labelTotal.Text = "0";
+            }
+        }
+
+        private void UpdateDiscountInfo()
+        {
+            clbDiscounts.Items.Clear();
+            foreach (IDiscount discount in _curentCustomer.Discounts)
+            {
+                clbDiscounts.Items.Add(discount.Info);
+                clbDiscounts.SetItemChecked(clbDiscounts.Items.Count - 1, true);
             }
         }
 
@@ -53,7 +93,7 @@ namespace ObjectOrientedPractics.View.Tabs
             {
                 _curentCustomer.Cart.Items.Add(Items[lbItems.SelectedIndex]);
                 lbCart.Items.Add(Items[lbItems.SelectedIndex].Name);
-                labelAmount.Text = _curentCustomer.Cart.Amount.ToString();
+                CalculateAmounts();
             }
         }
 
@@ -61,18 +101,28 @@ namespace ObjectOrientedPractics.View.Tabs
         {
             if (lbCart.Items.Count > 0)
             {
+                foreach (IDiscount discount in _curentCustomer.Discounts)
+                {
+                    discount.Apply(_curentCustomer.Cart.Items);
+                }
+                foreach (IDiscount discount in _curentCustomer.Discounts)
+                {
+                    discount.Update(_curentCustomer.Cart.Items);
+                }
                 if (_curentCustomer.IsPriority == true)
                 {
-                    _curentCustomer.Orders.Add(new Model.Classes.Orders.PriorityOrder(
-                        _curentCustomer.Address, new List<Model.Classes.Item>(_curentCustomer.Cart.Items)));
+                    _curentCustomer.Orders.Add(new PriorityOrder(
+                        _curentCustomer.Address, new List<Item>(_curentCustomer.Cart.Items), Convert.ToDouble(labelDiscount.Text)));
                 }
                 else
                 {
-                    _curentCustomer.Orders.Add(new Model.Classes.Orders.Order(
-                        _curentCustomer.Address, new List<Model.Classes.Item>(_curentCustomer.Cart.Items)));
+                    _curentCustomer.Orders.Add(new Order(
+                        _curentCustomer.Address, new List<Item>(_curentCustomer.Cart.Items), Convert.ToDouble(labelDiscount.Text)));
                 }
                 _curentCustomer.Cart.Items.Clear();
                 lbCart.Items.Clear();
+                UpdateDiscountInfo();
+                CalculateAmounts();
             }
         }
 
@@ -82,7 +132,7 @@ namespace ObjectOrientedPractics.View.Tabs
             {
                 _curentCustomer.Cart.Items.RemoveAt(lbCart.SelectedIndex);
                 lbCart.Items.RemoveAt(lbCart.SelectedIndex);
-                labelAmount.Text = _curentCustomer.Cart.Amount.ToString();
+                CalculateAmounts();
             }
         }
 
@@ -90,7 +140,7 @@ namespace ObjectOrientedPractics.View.Tabs
         {
             _curentCustomer.Cart.Items.Clear();
             lbCart.Items.Clear();
-            labelAmount.Text = "0.0";
+            CalculateAmounts();
         }
 
         public void RefreshData()
@@ -105,6 +155,16 @@ namespace ObjectOrientedPractics.View.Tabs
             {
                 cbCustomers.Items.Add(i.Name);
             }
+            if (_curentCustomer != null)
+            {
+                UpdateDiscountInfo();
+            }
+            CalculateAmounts();
+        }
+
+        private void clbDiscounts_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            CalculateAmounts();
         }
     }
 }

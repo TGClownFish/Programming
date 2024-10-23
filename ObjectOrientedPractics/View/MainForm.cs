@@ -41,10 +41,10 @@ namespace ObjectOrientedPractics
 
         public void AddDefaultData()
         {
-            Store.Items.Add(new Model.Classes.Item("fff", "55", 42, Category.None));
-            Store.Items.Add(new Model.Classes.Item("faaa", "ada", 222, Category.Toys));
-            Store.Items.Add(new Model.Classes.Item("f111", "faaf", 42222, Category.Furniture));
-            Store.Items.Add(new Model.Classes.Item("fdffdf", "arafr", 42333, Category.Shoes));
+            Store.Items.Add(new Model.Classes.Item("none_55", "55", 42, Category.None));
+            Store.Items.Add(new Model.Classes.Item("Toys_222", "ada", 222, Category.Toys));
+            Store.Items.Add(new Model.Classes.Item("Furniture_42222", "faaf", 42222, Category.Furniture));
+            Store.Items.Add(new Model.Classes.Item("Shoes_42333", "arafr", 42333, Category.Shoes));
             Store.Customers.Add(new Model.Classes.Customer("4", new Model.Classes.Address("000100", "4", "55", "11", "ff", "aa")));
             Store.Customers.Add(new Model.Classes.Customer("FFFFF", new Model.Classes.Address("100100", "4FF", "5AA5", "1SDSS1", "fFFf", "aSSa"),true));
         }

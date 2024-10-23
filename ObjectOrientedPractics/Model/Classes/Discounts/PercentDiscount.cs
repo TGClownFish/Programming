@@ -79,6 +79,10 @@ namespace ObjectOrientedPractics.Model.Classes.Discounts
         /// <returns>Возвращает процент скидки скидки (не может быть выше 10).</returns>
         public double Calculate(List<Item> items)
         {
+            if (items.Count == 0)
+            {
+                return 0;
+            }
             double spent = 0;
             for (int i = 0; i < items.Count; i++)
             {
@@ -87,38 +91,16 @@ namespace ObjectOrientedPractics.Model.Classes.Discounts
                     spent += items[i].Cost;
                 }
             }
-            if (spent > 0)
-            {
-                return Convert.ToInt32(spent / 1000);
-            }
-            else
-            {
-                return 0;
-            }
+ 
+            return Convert.ToInt32((spent / 100) * Percent);
         }
 
         /// <summary>
-        /// Добавляет необходимое количество процентов и возвращает размер скидки.
+        /// Возвращает размер скидки и обновляет потраченную сумму.
         /// </summary>
         /// <param name="items">Список товаров.</param>
         /// <returns>Возвращает размер скидки (не может быть выше 10).</returns>
         public double Apply(List<Item> items)
-        {
-            Update(items);
-            // if AmountSpent == 10000 than (AmountSpent / 1000) + 1 == 11
-            if (AmountSpent < 10000)
-            {
-                Percent = Convert.ToInt32(Math.Floor(AmountSpent / 1000.0) + 1);
-            }
-            return Calculate(items);
-        }
-
-        /// <summary>
-        /// Добавляет необходимое количество к сумме потраченных товаров.
-
-        /// <param name="items">Список товаров.</param>
-        /// </summary>
-        public void Update(List<Item> items)
         {
             for (int i = 0; i < items.Count; i++)
             {
@@ -127,7 +109,20 @@ namespace ObjectOrientedPractics.Model.Classes.Discounts
                     AmountSpent += items[i].Cost;
                 }
             }
+            return Calculate(items);
+        }
 
+        /// <summary>
+        /// Добавляет проценты на основе полученног списка товаров.
+        /// <param name="items">Список товаров.</param>
+        /// </summary>
+        public void Update(List<Item> items)
+        {
+            // if AmountSpent == 10000 than (AmountSpent / 1000) + 1 == 11
+            if (AmountSpent < 10000)
+            {
+                Percent = Convert.ToInt32(Math.Floor(AmountSpent / 1000.0) + 1);
+            }
         }
 
         /// <summary>
