@@ -86,7 +86,7 @@ namespace ObjectOrientedPractics.Model.Classes
             Orders = new List<Order>();
             IsPriority = false;
             Discounts = new List<IDiscount>();
-            Discounts.Add(new Discounts.PointsDiscount(100));
+            Discounts.Add(new Discounts.PointsDiscount());
         }
 
         /// <summary>
@@ -104,7 +104,7 @@ namespace ObjectOrientedPractics.Model.Classes
             Orders = new List<Order>();
             IsPriority = false;
             Discounts = new List<IDiscount>();
-            Discounts.Add(new Discounts.PointsDiscount(100));
+            Discounts.Add(new Discounts.PointsDiscount());
         }
 
         /// <summary>
@@ -123,7 +123,7 @@ namespace ObjectOrientedPractics.Model.Classes
             Orders = new List<Order>();
             IsPriority = isPriority;
             Discounts= new List<IDiscount>();
-            Discounts.Add(new Discounts.PointsDiscount(100));
+            Discounts.Add(new Discounts.PointsDiscount());
         }
         /// <summary>
         /// Создаёт пустой экземпляр класса <see cref="Customer"/>.
@@ -138,7 +138,7 @@ namespace ObjectOrientedPractics.Model.Classes
             Orders = new List<Order>();
             IsPriority = false;
             Discounts = new List<IDiscount>();
-            Discounts.Add(new Discounts.PointsDiscount(100));
+            Discounts.Add(new Discounts.PointsDiscount());
         }
     }
 }
