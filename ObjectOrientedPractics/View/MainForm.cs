@@ -41,7 +41,7 @@ namespace ObjectOrientedPractics
 
         public void AddDefaultData()
         {
-            Store.Items.Add(new Model.Classes.Item("none_55", "55", 42, Category.None));
+            Store.Items.Add(new Model.Classes.Item("none_42", "55", 42, Category.None));
             Store.Items.Add(new Model.Classes.Item("Toys_222", "ada", 222, Category.Toys));
             Store.Items.Add(new Model.Classes.Item("Furniture_42222", "faaf", 42222, Category.Furniture));
             Store.Items.Add(new Model.Classes.Item("Shoes_42333", "arafr", 42333, Category.Shoes));

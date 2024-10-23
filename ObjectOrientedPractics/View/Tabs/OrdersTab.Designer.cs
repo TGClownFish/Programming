@@ -46,12 +46,6 @@ namespace ObjectOrientedPractics.View.Tabs
             label5 = new Label();
             label6 = new Label();
             dgvOrders = new DataGridView();
-            orderBindingSource = new BindingSource(components);
-            splitContainer1 = new SplitContainer();
-            tableLayoutPanel2 = new TableLayoutPanel();
-            tableLayoutPanel1 = new TableLayoutPanel();
-            cbDeliveryTime = new ComboBox();
-            label7 = new Label();
             ColumnId = new DataGridViewTextBoxColumn();
             ColumnCreationDate = new DataGridViewTextBoxColumn();
             ColumnName = new DataGridViewTextBoxColumn();
@@ -59,6 +53,12 @@ namespace ObjectOrientedPractics.View.Tabs
             ColumnAmount = new DataGridViewTextBoxColumn();
             ColumnTotal = new DataGridViewTextBoxColumn();
             ColumnStatus = new DataGridViewTextBoxColumn();
+            orderBindingSource = new BindingSource(components);
+            splitContainer1 = new SplitContainer();
+            tableLayoutPanel2 = new TableLayoutPanel();
+            tableLayoutPanel1 = new TableLayoutPanel();
+            cbDeliveryTime = new ComboBox();
+            label7 = new Label();
             ((System.ComponentModel.ISupportInitialize)dgvOrders).BeginInit();
             ((System.ComponentModel.ISupportInitialize)orderBindingSource).BeginInit();
             ((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
@@ -213,6 +213,68 @@ namespace ObjectOrientedPractics.View.Tabs
             dgvOrders.TabIndex = 31;
             dgvOrders.CurrentCellChanged += dgvOrders_CurrentCellChanged;
             // 
+            // ColumnId
+            // 
+            ColumnId.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+            ColumnId.HeaderText = "Id";
+            ColumnId.Name = "ColumnId";
+            ColumnId.ReadOnly = true;
+            ColumnId.Resizable = DataGridViewTriState.True;
+            ColumnId.SortMode = DataGridViewColumnSortMode.NotSortable;
+            ColumnId.Width = 23;
+            // 
+            // ColumnCreationDate
+            // 
+            ColumnCreationDate.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+            ColumnCreationDate.HeaderText = "Creation Date";
+            ColumnCreationDate.Name = "ColumnCreationDate";
+            ColumnCreationDate.ReadOnly = true;
+            ColumnCreationDate.Resizable = DataGridViewTriState.True;
+            ColumnCreationDate.SortMode = DataGridViewColumnSortMode.NotSortable;
+            ColumnCreationDate.Width = 85;
+            // 
+            // ColumnName
+            // 
+            ColumnName.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+            ColumnName.HeaderText = "Name";
+            ColumnName.Name = "ColumnName";
+            ColumnName.ReadOnly = true;
+            ColumnName.SortMode = DataGridViewColumnSortMode.NotSortable;
+            ColumnName.Width = 45;
+            // 
+            // ColumnAddress
+            // 
+            ColumnAddress.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+            ColumnAddress.HeaderText = "Address";
+            ColumnAddress.Name = "ColumnAddress";
+            ColumnAddress.ReadOnly = true;
+            ColumnAddress.SortMode = DataGridViewColumnSortMode.NotSortable;
+            ColumnAddress.Width = 55;
+            // 
+            // ColumnAmount
+            // 
+            ColumnAmount.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+            ColumnAmount.HeaderText = "Amount";
+            ColumnAmount.Name = "ColumnAmount";
+            ColumnAmount.ReadOnly = true;
+            ColumnAmount.SortMode = DataGridViewColumnSortMode.NotSortable;
+            ColumnAmount.Width = 57;
+            // 
+            // ColumnTotal
+            // 
+            ColumnTotal.HeaderText = "Total";
+            ColumnTotal.Name = "ColumnTotal";
+            ColumnTotal.ReadOnly = true;
+            // 
+            // ColumnStatus
+            // 
+            ColumnStatus.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+            ColumnStatus.HeaderText = "Status";
+            ColumnStatus.Name = "ColumnStatus";
+            ColumnStatus.ReadOnly = true;
+            ColumnStatus.SortMode = DataGridViewColumnSortMode.NotSortable;
+            ColumnStatus.Width = 45;
+            // 
             // orderBindingSource
             // 
             orderBindingSource.DataSource = typeof(Order);
@@ -302,68 +364,6 @@ namespace ObjectOrientedPractics.View.Tabs
             label7.TabIndex = 30;
             label7.Text = "Delivery Time:";
             label7.TextAlign = ContentAlignment.BottomLeft;
-            // 
-            // ColumnId
-            // 
-            ColumnId.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
-            ColumnId.HeaderText = "Id";
-            ColumnId.Name = "ColumnId";
-            ColumnId.ReadOnly = true;
-            ColumnId.Resizable = DataGridViewTriState.True;
-            ColumnId.SortMode = DataGridViewColumnSortMode.NotSortable;
-            ColumnId.Width = 23;
-            // 
-            // ColumnCreationDate
-            // 
-            ColumnCreationDate.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
-            ColumnCreationDate.HeaderText = "Creation Date";
-            ColumnCreationDate.Name = "ColumnCreationDate";
-            ColumnCreationDate.ReadOnly = true;
-            ColumnCreationDate.Resizable = DataGridViewTriState.True;
-            ColumnCreationDate.SortMode = DataGridViewColumnSortMode.NotSortable;
-            ColumnCreationDate.Width = 85;
-            // 
-            // ColumnName
-            // 
-            ColumnName.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
-            ColumnName.HeaderText = "Name";
-            ColumnName.Name = "ColumnName";
-            ColumnName.ReadOnly = true;
-            ColumnName.SortMode = DataGridViewColumnSortMode.NotSortable;
-            ColumnName.Width = 45;
-            // 
-            // ColumnAddress
-            // 
-            ColumnAddress.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
-            ColumnAddress.HeaderText = "Address";
-            ColumnAddress.Name = "ColumnAddress";
-            ColumnAddress.ReadOnly = true;
-            ColumnAddress.SortMode = DataGridViewColumnSortMode.NotSortable;
-            ColumnAddress.Width = 55;
-            // 
-            // ColumnAmount
-            // 
-            ColumnAmount.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
-            ColumnAmount.HeaderText = "Amount";
-            ColumnAmount.Name = "ColumnAmount";
-            ColumnAmount.ReadOnly = true;
-            ColumnAmount.SortMode = DataGridViewColumnSortMode.NotSortable;
-            ColumnAmount.Width = 57;
-            // 
-            // ColumnTotal
-            // 
-            ColumnTotal.HeaderText = "Total";
-            ColumnTotal.Name = "ColumnTotal";
-            ColumnTotal.ReadOnly = true;
-            // 
-            // ColumnStatus
-            // 
-            ColumnStatus.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
-            ColumnStatus.HeaderText = "Status";
-            ColumnStatus.Name = "ColumnStatus";
-            ColumnStatus.ReadOnly = true;
-            ColumnStatus.SortMode = DataGridViewColumnSortMode.NotSortable;
-            ColumnStatus.Width = 45;
             // 
             // OrdersTab
             // 
