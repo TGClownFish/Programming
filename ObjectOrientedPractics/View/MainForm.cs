@@ -11,13 +11,12 @@ namespace ObjectOrientedPractics
         public MainForm()
         {
             InitializeComponent();
-            AddDefaultData();
+            //AddDefaultData();
             itemsTab.Items = Store.Items;
             customersTab.Customers = Store.Customers;
             cartsTab1.Items = Store.Items;
             cartsTab1.Customers = Store.Customers;
             ordersTab1.Customers = Store.Customers;
-            priorityOrdersTab1.Items = Store.Items;
         }
 
         private void tabControl1_TabIndexChanged(object sender, EventArgs e)
