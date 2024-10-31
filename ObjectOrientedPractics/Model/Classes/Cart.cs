@@ -9,7 +9,7 @@ namespace ObjectOrientedPractics.Model.Classes
     /// <summary>
     /// Хранит данные о корзине покупателя.
     /// </summary>
-    public class Cart
+    public class Cart : ICloneable, IEquatable<Cart>
     {
 
         /// <summary>
@@ -46,6 +46,54 @@ namespace ObjectOrientedPractics.Model.Classes
         public Cart()
         {
             Items = new List<Item>();
+        }
+
+        /// <summary>
+        /// Создаёт экземпляр класса <see cref="Cart"/>.
+        /// </summary>
+        public Cart(List<Item> items)
+        {
+            Items = items;
+        }
+
+        /// <summary>
+        /// Копирует экземпляр класса <see cref="Cart"/>.
+        /// </summary>
+        public object Clone()
+        {
+            return new Cart(this.Items);
+        }
+
+        /// <summary>
+        /// Проверяет, схож ли оригианальный объект с входящим. Перегрузка стандартного метода Equals.
+        /// </summary>
+        /// <param name="other">Проверяемый объект.</param>
+        /// <returns>true, если объекты схожи, иначе - false.</returns>
+        public override bool Equals(object other)
+        {
+            if (other == null)
+                return false;
+            if ((other is not Cart))
+                return false;
+            if (ReferenceEquals(this, other))
+                return true;
+            var otherItem = (Cart)other;
+            return (this.Items == otherItem.Items);
+        }
+
+        /// <summary>
+        /// Проверяет, схож ли оригианальный объект с входящим. Реализация стандартного интерфейса IEquatable<T>.
+        /// </summary>
+        /// <param name="other">Проверяемый объект.</param>
+        /// <returns>true, если объекты схожи, иначе - false.</returns>
+        public bool Equals(Cart other)
+        {
+            if (other == null)
+                return false;
+            if (this.Items == other.Items)
+                return true;
+            else
+                return false;
         }
     }
 }

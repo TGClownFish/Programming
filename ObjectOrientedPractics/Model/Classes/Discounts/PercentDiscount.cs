@@ -10,7 +10,7 @@ namespace ObjectOrientedPractics.Model.Classes.Discounts
     /// <summary>
     /// Хранит данные и методы, связанные с процентной скидкой.
     /// </summary>
-    public class PercentDiscount : IDiscount
+    public class PercentDiscount : IDiscount, IComparable<PercentDiscount>
     {
         /// <summary>
         /// Хранит категорию товара, к которой вычисляется скидка.
@@ -134,6 +134,24 @@ namespace ObjectOrientedPractics.Model.Classes.Discounts
             Category = category;
             Percent = 1;
             AmountSpent = 0;
+        }
+
+        /// <summary>
+        /// Сравнивает оригинальный объект с входящим.
+        /// </summary>
+        /// <param name="other"></param>
+        /// <returns>0, если проценты объектов равны; 1, если процент оригианального объект больше или нет входящего объекта; 
+        /// -1, если проценты оригианального объект ниже</returns>
+        public int CompareTo(PercentDiscount other)
+        {
+            if (other == null)
+                return 1;
+            if (this.Percent== other.Percent)
+                return 0;
+            if (this.Percent < other.Percent)
+                return -1;
+            else
+                return 1;
         }
     }
 }

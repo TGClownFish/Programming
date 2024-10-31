@@ -10,7 +10,7 @@ using System.Windows.Forms;
 namespace ObjectOrientedPractics.Model.Classes
 {
     //Хранит данные об адрессе покупателя. 
-    public class Address
+    public class Address : ICloneable, IEquatable<Address>
     {
         /// <summary>
         /// Почтовый индекс.
@@ -149,6 +149,50 @@ namespace ObjectOrientedPractics.Model.Classes
             _street = "";
             _building = "";
             _apartment = "";
+        }
+
+        /// <summary>
+        /// Копирует экземпляр класса <see cref="Address"/>.
+        /// </summary>
+        public object Clone()
+        {
+            return new Address(this.Index, this.Country, this.City, this.Street, this.Building, this.Apartment);
+        }
+
+        /// <summary>
+        /// Проверяет, схож ли оригианальный объект с входящим. Перегрузка стандартного метода Equals.
+        /// </summary>
+        /// <param name="other">Проверяемый объект.</param>
+        /// <returns>true, если объекты схожи, иначе - false.</returns>
+        public override bool Equals(object other)
+        {
+            if (other == null) 
+                return false;
+            if (other is not Address) 
+                return false;
+            if (ReferenceEquals(this, other))
+                return true;
+            var otherAddress = (Address)other;
+            return (this.Index == otherAddress.Index && this.Country == otherAddress.Country &&
+                this.City == otherAddress.City && this.Street == otherAddress.Street &&
+                this.Building == otherAddress.Building && this.Apartment == otherAddress.Apartment);
+        }
+
+        /// <summary>
+        /// Проверяет, схож ли оригианальный объект с входящим. Реализация стандартного интерфейса IEquatable<T>.
+        /// </summary>
+        /// <param name="other">Проверяемый объект.</param>
+        /// <returns>true, если объекты схожи, иначе - false.</returns>
+        public bool Equals(Address other)
+        {
+            if (other == null) 
+                return false;
+            if (this.Index == other.Index && this.Country == other.Country &&
+                this.City == other.City && this.Street == other.Street &&
+                this.Building == other.Building && this.Apartment == other.Apartment) 
+                return true;
+            else 
+                return false;
         }
     }
 

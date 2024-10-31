@@ -11,7 +11,7 @@ namespace ObjectOrientedPractics.Model.Classes
     ///<summary>
     /// Хранит данные о товаре.
     ///</summary>
-    public class Item
+    public class Item : ICloneable, IEquatable<Item>, IComparable<Item>
     {
 
         ///<summary>
@@ -109,6 +109,64 @@ namespace ObjectOrientedPractics.Model.Classes
             Description = "";
             Cost = 0;
             Category = 0;
+        }
+
+        /// <summary>
+        /// Копирует экземпляр класса <see cref="Item"/>.
+        /// </summary>
+        public object Clone()
+        { 
+            return new Item (this.Name, this.Description, this.Cost, this.Category); 
+        }
+
+        /// <summary>
+        /// Проверяет, схож ли оригианальный объект с входящим. Перегрузка стандартного метода Equals.
+        /// </summary>
+        /// <param name="other">Проверяемый объект.</param>
+        /// <returns>true, если объекты схожи, иначе - false.</returns>
+        public override bool Equals(object other)
+        {
+            if (other == null) 
+                return false;
+            if ((other is not Item)) 
+                return false;
+            if (ReferenceEquals(this, other)) 
+                return true;
+            var otherItem = (Item) other;
+            return (this.Name == otherItem.Name && this.Cost == otherItem.Cost && this.Category == otherItem.Category);
+        }
+
+        /// <summary>
+        /// Проверяет, схож ли оригианальный объект с входящим. Реализация стандартного интерфейса IEquatable<T>.
+        /// </summary>
+        /// <param name="other">Проверяемый объект.</param>
+        /// <returns>true, если объекты схожи, иначе - false.</returns>
+        public bool Equals(Item other)
+        {
+            if (other == null)
+                return false;
+            if (this.Name == other.Name && this.Cost == other.Cost && this.Category == other.Category)
+                return true;
+            else
+                return false;
+        }
+
+        /// <summary>
+        /// Сравнивает оригинальный объект с входящимм.
+        /// </summary>
+        /// <param name="other"></param>
+        /// <returns>0, если цены объектов равны; 1, если цена оригианального объект больше или нет входящего объекта; 
+        /// -1, если цена оригианального объект ниже</returns>
+        public int CompareTo(Item other)
+        {
+            if (other == null)
+                return 1;
+            if (this.Cost == other.Cost)  
+                return 0;
+            if (this.Cost < other.Cost)
+                return -1;
+            else
+                return 1;
         }
     }
 }
