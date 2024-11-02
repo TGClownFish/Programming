@@ -28,7 +28,7 @@ namespace ObjectOrientedPractics.View.Tabs
         /// <summary>
         /// Выбранный товар.
         /// </summary>
-        private Item СurrentItem {  get; set; }
+        private Item СurrentItem { get; set; }
 
         /// <summary>
         /// Хранит список показываемых товаров.
@@ -39,6 +39,7 @@ namespace ObjectOrientedPractics.View.Tabs
         {
             InitializeComponent();
             cbCategory.Items.AddRange(Enum.GetNames(typeof(Category)));
+            cbOrderBy.SelectedIndex = 0;
         }
 
         private void lbItems_SelectedIndexChanged(object sender, EventArgs e)
@@ -154,7 +155,7 @@ namespace ObjectOrientedPractics.View.Tabs
             Refresh_lbItems(HasSubString);
         }
 
-        private void Refresh_lbItems(FilterType filterType)
+        private void Refresh_lbItems(Func<Item, bool> filterType)
         {
             lbItems.Items.Clear();
             DisplayedItems.Clear();
@@ -162,13 +163,28 @@ namespace ObjectOrientedPractics.View.Tabs
             {
                 if (filterType(item))
                 {
-                    lbItems.Items.Add(item.Name);
                     DisplayedItems.Add(item);
                 }
             }
+            switch (cbOrderBy.SelectedIndex)
+            {
+                case 0:
+                    Sort_lbItems(ByName);
+                    break;
+                case 1:
+                    Sort_lbItems(ByCost);
+                    break;
+                case 2:
+                    Sort_lbItems(ByCostDescending);
+                    break;
+            }
+            foreach (var item in DisplayedItems)
+            {
+                lbItems.Items.Add(item.Name);
+            }
         }
 
-        public bool HasSubString (Item item)
+        public bool HasSubString(Item item)
         {
             return item.Name.Contains(tbFind.Text);
         }
@@ -178,9 +194,59 @@ namespace ObjectOrientedPractics.View.Tabs
             Refresh_lbItems(HasSubString);
         }
 
+        private void Sort_lbItems(Func<Item, Item, int> filter)
+        {
+            bool isSorted = false;
+            while (!isSorted)
+            {
+                isSorted = true;
+                for (int i = 0; i < DisplayedItems.Count - 1; i++)
+                {
+                    if (filter(DisplayedItems[i], DisplayedItems[i + 1]) == 1)
+                    {
+                        Item temporaryItem = (Item) DisplayedItems[i].Clone();
+                        DisplayedItems[i] = (Item)DisplayedItems[i + 1].Clone();
+                        DisplayedItems[i + 1] = temporaryItem;
+                        isSorted = false;
+                    }
+                }
+            }
+        }
+
+        public int ByName(Item item1, Item item2)
+        {
+            return item1.Name.CompareTo(item2.Name);
+        }
+
+        public int ByCost(Item item1, Item item2)
+        {
+            return item1.Cost.CompareTo(item2.Cost);
+        }
+
+        public int ByCostDescending(Item item1, Item item2)
+        {
+            return item2.Cost.CompareTo(item1.Cost);
+        }
+
         private void cbOrderBy_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            switch(cbOrderBy.SelectedIndex)
+            {
+                case 0:
+                    Sort_lbItems(ByName);
+                    break;
+                case 1:
+                    Sort_lbItems(ByCost);
+                    break;
+                case 2:
+                    Sort_lbItems(ByCostDescending);
+                    break;
+            }
+            lbItems.Items.Clear();
+            foreach (var item in DisplayedItems)
+            {
+                lbItems.Items.Add(item.Name);
+            }
         }
     }
 }
