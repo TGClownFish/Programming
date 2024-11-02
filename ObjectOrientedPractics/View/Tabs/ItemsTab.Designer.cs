@@ -34,6 +34,10 @@
             label5 = new Label();
             splitContainer1 = new SplitContainer();
             splitContainer2 = new SplitContainer();
+            cbOrderBy = new ComboBox();
+            label8 = new Label();
+            label7 = new Label();
+            tbFind = new TextBox();
             splitContainer3 = new SplitContainer();
             gbItems = new GroupBox();
             label6 = new Label();
@@ -67,10 +71,10 @@
             lbItems.FormattingEnabled = true;
             lbItems.HorizontalScrollbar = true;
             lbItems.ItemHeight = 15;
-            lbItems.Location = new Point(10, 27);
+            lbItems.Location = new Point(10, 72);
             lbItems.Margin = new Padding(3, 2, 3, 2);
             lbItems.Name = "lbItems";
-            lbItems.Size = new Size(236, 454);
+            lbItems.Size = new Size(236, 379);
             lbItems.TabIndex = 0;
             lbItems.SelectedIndexChanged += lbItems_SelectedIndexChanged;
             // 
@@ -137,6 +141,10 @@
             // 
             // splitContainer2.Panel1
             // 
+            splitContainer2.Panel1.Controls.Add(cbOrderBy);
+            splitContainer2.Panel1.Controls.Add(label8);
+            splitContainer2.Panel1.Controls.Add(label7);
+            splitContainer2.Panel1.Controls.Add(tbFind);
             splitContainer2.Panel1.Controls.Add(lbItems);
             splitContainer2.Panel1.Controls.Add(label5);
             // 
@@ -146,6 +154,45 @@
             splitContainer2.Size = new Size(249, 512);
             splitContainer2.SplitterDistance = 481;
             splitContainer2.TabIndex = 3;
+            // 
+            // cbOrderBy
+            // 
+            cbOrderBy.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            cbOrderBy.FormattingEnabled = true;
+            cbOrderBy.Items.AddRange(new object[] { "Name", "Cost (Ascending)", "Cost(Descending)" });
+            cbOrderBy.Location = new Point(72, 455);
+            cbOrderBy.Name = "cbOrderBy";
+            cbOrderBy.Size = new Size(174, 23);
+            cbOrderBy.TabIndex = 12;
+            cbOrderBy.SelectedIndexChanged += cbOrderBy_SelectedIndexChanged;
+            // 
+            // label8
+            // 
+            label8.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            label8.AutoSize = true;
+            label8.Location = new Point(10, 458);
+            label8.Name = "label8";
+            label8.Size = new Size(56, 15);
+            label8.TabIndex = 11;
+            label8.Text = "Order By:";
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Location = new Point(10, 35);
+            label7.Name = "label7";
+            label7.Size = new Size(33, 15);
+            label7.TabIndex = 10;
+            label7.Text = "Find:";
+            // 
+            // tbFind
+            // 
+            tbFind.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            tbFind.Location = new Point(49, 32);
+            tbFind.Name = "tbFind";
+            tbFind.Size = new Size(197, 23);
+            tbFind.TabIndex = 9;
+            tbFind.TextChanged += tbFind_TextChanged;
             // 
             // splitContainer3
             // 
@@ -340,5 +387,9 @@
         private TextBox tbID;
         private SplitContainer splitContainer2;
         private SplitContainer splitContainer3;
+        private Label label7;
+        private TextBox tbFind;
+        private ComboBox cbOrderBy;
+        private Label label8;
     }
 }

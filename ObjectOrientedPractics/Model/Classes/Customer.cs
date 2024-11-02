@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 using ObjectOrientedPractics.Model.Classes.Orders;
+using ObjectOrientedPractics.Model.Classes.Services;
 
 namespace ObjectOrientedPractics.Model.Classes
 {

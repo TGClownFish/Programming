@@ -15,12 +15,11 @@ using ObjectOrientedPractics.Model.Enums;
 
 namespace ObjectOrientedPractics.View.Tabs
 {
+    public delegate bool FilterType (Item item);
+
     public partial class ItemsTab : UserControl
     {
-        /// <summary>
-        /// Список товаров.
-        /// </summary>
-        private List<Item> _items;
+
         /// <summary>
         /// Хранит список товаров.
         /// </summary>
@@ -29,7 +28,12 @@ namespace ObjectOrientedPractics.View.Tabs
         /// <summary>
         /// Выбранный товар.
         /// </summary>
-        private Item _currentItem;
+        private Item СurrentItem {  get; set; }
+
+        /// <summary>
+        /// Хранит список показываемых товаров.
+        /// </summary>
+        private List<Item> DisplayedItems { get; set; } = new List<Item>();
 
         public ItemsTab()
         {
@@ -41,12 +45,12 @@ namespace ObjectOrientedPractics.View.Tabs
         {
             if (lbItems.SelectedIndex >= 0)
             {
-                _currentItem = Items[lbItems.SelectedIndex];
-                tbID.Text = Convert.ToString(_currentItem.Id);
-                tbCost.Text = Convert.ToString(_currentItem.Cost);
-                tbName.Text = Convert.ToString(_currentItem.Name);
-                tbDescription.Text = Convert.ToString(_currentItem.Description);
-                cbCategory.SelectedIndex = (int)_currentItem.Category;
+                СurrentItem = Items[Items.IndexOf(DisplayedItems[lbItems.SelectedIndex])];
+                tbID.Text = Convert.ToString(СurrentItem.Id);
+                tbCost.Text = Convert.ToString(СurrentItem.Cost);
+                tbName.Text = Convert.ToString(СurrentItem.Name);
+                tbDescription.Text = Convert.ToString(СurrentItem.Description);
+                cbCategory.SelectedIndex = (int)СurrentItem.Category;
             }
             else
             {
@@ -62,14 +66,15 @@ namespace ObjectOrientedPractics.View.Tabs
         {
             Items.Add(new());
             lbItems.Items.Add("Unnamed Item");
-            lbItems.SelectedIndex = Items.Count - 1;
-
+            DisplayedItems.Add(Items.Last());
+            lbItems.SelectedIndex = DisplayedItems.Count - 1;
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            Items.RemoveAt(lbItems.SelectedIndex);
-            lbItems.Items.RemoveAt(lbItems.SelectedIndex);
+            Items.Remove(СurrentItem);
+            lbItems.Items.Remove(СurrentItem.Name);
+            DisplayedItems.Remove(СurrentItem);
         }
 
         private void tbCost_TextChanged(object sender, EventArgs e)
@@ -78,7 +83,7 @@ namespace ObjectOrientedPractics.View.Tabs
             {
                 try
                 {
-                    _currentItem.Cost = Convert.ToInt32(tbCost.Text);
+                    СurrentItem.Cost = Convert.ToInt32(tbCost.Text);
                     tbCost.BackColor = Color.White;
                 }
                 catch
@@ -94,7 +99,7 @@ namespace ObjectOrientedPractics.View.Tabs
             {
                 try
                 {
-                    _currentItem.Name = tbName.Text;
+                    СurrentItem.Name = tbName.Text;
                     tbName.BackColor = Color.White;
 
                 }
@@ -111,7 +116,7 @@ namespace ObjectOrientedPractics.View.Tabs
             {
                 try
                 {
-                    _currentItem.Description = tbDescription.Text;
+                    СurrentItem.Description = tbDescription.Text;
                     tbDescription.BackColor = Color.White;
                 }
                 catch
@@ -126,7 +131,7 @@ namespace ObjectOrientedPractics.View.Tabs
             {
                 try
                 {
-                    _currentItem.Category = (Category)cbCategory.SelectedIndex;
+                    СurrentItem.Category = (Category)cbCategory.SelectedIndex;
                     cbCategory.BackColor = Color.White;
                 }
                 catch
@@ -146,11 +151,36 @@ namespace ObjectOrientedPractics.View.Tabs
 
         public void RefreshData()
         {
+            Refresh_lbItems(HasSubString);
+        }
+
+        private void Refresh_lbItems(FilterType filterType)
+        {
             lbItems.Items.Clear();
-            for (int i = 0; i < Items.Count; i++)
+            DisplayedItems.Clear();
+            foreach (var item in Items)
             {
-                lbItems.Items.Add(Convert.ToString(Items[i].Name));
+                if (filterType(item))
+                {
+                    lbItems.Items.Add(item.Name);
+                    DisplayedItems.Add(item);
+                }
             }
+        }
+
+        public bool HasSubString (Item item)
+        {
+            return item.Name.Contains(tbFind.Text);
+        }
+
+        private void tbFind_TextChanged(object sender, EventArgs e)
+        {
+            Refresh_lbItems(HasSubString);
+        }
+
+        private void cbOrderBy_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

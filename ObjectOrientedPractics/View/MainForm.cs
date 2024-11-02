@@ -11,7 +11,7 @@ namespace ObjectOrientedPractics
         public MainForm()
         {
             InitializeComponent();
-            //AddDefaultData();
+            AddDefaultData();
             itemsTab.Items = Store.Items;
             customersTab.Customers = Store.Customers;
             cartsTab1.Items = Store.Items;

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ObjectOrientedPractics.Model
+namespace ObjectOrientedPractics.Model.Classes.Services
 {
     /// <summary>
     /// Содержит методы для вылидации полей.
@@ -19,7 +19,7 @@ namespace ObjectOrientedPractics.Model
         /// <param name="propertyName">Проверяемое поле.</param>
         /// <returns>Возвращет true, если длина строки меньше или равно данному значению.</returns>
         /// <exception cref="ArgumentException">Если длина строки больше, чем данное значение.</exception>
-        public static bool IsLessThanOrEqual (string value, int maxLength, string propertyName)
+        public static bool IsLessThanOrEqual(string value, int maxLength, string propertyName)
         {
             if (value.Length > maxLength)
                 throw new ArgumentException($"Длинна строки, хранящейся в поле {nameof(propertyName)} должна быть меньше или равно, чем {maxLength}.");
@@ -54,7 +54,7 @@ namespace ObjectOrientedPractics.Model
         {
             if (value.Length != 6)
                 throw new ArgumentException($"Значение, хранящееся в поле {nameof(propertyName)} должно быть целым шестизначным числом.");
-            foreach( char i in value )
+            foreach (char i in value)
             {
                 if (char.IsNumber(i) == false)
                     throw new ArgumentException($"Значение, хранящееся в поле {nameof(propertyName)} должно быть целым шестизначным числом.");
