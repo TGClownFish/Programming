@@ -146,8 +146,8 @@
             tabControl1.SelectedIndex = 0;
             tabControl1.Size = new Size(708, 461);
             tabControl1.TabIndex = 0;
-            tabControl1.SelectedIndexChanged += tabControl1_TabIndexChanged;
-            tabControl1.TabIndexChanged += tabControl1_TabIndexChanged;
+            //tabControl1.SelectedIndexChanged += tabControl1_TabIndexChanged;
+            //tabControl1.TabIndexChanged += tabControl1_TabIndexChanged;
             // 
             // MainForm
             // 

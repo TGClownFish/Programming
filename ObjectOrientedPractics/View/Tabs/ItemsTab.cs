@@ -17,13 +17,39 @@ namespace ObjectOrientedPractics.View.Tabs
 {
     public delegate bool FilterType (Item item);
 
+    public class ItemEventArgs : EventArgs
+    {
+        public List<Item> Value { get; set; }
+    }
+
     public partial class ItemsTab : UserControl
     {
+        public event EventHandler<ItemEventArgs> ItemsChanged;
 
+        /// <summary>
+        /// Список товаров.
+        /// </summary>
+        public List<Item> _items;
         /// <summary>
         /// Хранит список товаров.
         /// </summary>
-        public List<Item> Items { get; set; }
+        public List<Item> Items 
+        { 
+            get
+            {
+                return _items;
+            }
+            set
+            {
+                _items = value;
+                if (_items != value)
+                {
+                    var args = new ItemEventArgs();
+                    args.Value = _items;
+                    ItemsChanged?.Invoke(this, args);
+                }
+            }
+        }
 
         /// <summary>
         /// Выбранный товар.

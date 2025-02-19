@@ -9,12 +9,25 @@ using ObjectOrientedPractics.Model.Classes.Services;
 
 namespace ObjectOrientedPractics.Model.Classes
 {
+
+    public class StringEventArg : EventArgs
+    {
+        public string Value { get; set; }
+    }
+
+    public class IntEventArg : EventArgs
+    {
+        public int Value { get; set; }
+    }
+
     ///<summary>
     /// Хранит данные о товаре.
     ///</summary>
     public class Item : ICloneable, IEquatable<Item>, IComparable<Item>
     {
-
+        public event EventHandler<StringEventArg> NameChanged;
+        public event EventHandler<StringEventArg> DescriptionChanged;
+        public event EventHandler<IntEventArg> CostChanged;
         ///<summary>
         /// Хранит ID товара. Только для чтения.
         ///</summary>
@@ -39,7 +52,19 @@ namespace ObjectOrientedPractics.Model.Classes
             set 
             {
                 if (ValueValidator.IsLessThanOrEqual(value, 200, Name))
-                    _name = value; 
+                {
+                    if (_name != value)
+                    {
+                        var args = new StringEventArg();
+                        args.Value = value;
+                        _name = value;
+                        NameChanged?.Invoke(this, args);
+                    }
+                }
+                else
+                {
+                    throw new ArgumentException("Длинна поля Name должна быть 200 символов или меньше.");
+                }
             }
 
         }
@@ -57,7 +82,20 @@ namespace ObjectOrientedPractics.Model.Classes
             set 
             {
                 if (ValueValidator.IsLessThanOrEqual(value, 1000, Name))
-                    _description = value;  
+                { 
+                    _description = value; 
+                    if (_description != value)
+                    {
+                        var args = new StringEventArg();
+                        args.Value = value;
+                        _description = value;
+                        DescriptionChanged?.Invoke(this, args);
+                    }
+                }
+                else
+                {
+                    throw new ArgumentException("Длинна поля Description должна быть 1000 символов или меньше.");
+                }
             }
         }
 
@@ -71,10 +109,18 @@ namespace ObjectOrientedPractics.Model.Classes
         public int Cost
         {
             get { return _cost; }
-            set 
-            { 
+            set
+            {
                 if (ValueValidator.IsInInterval(value, 0, 100000, Name))
-                    _cost = value; 
+                {
+                    if (_cost != value)
+                    {
+                        var args = new IntEventArg();
+                        args.Value = value;
+                         _cost = value;
+                            CostChanged?.Invoke(this, args);
+                    }
+                }
             }
         }
 

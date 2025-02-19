@@ -10,9 +10,14 @@ using ObjectOrientedPractics.Model.Classes.Services;
 
 namespace ObjectOrientedPractics.Model.Classes
 {
+    public class StringEventArgs : EventArgs
+    {
+        public string Value { get; set; }
+    }
     //Хранит данные об адрессе покупателя. 
     public class Address : ICloneable, IEquatable<Address>
     {
+        public event EventHandler<EventArgs> AddressChanged;
         /// <summary>
         /// Почтовый индекс.
         /// </summary>
@@ -26,7 +31,15 @@ namespace ObjectOrientedPractics.Model.Classes
             set
             {
                 if (ValueValidator.IsPostalIndex(value, Index))
-                    _index = value;
+                {
+                    if (_index != value)
+                    {
+                        var args = new StringEventArgs();
+                        args.Value = value;
+                        AddressChanged?.Invoke(this, args);
+                        _index = value;
+                    }
+                }
             }
         }
 
@@ -43,7 +56,15 @@ namespace ObjectOrientedPractics.Model.Classes
             set
             {
                 if (ValueValidator.IsLessThanOrEqual(value, 50, Country))
-                    _country = value;
+                {
+                    if (_country != value)
+                    {
+                        var args = new StringEventArgs();
+                        args.Value = value;
+                        AddressChanged.Invoke(this, args);
+                        _country = value;
+                    }
+                }
             }
         }
 
@@ -60,7 +81,15 @@ namespace ObjectOrientedPractics.Model.Classes
             set
             {
                 if (ValueValidator.IsLessThanOrEqual(value, 50, City))
-                    _city = value;
+                {                   
+                    if (_city != value)
+                    {
+                        var args = new StringEventArgs();
+                        args.Value = value;
+                        AddressChanged.Invoke(this, args);
+                        _city = value;
+                    }
+                }
             }
         }
 
@@ -77,7 +106,15 @@ namespace ObjectOrientedPractics.Model.Classes
             set
             {
                 if (ValueValidator.IsLessThanOrEqual(value, 100, Street))
-                    _street = value;
+                {
+                    if (_street != value)
+                    {
+                        var args = new StringEventArgs();
+                        args.Value = value;
+                        AddressChanged.Invoke(this, args);
+                        _street = value;
+                    }
+                }
             }
         }
 
@@ -94,7 +131,15 @@ namespace ObjectOrientedPractics.Model.Classes
             set
             {
                 if (ValueValidator.IsLessThanOrEqual(value, 10, Building))
-                    _building = value;
+                {
+                    if (_building != value)
+                    {
+                        var args = new StringEventArgs();
+                        args.Value = value;
+                        AddressChanged.Invoke(this, args);
+                        _building = value;
+                    }
+                }
             }
         }
 
@@ -111,7 +156,15 @@ namespace ObjectOrientedPractics.Model.Classes
             set
             {
                 if (ValueValidator.IsLessThanOrEqual(value, 50, Apartment))
-                    _apartment = value;
+                {
+                    if (_apartment != value)
+                    {
+                        var args = new StringEventArgs();
+                        args.Value = value;
+                        AddressChanged.Invoke(this, args);
+                        _apartment = value;
+                    }
+                }
             }
         }
 

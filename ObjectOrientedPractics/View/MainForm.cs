@@ -17,10 +17,10 @@ namespace ObjectOrientedPractics
             cartsTab1.Items = Store.Items;
             cartsTab1.Customers = Store.Customers;
             ordersTab1.Customers = Store.Customers;
-            itemsTab.RefreshData();
+            itemsTab.ItemsChanged += RefreshData;
         }
 
-        private void tabControl1_TabIndexChanged(object sender, EventArgs e)
+        private void RefreshData(object sender, EventArgs e)
         {
             switch (tabControl1.SelectedIndex)
             {
