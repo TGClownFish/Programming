@@ -120,10 +120,6 @@ namespace ObjectOrientedPractics.Model.Classes
                          _cost = value;
                             CostChanged?.Invoke(this, args);
                     }
-                    else
-                    {
-                        throw new ArgumentException("Значение поля Cost должно быть в промежутке между 0 и 100000.");
-                    }
                 }
             }
         }
