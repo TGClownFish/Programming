@@ -8,6 +8,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using View.Model;
 
 namespace View
 {
@@ -19,6 +20,7 @@ namespace View
         public MainWindow()
         {
             InitializeComponent();
+            Contact r = new Contact("1fff","+7-111-111-11-11","mr@gmail.com");
         }
     }
 }
