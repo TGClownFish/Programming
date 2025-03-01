@@ -9,9 +9,44 @@
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="38*"/>
-            <ColumnDefinition Width="37*"/>
+            <ColumnDefinition Width="38*"/>
         </Grid.ColumnDefinitions>
-        <GroupBox Header="GroupBox" Margin="15,15,5,15" Grid.Column="0"/>
-        <GroupBox Header="GroupBox" Margin="5,15,15,15" Grid.Column="1"/>
+        <GroupBox x:Name="gbEdit" Header="Edit Contact" Grid.Column="0" Margin="15,15,5,15">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Label Content="Name:" HorizontalAlignment="Left" Width="152" VerticalAlignment="Center" Margin="3,0,0,0" Padding="0,5,5,5"/>
+                <TextBox Margin="3,3,3,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top"/>
+                <Label Content="Phone Number:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="3,3,0,0" Grid.Row="2" Padding="0,5,5,5" UseLayoutRounding="True"/>
+                <TextBox Margin="3,3,3,0" Grid.Row="3" TextWrapping="Wrap" VerticalAlignment="Top"/>
+                <Label Content="Email:" HorizontalAlignment="Left" Width="152" VerticalAlignment="Top" Margin="3,3,0,0" Grid.Row="4" Padding="0,5,5,5"/>
+                <TextBox Margin="3,3,3,0" Grid.Row="5" TextWrapping="Wrap" VerticalAlignment="Top"/>
+            </Grid>
+        </GroupBox>
+        <GroupBox x:Name="gbRead" Header="Read Contact" Margin="5,15,15,15" Grid.Column="1">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Label Content="Name:" HorizontalAlignment="Left" Width="152" VerticalAlignment="Center" Margin="3,0,0,0" Padding="0,5,5,5" Grid.Row="0"/>
+                <Label Content="1" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="3,3,0,0" Padding="0,5,5,5" Grid.Row="1" FontWeight="Bold"/>
+                <Label Content="Phone Number:" HorizontalAlignment="Left" Width="152" VerticalAlignment="Top" Margin="3,3,0,0" Padding="0,5,5,5" Grid.Row="2"/>
+                <Label Content="1" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="3,3,0,0" Padding="0,5,5,5" Grid.Row="3" FontWeight="Bold"/>
+                <Label Content="Email:" HorizontalAlignment="Left" Width="152" VerticalAlignment="Top" Margin="3,3,0,0" Padding="0,5,5,5" Grid.Row="4"/>
+                <Label Content="1" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="3,3,0,0" Padding="0,5,5,5" Grid.Row="5" FontWeight="Bold"/>
+
+            </Grid>
+        </GroupBox>
     </Grid>
 </Window>
