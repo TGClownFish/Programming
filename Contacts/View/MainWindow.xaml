@@ -5,8 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:View"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="400" Width="600" MinWidth="600" MinHeight="400">
     <Grid>
-
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="38*"/>
+            <ColumnDefinition Width="37*"/>
+        </Grid.ColumnDefinitions>
+        <GroupBox Header="GroupBox" Margin="15,15,5,15" Grid.Column="0"/>
+        <GroupBox Header="GroupBox" Margin="5,15,15,15" Grid.Column="1"/>
     </Grid>
 </Window>
