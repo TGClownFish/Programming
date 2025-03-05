@@ -39,18 +39,18 @@ namespace View.Model
         /// </summary>
         private string _phoneNumber;
         /// <summary>
-        /// Возвращает и задаёт номер телефона. Должен быть по типу +7-ddd-ddd-dd-dd, где d это цифра.
+        /// Возвращает и задаёт номер телефона. Должен быть в формате +7-ddd-ddd-dd-dd, где d это цифра.
         /// </summary>
         public string PhoneNumber
         {
             get { return _phoneNumber; }
             set
             {
-                if (Regex.Match(value, @"^(\+7-[0-9]{3}-[0-9]{3}-[0-9]{2}-[0-9]{2})$").Success == false)
+                if (value == "" || Regex.Match(value, 
+                    @"^(\+7-[0-9]{3}-[0-9]{3}-[0-9]{2}-[0-9]{2})$").Success == true)
                 {
-                    throw new ArgumentException($"Неверное значение в поле {PhoneNumber.GetType}");
+                    _phoneNumber = value;
                 }
-                _phoneNumber = value;
             }
         }
 
@@ -66,11 +66,10 @@ namespace View.Model
             get { return _email; }
             set
             {
-                if (new EmailAddressAttribute().IsValid(value) == false)
+                if (value == "" || new EmailAddressAttribute().IsValid(value) == true)
                 {
-                    throw new ArgumentException($"Неверное значение в поле {Email.GetType}");
+                    _email = value;
                 }
-                _email = value;
             }
         }
 

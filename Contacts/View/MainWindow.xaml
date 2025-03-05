@@ -7,6 +7,10 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="400" Width="600" MinWidth="600" MinHeight="400">
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="40"/>
+        </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="38*"/>
             <ColumnDefinition Width="38*"/>
@@ -48,5 +52,7 @@
 
             </Grid>
         </GroupBox>
+        <Button x:Name="btnLoad" Grid.Column="1" Content="Load" HorizontalAlignment="Right" Grid.Row="1" VerticalAlignment="Bottom" Margin="0,0,15,15" MinWidth="75" MinHeight="25"/>
+        <Button x:Name="btnSave" Grid.Column="1" Content="Save" HorizontalAlignment="Right" VerticalAlignment="Bottom" MinWidth="75" MinHeight="25" Margin="0,0,95,15" Grid.Row="1"/>
     </Grid>
 </Window>
