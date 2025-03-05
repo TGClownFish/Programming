@@ -85,5 +85,14 @@ namespace View.Model
             PhoneNumber = phoneNumber;
             Email = email;
         }
+        /// <summary>
+        /// Создаёт пустой объект класса <see cref="Contact"/>.
+        /// </summary>
+        public Contact()
+        {
+            Name = "";
+            PhoneNumber = "";
+            Email = "";
+        }
     }
 }

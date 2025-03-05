@@ -26,7 +26,7 @@
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
                 <Label Content="Name:" HorizontalAlignment="Left" Width="152" VerticalAlignment="Center" Margin="3,0,0,0" Padding="0,5,5,5"/>
-                <TextBox Margin="3,3,3,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top"/>
+                <TextBox Margin="3,3,3,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Text="{Binding CurentContact.Name}"/>
                 <Label Content="Phone Number:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="3,3,0,0" Grid.Row="2" Padding="0,5,5,5" UseLayoutRounding="True"/>
                 <TextBox Margin="3,3,3,0" Grid.Row="3" TextWrapping="Wrap" VerticalAlignment="Top"/>
                 <Label Content="Email:" HorizontalAlignment="Left" Width="152" VerticalAlignment="Top" Margin="3,3,0,0" Grid.Row="4" Padding="0,5,5,5"/>
@@ -44,7 +44,7 @@
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
                 <Label Content="Name:" HorizontalAlignment="Left" Width="152" VerticalAlignment="Center" Margin="3,0,0,0" Padding="0,5,5,5" Grid.Row="0"/>
-                <Label Content="1" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="3,3,0,0" Padding="0,5,5,5" Grid.Row="1" FontWeight="Bold"/>
+                <Label Content="{Binding CurentContact.Name}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="3,3,0,0" Padding="0,5,5,5" Grid.Row="1" FontWeight="Bold"/>
                 <Label Content="Phone Number:" HorizontalAlignment="Left" Width="152" VerticalAlignment="Top" Margin="3,3,0,0" Padding="0,5,5,5" Grid.Row="2"/>
                 <Label Content="1" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="3,3,0,0" Padding="0,5,5,5" Grid.Row="3" FontWeight="Bold"/>
                 <Label Content="Email:" HorizontalAlignment="Left" Width="152" VerticalAlignment="Top" Margin="3,3,0,0" Padding="0,5,5,5" Grid.Row="4"/>

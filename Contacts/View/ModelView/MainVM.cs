@@ -9,6 +9,21 @@ namespace View.ModelView
 {
     public class MainVM
     {
-        Contact contact = new Contact("1fff", "+7-111-111-11-11", "mr@gmail.com");
+        public string Name
+        {
+            get
+            {
+                return CurentContact.Name;
+            }
+            set
+            {
+                CurentContact.Name = value;
+            }
+        }
+        public Contact CurentContact { get; set; }
+        public MainVM()
+        {
+            CurentContact = new Contact();
+        }
     }
 }
