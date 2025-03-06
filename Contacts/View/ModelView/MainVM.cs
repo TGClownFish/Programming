@@ -7,8 +7,18 @@ using View.Model;
 
 namespace View.ModelView
 {
+    /// <summary>
+    /// Хранит поля, нужные для объединания View и Model.
+    /// </summary>
     public class MainVM
     {
+        /// <summary>
+        /// Хранит данные о контакте.
+        /// </summary>
+        public Contact CurentContact { get; set; }
+        /// <summary>
+        /// Хранит данные об имени контакта.
+        /// </summary>
         public string Name
         {
             get
@@ -20,6 +30,9 @@ namespace View.ModelView
                 CurentContact.Name = value;
             }
         }
+        /// <summary>
+        /// Хранит данные о телефонном номере контакта.
+        /// </summary>
         public string PhoneNumber
         {
             get
@@ -31,6 +44,9 @@ namespace View.ModelView
                 CurentContact.PhoneNumber = value;
             }
         }
+        /// <summary>
+        /// Хранит данные об электронной почте контакта.
+        /// </summary>
         public string Email
         {
             get
@@ -42,7 +58,9 @@ namespace View.ModelView
                 CurentContact.Email = value;
             }
         }
-        public Contact CurentContact { get; set; }
+        /// <summary>
+        /// Создаёт объект класса <see cref="MainVM"/>.
+        /// </summary>
         public MainVM()
         {
             CurentContact = new Contact();
