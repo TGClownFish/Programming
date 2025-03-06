@@ -12,7 +12,6 @@ namespace View.ModelView
     public class LoadCommand : ICommand
     {
         private Action<object> execute;
-        private Func<object, bool> canExecute;
 
         public bool CanExecute(object? parameter)
         {
@@ -26,10 +25,9 @@ namespace View.ModelView
 
         public event EventHandler CanExecuteChanged { add { } remove { } }
 
-        public LoadCommand(Action<object> execute, Func<object, bool> canExecute = null)
+        public LoadCommand(Action<object> execute)
         {
             this.execute = execute;
-            this.canExecute = canExecute;
         }
     }
 }

@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Diagnostics.Contracts;
 using System.Linq;
 using System.Reflection.Metadata;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using View.Model;
 using View.Model.Services;
 
@@ -13,12 +16,21 @@ namespace View.ModelView
     /// <summary>
     /// Хранит поля, нужные для объединания View и Model.
     /// </summary>
-    public class MainVM
+    public class MainVM : INotifyPropertyChanged
     {
+        public Contact _curentContact;
         /// <summary>
         /// Хранит данные о контакте.
         /// </summary>
-        public Contact CurentContact { get; set; }
+        public Contact CurentContact 
+        {
+            get { return _curentContact; }
+            set 
+            { 
+                _curentContact = value;
+                OnPropertyChanged("CurentContact");
+            }
+        }
 
         private LoadCommand loadCommand;
         public LoadCommand LoadCommand
@@ -28,10 +40,8 @@ namespace View.ModelView
                 return loadCommand ?? (loadCommand = new LoadCommand(
                     obj =>
                     {
-                        Contact contact = obj as Contact;
                         CurentContact = ContactSerializer.Deserialize();
-                    },
-                    (obj) => true
+                    }
                 ));
             }
         }
@@ -43,10 +53,8 @@ namespace View.ModelView
                 return saveCommand ?? (saveCommand = new SaveCommand(
                     obj =>
                     {
-                        Contact contact = obj as Contact;
                         ContactSerializer.Serialize(CurentContact);
-                    },
-                    (obj) => true
+                    }
                 ));
             }
         }
@@ -62,6 +70,7 @@ namespace View.ModelView
             set
             {
                 CurentContact.Name = value;
+                OnPropertyChanged("Name");
             }
         }
         /// <summary>
@@ -76,6 +85,7 @@ namespace View.ModelView
             set
             {
                 CurentContact.PhoneNumber = value;
+                OnPropertyChanged("PhoneNumber");
             }
         }
         /// <summary>
@@ -90,6 +100,7 @@ namespace View.ModelView
             set
             {
                 CurentContact.Email = value;
+                OnPropertyChanged("Emai");
             }
         }
         /// <summary>
@@ -98,6 +109,13 @@ namespace View.ModelView
         public MainVM()
         {
             CurentContact = new Contact();
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        public void OnPropertyChanged([CallerMemberName] string prop = "")
+        {
+            if (PropertyChanged != null)
+                PropertyChanged(this, new PropertyChangedEventArgs(prop));
         }
     }
 }

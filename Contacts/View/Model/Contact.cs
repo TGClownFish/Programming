@@ -26,12 +26,12 @@ namespace View.Model
             get { return _name; } 
             set
             {
-                if (value.Length > 50)
-                {
-                    throw new ArgumentException($"Неверное значение в поле {Name.GetType}");
-                    
-                }
                 _name = value;
+                //if (value.Length <= 50)
+                //{
+                //    _name = value;
+
+                //}
             }
         }
         /// <summary>
@@ -46,11 +46,12 @@ namespace View.Model
             get { return _phoneNumber; }
             set
             {
-                if (value == "" || Regex.Match(value, 
-                    @"^(\+7-[0-9]{3}-[0-9]{3}-[0-9]{2}-[0-9]{2})$").Success == true)
-                {
-                    _phoneNumber = value;
-                }
+                _phoneNumber = value;
+                //if (value == "" || Regex.Match(value, 
+                //    @"^(\+7-[0-9]{3}-[0-9]{3}-[0-9]{2}-[0-9]{2})$").Success == true)
+                //{
+                //    _phoneNumber = value;
+                //}
             }
         }
 
@@ -66,10 +67,11 @@ namespace View.Model
             get { return _email; }
             set
             {
-                if (value == "" || new EmailAddressAttribute().IsValid(value) == true)
-                {
-                    _email = value;
-                }
+                _email = value;
+                //if (value == "" || new EmailAddressAttribute().IsValid(value) == true)
+                //{
+                //    _email = value;
+                //}
             }
         }
 
