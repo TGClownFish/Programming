@@ -1,9 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.Contracts;
 using System.Linq;
+using System.Reflection.Metadata;
 using System.Text;
 using System.Threading.Tasks;
 using View.Model;
+using View.Model.Services;
 
 namespace View.ModelView
 {
@@ -16,6 +19,37 @@ namespace View.ModelView
         /// Хранит данные о контакте.
         /// </summary>
         public Contact CurentContact { get; set; }
+
+        private LoadCommand loadCommand;
+        public LoadCommand LoadCommand
+        {
+            get
+            {
+                return loadCommand ?? (loadCommand = new LoadCommand(
+                    obj =>
+                    {
+                        Contact contact = obj as Contact;
+                        CurentContact = ContactSerializer.Deserialize();
+                    },
+                    (obj) => true
+                ));
+            }
+        }
+        private SaveCommand saveCommand;
+        public SaveCommand SaveCommand
+        {
+            get
+            {
+                return saveCommand ?? (saveCommand = new SaveCommand(
+                    obj =>
+                    {
+                        Contact contact = obj as Contact;
+                        ContactSerializer.Serialize(CurentContact);
+                    },
+                    (obj) => true
+                ));
+            }
+        }
         /// <summary>
         /// Хранит данные об имени контакта.
         /// </summary>

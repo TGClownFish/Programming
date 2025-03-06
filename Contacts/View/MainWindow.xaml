@@ -52,7 +52,7 @@
 
             </Grid>
         </GroupBox>
-        <Button x:Name="btnLoad" Grid.Column="1" Content="Load" HorizontalAlignment="Right" Grid.Row="1" VerticalAlignment="Bottom" Margin="0,0,15,15" MinWidth="75" MinHeight="25"/>
-        <Button x:Name="btnSave" Grid.Column="1" Content="Save" HorizontalAlignment="Right" VerticalAlignment="Bottom" MinWidth="75" MinHeight="25" Margin="0,0,95,15" Grid.Row="1"/>
+        <Button x:Name="btnLoad" Command="{Binding LoadCommand}" Grid.Column="1" Content="Load" HorizontalAlignment="Right" Grid.Row="1" VerticalAlignment="Bottom" Margin="0,0,15,15" MinWidth="75" MinHeight="25"/>
+        <Button x:Name="btnSave" Command="{Binding SaveCommand}" Grid.Column="1" Content="Save" HorizontalAlignment="Right" VerticalAlignment="Bottom" MinWidth="75" MinHeight="25" Margin="0,0,95,15" Grid.Row="1"/>
     </Grid>
 </Window>

@@ -19,7 +19,7 @@ namespace View.Model.Services
                 JsonSerializer.SerializeAsync<Contact>(fileStream, contact);
             }
         }
-        public static Contact Deserialize(string path)
+        public static Contact Deserialize()
         {
             using (FileStream fileStream = new FileStream(_path, FileMode.OpenOrCreate))
             {
