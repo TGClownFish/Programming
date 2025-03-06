@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace View.Model.Services
 {
-    public class ContactSerializer
+    public static class ContactSerializer
     {
     }
 }

@@ -26,11 +26,11 @@
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
                 <Label Content="Name:" HorizontalAlignment="Left" Width="152" VerticalAlignment="Center" Margin="3,0,0,0" Padding="0,5,5,5"/>
-                <TextBox Margin="3,3,3,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Text="{Binding CurentContact.Name}"/>
+                <TextBox x:Name="tbName" Margin="3,3,3,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Text="{Binding CurentContact.Name}"/>
                 <Label Content="Phone Number:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="3,3,0,0" Grid.Row="2" Padding="0,5,5,5" UseLayoutRounding="True"/>
-                <TextBox Margin="3,3,3,0" Grid.Row="3" TextWrapping="Wrap" VerticalAlignment="Top"/>
+                <TextBox x:Name="tbPhoneNumber" Margin="3,3,3,0" Grid.Row="3" TextWrapping="Wrap" VerticalAlignment="Top" Text="{Binding CurentContact.PhoneNumber}" ToolTip="+7-xxx-xxx-xx-xx"/>
                 <Label Content="Email:" HorizontalAlignment="Left" Width="152" VerticalAlignment="Top" Margin="3,3,0,0" Grid.Row="4" Padding="0,5,5,5"/>
-                <TextBox Margin="3,3,3,0" Grid.Row="5" TextWrapping="Wrap" VerticalAlignment="Top"/>
+                <TextBox x:Name="tbEmail" Margin="3,3,3,0" Grid.Row="5" TextWrapping="Wrap" VerticalAlignment="Top" Text="{Binding CurentContact.Email}"/>
             </Grid>
         </GroupBox>
         <GroupBox x:Name="gbRead" Header="Read Contact" Margin="5,15,15,15" Grid.Column="1">
@@ -44,11 +44,11 @@
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
                 <Label Content="Name:" HorizontalAlignment="Left" Width="152" VerticalAlignment="Center" Margin="3,0,0,0" Padding="0,5,5,5" Grid.Row="0"/>
-                <Label Content="{Binding CurentContact.Name}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="3,3,0,0" Padding="0,5,5,5" Grid.Row="1" FontWeight="Bold"/>
+                <Label x:Name="lbName" Content="{Binding CurentContact.Name}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="3,3,0,0" Padding="0,5,5,5" Grid.Row="1" FontWeight="Bold" Height="25"/>
                 <Label Content="Phone Number:" HorizontalAlignment="Left" Width="152" VerticalAlignment="Top" Margin="3,3,0,0" Padding="0,5,5,5" Grid.Row="2"/>
-                <Label Content="1" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="3,3,0,0" Padding="0,5,5,5" Grid.Row="3" FontWeight="Bold"/>
+                <Label x:Name="lbPhoneNumber" Content="{Binding CurentContact.PhoneNumber}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="3,3,0,0" Padding="0,5,5,5" Grid.Row="3" FontWeight="Bold" Height="25"/>
                 <Label Content="Email:" HorizontalAlignment="Left" Width="152" VerticalAlignment="Top" Margin="3,3,0,0" Padding="0,5,5,5" Grid.Row="4"/>
-                <Label Content="1" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="3,3,0,0" Padding="0,5,5,5" Grid.Row="5" FontWeight="Bold"/>
+                <Label x:Name="lbEmail" Content="{Binding CurentContact.Email}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="3,3,0,0" Padding="0,5,5,5" Grid.Row="5" FontWeight="Bold" Height="25"/>
 
             </Grid>
         </GroupBox>

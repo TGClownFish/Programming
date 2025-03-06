@@ -20,6 +20,28 @@ namespace View.ModelView
                 CurentContact.Name = value;
             }
         }
+        public string PhoneNumber
+        {
+            get
+            {
+                return CurentContact.PhoneNumber;
+            }
+            set
+            {
+                CurentContact.PhoneNumber = value;
+            }
+        }
+        public string Email
+        {
+            get
+            {
+                return CurentContact.Email;
+            }
+            set
+            {
+                CurentContact.Email = value;
+            }
+        }
         public Contact CurentContact { get; set; }
         public MainVM()
         {
