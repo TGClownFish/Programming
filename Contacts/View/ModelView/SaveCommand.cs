@@ -15,9 +15,9 @@ namespace View.ModelView
     public class SaveCommand : ICommand
     {
         /// <summary>
-        /// Хранит исполняемый делегат.
+        /// Ссылка на экземпляр MainVM.
         /// </summary>
-        private Action<object> execute;
+        private MainVM MainVM { get; }
 
         /// <summary>
         /// Проверяет, может ли команда сработать.
@@ -35,20 +35,20 @@ namespace View.ModelView
         /// <param name="parameter">Принимаемый делегат.</param>
         public void Execute(object parameter)
         {
-            this.execute(parameter);
+            ContactSerializer.Serialize(MainVM.CurentContact);
         }
         /// <summary>
         /// Срабатывет, если CanExecute изменил значение (это никогда не произойдёт).
         /// </summary>
-        public event EventHandler CanExecuteChanged { add { } remove { } }
+        public event EventHandler CanExecuteChanged;
 
         /// <summary>
         /// Создаёт объект класса <see cref="SaveCommand"/>.
         /// </summary>
-        /// <param name="execute">Принимаемый делегат.</param>
-        public SaveCommand(Action<object> execute)
+        /// <param name="mainVM">Ссылка на экземпляр MainVM..</param>
+        public SaveCommand(MainVM mainVM)
         {
-            this.execute = execute;
+            MainVM = mainVM;
         }
     }
 }

@@ -21,7 +21,7 @@ namespace View.ModelView
         /// <summary>
         /// Хранит данные о выбранном контакте
         /// </summary>
-        public Contact _curentContact;
+        private Contact _curentContact;
         /// <summary>
         /// Хранит и возвращает данные о выбранном контакте.
         /// </summary>
@@ -31,49 +31,18 @@ namespace View.ModelView
             set 
             { 
                 _curentContact = value;
-                OnPropertyChanged("CurentContact");
+                OnPropertyChanged();
             }
         }
-
-        /// <summary>
-        /// Хранит команду загрузки.
-        /// </summary>
-        private LoadCommand loadCommand;
         /// <summary>
         /// Хранит и возвращает команду загрузки.
         /// </summary>
-        public LoadCommand LoadCommand
-        {
-            get
-            {
-                return loadCommand ?? (loadCommand = new LoadCommand(
-                    obj =>
-                    {
-                        CurentContact = ContactSerializer.Deserialize();
-                    }
-                ));
-            }
-        }
+        public LoadCommand LoadCommand { get; }
 
-        /// <summary>
-        /// Хранит команду сохранения.
-        /// </summary>
-        private SaveCommand saveCommand;
         /// <summary>
         /// Хранит и возвращает команду сохранения.
         /// </summary>
-        public SaveCommand SaveCommand
-        {
-            get
-            {
-                return saveCommand ?? (saveCommand = new SaveCommand(
-                    obj =>
-                    {
-                        ContactSerializer.Serialize(CurentContact);
-                    }
-                ));
-            }
-        }
+        public SaveCommand SaveCommand { get; }
         /// <summary>
         /// Хранит и возвращает данные об имени контакта.
         /// </summary>
@@ -86,7 +55,7 @@ namespace View.ModelView
             set
             {
                 CurentContact.Name = value;
-                OnPropertyChanged("Name");
+                OnPropertyChanged();
             }
         }
         /// <summary>
@@ -101,7 +70,7 @@ namespace View.ModelView
             set
             {
                 CurentContact.PhoneNumber = value;
-                OnPropertyChanged("PhoneNumber");
+                OnPropertyChanged();
             }
         }
         /// <summary>
@@ -116,7 +85,7 @@ namespace View.ModelView
             set
             {
                 CurentContact.Email = value;
-                OnPropertyChanged("Email");
+                OnPropertyChanged();
             }
         }
         /// <summary>
@@ -125,6 +94,8 @@ namespace View.ModelView
         public MainVM()
         {
             CurentContact = new Contact();
+            SaveCommand = new SaveCommand(this);
+            LoadCommand = new LoadCommand(this);
         }
 
         /// <summary>

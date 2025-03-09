@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 using View.Model;
 using View.Model.Services;
@@ -15,14 +16,14 @@ namespace View.ModelView
     public class LoadCommand : ICommand
     {
         /// <summary>
-        /// Хранит исполняемый делегат.
+        /// Ссылка на экземпляр MainVM.
         /// </summary>
-        private Action<object> execute;
+        private MainVM MainVM { get; }
 
         /// <summary>
         /// Проверяет, может ли команда сработать.
         /// </summary>
-        /// <param name="parameter">Принимаемый делегат.</param>
+        /// <param name="parameter">Принимаемый параметр.</param>
         /// <returns>true, всегда.</returns>
         public bool CanExecute(object? parameter)
         {
@@ -32,23 +33,23 @@ namespace View.ModelView
         /// <summary>
         /// Выполняет фунцию в делегате.
         /// </summary>
-        /// <param name="parameter">Принимаемый делегат.</param>
+        /// <param name="parameter">Принимаемый параметр.</param>
         public void Execute(object parameter)
         {
-            this.execute(parameter);
+            MainVM.CurentContact = ContactSerializer.Deserialize();
         }
         /// <summary>
         /// Срабатывет, если CanExecute изменил значение (это никогда не произойдёт).
         /// </summary>
-        public event EventHandler CanExecuteChanged { add { } remove { } }
+        public event EventHandler CanExecuteChanged;
 
         /// <summary>
-        /// Создаёт объект класса <see cref="SaveCommand"/>.
+        /// Создаёт объект класса <see cref="LoadCommand"/>.
         /// </summary>
-        /// <param name="execute">Принимаемый делегат.</param>
-        public LoadCommand(Action<object> execute)
+        /// <param name="mainVM">Ссылка на экземпляр MainVM..</param>
+        public LoadCommand(MainVM mainVM)
         {
-            this.execute = execute;
+            MainVM = mainVM;
         }
     }
 }
