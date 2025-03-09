@@ -19,7 +19,7 @@ namespace View.Model
         /// </summary>
         private string _name;
         /// <summary>
-        /// Возвращает и задаёт имя. Должен быть не больше 50 символов.
+        /// Возвращает и задаёт имя. Должен быть не больше 100 символов.
         /// </summary>
         public string Name 
         { 
@@ -27,11 +27,6 @@ namespace View.Model
             set
             {
                 _name = value;
-                //if (value.Length <= 50)
-                //{
-                //    _name = value;
-
-                //}
             }
         }
         /// <summary>
@@ -39,7 +34,7 @@ namespace View.Model
         /// </summary>
         private string _phoneNumber;
         /// <summary>
-        /// Возвращает и задаёт номер телефона. Должен быть в формате +7-ddd-ddd-dd-dd, где d это цифра.
+        /// Возвращает и задаёт номер телефона. Должен включать в себя только цифры и знаки + - ( )
         /// </summary>
         public string PhoneNumber
         {
@@ -47,11 +42,6 @@ namespace View.Model
             set
             {
                 _phoneNumber = value;
-                //if (value == "" || Regex.Match(value, 
-                //    @"^(\+7-[0-9]{3}-[0-9]{3}-[0-9]{2}-[0-9]{2})$").Success == true)
-                //{
-                //    _phoneNumber = value;
-                //}
             }
         }
 
@@ -60,7 +50,7 @@ namespace View.Model
         /// </summary>
         private string _email;
         /// <summary>
-        /// Возвращает и задаёт адрес электронной почты. Должен быть в правильном формате адреса электронной почты.
+        /// Возвращает и задаёт адрес электронной почты. Должен включать символ @
         /// </summary>
         public string Email
         {
@@ -68,10 +58,6 @@ namespace View.Model
             set
             {
                 _email = value;
-                //if (value == "" || new EmailAddressAttribute().IsValid(value) == true)
-                //{
-                //    _email = value;
-                //}
             }
         }
 

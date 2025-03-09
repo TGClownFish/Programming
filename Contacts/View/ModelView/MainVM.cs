@@ -14,13 +14,16 @@ using View.Model.Services;
 namespace View.ModelView
 {
     /// <summary>
-    /// Хранит поля, нужные для объединания View и Model.
+    /// Хранит поля и методы, нужные для объединания View и Model.
     /// </summary>
     public class MainVM : INotifyPropertyChanged
     {
+        /// <summary>
+        /// Хранит данные о выбранном контакте
+        /// </summary>
         public Contact _curentContact;
         /// <summary>
-        /// Хранит данные о контакте.
+        /// Хранит и возвращает данные о выбранном контакте.
         /// </summary>
         public Contact CurentContact 
         {
@@ -32,7 +35,13 @@ namespace View.ModelView
             }
         }
 
+        /// <summary>
+        /// Хранит команду загрузки.
+        /// </summary>
         private LoadCommand loadCommand;
+        /// <summary>
+        /// Хранит и возвращает команду загрузки.
+        /// </summary>
         public LoadCommand LoadCommand
         {
             get
@@ -45,7 +54,14 @@ namespace View.ModelView
                 ));
             }
         }
+
+        /// <summary>
+        /// Хранит команду сохранения.
+        /// </summary>
         private SaveCommand saveCommand;
+        /// <summary>
+        /// Хранит и возвращает команду сохранения.
+        /// </summary>
         public SaveCommand SaveCommand
         {
             get
@@ -59,7 +75,7 @@ namespace View.ModelView
             }
         }
         /// <summary>
-        /// Хранит данные об имени контакта.
+        /// Хранит и возвращает данные об имени контакта.
         /// </summary>
         public string Name
         {
@@ -74,7 +90,7 @@ namespace View.ModelView
             }
         }
         /// <summary>
-        /// Хранит данные о телефонном номере контакта.
+        /// Хранит и возвращает данные о телефонном номере контакта.
         /// </summary>
         public string PhoneNumber
         {
@@ -89,7 +105,7 @@ namespace View.ModelView
             }
         }
         /// <summary>
-        /// Хранит данные об электронной почте контакта.
+        /// Хранит и возвращает данные об электронной почте контакта.
         /// </summary>
         public string Email
         {
@@ -100,7 +116,7 @@ namespace View.ModelView
             set
             {
                 CurentContact.Email = value;
-                OnPropertyChanged("Emai");
+                OnPropertyChanged("Email");
             }
         }
         /// <summary>
@@ -111,7 +127,14 @@ namespace View.ModelView
             CurentContact = new Contact();
         }
 
+        /// <summary>
+        /// Срабатывет, когда меняется свойство элемента.
+        /// </summary>
         public event PropertyChangedEventHandler PropertyChanged;
+        /// <summary>
+        /// Вызывает событие PropertyChanged.
+        /// </summary>
+        /// <param name="prop">Аргументы события.</param>
         public void OnPropertyChanged([CallerMemberName] string prop = "")
         {
             if (PropertyChanged != null)
