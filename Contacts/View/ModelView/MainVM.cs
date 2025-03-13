@@ -8,10 +8,13 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
 using View.Model;
 using View.Model.Services;
 
 namespace View.ModelView
+
+
 {
     /// <summary>
     /// Хранит поля и методы, нужные для объединания View и Model.
