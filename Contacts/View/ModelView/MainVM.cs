@@ -11,6 +11,7 @@ using System.Windows;
 using System.Windows.Controls;
 using View.Model;
 using View.Model.Services;
+using View.ModelView.Commands;
 
 namespace View.ModelView
 
@@ -46,6 +47,11 @@ namespace View.ModelView
         /// Хранит и возвращает команду сохранения.
         /// </summary>
         public SaveCommand SaveCommand { get; }
+        public ApplyCommand ApplyCommand { get; }
+        public AddCommand AddCommand { get; }
+        public RemoveCommand RemoveCommand { get; }
+        public EditCommand EditCommand { get; }
+
         /// <summary>
         /// Хранит и возвращает данные об имени контакта.
         /// </summary>
@@ -99,6 +105,10 @@ namespace View.ModelView
             CurentContact = new Contact();
             SaveCommand = new SaveCommand(this);
             LoadCommand = new LoadCommand(this);
+            ApplyCommand = new ApplyCommand(this);
+            AddCommand = new AddCommand(this);
+            RemoveCommand = new RemoveCommand(this);
+            EditCommand = new EditCommand(this);
         }
 
         /// <summary>
