@@ -8,12 +8,12 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="400" Width="600" MinWidth="600" MinHeight="400" WindowStartupLocation="CenterScreen">
     <i:Interaction.Triggers>
-        <!--<i:EventTrigger EventName="Closing">
+        <i:EventTrigger EventName="Closing">
             <i:InvokeCommandAction Command="{Binding SaveCommand}"/>
         </i:EventTrigger>
         <i:EventTrigger EventName="Loaded">
             <i:InvokeCommandAction Command="{Binding LoadCommand}"/>
-        </i:EventTrigger>-->
+        </i:EventTrigger>
     </i:Interaction.Triggers>
     <Grid>
         <Grid.ColumnDefinitions>

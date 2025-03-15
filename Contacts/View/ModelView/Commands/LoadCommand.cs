@@ -36,7 +36,7 @@ namespace View.ModelView
         /// <param name="parameter">Принимаемый параметр.</param>
         public void Execute(object parameter)
         {
-            MainVM.CurentContact = ContactSerializer.Deserialize();
+            MainVM.Contacts = ContactSerializer.Deserialize();
         }
         /// <summary>
         /// Срабатывет, если CanExecute изменил значение (это никогда не произойдёт).
