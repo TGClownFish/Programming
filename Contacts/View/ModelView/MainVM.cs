@@ -59,70 +59,22 @@ namespace View.ModelView
         /// Хранит и возвращает команду сохранения.
         /// </summary>
         public SaveCommand SaveCommand { get; }
-        public ApplyCommand ApplyCommand { get; }
-        public AddCommand AddCommand { get; }
-        public RemoveCommand RemoveCommand { get; }
-        public EditCommand EditCommand { get; }
-
-        ///// <summary>
-        ///// Хранит и возвращает данные об имени контакта.
-        ///// </summary>
-        //public string Name
-        //{
-        //    get
-        //    {
-        //        return CurentContact.Name;
-        //    }
-        //    set
-        //    {
-        //        CurentContact.Name = value;
-        //        OnPropertyChanged();
-        //    }
-        //}
-        ///// <summary>
-        ///// Хранит и возвращает данные о телефонном номере контакта.
-        ///// </summary>
-        //public string PhoneNumber
-        //{
-        //    get
-        //    {
-        //        return CurentContact.PhoneNumber;
-        //    }
-        //    set
-        //    {
-        //        CurentContact.PhoneNumber = value;
-        //        OnPropertyChanged();
-        //    }
-        //}
-        ///// <summary>
-        ///// Хранит и возвращает данные об электронной почте контакта.
-        ///// </summary>
-        //public string Email
-        //{
-        //    get
-        //    {
-        //        return CurentContact.Email;
-        //    }
-        //    set
-        //    {
-        //        CurentContact.Email = value;
-        //        OnPropertyChanged();
-        //    }
-        //}
         /// <summary>
-        /// Создаёт объект класса <see cref="MainVM"/>.
+        /// Хранит и возвращает команду подтверждения. 
         /// </summary>
-        public MainVM()
-        {
-            Contacts = new ObservableCollection<Contact>();
-            CurentContact = new Contact();
-            SaveCommand = new SaveCommand(this);
-            LoadCommand = new LoadCommand(this);
-            ApplyCommand = new ApplyCommand(this);
-            AddCommand = new AddCommand(this);
-            RemoveCommand = new RemoveCommand(this);
-            EditCommand = new EditCommand(this);
-        }
+        public ApplyCommand ApplyCommand { get; }
+        /// <summary>
+        /// Хранит и возвращает команду добавления. 
+        /// </summary>
+        public AddCommand AddCommand { get; }
+        /// <summary>
+        /// Хранит и возвращает команду удаления.
+        /// </summary>
+        public RemoveCommand RemoveCommand { get; }
+        /// <summary>
+        /// Хранит и возвращает команду редактирования.
+        /// </summary>
+        public EditCommand EditCommand { get; }
 
         /// <summary>
         /// Срабатывет, когда меняется свойство элемента.
@@ -136,6 +88,21 @@ namespace View.ModelView
         {
             if (PropertyChanged != null)
                 PropertyChanged(this, new PropertyChangedEventArgs(prop));
+        }
+
+        /// <summary>
+        /// Создаёт объект класса <see cref="MainVM"/>.
+        /// </summary>
+        public MainVM()
+        {
+            Contacts = new ObservableCollection<Contact>();
+            CurentContact = new Contact();
+            SaveCommand = new SaveCommand(this);
+            LoadCommand = new LoadCommand(this);
+            ApplyCommand = new ApplyCommand(this);
+            AddCommand = new AddCommand(this);
+            RemoveCommand = new RemoveCommand(this);
+            EditCommand = new EditCommand(this);
         }
     }
 }
