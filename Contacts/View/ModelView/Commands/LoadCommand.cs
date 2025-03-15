@@ -46,7 +46,7 @@ namespace View.ModelView
         /// <summary>
         /// Создаёт объект класса <see cref="LoadCommand"/>.
         /// </summary>
-        /// <param name="mainVM">Ссылка на экземпляр MainVM..</param>
+        /// <param name="mainVM">Ссылка на экземпляр MainVM.</param>
         public LoadCommand(MainVM mainVM)
         {
             MainVM = mainVM;

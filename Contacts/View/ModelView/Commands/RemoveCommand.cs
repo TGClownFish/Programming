@@ -35,7 +35,7 @@ namespace View.ModelView.Commands
         /// <param name="parameter">Принимаемый параметр.</param>
         public void Execute(object parameter)
         {
-            MessageBox.Show("Remove");
+            MainVM.Contacts.Remove(MainVM.CurentContact);
         }
         /// <summary>
         /// Срабатывет, если CanExecute изменил значение (это никогда не произойдёт).
@@ -43,9 +43,9 @@ namespace View.ModelView.Commands
         public event EventHandler CanExecuteChanged;
 
         /// <summary>
-        /// Создаёт объект класса <see cref="LoadCommand"/>.
+        /// Создаёт объект класса <see cref="RemoveCommand"/>.
         /// </summary>
-        /// <param name="mainVM">Ссылка на экземпляр MainVM..</param>
+        /// <param name="mainVM">Ссылка на экземпляр MainVM.</param>
         public RemoveCommand(MainVM mainVM)
         {
             MainVM = mainVM;

@@ -43,9 +43,9 @@ namespace View.ModelView.Commands
         public event EventHandler CanExecuteChanged;
 
         /// <summary>
-        /// Создаёт объект класса <see cref="LoadCommand"/>.
+        /// Создаёт объект класса <see cref="ApplyCommand"/>.
         /// </summary>
-        /// <param name="mainVM">Ссылка на экземпляр MainVM..</param>
+        /// <param name="mainVM">Ссылка на экземпляр MainVM.</param>
         public ApplyCommand(MainVM mainVM)
         {
             MainVM = mainVM;
