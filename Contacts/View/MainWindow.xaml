@@ -25,12 +25,12 @@
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
-                <Label Content="Name:" HorizontalAlignment="Left" Width="152" VerticalAlignment="Center" Margin="3,0,0,0" Padding="0,5,5,5"/>
-                <TextBox x:Name="tbName" Margin="3,3,3,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Text="{Binding Path=Name, UpdateSourceTrigger=PropertyChanged}"/>
-                <Label Content="Phone Number:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="3,3,0,0" Grid.Row="2" Padding="0,5,5,5" UseLayoutRounding="True"/>
-                <TextBox x:Name="tbPhoneNumber" Margin="3,3,3,0" Grid.Row="3" TextWrapping="Wrap" VerticalAlignment="Top" Text="{Binding Path=PhoneNumber, UpdateSourceTrigger=PropertyChanged}" ToolTip="+7-xxx-xxx-xx-xx"/>
-                <Label Content="Email:" HorizontalAlignment="Left" Width="152" VerticalAlignment="Top" Margin="3,3,0,0" Grid.Row="4" Padding="0,5,5,5"/>
-                <TextBox x:Name="tbEmail" Margin="3,3,3,0" Grid.Row="5" TextWrapping="Wrap" VerticalAlignment="Top" Text="{Binding Path=Email, UpdateSourceTrigger=PropertyChanged}"/>
+                <Label Content="Name:" HorizontalAlignment="Left" Width="152" VerticalAlignment="Center" Margin="3,0,0,3" Padding="0,5,5,5"/>
+                <TextBox x:Name="tbName" Margin="3,3,3,3" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Text="{Binding Path=Name, UpdateSourceTrigger=PropertyChanged}"/>
+                <Label Content="Phone Number:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="3,3,0,3" Grid.Row="2" Padding="0,5,5,5" UseLayoutRounding="True"/>
+                <TextBox x:Name="tbPhoneNumber" Margin="3,3,3,3" Grid.Row="3" TextWrapping="Wrap" VerticalAlignment="Top" Text="{Binding Path=PhoneNumber, UpdateSourceTrigger=PropertyChanged}" ToolTip="+7-xxx-xxx-xx-xx"/>
+                <Label Content="Email:" HorizontalAlignment="Left" Width="152" VerticalAlignment="Top" Margin="3,3,0,3" Grid.Row="4" Padding="0,5,5,5"/>
+                <TextBox x:Name="tbEmail" Margin="3,3,3,3" Grid.Row="5" TextWrapping="Wrap" VerticalAlignment="Top" Text="{Binding Path=Email, UpdateSourceTrigger=PropertyChanged}"/>
             </Grid>
         </GroupBox>
         <GroupBox x:Name="gbRead" Header="Read Contact" Margin="5,15,15,15" Grid.Column="1">
@@ -43,16 +43,16 @@
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
-                <Label Content="Name:" HorizontalAlignment="Left" Width="152" VerticalAlignment="Center" Margin="3,0,0,0" Padding="0,5,5,5" Grid.Row="0"/>
-                <Label x:Name="lbName" Content="{Binding Path=Name}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="3,3,0,0" Padding="0,5,5,5" Grid.Row="1" FontWeight="Bold" Height="25"/>
-                <Label Content="Phone Number:" HorizontalAlignment="Left" Width="152" VerticalAlignment="Top" Margin="3,3,0,0" Padding="0,5,5,5" Grid.Row="2"/>
-                <Label x:Name="lbPhoneNumber" Content="{Binding Path=PhoneNumber}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="3,3,0,0" Padding="0,5,5,5" Grid.Row="3" FontWeight="Bold" Height="25"/>
-                <Label Content="Email:" HorizontalAlignment="Left" Width="152" VerticalAlignment="Top" Margin="3,3,0,0" Padding="0,5,5,5" Grid.Row="4"/>
-                <Label x:Name="lbEmail" Content="{Binding Path=Email}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="3,3,0,0" Padding="0,5,5,5" Grid.Row="5" FontWeight="Bold" Height="25"/>
+                <Label Content="Name:" HorizontalAlignment="Left" Width="152" VerticalAlignment="Center" Margin="3,3,0,3" Padding="0,5,5,5" Grid.Row="0"/>
+                <Label x:Name="lbName" Content="{Binding Path=Name}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="3,3,0,3" Padding="0,5,5,5" Grid.Row="1" FontWeight="Bold" Height="25"/>
+                <Label Content="Phone Number:" HorizontalAlignment="Left" Width="152" VerticalAlignment="Top" Margin="3,3,0,3" Padding="0,5,5,5" Grid.Row="2"/>
+                <Label x:Name="lbPhoneNumber" Content="{Binding Path=PhoneNumber}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="3,3,0,3" Padding="0,5,5,5" Grid.Row="3" FontWeight="Bold" Height="25"/>
+                <Label Content="Email:" HorizontalAlignment="Left" Width="152" VerticalAlignment="Top" Margin="3,3,0,3" Padding="0,5,5,5" Grid.Row="4"/>
+                <Label x:Name="lbEmail" Content="{Binding Path=Email}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="3,3,0,3" Padding="0,5,5,5" Grid.Row="5" FontWeight="Bold" Height="25"/>
 
             </Grid>
         </GroupBox>
-        <Button x:Name="btnLoad" Command="{Binding LoadCommand}" Grid.Column="1" Content="Load" HorizontalAlignment="Right" Grid.Row="1" VerticalAlignment="Bottom" Margin="0,0,15,15" MinWidth="75" MinHeight="25"/>
-        <Button x:Name="btnSave" Command="{Binding SaveCommand}" Grid.Column="1" Content="Save" HorizontalAlignment="Right" VerticalAlignment="Bottom" MinWidth="75" MinHeight="25" Margin="0,0,95,15" Grid.Row="1"/>
+        <Button x:Name="btnLoad" Command="{Binding LoadCommand}" Grid.Column="1" Content="Load" HorizontalAlignment="Right" Grid.Row="1" VerticalAlignment="Bottom" Margin="3,0,15,15" MinWidth="75" MinHeight="25"/>
+        <Button x:Name="btnSave" Command="{Binding SaveCommand}" Grid.Column="1" Content="Save" HorizontalAlignment="Right" VerticalAlignment="Bottom" MinWidth="75" MinHeight="25" Margin="0,0,98,15" Grid.Row="1"/>
     </Grid>
 </Window>
