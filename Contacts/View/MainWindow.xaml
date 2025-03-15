@@ -8,12 +8,12 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="400" Width="600" MinWidth="600" MinHeight="400" WindowStartupLocation="CenterScreen">
     <i:Interaction.Triggers>
-        <i:EventTrigger EventName="Closing">
+        <!--<i:EventTrigger EventName="Closing">
             <i:InvokeCommandAction Command="{Binding SaveCommand}"/>
         </i:EventTrigger>
         <i:EventTrigger EventName="Loaded">
             <i:InvokeCommandAction Command="{Binding LoadCommand}"/>
-        </i:EventTrigger>
+        </i:EventTrigger>-->
     </i:Interaction.Triggers>
     <Grid>
         <Grid.ColumnDefinitions>
@@ -33,7 +33,13 @@
                 <RowDefinition Height="36"/>
             </Grid.RowDefinitions>
             <TextBox TextWrapping="Wrap" VerticalAlignment="Center" Grid.ColumnSpan="3" Margin="39,8,8,0" Height="18"/>
-            <ListBox Grid.Row="1" d:ItemsSource="{d:SampleData ItemCount=5}" Grid.ColumnSpan="3" Margin="8,6,8,6"/>
+            <ListBox x:Name="lbContacts" Grid.Row="1" SelectedItem="{Binding Path=CurentContact}" ItemsSource="{Binding Path=Contacts, UpdateSourceTrigger=PropertyChanged}" Grid.ColumnSpan="3" Margin="8,6,8,6" IsSynchronizedWithCurrentItem="True" SelectionChanged="lbContacts_SelectionChanged">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding Path=Name}"/>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
             <TextBlock HorizontalAlignment="Left" Margin="8,8,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Text="Find:"/><LineBreak/><Run/></TextBlock>
             <Button Content="Add" Margin="8,0,3,8" Grid.Row="2" Height="25" Command="{Binding Path=AddCommand}"/>
             <Button Content="Edit" Margin="3,0,3,8" Grid.Row="2" Grid.Column="1" Height="25" Command="{Binding Path=EditCommand}"/>

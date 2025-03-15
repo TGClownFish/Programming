@@ -23,5 +23,13 @@ namespace View
             InitializeComponent();
             DataContext = new MainVM();
         }
+
+        private void lbContacts_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (lbContacts.SelectedItem != null)
+            {
+                
+            }
+        }
     }
 }

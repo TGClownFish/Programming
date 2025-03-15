@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 using View.Model.Services;
+using View.Model;
 
 namespace View.ModelView.Commands
 {
@@ -35,7 +36,7 @@ namespace View.ModelView.Commands
         /// <param name="parameter">Принимаемый параметр.</param>
         public void Execute(object parameter)
         {
-            MessageBox.Show("Add");
+            MainVM.Contacts.Add(new Contact("1","3","2"));
         }
         /// <summary>
         /// Срабатывет, если CanExecute изменил значение (это никогда не произойдёт).
