@@ -72,6 +72,7 @@
                     <ImageBrush ImageSource="/photo_placeholder_100x100.png"/>
                 </Rectangle.Fill>
             </Rectangle>
+            <Label Grid.Column="1" Content="{Binding CurentContact}" HorizontalAlignment="Left" Margin="42,151,0,0" Grid.Row="6" VerticalAlignment="Top"/>
         </Grid>
 
     </Grid>

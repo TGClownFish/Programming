@@ -15,8 +15,6 @@ using View.Model.Services;
 using View.ModelView.Commands;
 
 namespace View.ModelView
-
-
 {
     /// <summary>
     /// Хранит поля и методы, нужные для объединания View и Model.
@@ -26,11 +24,11 @@ namespace View.ModelView
         /// <summary>
         /// Хранит данные о выбранном контакте
         /// </summary>
-        private Contact _curentContact;
+        private Contact? _curentContact;
         /// <summary>
         /// Хранит и возвращает данные о выбранном контакте.
         /// </summary>
-        public Contact CurentContact 
+        public Contact? CurentContact 
         {
             get => _curentContact; 
             set 
@@ -96,7 +94,7 @@ namespace View.ModelView
         public MainVM()
         {
             Contacts = new ObservableCollection<Contact>();
-            CurentContact = new Contact();
+            CurentContact = null;
             SaveCommand = new SaveCommand(this);
             LoadCommand = new LoadCommand(this);
             ApplyCommand = new ApplyCommand(this);

@@ -27,6 +27,7 @@ namespace View.Model
             set
             {
                 _name = value;
+                IsChanged = true;
             }
         }
         /// <summary>
@@ -42,6 +43,7 @@ namespace View.Model
             set
             {
                 _phoneNumber = value;
+                IsChanged = true;
             }
         }
 
@@ -58,7 +60,29 @@ namespace View.Model
             set
             {
                 _email = value;
+                IsChanged = true;
             }
+        }
+
+        /// <summary>
+        /// Возвращает true, если все значения в классе пусты.
+        /// </summary>
+        public bool IsEmpty
+        {
+            get => Name == "" && PhoneNumber == "" && Email == "";
+        }
+
+        /// <summary>
+        /// Хранит, был ли класс изменён.
+        /// </summary>
+        private bool _isChanged;
+        /// <summary>
+        /// Возвращает true если класс был изменён
+        /// </summary>
+        public bool IsChanged
+        {
+            get => _isChanged;
+            private set => _isChanged = value;
         }
 
         /// <summary>
@@ -72,6 +96,7 @@ namespace View.Model
             Name = name;
             PhoneNumber = phoneNumber;
             Email = email;
+            IsChanged = true;
         }
         /// <summary>
         /// Создаёт пустой объект класса <see cref="Contact"/>.
@@ -81,6 +106,7 @@ namespace View.Model
             Name = "";
             PhoneNumber = "";
             Email = "";
+            IsChanged = false;
         }
     }
 }
