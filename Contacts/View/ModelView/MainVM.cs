@@ -49,6 +49,8 @@ namespace View.ModelView
             }
         }
 
+        public bool ContactIsPicked => CurentContact != null;
+
         /// <summary>
         /// Хранит и возвращает команду загрузки.
         /// </summary>

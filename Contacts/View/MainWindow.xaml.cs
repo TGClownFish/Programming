@@ -26,10 +26,7 @@ namespace View
 
         private void lbContacts_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (lbContacts.SelectedItem != null)
-            {
-                
-            }
+            btnEdit.GetBindingExpression(IsEnabledProperty).UpdateTarget();
         }
     }
 }

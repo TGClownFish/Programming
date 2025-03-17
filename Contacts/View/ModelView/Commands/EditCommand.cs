@@ -35,7 +35,7 @@ namespace View.ModelView.Commands
         /// <param name="parameter">Принимаемый параметр.</param>
         public void Execute(object parameter)
         {
-            MessageBox.Show(MainVM.CurentContact.ToString());
+            MessageBox.Show("Edit");
         }
         /// <summary>
         /// Срабатывет, если CanExecute изменил значение (это никогда не произойдёт).
