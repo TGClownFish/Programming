@@ -1,11 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
+﻿using System.IO;
 using System.Text.Json;
-using System.Threading.Tasks;
-using System.Windows;
 
 namespace View.Model.Services
 {
@@ -17,8 +11,8 @@ namespace View.Model.Services
         /// <summary>
         /// Хранит путь до файла.
         /// </summary>
-        private static string Path { get; } = Environment.GetFolderPath(Environment.SpecialFolder.
-            MyDocuments) + "\\Contacts\\contacts.json";
+        private static string Path { get; } = Environment.GetFolderPath(
+            Environment.SpecialFolder.MyDocuments) + "\\Contacts\\contacts.json";
 
         /// <summary>
         /// Записывает объект класса <see cref="Contact"/> в файл.
@@ -26,12 +20,16 @@ namespace View.Model.Services
         /// <param name="contact">Записываемый объект.</param>
         public static void Serialize(Contact contact)
         {
-            File.Delete(Path);
+            if (File.Exists(Path))
+            {
+                File.Delete(Path);
+            }
             using (FileStream fileStream = new FileStream(Path, FileMode.Create))
             {
-                JsonSerializer.SerializeAsync<Contact>(fileStream, contact);
+                JsonSerializer.Serialize<Contact>(fileStream, contact);
             }
         }
+
         /// <summary>
         /// Читает объект класса <see cref="Contact"/> из файла.
         /// </summary>

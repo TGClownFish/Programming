@@ -1,13 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.ComponentModel.DataAnnotations;
-using System.Threading.Tasks;
-using static System.Runtime.InteropServices.JavaScript.JSType;
-
-namespace View.Model
+﻿namespace View.Model
 {
     /// <summary>
     /// Хранит данные о контакте
@@ -18,48 +9,31 @@ namespace View.Model
         /// Хранит имя.
         /// </summary>
         private string _name;
-        /// <summary>
-        /// Возвращает и задаёт имя. Должен быть не больше 100 символов.
-        /// </summary>
-        public string Name 
-        { 
-            get { return _name; } 
-            set
-            {
-                _name = value;
-            }
-        }
+
         /// <summary>
         /// Хранит номер телефона.
         /// </summary>
         private string _phoneNumber;
-        /// <summary>
-        /// Возвращает и задаёт номер телефона. Должен включать в себя только цифры и знаки + - ( )
-        /// </summary>
-        public string PhoneNumber
-        {
-            get { return _phoneNumber; }
-            set
-            {
-                _phoneNumber = value;
-            }
-        }
 
         /// <summary>
         /// Хранит адрес электронной почты.
         /// </summary>
         private string _email;
+
+        /// <summary>
+        /// Возвращает и задаёт имя. Должен быть не больше 100 символов.
+        /// </summary>
+        public string Name { get; set; }
+
+        /// <summary>
+        /// Возвращает и задаёт номер телефона. Должен включать в себя только цифры и знаки + - ( )
+        /// </summary>
+        public string PhoneNumber { get; set; }
+
         /// <summary>
         /// Возвращает и задаёт адрес электронной почты. Должен включать символ @
         /// </summary>
-        public string Email
-        {
-            get { return _email; }
-            set
-            {
-                _email = value;
-            }
-        }
+        public string Email { get; set; }
 
         /// <summary>
         /// Создаёт объект класса <see cref="Contact"/>.
