@@ -34,7 +34,7 @@ namespace View.ModelView
         /// <param name="parameter">Принимаемый делегат.</param>
         public void Execute(object parameter)
         {
-            ContactSerializer.Serialize(MainVM.CurentContact);
+            ContactSerializer.Serialize(MainVM.Contacts);
         }
 
         /// <summary>

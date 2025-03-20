@@ -1,23 +1,24 @@
-﻿using System.Windows.Input;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Input;
 using View.Model.Services;
+using View.Model;
 
-namespace View.ModelView
+namespace View.ModelView.Commands
 {
     /// <summary>
-    /// Хранит команду загрузки.
+    /// Хранит команду добавления.
     /// </summary>
-    public class LoadCommand : ICommand
+    public class AddCommand : ICommand
     {
         /// <summary>
         /// Ссылка на экземпляр MainVM.
         /// </summary>
         private MainVM MainVM { get; }
-
-        /// <summary>
-        /// Срабатывет, если CanExecute изменил значение (это никогда не произойдёт).
-        /// </summary>
-        public event EventHandler CanExecuteChanged;
-
 
         /// <summary>
         /// Проверяет, может ли команда сработать.
@@ -35,14 +36,18 @@ namespace View.ModelView
         /// <param name="parameter">Принимаемый параметр.</param>
         public void Execute(object parameter)
         {
-            MainVM.CurentContact = ContactSerializer.Deserialize();
+            MainVM.Contacts.Add(new Contact("1", "3", "2"));
         }
+        /// <summary>
+        /// Срабатывет, если CanExecute изменил значение (это никогда не произойдёт).
+        /// </summary>
+        public event EventHandler CanExecuteChanged;
 
         /// <summary>
-        /// Создаёт объект класса <see cref="LoadCommand"/>.
+        /// Создаёт объект класса <see cref="AddCommand"/>.
         /// </summary>
-        /// <param name="mainVM">Ссылка на экземпляр MainVM..</param>
-        public LoadCommand(MainVM mainVM)
+        /// <param name="mainVM">Ссылка на экземпляр MainVM.</param>
+        public AddCommand(MainVM mainVM)
         {
             MainVM = mainVM;
         }

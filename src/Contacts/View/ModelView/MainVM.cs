@@ -1,6 +1,18 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
+using System.Diagnostics.Contracts;
+using System.Linq;
+using System.Reflection.Metadata;
 using System.Runtime.CompilerServices;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Controls;
 using View.Model;
+using View.Model.Services;
+using View.ModelView.Commands;
 
 namespace View.ModelView
 {
@@ -12,93 +24,85 @@ namespace View.ModelView
         /// <summary>
         /// Хранит данные о выбранном контакте
         /// </summary>
-        private Contact _curentContact;
-
+        private Contact? _curentContact;
         /// <summary>
         /// Хранит и возвращает данные о выбранном контакте.
         /// </summary>
-        public Contact CurentContact 
+        public Contact? CurentContact
         {
             get => _curentContact;
-            set 
-            { 
+            set
+            {
                 _curentContact = value;
                 OnPropertyChanged();
             }
         }
 
+        private ObservableCollection<Contact> _contacts;
+        public ObservableCollection<Contact> Contacts
+        {
+            get => _contacts;
+            set
+            {
+                _contacts = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public bool ContactIsPicked => CurentContact != null;
+
         /// <summary>
         /// Хранит и возвращает команду загрузки.
         /// </summary>
         public LoadCommand LoadCommand { get; }
-
         /// <summary>
         /// Хранит и возвращает команду сохранения.
         /// </summary>
         public SaveCommand SaveCommand { get; }
-
         /// <summary>
-        /// Хранит и возвращает данные об имени контакта.
+        /// Хранит и возвращает команду подтверждения. 
         /// </summary>
-        public string Name
-        {
-            get => CurentContact.Name;
-            set
-            {
-                CurentContact.Name = value;
-                OnPropertyChanged();
-            }
-        }
-
+        public ApplyCommand ApplyCommand { get; }
         /// <summary>
-        /// Хранит и возвращает данные о телефонном номере контакта.
+        /// Хранит и возвращает команду добавления. 
         /// </summary>
-        public string PhoneNumber
-        {
-            get => CurentContact.PhoneNumber;
-            set
-            {
-                CurentContact.PhoneNumber = value;
-                OnPropertyChanged();
-            }
-        }
-
+        public AddCommand AddCommand { get; }
         /// <summary>
-        /// Хранит и возвращает данные об электронной почте контакта.
+        /// Хранит и возвращает команду удаления.
         /// </summary>
-        public string Email
-        {
-            get => CurentContact.Email;
-            set
-            {
-                CurentContact.Email = value;
-                OnPropertyChanged();
-            }
-        }
+        public RemoveCommand RemoveCommand { get; }
+        /// <summary>
+        /// Хранит и возвращает команду редактирования.
+        /// </summary>
+        public EditCommand EditCommand { get; }
 
         /// <summary>
         /// Срабатывет, когда меняется свойство элемента.
         /// </summary>
         public event PropertyChangedEventHandler PropertyChanged;
+        /// <summary>
+        /// Вызывает событие PropertyChanged.
+        /// </summary>
+        /// <param name="prop">Аргументы события.</param>
+        public void OnPropertyChanged([CallerMemberName] string prop = "")
+        {
+            if (PropertyChanged != null)
+                PropertyChanged(this, new PropertyChangedEventArgs(prop));
+        }
 
         /// <summary>
         /// Создаёт объект класса <see cref="MainVM"/>.
         /// </summary>
         public MainVM()
         {
-            CurentContact = new Contact();
+            Contacts = new ObservableCollection<Contact>();
+            CurentContact = null;
             SaveCommand = new SaveCommand(this);
             LoadCommand = new LoadCommand(this);
-        }
-
-        /// <summary>
-        /// Вызывает событие PropertyChanged.
-        /// </summary>
-        /// <param name="prop">Аргументы события.</param>
-        private void OnPropertyChanged([CallerMemberName] string prop = "")
-        {
-            if (PropertyChanged != null)
-                PropertyChanged(this, new PropertyChangedEventArgs(prop));
+            ApplyCommand = new ApplyCommand(this);
+            AddCommand = new AddCommand(this);
+            RemoveCommand = new RemoveCommand(this);
+            EditCommand = new EditCommand(this);
         }
     }
 }

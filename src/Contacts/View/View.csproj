@@ -10,14 +10,17 @@
 
   <ItemGroup>
     <None Remove="phone.png" />
+    <None Remove="photo_placeholder_100x100.png" />
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" Version="1.1.135" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
   </ItemGroup>
 
   <ItemGroup>
     <Resource Include="phone.png" />
+    <Resource Include="photo_placeholder_100x100.png" />
   </ItemGroup>
 
 </Project>
