@@ -1,17 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Diagnostics.Contracts;
-using System.Linq;
-using System.Reflection.Metadata;
 using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
 using View.Model;
-using View.Model.Services;
 using View.ModelView.Commands;
 
 namespace View.ModelView
@@ -25,6 +15,12 @@ namespace View.ModelView
         /// Хранит данные о выбранном контакте
         /// </summary>
         private Contact? _curentContact;
+
+        /// <summary>
+        /// Хранит список контактов.
+        /// </summary>
+        private ObservableCollection<Contact> _contacts;
+
         /// <summary>
         /// Хранит и возвращает данные о выбранном контакте.
         /// </summary>
@@ -38,7 +34,9 @@ namespace View.ModelView
             }
         }
 
-        private ObservableCollection<Contact> _contacts;
+        /// <summary>
+        /// Хранит и возвращает список контактов.
+        /// </summary>
         public ObservableCollection<Contact> Contacts
         {
             get => _contacts;
@@ -49,28 +47,36 @@ namespace View.ModelView
             }
         }
 
+        /// <summary>
+        /// Возващает ???????????????
+        /// </summary>
         public bool ContactIsPicked => CurentContact != null;
 
         /// <summary>
         /// Хранит и возвращает команду загрузки.
         /// </summary>
         public LoadCommand LoadCommand { get; }
+
         /// <summary>
         /// Хранит и возвращает команду сохранения.
         /// </summary>
         public SaveCommand SaveCommand { get; }
+
         /// <summary>
         /// Хранит и возвращает команду подтверждения. 
         /// </summary>
         public ApplyCommand ApplyCommand { get; }
+
         /// <summary>
         /// Хранит и возвращает команду добавления. 
         /// </summary>
         public AddCommand AddCommand { get; }
+
         /// <summary>
         /// Хранит и возвращает команду удаления.
         /// </summary>
         public RemoveCommand RemoveCommand { get; }
+
         /// <summary>
         /// Хранит и возвращает команду редактирования.
         /// </summary>
@@ -80,6 +86,7 @@ namespace View.ModelView
         /// Срабатывет, когда меняется свойство элемента.
         /// </summary>
         public event PropertyChangedEventHandler PropertyChanged;
+
         /// <summary>
         /// Вызывает событие PropertyChanged.
         /// </summary>

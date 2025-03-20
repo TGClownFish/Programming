@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Input;
-using View.Model.Services;
+﻿using System.Windows.Input;
 
 namespace View.ModelView.Commands
 {
@@ -18,6 +11,11 @@ namespace View.ModelView.Commands
         /// Ссылка на экземпляр MainVM.
         /// </summary>
         private MainVM MainVM { get; }
+
+        /// <summary>
+        /// Срабатывет, если CanExecute изменил значение (это никогда не произойдёт).
+        /// </summary>
+        public event EventHandler CanExecuteChanged;
 
         /// <summary>
         /// Проверяет, может ли команда сработать.
@@ -37,10 +35,6 @@ namespace View.ModelView.Commands
         {
             MainVM.Contacts.Remove(MainVM.CurentContact);
         }
-        /// <summary>
-        /// Срабатывет, если CanExecute изменил значение (это никогда не произойдёт).
-        /// </summary>
-        public event EventHandler CanExecuteChanged;
 
         /// <summary>
         /// Создаёт объект класса <see cref="RemoveCommand"/>.

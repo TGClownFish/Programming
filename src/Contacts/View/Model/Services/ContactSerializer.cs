@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using System.IO;
-using System.Linq;
-using System.Text;
 using System.Text.Json;
-using System.Threading.Tasks;
-using System.Windows;
 
 namespace View.Model.Services
 {
@@ -30,7 +24,7 @@ namespace View.Model.Services
             File.Delete(Path);
             using (FileStream fileStream = new FileStream(Path, FileMode.Create))
             {
-                JsonSerializer.SerializeAsync<ObservableCollection<Contact>>(fileStream, contacts);
+                JsonSerializer.Serialize<ObservableCollection<Contact>>(fileStream, contacts);
             }
         }
         /// <summary>
