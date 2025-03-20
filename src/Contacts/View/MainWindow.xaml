@@ -83,7 +83,7 @@
                     VerticalAlignment="Top" 
                     Margin="3,3,0,3" 
                     FontWeight="Bold" 
-                    Padding="0" 
+                    Padding="5,1,1,0" 
                     Height="18"/>
                 <Label 
                     Content="Phone Number:" 
@@ -96,7 +96,7 @@
                     VerticalAlignment="Top" 
                     Margin="3,3,0,3" 
                     FontWeight="Bold" 
-                    Padding="0" 
+                    Padding="5,1,1,0" 
                     Height="18"/>
                 <Label 
                     Content="Email:" 
@@ -109,7 +109,7 @@
                     VerticalAlignment="Top" 
                     Margin="3,3,0,3" 
                     FontWeight="Bold" 
-                    Padding="0" 
+                    Padding="5,1,1,0" 
                     Height="18"/>
             </StackPanel>
         </GroupBox>
