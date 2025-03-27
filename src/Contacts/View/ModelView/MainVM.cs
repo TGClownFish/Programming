@@ -40,8 +40,10 @@ namespace View.ModelView
             {
                 _selectedContact = value;
                 _temporaryContact = null;
+                IsAdding = false;
+                IsEditing = false;
                 OnPropertyChanged();
-                OnPropertyChanged(nameof(Contacts));
+
                 OnPropertyChanged(nameof(TemporaryContact));
                 OnPropertyChanged(nameof(ContactIsPicked));
             }
