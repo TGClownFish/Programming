@@ -8,7 +8,7 @@ namespace View.ModelView
     {
         public object Convert(object value, Type targetType, object parametr, CultureInfo culture)
         {
-            if ((bool)value == true)
+            if ((bool)value == false)
                 return Visibility.Visible;
             else
                 return Visibility.Hidden;
