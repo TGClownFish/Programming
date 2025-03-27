@@ -1,5 +1,5 @@
-﻿using System.Windows;
-using System.Windows.Input;
+﻿using System.Windows.Input;
+using View.Model;
 
 namespace View.ModelView.Commands
 {
@@ -34,7 +34,9 @@ namespace View.ModelView.Commands
         /// <param name="parameter">Принимаемый параметр.</param>
         public void Execute(object parameter)
         {
-            MessageBox.Show("Apply");
+            MainVM.SelectedContact = new Contact(MainVM.TemporaryContact);
+            MainVM.IsAdding = false;
+            MainVM.IsEditing = false;
         }
 
         /// <summary>

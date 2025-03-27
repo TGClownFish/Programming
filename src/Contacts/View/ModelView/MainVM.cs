@@ -12,26 +12,58 @@ namespace View.ModelView
     public class MainVM : INotifyPropertyChanged
     {
         /// <summary>
+        /// Хранит данные о fffffff
+        /// </summary>
+        private Contact? _temporaryContact = null;
+
+        /// <summary>
         /// Хранит данные о выбранном контакте
         /// </summary>
-        private Contact? _curentContact;
+        private Contact? _selectedContact = null;
 
         /// <summary>
         /// Хранит список контактов.
         /// </summary>
-        private ObservableCollection<Contact> _contacts;
+        private ObservableCollection<Contact> _contacts = new ObservableCollection<Contact>();
+
+        private bool _isEditing = false;
+
+        private bool _isAdding = false;
 
         /// <summary>
         /// Хранит и возвращает данные о выбранном контакте.
         /// </summary>
-        public Contact? CurentContact
-        {
-            get => _curentContact;
+        public Contact? SelectedContact
+        { 
+            get => _selectedContact;
             set
             {
-                _curentContact = value;
+                _selectedContact = value;
+                _temporaryContact = null;
                 OnPropertyChanged();
+                OnPropertyChanged(nameof(Contacts));
+                OnPropertyChanged(nameof(TemporaryContact));
                 OnPropertyChanged(nameof(ContactIsPicked));
+            }
+        }
+
+        /// <summary>
+        /// Хранит и возвращает данные о ffffffffff.
+        /// </summary>
+        public Contact? TemporaryContact
+        {
+            get
+            {
+                if (_temporaryContact == null)
+                {
+                    return SelectedContact;
+                }
+                return _temporaryContact;
+            }
+            set
+            {
+                _temporaryContact = value;
+                OnPropertyChanged();
             }
         }
 
@@ -49,9 +81,31 @@ namespace View.ModelView
         }
 
         /// <summary>
-        /// Возващает ???????????????
+        /// Возващает Возвращает true, если контакт выбран.
         /// </summary>
-        public bool ContactIsPicked => CurentContact != null;
+        public bool ContactIsPicked => SelectedContact != null;
+
+        public bool IsEditing
+        {
+            private get => _isEditing;
+            set 
+            { 
+                _isEditing = value;
+                OnPropertyChanged(nameof(IsReadOnly));
+            }
+        }
+
+        public bool IsAdding
+        {
+            private get => _isAdding;
+            set 
+            { 
+                _isAdding = value; 
+                OnPropertyChanged(nameof(IsReadOnly));
+            }
+        }
+
+        public bool IsReadOnly => !(IsAdding || IsEditing);
 
         /// <summary>
         /// Хранит и возвращает команду загрузки.
@@ -103,8 +157,6 @@ namespace View.ModelView
         /// </summary>
         public MainVM()
         {
-            Contacts = new ObservableCollection<Contact>();
-            CurentContact = null;
             SaveCommand = new SaveCommand(this);
             LoadCommand = new LoadCommand(this);
             ApplyCommand = new ApplyCommand(this);

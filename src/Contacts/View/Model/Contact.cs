@@ -58,5 +58,12 @@ namespace View.Model
             PhoneNumber = "";
             Email = "";
         }
+
+        public Contact(Contact contact)
+        {
+            Name = contact.Name;
+            PhoneNumber = contact.PhoneNumber;
+            Email = contact.Email;
+        }
     }
 }
