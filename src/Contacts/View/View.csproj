@@ -17,7 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="phone.png" />
+    <Resource Include="Resources\phone.png" />
   </ItemGroup>
 
 </Project>

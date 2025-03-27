@@ -10,7 +10,8 @@
         Width="600" 
         MinWidth="600" 
         MinHeight="400" 
-        WindowStartupLocation="CenterScreen" Icon="/phone.png">
+        WindowStartupLocation="CenterScreen" 
+        Icon="/phone.png">
     <Grid Margin="15">
         <Grid.RowDefinitions>
             <RowDefinition/>
