@@ -88,7 +88,9 @@
                     Grid.Column="1" 
                     Grid.Row="2"
                     Height="25" 
-                    IsEnabled="{Binding Path=ContactIsPicked}" 
+                    IsEnabled= "{Binding 
+                    Path=ContactIsPicked, 
+                    UpdateSourceTrigger=PropertyChanged}" 
                     Command="{Binding Path=EditCommand}"/>
                 <Button 
                     Content="Remove" 
@@ -201,7 +203,8 @@
                 Width="100" 
                 Grid.RowSpan="5">
                 <Rectangle.Fill>
-                    <ImageBrush ImageSource="Resources/photo_placeholder_100x100.png"/>
+                    <ImageBrush ImageSource=
+                                "Resources/photo_placeholder_100x100.png"/>
                 </Rectangle.Fill>
             </Rectangle>
             <Label 

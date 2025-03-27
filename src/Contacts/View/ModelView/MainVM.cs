@@ -31,6 +31,7 @@ namespace View.ModelView
             {
                 _curentContact = value;
                 OnPropertyChanged();
+                OnPropertyChanged(nameof(ContactIsPicked));
             }
         }
 
