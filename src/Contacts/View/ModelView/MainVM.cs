@@ -12,7 +12,7 @@ namespace View.ModelView
     public class MainVM : INotifyPropertyChanged
     {
         /// <summary>
-        /// Хранит данные о fffffff
+        /// Хранит контакт, хранящий данные для текстбоксов.
         /// </summary>
         private Contact? _temporaryContact = null;
 
@@ -26,8 +26,14 @@ namespace View.ModelView
         /// </summary>
         private ObservableCollection<Contact> _contacts = new ObservableCollection<Contact>();
 
+        /// <summary>
+        /// Хранит true, если программа в режиме редактирования контакта.
+        /// </summary>
         private bool _isEditing = false;
 
+        /// <summary>
+        /// Хранаит true, если программа в режиме добавления контакта.
+        /// </summary>
         private bool _isAdding = false;
 
         /// <summary>
@@ -49,7 +55,7 @@ namespace View.ModelView
         }
 
         /// <summary>
-        /// Хранит и возвращает данные о ffffffffff.
+        /// Хранит и возвращает контакт, хранящий данные для текстбоксов.
         /// </summary>
         public Contact? TemporaryContact
         {
@@ -86,6 +92,9 @@ namespace View.ModelView
         /// </summary>
         public bool ContactIsPicked => SelectedContact != null;
 
+        /// <summary>
+        /// Хранит и возвращает true, если программа в режиме редактирования контакта.
+        /// </summary>
         public bool IsEditing
         {
             get => _isEditing;
@@ -96,6 +105,9 @@ namespace View.ModelView
             }
         }
 
+        /// <summary>
+        /// Хранит и возвращает true, если программа в режиме добавления контакта.
+        /// </summary>
         public bool IsAdding
         {
             get => _isAdding;
@@ -106,6 +118,9 @@ namespace View.ModelView
             }
         }
 
+        /// <summary>
+        /// Возвращает true, если программа в режиме добавления или редактирования контакта.
+        /// </summary>
         public bool IsReadOnly => !(IsAdding || IsEditing);
 
         /// <summary>
