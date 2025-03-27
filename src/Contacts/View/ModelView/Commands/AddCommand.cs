@@ -34,7 +34,8 @@ namespace View.ModelView.Commands
         /// <param name="parameter">Принимаемый параметр.</param>
         public void Execute(object parameter)
         {
-            MainVM.Contacts.Add(new Contact("1", "3", "2"));
+            MainVM.IsAdding = true;
+            MainVM.TemporaryContact = new Contact();
         }
 
         /// <summary>

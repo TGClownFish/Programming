@@ -43,7 +43,6 @@ namespace View.ModelView
                 IsAdding = false;
                 IsEditing = false;
                 OnPropertyChanged();
-
                 OnPropertyChanged(nameof(TemporaryContact));
                 OnPropertyChanged(nameof(ContactIsPicked));
             }
@@ -89,7 +88,7 @@ namespace View.ModelView
 
         public bool IsEditing
         {
-            private get => _isEditing;
+            get => _isEditing;
             set 
             { 
                 _isEditing = value;
@@ -99,7 +98,7 @@ namespace View.ModelView
 
         public bool IsAdding
         {
-            private get => _isAdding;
+            get => _isAdding;
             set 
             { 
                 _isAdding = value; 
