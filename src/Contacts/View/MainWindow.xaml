@@ -15,7 +15,8 @@
         WindowStartupLocation="CenterScreen" 
         Icon="Resources/phone.png">
     <Window.Resources>
-        <modelView:BoolToVisibilityConverter x:Key="VisibilityConverter" />
+        <modelView:BoolToVisibilityConverter 
+            x:Key="VisibilityConverter" />
     </Window.Resources>
     <i:Interaction.Triggers>
         <i:EventTrigger EventName="Closing">
@@ -148,7 +149,7 @@
                 TextWrapping="Wrap" 
                 VerticalAlignment="Center" 
                 Text=
-                "{Binding Path=TemporaryContact.Name, 
+                "{Binding Path=SelectedContact.Name, 
                     UpdateSourceTrigger=PropertyChanged}" 
                 IsReadOnly="{Binding Path=IsReadOnly,
                     UpdateSourceTrigger=PropertyChanged}"
@@ -171,7 +172,7 @@
                 TextWrapping="Wrap" 
                 VerticalAlignment="Top" 
                 Text=
-                "{Binding Path=TemporaryContact.PhoneNumber, 
+                "{Binding Path=SelectedContact.PhoneNumber, 
                 UpdateSourceTrigger=PropertyChanged}" 
                 IsReadOnly="{Binding Path=IsReadOnly,
                     UpdateSourceTrigger=PropertyChanged}"
@@ -193,7 +194,7 @@
                 TextWrapping="Wrap" 
                 VerticalAlignment="Top" 
                 Text=
-                "{Binding Path=TemporaryContact.Email, 
+                "{Binding Path=SelectedContact.Email, 
                 UpdateSourceTrigger=PropertyChanged}" 
                 IsReadOnly= "{Binding Path=IsReadOnly,
                     UpdateSourceTrigger=PropertyChanged}"

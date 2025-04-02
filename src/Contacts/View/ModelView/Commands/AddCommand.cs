@@ -35,8 +35,7 @@ namespace View.ModelView.Commands
         public void Execute(object parameter)
         {
             
-            MainVM.SelectedContact = null;
-            MainVM.TemporaryContact = new Contact();
+            MainVM.SelectedContact = new Contact();
             MainVM.IsAdding = true;
         }
 

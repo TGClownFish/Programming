@@ -36,12 +36,13 @@ namespace View.ModelView.Commands
         {
             if (MainVM.IsEditing)
             {
-                MainVM.Contacts[MainVM.Contacts.IndexOf(MainVM.SelectedContact)] =
-                new Contact(MainVM.TemporaryContact);
+                MainVM.Contacts[MainVM.IndexOfEditedContact] = MainVM.SelectedContact;
+                MainVM.IndexOfEditedContact = -1;
+                MainVM.IsEditing = false;
             }
             if (MainVM.IsAdding)
             {
-                MainVM.Contacts.Add(new Contact(MainVM.TemporaryContact));
+                MainVM.Contacts.Add(new Contact(MainVM.SelectedContact));
                 MainVM.SelectedContact = MainVM.Contacts.Last();
                 MainVM.IsAdding = false;
             }

@@ -36,8 +36,9 @@ namespace View.ModelView.Commands
         {
             if (MainVM.IsReadOnly == true)
             { 
+                MainVM.IndexOfEditedContact = MainVM.Contacts.IndexOf(MainVM.SelectedContact);
+                MainVM.SelectedContact = new Contact(MainVM.SelectedContact);
                 MainVM.IsEditing = true;
-                MainVM.TemporaryContact = new Contact(MainVM.SelectedContact);
             }
         }
 

@@ -33,7 +33,7 @@ namespace View.ModelView.Commands
         /// <param name="parameter">Принимаемый параметр.</param>
         public void Execute(object parameter)
         {
-            MainVM.Contacts.Remove(MainVM.TemporaryContact);
+            MainVM.Contacts.Remove(MainVM.SelectedContact);
         }
 
         /// <summary>

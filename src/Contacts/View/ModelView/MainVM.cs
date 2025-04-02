@@ -22,6 +22,11 @@ namespace View.ModelView
         private Contact? _selectedContact = null;
 
         /// <summary>
+        /// Во время редактирования контакта, хранит его позицию.
+        /// </summary>
+        private int _indexOfEditedContact = -1;
+
+        /// <summary>
         /// Хранит список контактов.
         /// </summary>
         private ObservableCollection<Contact> _contacts = new ObservableCollection<Contact>();
@@ -49,7 +54,7 @@ namespace View.ModelView
                 IsAdding = false;
                 IsEditing = false;
                 OnPropertyChanged();
-                OnPropertyChanged(nameof(TemporaryContact));
+                //OnPropertyChanged(nameof(TemporaryContact));
                 OnPropertyChanged(nameof(ContactIsPicked));
             }
         }
@@ -57,22 +62,22 @@ namespace View.ModelView
         /// <summary>
         /// Хранит и возвращает контакт, хранящий данные для текстбоксов.
         /// </summary>
-        public Contact? TemporaryContact
-        {
-            get
-            {
-                if (_temporaryContact == null)
-                {
-                    return SelectedContact;
-                }
-                return _temporaryContact;
-            }
-            set
-            {
-                _temporaryContact = value;
-                OnPropertyChanged();
-            }
-        }
+        //public Contact? TemporaryContact
+        //{
+        //    get
+        //    {
+        //        if (_temporaryContact == null)
+        //        {
+        //            return SelectedContact;
+        //        }
+        //        return _temporaryContact;
+        //    }
+        //    set
+        //    {
+        //        _temporaryContact = value;
+        //        OnPropertyChanged();
+        //    }
+        //}
 
         /// <summary>
         /// Хранит и возвращает список контактов.
@@ -122,6 +127,16 @@ namespace View.ModelView
         /// Возвращает true, если программа в режиме добавления или редактирования контакта.
         /// </summary>
         public bool IsReadOnly => !(IsAdding || IsEditing);
+
+        public int IndexOfEditedContact
+        {
+            get => _indexOfEditedContact;
+            set
+            {
+                if ( value >= -1)
+                    _indexOfEditedContact = value;
+            }
+        }
 
         /// <summary>
         /// Хранит и возвращает команду загрузки.
