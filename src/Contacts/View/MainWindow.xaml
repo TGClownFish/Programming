@@ -5,17 +5,17 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
         xmlns:local="clr-namespace:View"
-        xmlns:modelView="clr-namespace:View.ModelView"
+        xmlns:converters="clr-namespace:View.Converters"
         mc:Ignorable="d"
-        Title="MainWindow" 
+        Title="Contact" 
         Height="400" 
         Width="600" 
         MinWidth="600" 
         MinHeight="400" 
         WindowStartupLocation="CenterScreen" 
-        Icon="Resources/phone.png">
+        Icon="Resources/ContactsApp_96x96.ico">
     <Window.Resources>
-        <modelView:BoolToVisibilityConverter 
+        <converters:BoolToVisibilityConverter 
             x:Key="VisibilityConverter" />
     </Window.Resources>
     <i:Interaction.Triggers>
@@ -98,7 +98,7 @@
                     Grid.Column="1" 
                     Grid.Row="2"
                     Height="25" 
-                    IsEnabled= "{Binding Path=ContactIsPicked, 
+                    IsEnabled= "{Binding Path=IsReadOnly, 
                         UpdateSourceTrigger=PropertyChanged}" 
                     Command="{Binding Path=EditCommand}"/>
                 <Button 

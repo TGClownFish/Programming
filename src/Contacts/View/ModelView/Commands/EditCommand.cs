@@ -34,7 +34,7 @@ namespace View.ModelView.Commands
         /// <param name="parameter">Принимаемый параметр.</param>
         public void Execute(object parameter)
         {
-            if (MainVM.IsReadOnly == true)
+            if (MainVM.IsReadOnly == true && MainVM.SelectedContact != null)
             { 
                 MainVM.IndexOfEditedContact = MainVM.Contacts.IndexOf(MainVM.SelectedContact);
                 MainVM.SelectedContact = new Contact(MainVM.SelectedContact);

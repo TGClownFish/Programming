@@ -12,12 +12,7 @@ namespace View.ModelView
     public class MainVM : INotifyPropertyChanged
     {
         /// <summary>
-        /// Хранит контакт, хранящий данные для текстбоксов.
-        /// </summary>
-        private Contact? _temporaryContact = null;
-
-        /// <summary>
-        /// Хранит данные о выбранном контакте
+        /// Хранит данные о выбранном контакте.
         /// </summary>
         private Contact? _selectedContact = null;
 
@@ -50,34 +45,11 @@ namespace View.ModelView
             set
             {
                 _selectedContact = value;
-                _temporaryContact = null;
                 IsAdding = false;
                 IsEditing = false;
                 OnPropertyChanged();
-                //OnPropertyChanged(nameof(TemporaryContact));
-                OnPropertyChanged(nameof(ContactIsPicked));
             }
         }
-
-        /// <summary>
-        /// Хранит и возвращает контакт, хранящий данные для текстбоксов.
-        /// </summary>
-        //public Contact? TemporaryContact
-        //{
-        //    get
-        //    {
-        //        if (_temporaryContact == null)
-        //        {
-        //            return SelectedContact;
-        //        }
-        //        return _temporaryContact;
-        //    }
-        //    set
-        //    {
-        //        _temporaryContact = value;
-        //        OnPropertyChanged();
-        //    }
-        //}
 
         /// <summary>
         /// Хранит и возвращает список контактов.
@@ -91,11 +63,6 @@ namespace View.ModelView
                 OnPropertyChanged();
             }
         }
-
-        /// <summary>
-        /// Возващает Возвращает true, если контакт выбран.
-        /// </summary>
-        public bool ContactIsPicked => SelectedContact != null;
 
         /// <summary>
         /// Хранит и возвращает true, если программа в режиме редактирования контакта.
@@ -128,6 +95,9 @@ namespace View.ModelView
         /// </summary>
         public bool IsReadOnly => !(IsAdding || IsEditing);
 
+        /// <summary>
+        /// Во время редактирования контакта, хранит и возвращает его позицию.
+        /// </summary>
         public int IndexOfEditedContact
         {
             get => _indexOfEditedContact;

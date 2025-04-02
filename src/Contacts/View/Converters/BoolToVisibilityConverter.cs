@@ -2,7 +2,7 @@
 using System.Windows;
 using System.Windows.Data;
 
-namespace View.ModelView
+namespace View.Converters
 {
     /// <summary>
     /// Хранит методы для конверитрования значений типа bool в тип Visibility
