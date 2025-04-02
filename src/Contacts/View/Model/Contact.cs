@@ -2,7 +2,7 @@
 namespace View.Model
 {
     /// <summary>
-    /// Хранит данные о контакте
+    /// Хранит данные о контакте.
     /// </summary>
     public class Contact
     {
@@ -27,12 +27,12 @@ namespace View.Model
         public string Name { get; set; }
 
         /// <summary>
-        /// Возвращает и задаёт номер телефона. Должен включать в себя только цифры и знаки + - ( )
+        /// Возвращает и задаёт номер телефона. Должен включать в себя только цифры и знаки + - ( ).
         /// </summary>
         public string PhoneNumber { get; set; }
 
         /// <summary>
-        /// Возвращает и задаёт адрес электронной почты. Должен включать символ @
+        /// Возвращает и задаёт адрес электронной почты. Должен включать символ @.
         /// </summary>
         public string Email { get; set; }
 
@@ -59,6 +59,10 @@ namespace View.Model
             Email = "";
         }
 
+        /// <summary>
+        /// Копирует объект класса <see cref="Contact"/> по образцу.
+        /// </summary>
+        /// <param name="contact">Копируемый объект.</param>
         public Contact(Contact contact)
         {
             Name = contact.Name;

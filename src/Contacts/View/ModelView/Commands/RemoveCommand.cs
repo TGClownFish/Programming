@@ -28,7 +28,7 @@ namespace View.ModelView.Commands
         }
 
         /// <summary>
-        /// Выполняет фунцию в делегате.
+        /// Исполняемая функция команды.
         /// </summary>
         /// <param name="parameter">Принимаемый параметр.</param>
         public void Execute(object parameter)
