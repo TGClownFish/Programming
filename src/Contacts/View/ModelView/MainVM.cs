@@ -37,6 +37,36 @@ namespace View.ModelView
         private bool _isAdding = false;
 
         /// <summary>
+        /// Хранит команду загрузки.
+        /// </summary>
+        private LoadCommand _loadCommand;
+
+        /// <summary>
+        /// Хранит команду сохранения.
+        /// </summary>
+        private SaveCommand _saveCommand;
+
+        /// <summary>
+        /// Хранит команду добавления.
+        /// </summary>
+        private AddCommand _addCommand;
+
+        /// <summary>
+        /// Хранит команду удаления.
+        /// </summary>
+        private RemoveCommand _removeCommand;
+
+        /// <summary>
+        /// Хранит команду редактирования.
+        /// </summary>
+        private EditCommand _editCommand;
+
+        /// <summary>
+        /// Хранит команду подтверждения.
+        /// </summary>
+        private ApplyCommand _applyCommand;
+
+        /// <summary>
         /// Хранит и возвращает данные о выбранном контакте.
         /// </summary>
         public Contact? SelectedContact
@@ -111,32 +141,80 @@ namespace View.ModelView
         /// <summary>
         /// Хранит и возвращает команду загрузки.
         /// </summary>
-        public LoadCommand LoadCommand { get; }
+        public LoadCommand LoadCommand
+        {
+            get
+            {
+                if (_loadCommand == null)
+                    _loadCommand = new LoadCommand(this);
+                return _loadCommand;
+            }
+        }
 
         /// <summary>
         /// Хранит и возвращает команду сохранения.
         /// </summary>
-        public SaveCommand SaveCommand { get; }
+        public SaveCommand SaveCommand
+        {
+            get
+            {
+                if (_saveCommand == null)
+                    _saveCommand = new SaveCommand(this);
+                return _saveCommand;
+            }
+        }
 
         /// <summary>
         /// Хранит и возвращает команду подтверждения. 
         /// </summary>
-        public ApplyCommand ApplyCommand { get; }
+        public ApplyCommand ApplyCommand
+        {
+            get
+            {
+                if (_applyCommand == null)
+                    _applyCommand = new ApplyCommand(this);
+                return _applyCommand;
+            }
+        }
 
         /// <summary>
         /// Хранит и возвращает команду добавления. 
         /// </summary>
-        public AddCommand AddCommand { get; }
+        public AddCommand AddCommand
+        {
+            get
+            {
+                if (_addCommand == null)
+                        _addCommand = new AddCommand(this);
+                return _addCommand;
+            }
+        }
 
         /// <summary>
         /// Хранит и возвращает команду удаления.
         /// </summary>
-        public RemoveCommand RemoveCommand { get; }
+        public RemoveCommand RemoveCommand
+        {
+            get
+            {
+                if (_removeCommand == null)
+                        _removeCommand = new RemoveCommand(this);
+                return _removeCommand;
+            }
+        }
 
         /// <summary>
         /// Хранит и возвращает команду редактирования.
         /// </summary>
-        public EditCommand EditCommand { get; }
+        public EditCommand EditCommand
+        {
+            get
+            {
+                if (_editCommand == null)
+                    _editCommand = new EditCommand(this);
+                return _editCommand;
+            }
+        }
 
         /// <summary>
         /// Срабатывет, когда меняется свойство элемента.
@@ -151,19 +229,6 @@ namespace View.ModelView
         {
             if (PropertyChanged != null)
                 PropertyChanged(this, new PropertyChangedEventArgs(prop));
-        }
-
-        /// <summary>
-        /// Создаёт объект класса <see cref="MainVM"/>.
-        /// </summary>
-        public MainVM()
-        {
-            SaveCommand = new SaveCommand(this);
-            LoadCommand = new LoadCommand(this);
-            ApplyCommand = new ApplyCommand(this);
-            AddCommand = new AddCommand(this);
-            RemoveCommand = new RemoveCommand(this);
-            EditCommand = new EditCommand(this);
         }
     }
 }
