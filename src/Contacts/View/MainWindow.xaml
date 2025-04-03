@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
         xmlns:local="clr-namespace:View"
-        xmlns:converters="clr-namespace:View.Converters"
+        xmlns:Converters="clr-namespace:View.Converters"
         mc:Ignorable="d"
         Title="Contact" 
         Height="400" 
@@ -15,8 +15,19 @@
         WindowStartupLocation="CenterScreen" 
         Icon="Resources/ContactsApp_96x96.ico">
     <Window.Resources>
-        <converters:BoolToVisibilityConverter 
+        <Converters:BoolToVisibilityConverter 
             x:Key="VisibilityConverter" />
+        <DataTemplate x:Key="contactTemplate">
+            <StackPanel Margin="3">
+                <TextBlock
+                    FontSize="12"
+                    FontWeight="SemiBold"
+                    Text="{Binding Name}"/>
+                <TextBlock
+                    FontSize="10"
+                    Text="{Binding PhoneNumber}"/>
+            </StackPanel>
+        </DataTemplate>
     </Window.Resources>
     <i:Interaction.Triggers>
         <i:EventTrigger EventName="Closing">
@@ -53,22 +64,6 @@
                 Grid.ColumnSpan="3" 
                 Margin="39,8,8,0" 
                 Height="18"/>
-            <ListBox 
-                Grid.Row="1" 
-                SelectedItem="{Binding Path=SelectedContact, 
-                    UpdateSourceTrigger=PropertyChanged}" 
-                ItemsSource=
-                "{Binding Path=Contacts, 
-                UpdateSourceTrigger=PropertyChanged}" 
-                Grid.ColumnSpan="3" 
-                Margin="8,6,8,6" 
-                IsSynchronizedWithCurrentItem="True" >
-                <ListBox.ItemTemplate>
-                    <DataTemplate>
-                        <TextBlock Text="{Binding Path=Name}"/>
-                    </DataTemplate>
-                </ListBox.ItemTemplate>
-            </ListBox>
             <Label
                 Content="Find:"
                 HorizontalAlignment="Left" 
@@ -76,8 +71,17 @@
                 VerticalAlignment="Top" 
                 Padding="0,0,0,0" 
                 VerticalContentAlignment="Center" 
-                HorizontalContentAlignment="Center">
-            </Label>
+                HorizontalContentAlignment="Center" />
+            <ListBox 
+                Grid.Row="1" 
+                SelectedItem="{Binding Path=SelectedContact, 
+                    UpdateSourceTrigger=PropertyChanged}" 
+                ItemsSource= "{Binding Path=Contacts, 
+                    UpdateSourceTrigger=PropertyChanged}" 
+                Grid.ColumnSpan="3" 
+                Margin="8,6,8,6" 
+                IsSynchronizedWithCurrentItem="True" 
+                ItemTemplate="{StaticResource contactTemplate}" />
             <Grid Grid.Row="2">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
@@ -112,11 +116,13 @@
                         UpdateSourceTrigger=PropertyChanged}"/>
             </Grid>
         </Grid>
+        
         <GridSplitter 
             HorizontalAlignment="Stretch" 
             Width="3" 
             Grid.Column="1" 
             Background="White" />
+        
         <Grid 
             Grid.Column="2" 
               MinWidth="50">
@@ -133,6 +139,19 @@
                 <RowDefinition Height="auto"/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
+            <Rectangle 
+                HorizontalAlignment="Center" 
+                Height="100" 
+                Margin="8,3,3,0" 
+                Grid.Row="1" 
+                VerticalAlignment="Top" 
+                Width="100" 
+                Grid.RowSpan="5">
+                <Rectangle.Fill>
+                    <ImageBrush ImageSource=
+                                "Resources/photo_placeholder_100x100.png"/>
+                </Rectangle.Fill>
+            </Rectangle>
             <Label 
                 Content="Name:" 
                 HorizontalAlignment="Left" 
@@ -148,8 +167,7 @@
                 Grid.Row="1" 
                 TextWrapping="Wrap" 
                 VerticalAlignment="Center" 
-                Text=
-                "{Binding Path=SelectedContact.Name, 
+                Text="{Binding Path=SelectedContact.Name, 
                     UpdateSourceTrigger=PropertyChanged}" 
                 IsReadOnly="{Binding Path=IsReadOnly,
                     UpdateSourceTrigger=PropertyChanged}"
@@ -171,9 +189,8 @@
                 Grid.Row="3" 
                 TextWrapping="Wrap" 
                 VerticalAlignment="Top" 
-                Text=
-                "{Binding Path=SelectedContact.PhoneNumber, 
-                UpdateSourceTrigger=PropertyChanged}" 
+                Text="{Binding Path=SelectedContact.PhoneNumber, 
+                    UpdateSourceTrigger=PropertyChanged}" 
                 IsReadOnly="{Binding Path=IsReadOnly,
                     UpdateSourceTrigger=PropertyChanged}"
                 Padding="0" 
@@ -193,9 +210,8 @@
                 Grid.Row="5" 
                 TextWrapping="Wrap" 
                 VerticalAlignment="Top" 
-                Text=
-                "{Binding Path=SelectedContact.Email, 
-                UpdateSourceTrigger=PropertyChanged}" 
+                Text="{Binding Path=SelectedContact.Email, 
+                    UpdateSourceTrigger=PropertyChanged}" 
                 IsReadOnly= "{Binding Path=IsReadOnly,
                     UpdateSourceTrigger=PropertyChanged}"
                 Padding="0" 
@@ -212,20 +228,7 @@
                 Height="25" 
                 Command="{Binding Path=ApplyCommand}"
                 Visibility="{Binding Path=IsReadOnly,
-                Converter={StaticResource VisibilityConverter}}"/>
-            <Rectangle 
-                HorizontalAlignment="Center" 
-                Height="100" 
-                Margin="8,3,3,0" 
-                Grid.Row="1" 
-                VerticalAlignment="Top" 
-                Width="100" 
-                Grid.RowSpan="5">
-                <Rectangle.Fill>
-                    <ImageBrush ImageSource=
-                                "Resources/photo_placeholder_100x100.png"/>
-                </Rectangle.Fill>
-            </Rectangle>
+                    Converter={StaticResource VisibilityConverter}}"/>
         </Grid>
     </Grid>
 </Window>
