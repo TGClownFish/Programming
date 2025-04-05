@@ -7,21 +7,6 @@ namespace View.Model
     public class Contact
     {
         /// <summary>
-        /// Хранит имя.
-        /// </summary>
-        private string _name;
-
-        /// <summary>
-        /// Хранит номер телефона.
-        /// </summary>
-        private string _phoneNumber;
-
-        /// <summary>
-        /// Хранит адрес электронной почты.
-        /// </summary>
-        private string _email;
-
-        /// <summary>
         /// Возвращает и задаёт имя. Должен быть не больше 100 символов.
         /// </summary>
         public string Name { get; set; }
