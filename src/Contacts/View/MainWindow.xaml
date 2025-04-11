@@ -37,17 +37,18 @@
                 <StackPanel 
                     Grid.Column="1"
                     Margin="3,0,0,3">
-                <TextBlock
+                    <TextBlock
                     FontSize="12"
                     FontWeight="SemiBold"
                     Text="{Binding Name}"/>
-                <TextBlock
+                    <TextBlock
                     FontSize="10"
                     Text="{Binding PhoneNumber}"/>
                 </StackPanel>
             </Grid>
         </DataTemplate>
     </Window.Resources>
+    
     <i:Interaction.Triggers>
         <i:EventTrigger EventName="Closing">
             <i:InvokeCommandAction 
@@ -153,7 +154,7 @@
                 Grid.Column="2" 
                 Content="Apply" 
                 HorizontalAlignment="Left" 
-                Margin="111,50,0,0" 
+                Margin="114,50,0,0" 
                 Grid.Row="6" 
                 VerticalAlignment="Top" 
                 Width="75" 

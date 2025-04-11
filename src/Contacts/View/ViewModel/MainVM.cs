@@ -9,7 +9,7 @@ namespace View.ModelView
     /// <summary>
     /// Хранит поля и методы, нужные для объединания View и Model.
     /// </summary>
-    public class MainVM : INotifyPropertyChanged
+    public class MainVM : INotifyPropertyChanged, IDataErrorInfo
     {
         /// <summary>
         /// Хранит данные о выбранном контакте.
@@ -80,6 +80,12 @@ namespace View.ModelView
                 OnPropertyChanged();
             }
         }
+        public string Name
+        {
+            get => SelectedContact != null ? SelectedContact.Name : null;
+            set { SelectedContact.Name = value;}
+        }
+        
 
         /// <summary>
         /// Хранит и возвращает список контактов.
@@ -213,6 +219,28 @@ namespace View.ModelView
                 if (_editCommand == null)
                     _editCommand = new EditCommand(this);
                 return _editCommand;
+            }
+        }
+        public string Error => "";
+
+        public string this[string columnName]
+        {
+            get
+            {
+                string error = string.Empty;
+
+                switch (columnName)
+                {
+                    case nameof(Name):
+                        if (string.IsNullOrWhiteSpace(Name))
+                            error = "First name cannot be empty.";
+                        if (Name?.Length > 3)
+                            error = "The name must be less than 50 characters.";
+                        break;
+
+                }
+
+                return error;
             }
         }
 
