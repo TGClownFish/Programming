@@ -160,6 +160,8 @@
                 Width="75" 
                 Height="25" 
                 Command="{Binding Path=ApplyCommand}"
+                IsEnabled="{Binding Path=IsContactValid,
+                    UpdateSourceTrigger=PropertyChanged}"
                 Visibility="{Binding Path=IsReadOnly,
                     Converter={StaticResource VisibilityConverter}}"/>
         </Grid>

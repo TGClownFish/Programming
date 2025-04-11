@@ -26,6 +26,12 @@ namespace View.ModelView
         /// </summary>
         private ObservableCollection<Contact> _contacts = new ObservableCollection<Contact>();
 
+        private bool _isNameValid = true;
+
+        private bool _isPhoneNumberValid = true;
+
+        private bool _isEmailValid = true;
+
         /// <summary>
         /// Хранит true, если программа в режиме редактирования контакта.
         /// </summary>
@@ -135,6 +141,38 @@ namespace View.ModelView
                 OnPropertyChanged();
             }
         }
+
+        public bool IsNameValid
+        {
+            get => _isNameValid;
+            set
+            {
+                _isNameValid = value;
+                OnPropertyChanged(nameof(IsContactValid));
+            }
+        }
+
+        public bool IsPhoneNumberValid
+        {
+            get => _isPhoneNumberValid;
+            set
+            {
+                _isPhoneNumberValid = value;
+                OnPropertyChanged(nameof(IsContactValid));
+            }
+        }
+
+        public bool IsEmailValid
+        {
+            get => _isEmailValid;
+            set
+            {
+                _isEmailValid = value;
+                OnPropertyChanged(nameof(IsContactValid));
+            }
+        }
+
+        public bool IsContactValid => (IsNameValid && IsPhoneNumberValid && IsEmailValid);
 
         /// <summary>
         /// Хранит и возвращает true, если программа в режиме редактирования контакта.
@@ -268,48 +306,55 @@ namespace View.ModelView
                 switch (columnName)
                 {
                     case nameof(Name):
+                        if (Name == null)
+                            break;
+                        IsNameValid = true;
+                        if (Name.Length > 3)
                         {
-                            if (Name?.Length > 50)
-                                error = "The name must be less than 50 characters.";
+                            error = "The name must be less than 50 characters.";
+                            IsNameValid = false;
                             break;
                         }
+                        break;
                     case nameof(PhoneNumber):
+                        if (PhoneNumber == null)
+                            break;
+                        IsPhoneNumberValid = true;
+                        if (PhoneNumber.Length > 100)
                         {
-                            if (PhoneNumber?.Length > 100)
-                            {
-                                error = "The phone number must be less than 100 characters.";
-                                break;
-                            }
-                            if (PhoneNumber != null)
-                            {
-                                foreach (char i in PhoneNumber)
-                                {
-                                    if (!"0123456789+-() ".Contains(i))
-                                    {
-                                        error = "The email must contain digits or symbols +-().";
-                                        break;
-                                    }
-                                }
-                            }
+                            error = "The phone number must be less than 100 characters.";
+                            IsPhoneNumberValid = false;
                             break;
                         }
-                        case nameof(Email):
+                        foreach (char i in PhoneNumber)
                         {
-                            if (Email?.Length > 100)
+                            if (!"0123456789+-() ".Contains(i))
                             {
-                                error = "The phone number must be less than 100 characters.";
+                                error = "The email must contain digits or symbols +-().";
+                                IsPhoneNumberValid = false;
                                 break;
                             }
-                            if (Email != null && !Email.Contains("@"))
-                            {
-                                error = "The email must contain the @ symbol.";
-                                break;
-                            }
+                        }
+                        
+                        break;
+                    case nameof(Email):
+                        if (Email == null)
+                            break;
+                        IsEmailValid = true;
+                        if (Email.Length > 100)
+                        {
+                            error = "The phone number must be less than 100 characters.";
+                            IsEmailValid = false;
                             break;
                         }
-
+                        if (!Email.Contains("@"))
+                        {
+                            error = "The email must contain the @ symbol.";
+                            IsEmailValid = false;
+                            break;
+                        }
+                        break;
                 }
-
                 return error;
             }
         }
