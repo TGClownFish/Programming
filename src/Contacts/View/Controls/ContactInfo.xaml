@@ -7,31 +7,28 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" 
              d:DesignWidth="800">
-    <!--<Control.Resources>-->
-        <!--<ControlTemplate x:Key="ValidationErrorTemplate">
-            <Border BorderBrush="Blue">
+    <Control.Resources>
+        <ControlTemplate x:Key="ValidationErrorTemplate">
+            <Border BorderBrush="Transparent">
                 <AdornedElementPlaceholder/>
             </Border>
-        </ControlTemplate>-->
-        <!--<Style TargetType="TextBox">
-            <Style.Setters>
-                <Setter Property="Validation.ErrorTemplate"
-        Value="{StaticResource ValidationErrorTemplate}"/>
-            </Style.Setters>
+        </ControlTemplate>
+        <Style TargetType="TextBox">
             <Style.Triggers>
-                <Trigger Property="Validation.HasError"
-         Value="True">
-                    <Setter Property="ToolBar.ToolTip">
-                        <Setter.Value>
-                            <Binding 
-                RelativeSource="{x:Static RelativeSource.Self}"
-                Path="(Validation.Errors)[0].ErrorContent" />
-                        </Setter.Value>
+                <Trigger Property="Validation.HasError" Value="True">
+                    <Setter 
+                        Property="ToolTip"
+                        Value="{Binding 
+                            RelativeSource={RelativeSource Self},
+                            Path=(Validation.Errors)[0].ErrorContent}" >
                     </Setter>
+                    <Setter 
+                        Property="Background" 
+                        Value="Pink" />
                 </Trigger>
             </Style.Triggers>
-        </Style>-->
-    <!--</Control.Resources>-->
+        </Style>
+    </Control.Resources>
     <Grid Background="White">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto"/>
@@ -73,20 +70,17 @@
             Grid.Row="1" 
             TextWrapping="Wrap" 
             VerticalAlignment="Center" 
-             
-             Grid.Column="1" 
-             HorizontalContentAlignment="Stretch" 
-             VerticalContentAlignment="Center" 
-            
-             Height="18"
+            Grid.Column="1" 
+            HorizontalContentAlignment="Stretch" 
+            VerticalContentAlignment="Center" 
+            Validation.ErrorTemplate=
+                "{StaticResource ValidationErrorTemplate}"
+            Height="18"
             Text="{Binding Path=Name, 
-    UpdateSourceTrigger=PropertyChanged,
-            ValidatesOnDataErrors=True}"
+                            UpdateSourceTrigger=PropertyChanged,
+                            ValidatesOnDataErrors=True}"
             IsReadOnly="{Binding Path=IsReadOnly,
-   UpdateSourceTrigger=PropertyChanged}">
-            <!--Text="{Binding Path=SelectedContact.Name, 
-                UpdateSourceTrigger=PropertyChanged"-->
-            
+                               UpdateSourceTrigger=PropertyChanged}">
         </TextBox>
         <Label 
             Content = "Phone Number:" 
@@ -102,8 +96,9 @@
             Grid.Row="3" 
             TextWrapping="Wrap" 
             VerticalAlignment="Top" 
-            
-            Text="{Binding Path=SelectedContact.PhoneNumber, 
+            Validation.ErrorTemplate=
+                "{StaticResource ValidationErrorTemplate}"
+            Text="{Binding Path=PhoneNumber, 
                 UpdateSourceTrigger=PropertyChanged,
                 ValidatesOnDataErrors=True}" 
             IsReadOnly="{Binding Path=IsReadOnly,
@@ -125,12 +120,13 @@
             Grid.Row="5" 
             TextWrapping="Wrap" 
             VerticalAlignment="Top" 
-            
-            Text="{Binding Path=SelectedContact.Email, 
-                UpdateSourceTrigger=PropertyChanged}" 
-            IsReadOnly= "{Binding Path=IsReadOnly,
+            Validation.ErrorTemplate=
+                "{StaticResource ValidationErrorTemplate}"
+            Text="{Binding Path=Email, 
                 UpdateSourceTrigger=PropertyChanged,
                 ValidatesOnDataErrors=True}" 
+            IsReadOnly= "{Binding Path=IsReadOnly,
+                UpdateSourceTrigger=PropertyChanged}" 
             Padding="0" 
             Grid.Column="1" 
             Height="18"/>

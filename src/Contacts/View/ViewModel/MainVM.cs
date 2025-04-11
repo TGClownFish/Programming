@@ -78,14 +78,50 @@ namespace View.ModelView
                 IsAdding = false;
                 IsEditing = false;
                 OnPropertyChanged();
+                OnPropertyChanged(nameof(Name));
+                OnPropertyChanged(nameof(PhoneNumber));
+                OnPropertyChanged(nameof(Email));
             }
         }
         public string Name
         {
-            get => SelectedContact != null ? SelectedContact.Name : null;
-            set { SelectedContact.Name = value;}
+            get => SelectedContact?.Name;
+            set
+            {
+                if (SelectedContact != null)
+                {
+                    SelectedContact.Name = value;
+                    OnPropertyChanged();
+                }
+            }
         }
-        
+
+        public string PhoneNumber
+        {
+            get => SelectedContact?.PhoneNumber;
+            set
+            {
+                if (SelectedContact != null)
+                {
+                    SelectedContact.PhoneNumber = value;
+                    OnPropertyChanged();
+                }
+            }
+        }
+
+        public string Email
+        {
+            get => SelectedContact?.Email;
+            set
+            {
+                if (SelectedContact != null)
+                {
+                    SelectedContact.Email = value;
+                    OnPropertyChanged();
+                }
+            }
+        }
+
 
         /// <summary>
         /// Хранит и возвращает список контактов.
@@ -232,11 +268,45 @@ namespace View.ModelView
                 switch (columnName)
                 {
                     case nameof(Name):
-                        if (string.IsNullOrWhiteSpace(Name))
-                            error = "First name cannot be empty.";
-                        if (Name?.Length > 3)
-                            error = "The name must be less than 50 characters.";
-                        break;
+                        {
+                            if (Name?.Length > 50)
+                                error = "The name must be less than 50 characters.";
+                            break;
+                        }
+                    case nameof(PhoneNumber):
+                        {
+                            if (PhoneNumber?.Length > 100)
+                            {
+                                error = "The phone number must be less than 100 characters.";
+                                break;
+                            }
+                            if (PhoneNumber != null)
+                            {
+                                foreach (char i in PhoneNumber)
+                                {
+                                    if (!"0123456789+-() ".Contains(i))
+                                    {
+                                        error = "The email must contain digits or symbols +-().";
+                                        break;
+                                    }
+                                }
+                            }
+                            break;
+                        }
+                        case nameof(Email):
+                        {
+                            if (Email?.Length > 100)
+                            {
+                                error = "The phone number must be less than 100 characters.";
+                                break;
+                            }
+                            if (Email != null && !Email.Contains("@"))
+                            {
+                                error = "The email must contain the @ symbol.";
+                                break;
+                            }
+                            break;
+                        }
 
                 }
 
