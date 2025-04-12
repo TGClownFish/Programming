@@ -38,12 +38,12 @@
                     Grid.Column="1"
                     Margin="3,0,0,3">
                     <TextBlock
-                    FontSize="12"
-                    FontWeight="SemiBold"
-                    Text="{Binding Name}"/>
+                        FontSize="12"
+                        FontWeight="SemiBold"
+                        Text="{Binding Name}"/>
                     <TextBlock
-                    FontSize="10"
-                    Text="{Binding PhoneNumber}"/>
+                        FontSize="10"
+                        Text="{Binding PhoneNumber}"/>
                 </StackPanel>
             </Grid>
         </DataTemplate>
@@ -151,19 +151,19 @@
             </Grid.RowDefinitions>
             <Controls:ContactInfo Grid.Column="2"/>
         <Button 
-                Grid.Column="2" 
-                Content="Apply" 
-                HorizontalAlignment="Left" 
-                Margin="114,50,0,0" 
-                Grid.Row="6" 
-                VerticalAlignment="Top" 
-                Width="75" 
-                Height="25" 
-                Command="{Binding Path=ApplyCommand}"
-                IsEnabled="{Binding Path=IsContactValid,
-                    UpdateSourceTrigger=PropertyChanged}"
-                Visibility="{Binding Path=IsReadOnly,
-                    Converter={StaticResource VisibilityConverter}}"/>
+            Grid.Column="2" 
+            Content="Apply" 
+            HorizontalAlignment="Left" 
+            Margin="114,50,0,0" 
+            Grid.Row="6" 
+            VerticalAlignment="Top" 
+            Width="75" 
+            Height="25" 
+            Command="{Binding Path=ApplyCommand}"
+            IsEnabled="{Binding Path=IsContactValid,
+                UpdateSourceTrigger=PropertyChanged}"
+            Visibility="{Binding Path=IsReadOnly,
+                Converter={StaticResource VisibilityConverter}}"/>
         </Grid>
     </Grid>
 </Window>

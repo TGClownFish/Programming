@@ -77,10 +77,10 @@
                 "{StaticResource ValidationErrorTemplate}"
             Height="18"
             Text="{Binding Path=Name, 
-                            UpdateSourceTrigger=PropertyChanged,
-                            ValidatesOnDataErrors=True}"
+                UpdateSourceTrigger=PropertyChanged,
+                ValidatesOnDataErrors=True}"
             IsReadOnly="{Binding Path=IsReadOnly,
-                               UpdateSourceTrigger=PropertyChanged}">
+                UpdateSourceTrigger=PropertyChanged}">
         </TextBox>
         <Label 
             Content = "Phone Number:" 

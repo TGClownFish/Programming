@@ -26,10 +26,19 @@ namespace View.ModelView
         /// </summary>
         private ObservableCollection<Contact> _contacts = new ObservableCollection<Contact>();
 
+        /// <summary>
+        /// Хранит true, если имя контакта введено правильно.
+        /// </summary>
         private bool _isNameValid = true;
 
+        /// <summary>
+        /// Хранит true, если телефонный номер контакта введен правильно.
+        /// </summary>
         private bool _isPhoneNumberValid = true;
 
+        /// <summary>
+        /// Хранит true, если электронная почта контакта введена правильно.
+        /// </summary>
         private bool _isEmailValid = true;
 
         /// <summary>
@@ -89,6 +98,10 @@ namespace View.ModelView
                 OnPropertyChanged(nameof(Email));
             }
         }
+
+        /// <summary>
+        /// Хранит и возвращает данные об имени выбранного контакта.
+        /// </summary>
         public string Name
         {
             get => SelectedContact?.Name;
@@ -102,6 +115,9 @@ namespace View.ModelView
             }
         }
 
+        /// <summary>
+        /// Хранит и возвращает данные о телефонном номере выбранного контакта.
+        /// </summary>
         public string PhoneNumber
         {
             get => SelectedContact?.PhoneNumber;
@@ -115,6 +131,9 @@ namespace View.ModelView
             }
         }
 
+        /// <summary>
+        /// Хранит и возвращает данные об электронной почте выбранного контакта.
+        /// </summary>
         public string Email
         {
             get => SelectedContact?.Email;
@@ -142,6 +161,9 @@ namespace View.ModelView
             }
         }
 
+        /// <summary>
+        /// Хранит и возвращает true, если имя контакта введено правильно.
+        /// </summary>
         public bool IsNameValid
         {
             get => _isNameValid;
@@ -152,6 +174,9 @@ namespace View.ModelView
             }
         }
 
+        /// <summary>
+        /// Хранит и возвращает true, если телефонный номер контакта введен правильно.
+        /// </summary>
         public bool IsPhoneNumberValid
         {
             get => _isPhoneNumberValid;
@@ -162,6 +187,9 @@ namespace View.ModelView
             }
         }
 
+        /// <summary>
+        /// Хранит и возвращает true, если электронная почта контакта введена правильно.
+        /// </summary>
         public bool IsEmailValid
         {
             get => _isEmailValid;
@@ -172,6 +200,9 @@ namespace View.ModelView
             }
         }
 
+        /// <summary>
+        /// Возвращает true, если все поля контакта введены правильно.
+        /// </summary>
         public bool IsContactValid => (IsNameValid && IsPhoneNumberValid && IsEmailValid);
 
         /// <summary>
@@ -295,13 +326,23 @@ namespace View.ModelView
                 return _editCommand;
             }
         }
+
+        /// <summary>
+        /// Нужно для реализации интерфейса <see cref="IDataErrorInfo"/>, возвращает пустую строку.
+        /// </summary>
         public string Error => "";
 
+        /// <summary>
+        /// Если поле контакта заполненно неправильно, 
+        /// возвращает текст ошибки и менят значение в соответвующем булевом поле.
+        /// </summary>
+        /// <param name="columnName">Название проверяемого поля.</param>
+        /// <returns>Текст ошибки.</returns>
         public string this[string columnName]
         {
             get
             {
-                string error = string.Empty;
+                string error = "";
 
                 switch (columnName)
                 {
@@ -309,13 +350,14 @@ namespace View.ModelView
                         if (Name == null)
                             break;
                         IsNameValid = true;
-                        if (Name.Length > 3)
+                        if (Name.Length > 50)
                         {
                             error = "The name must be less than 50 characters.";
                             IsNameValid = false;
                             break;
                         }
                         break;
+
                     case nameof(PhoneNumber):
                         if (PhoneNumber == null)
                             break;
@@ -335,10 +377,10 @@ namespace View.ModelView
                                 break;
                             }
                         }
-                        
                         break;
+
                     case nameof(Email):
-                        if (Email == null)
+                        if (Email == null || Email == "")
                             break;
                         IsEmailValid = true;
                         if (Email.Length > 100)
