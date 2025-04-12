@@ -103,6 +103,7 @@
                 ValidatesOnDataErrors=True}" 
             IsReadOnly="{Binding Path=IsReadOnly,
                 UpdateSourceTrigger=PropertyChanged}"
+            PreviewTextInput="PhoneNumberTextBox_PreviewTextInput"
             Padding="0" 
             Grid.Column="1" 
             Height="18"/>

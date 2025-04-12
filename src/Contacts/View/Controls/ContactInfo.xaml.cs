@@ -11,5 +11,11 @@ namespace View.Controls
         {
             InitializeComponent();
         }
+
+        private void PhoneNumberTextBox_PreviewTextInput(object sender, System.Windows.Input.TextCompositionEventArgs e)
+        {
+            if (!"0123456789+-() ".Contains(e.Text))
+                e.Handled = true;
+        }
     }
 }
