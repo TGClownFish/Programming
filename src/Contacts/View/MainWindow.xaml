@@ -149,7 +149,9 @@
                 <RowDefinition Height="Auto"/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
-            <Controls:ContactInfo Grid.Column="2"/>
+            <Controls:ContactInfo 
+                DataContext="{Binding SelectedContact}"
+                Grid.Column="2"/>
         <Button 
             Grid.Column="2" 
             Content="Apply" 
@@ -160,7 +162,7 @@
             Width="75" 
             Height="25" 
             Command="{Binding Path=ApplyCommand}"
-            IsEnabled="{Binding Path=IsContactValid,
+            IsEnabled="{Binding Path=SelectedContact.IsContactValid,
                 UpdateSourceTrigger=PropertyChanged}"
             Visibility="{Binding Path=IsReadOnly,
                 Converter={StaticResource VisibilityConverter}}"/>

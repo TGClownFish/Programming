@@ -1,7 +1,7 @@
 ﻿using System.Windows.Input;
 using View.Model.Services;
 
-namespace View.ModelView
+namespace View.ViewModel.Commands
 {
     /// <summary>
     /// Хранит команду сохранения.

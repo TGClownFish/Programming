@@ -1,6 +1,6 @@
 ﻿using System.Windows.Input;
 
-namespace View.ModelView.Commands
+namespace View.ViewModel.Commands
 {
     /// <summary>
     /// Хранит команду удаления.

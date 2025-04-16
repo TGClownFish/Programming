@@ -1,7 +1,7 @@
 ﻿using System.Windows.Input;
 using View.Model;
 
-namespace View.ModelView.Commands
+namespace View.ViewModel.Commands
 {
     /// <summary>
     /// Хранит команду редактирования.

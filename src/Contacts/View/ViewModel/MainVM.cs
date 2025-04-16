@@ -1,20 +1,21 @@
 ﻿using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using System.Windows;
 using View.Model;
-using View.ModelView.Commands;
+using View.ViewModel.Commands;
 
-namespace View.ModelView
+namespace View.ViewModel
 {
     /// <summary>
     /// Хранит поля и методы, нужные для объединания View и Model.
     /// </summary>
-    public class MainVM : INotifyPropertyChanged, IDataErrorInfo
+    public class MainVM : DependencyObject, INotifyPropertyChanged
     {
         /// <summary>
         /// Хранит данные о выбранном контакте.
         /// </summary>
-        private Contact? _selectedContact = null;
+        private Contact _selectedContact = null;
 
         /// <summary>
         /// Во время редактирования контакта, хранит его позицию.
@@ -24,22 +25,9 @@ namespace View.ModelView
         /// <summary>
         /// Хранит список контактов.
         /// </summary>
-        private ObservableCollection<Contact> _contacts = new ObservableCollection<Contact>();
+        private ObservableCollection<Contact> _contacts = new();
 
-        /// <summary>
-        /// Хранит true, если имя контакта введено правильно.
-        /// </summary>
-        private bool _isNameValid = true;
-
-        /// <summary>
-        /// Хранит true, если телефонный номер контакта введен правильно.
-        /// </summary>
-        private bool _isPhoneNumberValid = true;
-
-        /// <summary>
-        /// Хранит true, если электронная почта контакта введена правильно.
-        /// </summary>
-        private bool _isEmailValid = true;
+        
 
         /// <summary>
         /// Хранит true, если программа в режиме редактирования контакта.
@@ -81,11 +69,18 @@ namespace View.ModelView
         /// </summary>
         private ApplyCommand _applyCommand;
 
+        //public static readonly DependencyProperty SelectedContactProperty;
+
+        //static MainVM()
+        //{
+        //    SelectedContactProperty = DependencyProperty.Register("SelectedContact", typeof(Contact), typeof(MainVM));
+        //}
+
         /// <summary>
         /// Хранит и возвращает данные о выбранном контакте.
         /// </summary>
-        public Contact? SelectedContact
-        { 
+        public Contact SelectedContact
+        {
             get => _selectedContact;
             set
             {
@@ -93,60 +88,25 @@ namespace View.ModelView
                 IsAdding = false;
                 IsEditing = false;
                 OnPropertyChanged();
-                OnPropertyChanged(nameof(Name));
-                OnPropertyChanged(nameof(PhoneNumber));
-                OnPropertyChanged(nameof(Email));
             }
         }
 
         /// <summary>
-        /// Хранит и возвращает данные об имени выбранного контакта.
+        /// Хранит и возвращает данные о выбранном контакте.
         /// </summary>
-        public string Name
-        {
-            get => SelectedContact?.Name;
-            set
-            {
-                if (SelectedContact != null)
-                {
-                    SelectedContact.Name = value;
-                    OnPropertyChanged();
-                }
-            }
-        }
-
-        /// <summary>
-        /// Хранит и возвращает данные о телефонном номере выбранного контакта.
-        /// </summary>
-        public string PhoneNumber
-        {
-            get => SelectedContact?.PhoneNumber;
-            set
-            {
-                if (SelectedContact != null)
-                {
-                    SelectedContact.PhoneNumber = value;
-                    OnPropertyChanged();
-                }
-            }
-        }
-
-        /// <summary>
-        /// Хранит и возвращает данные об электронной почте выбранного контакта.
-        /// </summary>
-        public string Email
-        {
-            get => SelectedContact?.Email;
-            set
-            {
-                if (SelectedContact != null)
-                {
-                    SelectedContact.Email = value;
-                    OnPropertyChanged();
-                }
-            }
-        }
-
+        //public Contact SelectedContact
+        //{
+        //    get
+        //    { return (Contact)GetValue(SelectedContactProperty); }
+        //    set
+        //    {
+        //        SetValue(SelectedContactProperty, value);
+        //        IsAdding = false;
+        //        IsEditing = false;
+        //        OnPropertyChanged();
+        //        OnPropertyChanged(nameof(IsReadOnly));
+        //    }
+        //}
 
         /// <summary>
         /// Хранит и возвращает список контактов.
@@ -160,50 +120,6 @@ namespace View.ModelView
                 OnPropertyChanged();
             }
         }
-
-        /// <summary>
-        /// Хранит и возвращает true, если имя контакта введено правильно.
-        /// </summary>
-        public bool IsNameValid
-        {
-            get => _isNameValid;
-            set
-            {
-                _isNameValid = value;
-                OnPropertyChanged(nameof(IsContactValid));
-            }
-        }
-
-        /// <summary>
-        /// Хранит и возвращает true, если телефонный номер контакта введен правильно.
-        /// </summary>
-        public bool IsPhoneNumberValid
-        {
-            get => _isPhoneNumberValid;
-            set
-            {
-                _isPhoneNumberValid = value;
-                OnPropertyChanged(nameof(IsContactValid));
-            }
-        }
-
-        /// <summary>
-        /// Хранит и возвращает true, если электронная почта контакта введена правильно.
-        /// </summary>
-        public bool IsEmailValid
-        {
-            get => _isEmailValid;
-            set
-            {
-                _isEmailValid = value;
-                OnPropertyChanged(nameof(IsContactValid));
-            }
-        }
-
-        /// <summary>
-        /// Возвращает true, если все поля контакта введены правильно.
-        /// </summary>
-        public bool IsContactValid => (IsNameValid && IsPhoneNumberValid && IsEmailValid);
 
         /// <summary>
         /// Хранит и возвращает true, если программа в режиме редактирования контакта.
@@ -256,8 +172,7 @@ namespace View.ModelView
         {
             get
             {
-                if (_loadCommand == null)
-                    _loadCommand = new LoadCommand(this);
+                _loadCommand ??= new LoadCommand(this);
                 return _loadCommand;
             }
         }
@@ -269,8 +184,7 @@ namespace View.ModelView
         {
             get
             {
-                if (_saveCommand == null)
-                    _saveCommand = new SaveCommand(this);
+                _saveCommand ??= new SaveCommand(this);
                 return _saveCommand;
             }
         }
@@ -282,8 +196,7 @@ namespace View.ModelView
         {
             get
             {
-                if (_applyCommand == null)
-                    _applyCommand = new ApplyCommand(this);
+                _applyCommand ??= new ApplyCommand(this);
                 return _applyCommand;
             }
         }
@@ -295,8 +208,7 @@ namespace View.ModelView
         {
             get
             {
-                if (_addCommand == null)
-                        _addCommand = new AddCommand(this);
+                _addCommand ??= new AddCommand(this);
                 return _addCommand;
             }
         }
@@ -308,8 +220,7 @@ namespace View.ModelView
         {
             get
             {
-                if (_removeCommand == null)
-                        _removeCommand = new RemoveCommand(this);
+                _removeCommand ??= new RemoveCommand(this);
                 return _removeCommand;
             }
         }
@@ -321,83 +232,8 @@ namespace View.ModelView
         {
             get
             {
-                if (_editCommand == null)
-                    _editCommand = new EditCommand(this);
+                _editCommand ??= new EditCommand(this);
                 return _editCommand;
-            }
-        }
-
-        /// <summary>
-        /// Нужно для реализации интерфейса <see cref="IDataErrorInfo"/>, возвращает пустую строку.
-        /// </summary>
-        public string Error => "";
-
-        /// <summary>
-        /// Если поле контакта заполненно неправильно, 
-        /// возвращает текст ошибки и менят значение в соответвующем булевом поле.
-        /// </summary>
-        /// <param name="columnName">Название проверяемого поля.</param>
-        /// <returns>Текст ошибки.</returns>
-        public string this[string columnName]
-        {
-            get
-            {
-                string error = "";
-
-                switch (columnName)
-                {
-                    case nameof(Name):
-                        if (Name == null)
-                            break;
-                        IsNameValid = true;
-                        if (Name.Length > 50)
-                        {
-                            error = "The name must be less than 50 characters.";
-                            IsNameValid = false;
-                            break;
-                        }
-                        break;
-
-                    case nameof(PhoneNumber):
-                        if (PhoneNumber == null)
-                            break;
-                        IsPhoneNumberValid = true;
-                        if (PhoneNumber.Length > 100)
-                        {
-                            error = "The phone number must be less than 100 characters.";
-                            IsPhoneNumberValid = false;
-                            break;
-                        }
-                        foreach (char i in PhoneNumber)
-                        {
-                            if (!"0123456789+-() ".Contains(i))
-                            {
-                                error = "The email must contain digits or symbols +-().";
-                                IsPhoneNumberValid = false;
-                                break;
-                            }
-                        }
-                        break;
-
-                    case nameof(Email):
-                        if (Email == null || Email == "")
-                            break;
-                        IsEmailValid = true;
-                        if (Email.Length > 100)
-                        {
-                            error = "The phone number must be less than 100 characters.";
-                            IsEmailValid = false;
-                            break;
-                        }
-                        if (!Email.Contains("@"))
-                        {
-                            error = "The email must contain the @ symbol.";
-                            IsEmailValid = false;
-                            break;
-                        }
-                        break;
-                }
-                return error;
             }
         }
 

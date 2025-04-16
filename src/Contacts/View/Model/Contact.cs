@@ -1,11 +1,27 @@
-﻿
+﻿using System.ComponentModel;
+using System.Runtime.CompilerServices;
+
 namespace View.Model
 {
     /// <summary>
     /// Хранит данные о контакте.
     /// </summary>
-    public class Contact
+    public class Contact: INotifyPropertyChanged, IDataErrorInfo
     {
+        /// <summary>
+        /// Хранит true, если имя контакта введено правильно.
+        /// </summary>
+        private bool _isNameValid = true;
+
+        /// <summary>
+        /// Хранит true, если телефонный номер контакта введен правильно.
+        /// </summary>
+        private bool _isPhoneNumberValid = true;
+
+        /// <summary>
+        /// Хранит true, если электронная почта контакта введена правильно.
+        /// </summary>
+        private bool _isEmailValid = true;
         /// <summary>
         /// Возвращает и задаёт имя. Должен быть не больше 100 символов.
         /// </summary>
@@ -22,12 +38,146 @@ namespace View.Model
         public string Email { get; set; }
 
         /// <summary>
-        /// Создаёт объект класса <see cref="Contact"/>.
+        /// Хранит и возвращает true, если имя контакта введено правильно.
         /// </summary>
-        /// <param name="name">Имя.</param>
-        /// <param name="phoneNumber">Номер телефона.</param>
-        /// <param name="email">Адрес электронной почты.</param>
-        public Contact(string name, string phoneNumber, string email)
+        public bool IsNameValid
+        {
+            get => _isNameValid;
+            set
+            {
+                _isNameValid = value;
+                OnPropertyChanged(nameof(IsContactValid));
+            }
+        }
+
+        /// <summary>
+        /// Хранит и возвращает true, если телефонный номер контакта введен правильно.
+        /// </summary>
+        public bool IsPhoneNumberValid
+        {
+            get => _isPhoneNumberValid;
+            set
+            {
+                _isPhoneNumberValid = value;
+                OnPropertyChanged(nameof(IsContactValid));
+            }
+        }
+
+        /// <summary>
+        /// Хранит и возвращает true, если электронная почта контакта введена правильно.
+        /// </summary>
+        public bool IsEmailValid
+        {
+            get => _isEmailValid;
+            set
+            {
+                _isEmailValid = value;
+                OnPropertyChanged(nameof(IsContactValid));
+            }
+        }
+
+        /// <summary>
+        /// Возвращает true, если все поля контакта введены правильно.
+        /// </summary>
+        public bool IsContactValid => (IsNameValid && IsPhoneNumberValid && IsEmailValid);
+
+        /// <summary>
+        /// Нужно для реализации интерфейса <see cref="IDataErrorInfo"/>, возвращает пустую строку.
+        /// </summary>
+        public string Error => "";
+
+        /// <summary>
+        /// Если поле контакта заполненно неправильно, 
+        /// возвращает текст ошибки и менят значение в соответвующем булевом поле.
+        /// </summary>
+        /// <param name="columnName">Название проверяемого поля.</param>
+        /// <returns>Текст ошибки.</returns>
+        public string this[string columnName]
+        {
+            get
+            {
+                string error = "";
+
+                switch (columnName)
+                {
+                    case nameof(Name):
+                        if (Name == null)
+                            break;
+                        IsNameValid = true;
+                        if (Name.Length > 50)
+                        {
+                            error = "The name must be less than 50 characters.";
+                            IsNameValid = false;
+                            break;
+                        }
+                        break;
+
+                    case nameof(PhoneNumber):
+                        if (PhoneNumber == null)
+                            break;
+                        IsPhoneNumberValid = true;
+                        if (PhoneNumber.Length > 100)
+                        {
+                            error = "The phone number must be less than 100 characters.";
+                            IsPhoneNumberValid = false;
+                            break;
+                        }
+                        foreach (char i in PhoneNumber)
+                        {
+                            if (!"0123456789+-() ".Contains(i))
+                            {
+                                error = "The email must contain digits or symbols +-().";
+                                IsPhoneNumberValid = false;
+                                break;
+                            }
+                        }
+                        break;
+
+                    case nameof(Email):
+                        if (Email == null || Email == "")
+                            break;
+                        IsEmailValid = true;
+                        if (Email.Length > 100)
+                        {
+                            error = "The phone number must be less than 100 characters.";
+                            IsEmailValid = false;
+                            break;
+                        }
+                        if (!Email.Contains("@"))
+                        {
+                            error = "The email must contain the @ symbol.";
+                            IsEmailValid = false;
+                            break;
+                        }
+                        break;
+                }
+                return error;
+            }
+        }
+
+        /// <summary>
+        /// Срабатывет, когда меняется свойство элемента.
+        /// </summary>
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        /// <summary>
+        /// Вызывает событие PropertyChanged.
+        /// </summary>
+        /// <param name="prop">Аргументы события.</param>
+        public void OnPropertyChanged([CallerMemberName] string prop = "")
+        {
+            if (PropertyChanged != null)
+                PropertyChanged(this, new PropertyChangedEventArgs(prop));
+        }
+    
+
+    /// <summary>
+    /// Создаёт объект класса <see cref="Contact"/>.
+    /// </summary>
+    /// <param name="name">Имя.</param>
+    /// <param name="phoneNumber">Номер телефона.</param>
+    /// <param name="email">Адрес электронной почты.</param>
+    public Contact(string name, string phoneNumber, string email)
         {
             Name = name;
             PhoneNumber = phoneNumber;
