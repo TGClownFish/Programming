@@ -149,9 +149,11 @@
                 <RowDefinition Height="Auto"/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
-            <Controls:ContactInfo 
+            <Controls:ContactControl 
                 DataContext="{Binding SelectedContact}"
                 Grid.Column="2"/>
+                
+                
         <Button 
             Grid.Column="2" 
             Content="Apply" 

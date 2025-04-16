@@ -10,7 +10,7 @@ namespace View.ViewModel
     /// <summary>
     /// Хранит поля и методы, нужные для объединания View и Model.
     /// </summary>
-    public class MainVM : DependencyObject, INotifyPropertyChanged
+    public class MainVM : INotifyPropertyChanged
     {
         /// <summary>
         /// Хранит данные о выбранном контакте.
@@ -69,12 +69,7 @@ namespace View.ViewModel
         /// </summary>
         private ApplyCommand _applyCommand;
 
-        //public static readonly DependencyProperty SelectedContactProperty;
 
-        //static MainVM()
-        //{
-        //    SelectedContactProperty = DependencyProperty.Register("SelectedContact", typeof(Contact), typeof(MainVM));
-        //}
 
         /// <summary>
         /// Хранит и возвращает данные о выбранном контакте.
@@ -90,23 +85,6 @@ namespace View.ViewModel
                 OnPropertyChanged();
             }
         }
-
-        /// <summary>
-        /// Хранит и возвращает данные о выбранном контакте.
-        /// </summary>
-        //public Contact SelectedContact
-        //{
-        //    get
-        //    { return (Contact)GetValue(SelectedContactProperty); }
-        //    set
-        //    {
-        //        SetValue(SelectedContactProperty, value);
-        //        IsAdding = false;
-        //        IsEditing = false;
-        //        OnPropertyChanged();
-        //        OnPropertyChanged(nameof(IsReadOnly));
-        //    }
-        //}
 
         /// <summary>
         /// Хранит и возвращает список контактов.
