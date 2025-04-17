@@ -20,8 +20,7 @@
                         Property="ToolTip"
                         Value="{Binding 
                             RelativeSource={RelativeSource Self},
-                            Path=(Validation.Errors)[0].ErrorContent}" >
-                    </Setter>
+                            Path=(Validation.Errors)[0].ErrorContent}" />
                     <Setter 
                         Property="Background" 
                         Value="Pink" />

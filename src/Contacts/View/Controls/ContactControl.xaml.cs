@@ -12,6 +12,29 @@ namespace View.Controls
     public partial class ContactControl : UserControl, INotifyPropertyChanged
     {
         /// <summary>
+        /// Хранит и возвращает свойство зависимости для выбраннаго контакта.
+        /// </summary>
+        public readonly DependencyProperty SelectedContactProperty;
+
+        /// <summary>
+        /// Хранит и возвращает выбранный контакт.
+        /// </summary>
+        public Contact SelectedContact
+        {
+            get => (Contact)GetValue(SelectedContactProperty);
+            set
+            {
+                SetValue(SelectedContactProperty, value);
+                OnPropertyChanged();
+            }
+        }
+
+        /// <summary>
+        /// Срабатывет, когда меняется свойство элемента.
+        /// </summary>
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        /// <summary>
         /// Точка входа.
         /// </summary>
         public ContactControl()
@@ -19,7 +42,7 @@ namespace View.Controls
             InitializeComponent();
             SelectedContactProperty = DependencyProperty.Register("SelectedContact", typeof(Contact), typeof(ContactControl));
         }
-
+        
         /// <summary>
         /// Проверка вводимого текста в TextBox, хранящий данные о телефонном номере.
         /// </summary>
@@ -30,23 +53,6 @@ namespace View.Controls
             if (!"0123456789+-() ".Contains(e.Text))
                 e.Handled = true;
         }
-        public readonly DependencyProperty SelectedContactProperty;
-
-        public Contact SelectedContact
-        {
-            get
-            { return (Contact)GetValue(SelectedContactProperty); }
-            set
-            {
-                SetValue(SelectedContactProperty, value);
-
-                OnPropertyChanged();
-            }
-        }
-        /// <summary>
-        /// Срабатывет, когда меняется свойство элемента.
-        /// </summary>
-        public event PropertyChangedEventHandler PropertyChanged;
 
         /// <summary>
         /// Вызывает событие PropertyChanged.

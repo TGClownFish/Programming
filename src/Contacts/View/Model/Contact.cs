@@ -9,6 +9,23 @@ namespace View.Model
     public class Contact: INotifyPropertyChanged, IDataErrorInfo
     {
         /// <summary>
+        /// Хранит имя. Должен быть не больше 50 символов.
+        /// </summary>
+        private string _name;
+
+        /// <summary>
+        /// Хранит номер телефона. 
+        /// Должен быть не больше 100 символов и должен включать в себя только цифры и знаки + - ( ).
+        /// </summary>
+        private string _phoneNumber;
+
+        /// <summary>
+        /// Хранит адрес электронной почты. 
+        /// Должен быть не больше 100 символов и должен включать символ @.
+        /// </summary>
+        private string _email;
+        
+        /// <summary>
         /// Хранит true, если имя контакта введено правильно.
         /// </summary>
         private bool _isNameValid = true;
@@ -22,20 +39,58 @@ namespace View.Model
         /// Хранит true, если электронная почта контакта введена правильно.
         /// </summary>
         private bool _isEmailValid = true;
-        /// <summary>
-        /// Возвращает и задаёт имя. Должен быть не больше 100 символов.
-        /// </summary>
-        public string Name { get; set; }
 
         /// <summary>
-        /// Возвращает и задаёт номер телефона. Должен включать в себя только цифры и знаки + - ( ).
+        /// Возвращает и задаёт имя. Должен быть не больше 50 символов.
         /// </summary>
-        public string PhoneNumber { get; set; }
+        public string Name
+        {
+            get => _name;
+            set
+            {
+                _name = value;
+                IsNameValid = _name.Length >= 50 ? true : false;
+            }
+        }
 
         /// <summary>
-        /// Возвращает и задаёт адрес электронной почты. Должен включать символ @.
+        /// Возвращает и задаёт номер телефона.
+        /// Должен быть не больше 100 символов и должен включать в себя только цифры и знаки + - ( ).
         /// </summary>
-        public string Email { get; set; }
+        public string PhoneNumber
+        {
+            get => _phoneNumber;
+            set
+            {
+                _phoneNumber = value;
+                if (value.Length <= 100)
+                {
+                    IsEmailValid = true;
+                    foreach (var i in value)
+                    {
+                        if (!"0123456789+-() ".Contains(i))
+                        {
+                            IsEmailValid = false;
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+
+        /// <summary>
+        /// Возвращает и задаёт адрес электронной почты.
+        /// Должен быть не больше 100 символов и должен включать символ @.
+        /// </summary>
+        public string Email
+        {
+            get => _email;
+            set
+            {
+                _email = value;
+                IsEmailValid = (_email.Length <= 100 && _email.Contains("@")) ? true : false;
+            }
+        }
 
         /// <summary>
         /// Хранит и возвращает true, если имя контакта введено правильно.

@@ -27,8 +27,6 @@ namespace View.ViewModel
         /// </summary>
         private ObservableCollection<Contact> _contacts = new();
 
-        
-
         /// <summary>
         /// Хранит true, если программа в режиме редактирования контакта.
         /// </summary>
@@ -69,10 +67,8 @@ namespace View.ViewModel
         /// </summary>
         private ApplyCommand _applyCommand;
 
-
-
         /// <summary>
-        /// Хранит и возвращает данные о выбранном контакте.
+        /// Хранит и возвращает выбранный контакт.
         /// </summary>
         public Contact SelectedContact
         {
