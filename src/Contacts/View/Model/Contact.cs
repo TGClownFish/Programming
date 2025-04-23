@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
 namespace View.Model
@@ -6,7 +7,7 @@ namespace View.Model
     /// <summary>
     /// Хранит данные о контакте.
     /// </summary>
-    public class Contact: INotifyPropertyChanged, IDataErrorInfo
+    public class Contact: ObservableObject, IDataErrorInfo
     {
         /// <summary>
         /// Хранит имя. Должен быть не больше 50 символов.
@@ -49,7 +50,7 @@ namespace View.Model
             set
             {
                 _name = value;
-                IsNameValid = _name.Length >= 50 ? true : false;
+                IsNameValid = _name.Length >= 50;
             }
         }
 
@@ -88,7 +89,7 @@ namespace View.Model
             set
             {
                 _email = value;
-                IsEmailValid = (_email.Length <= 100 && _email.Contains("@")) ? true : false;
+                IsEmailValid = _email.Length <= 100 && _email.Contains('@');
             }
         }
 
@@ -98,11 +99,7 @@ namespace View.Model
         public bool IsNameValid
         {
             get => _isNameValid;
-            set
-            {
-                _isNameValid = value;
-                OnPropertyChanged(nameof(IsContactValid));
-            }
+            set => SetProperty(ref _isNameValid, value, nameof(IsContactValid));
         }
 
         /// <summary>
@@ -111,11 +108,7 @@ namespace View.Model
         public bool IsPhoneNumberValid
         {
             get => _isPhoneNumberValid;
-            set
-            {
-                _isPhoneNumberValid = value;
-                OnPropertyChanged(nameof(IsContactValid));
-            }
+            set => SetProperty(ref _isPhoneNumberValid, value, nameof(IsContactValid));
         }
 
         /// <summary>
@@ -124,11 +117,7 @@ namespace View.Model
         public bool IsEmailValid
         {
             get => _isEmailValid;
-            set
-            {
-                _isEmailValid = value;
-                OnPropertyChanged(nameof(IsContactValid));
-            }
+            set => SetProperty(ref _isEmailValid, value, nameof(IsContactValid));
         }
 
         /// <summary>
@@ -198,7 +187,7 @@ namespace View.Model
                             IsEmailValid = false;
                             break;
                         }
-                        if (!Email.Contains("@"))
+                        if (!Email.Contains('@'))
                         {
                             error = "The email must contain the @ symbol.";
                             IsEmailValid = false;
@@ -211,28 +200,12 @@ namespace View.Model
         }
 
         /// <summary>
-        /// Срабатывет, когда меняется свойство элемента.
+        /// Создаёт объект класса <see cref="Contact"/>.
         /// </summary>
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        /// <summary>
-        /// Вызывает событие PropertyChanged.
-        /// </summary>
-        /// <param name="prop">Аргументы события.</param>
-        public void OnPropertyChanged([CallerMemberName] string prop = "")
-        {
-            if (PropertyChanged != null)
-                PropertyChanged(this, new PropertyChangedEventArgs(prop));
-        }
-    
-
-    /// <summary>
-    /// Создаёт объект класса <see cref="Contact"/>.
-    /// </summary>
-    /// <param name="name">Имя.</param>
-    /// <param name="phoneNumber">Номер телефона.</param>
-    /// <param name="email">Адрес электронной почты.</param>
-    public Contact(string name, string phoneNumber, string email)
+        /// <param name="name">Имя.</param>
+        /// <param name="phoneNumber">Номер телефона.</param>
+        /// <param name="email">Адрес электронной почты.</param>
+        public Contact(string name, string phoneNumber, string email)
         {
             Name = name;
             PhoneNumber = phoneNumber;
