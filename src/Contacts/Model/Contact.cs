@@ -29,18 +29,21 @@ public partial class Contact: ObservableObject, IDataErrorInfo
     /// Хранит true, если имя контакта введено правильно.
     /// </summary>
     [ObservableProperty]
+    [NotifyPropertyChangedFor(nameof(IsContactValid))]
     private bool _isNameValid = true;
 
     /// <summary>
     /// Хранит true, если телефонный номер контакта введен правильно.
     /// </summary>
     [ObservableProperty]
+    [NotifyPropertyChangedFor(nameof(IsContactValid))]
     private bool _isPhoneNumberValid = true;
 
     /// <summary>
     /// Хранит true, если электронная почта контакта введена правильно.
     /// </summary>
     [ObservableProperty]
+    [NotifyPropertyChangedFor(nameof(IsContactValid))]
     private bool _isEmailValid = true;
 
     /// <summary>
