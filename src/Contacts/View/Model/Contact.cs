@@ -1,7 +1,8 @@
-﻿namespace View.Model
+﻿
+namespace View.Model
 {
     /// <summary>
-    /// Хранит данные о контакте
+    /// Хранит данные о контакте.
     /// </summary>
     public class Contact
     {
@@ -26,12 +27,12 @@
         public string Name { get; set; }
 
         /// <summary>
-        /// Возвращает и задаёт номер телефона. Должен включать в себя только цифры и знаки + - ( )
+        /// Возвращает и задаёт номер телефона. Должен включать в себя только цифры и знаки + - ( ).
         /// </summary>
         public string PhoneNumber { get; set; }
 
         /// <summary>
-        /// Возвращает и задаёт адрес электронной почты. Должен включать символ @
+        /// Возвращает и задаёт адрес электронной почты. Должен включать символ @.
         /// </summary>
         public string Email { get; set; }
 
@@ -41,12 +42,13 @@
         /// <param name="name">Имя.</param>
         /// <param name="phoneNumber">Номер телефона.</param>
         /// <param name="email">Адрес электронной почты.</param>
-        public Contact(string name, string phoneNumber, string email) 
-        { 
+        public Contact(string name, string phoneNumber, string email)
+        {
             Name = name;
             PhoneNumber = phoneNumber;
             Email = email;
         }
+
         /// <summary>
         /// Создаёт пустой объект класса <see cref="Contact"/>.
         /// </summary>
@@ -55,6 +57,17 @@
             Name = "";
             PhoneNumber = "";
             Email = "";
+        }
+
+        /// <summary>
+        /// Копирует объект класса <see cref="Contact"/> по образцу.
+        /// </summary>
+        /// <param name="contact">Копируемый объект.</param>
+        public Contact(Contact contact)
+        {
+            Name = contact.Name;
+            PhoneNumber = contact.PhoneNumber;
+            Email = contact.Email;
         }
     }
 }

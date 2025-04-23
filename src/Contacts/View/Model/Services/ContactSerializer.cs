@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System.Collections.ObjectModel;
+using System.IO;
 using System.Text.Json;
 
 namespace View.Model.Services
@@ -18,27 +19,30 @@ namespace View.Model.Services
         /// Записывает объект класса <see cref="Contact"/> в файл.
         /// </summary>
         /// <param name="contact">Записываемый объект.</param>
-        public static void Serialize(Contact contact)
+        public static void Serialize(ObservableCollection<Contact> contacts)
         {
-            if (File.Exists(Path))
-            {
-                File.Delete(Path);
-            }
+            File.Delete(Path);
             using (FileStream fileStream = new FileStream(Path, FileMode.Create))
             {
-                JsonSerializer.Serialize<Contact>(fileStream, contact);
+                JsonSerializer.Serialize<ObservableCollection<Contact>>(fileStream, contacts);
             }
         }
-
         /// <summary>
         /// Читает объект класса <see cref="Contact"/> из файла.
         /// </summary>
         /// <returns>Прочитанный объект.</returns>
-        public static Contact Deserialize()
+        public static ObservableCollection<Contact> Deserialize()
         {
             using (FileStream fileStream = new FileStream(Path, FileMode.OpenOrCreate))
             {
-                return JsonSerializer.Deserialize<Contact>(fileStream);
+                try
+                {
+                    return JsonSerializer.Deserialize<ObservableCollection<Contact>>(fileStream);
+                }
+                catch (Exception e)
+                {
+                    return new ObservableCollection<Contact>();
+                }
             }
         }
     }

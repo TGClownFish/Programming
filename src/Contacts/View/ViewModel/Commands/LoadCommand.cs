@@ -30,12 +30,12 @@ namespace View.ModelView
         }
 
         /// <summary>
-        /// Выполняет фунцию в делегате.
+        /// Исполняемая функция команды.
         /// </summary>
         /// <param name="parameter">Принимаемый параметр.</param>
         public void Execute(object parameter)
         {
-            MainVM.CurentContact = ContactSerializer.Deserialize();
+            MainVM.Contacts = ContactSerializer.Deserialize();
         }
 
         /// <summary>

@@ -9,15 +9,20 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="phone.png" />
+    <None Remove="Resources/ContactsApp_96x96.ico" />
+    <None Remove="Resources/photo_placeholder_100x100.png" />
   </ItemGroup>
 
+
   <ItemGroup>
+    <PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" Version="1.1.135" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
   </ItemGroup>
 
+
   <ItemGroup>
-    <Resource Include="Resources\phone.png" />
+    <Resource Include="Resources/ContactsApp_96x96.ico" />
+    <Resource Include="Resources/photo_placeholder_100x100.png" />
   </ItemGroup>
 
 </Project>

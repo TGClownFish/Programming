@@ -3,7 +3,9 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
         xmlns:local="clr-namespace:View"
+        xmlns:converters="clr-namespace:View.Converters"
         mc:Ignorable="d"
         Title="Contact" 
         Height="400" 
@@ -11,128 +13,219 @@
         MinWidth="600" 
         MinHeight="400" 
         WindowStartupLocation="CenterScreen" 
-        Icon="/phone.png">
-    <Grid Margin="15">
-        <Grid.RowDefinitions>
-            <RowDefinition/>
-            <RowDefinition Height="Auto"/>
-        </Grid.RowDefinitions>
+        Icon="Resources/ContactsApp_96x96.ico">
+    <Window.Resources>
+        <converters:BoolToVisibilityConverter 
+            x:Key="VisibilityConverter" />
+    </Window.Resources>
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Closing">
+            <i:InvokeCommandAction 
+                Command="{Binding SaveCommand}"/>
+        </i:EventTrigger>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction 
+                Command="{Binding LoadCommand}"/>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+    <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
+            <ColumnDefinition 
+                MinWidth="200"
+                Width="*"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition 
+                MinWidth="200"
+                Width="*"/>
         </Grid.ColumnDefinitions>
-        <GroupBox 
-            Header="Edit Contact" 
-            Grid.Column="0" 
-            Margin="0,0,5,3">
-            <StackPanel DataContext="{Binding CurentContact}">
-                <Label 
-                    Content="Name:"
-                    HorizontalAlignment="Left" 
-                    VerticalAlignment="Center" 
-                    Margin="3,0,0,3" 
-                    Padding="0,5,5,5"/>
-                <TextBox 
-                    Margin="3" 
-                    TextWrapping="Wrap" 
-                    VerticalAlignment="Top" 
-                    Text=
-                    "{Binding Path=Name,
-                    UpdateSourceTrigger=PropertyChanged}"/>
-                <Label 
-                    Content="Phone Number:" 
-                    HorizontalAlignment="Left" 
-                    VerticalAlignment="Top" 
-                    Margin="3,3,0,3" 
-                    Padding="0,5,5,5"
-                    UseLayoutRounding="True"/>
-                <TextBox 
-                    Margin="3" 
-                    TextWrapping="Wrap" 
-                    VerticalAlignment="Top" 
-                    Text=
-                    "{Binding Path=PhoneNumber,
-                    UpdateSourceTrigger=PropertyChanged}"/>
-                <Label 
-                    Content="Email:" 
-                    HorizontalAlignment="Left" 
-                    VerticalAlignment="Top" 
-                    Margin="3,3,0,3" 
-                    Padding="0,5,5,5"/>
-                <TextBox 
-                    Margin="3" 
-                    TextWrapping="Wrap" 
-                    VerticalAlignment="Top" 
-                    Text=
-                    "{Binding Path=Email, 
-                    UpdateSourceTrigger=PropertyChanged}"/>
-            </StackPanel>
-        </GroupBox>
-        <GroupBox 
-            Header="Read Contact" 
-            Margin="3,0,0,3" 
-            Grid.Column="1">
-            <StackPanel DataContext="{Binding CurentContact}">
-                <Label 
-                    Content="Name:" 
-                    HorizontalAlignment="Left" 
-                    VerticalAlignment="Center" 
-                    Margin="3,3,0,3" />
-                <Label 
-                    Content="{Binding Path=Name}" 
-                    HorizontalAlignment="Left" 
-                    VerticalAlignment="Top" 
-                    Margin="3,3,0,3" 
-                    FontWeight="Bold" 
-                    Padding="5,1,1,0" 
-                    Height="18"/>
-                <Label 
-                    Content="Phone Number:" 
-                    HorizontalAlignment="Left" 
-                    VerticalAlignment="Top" 
-                    Margin="3,3,0,3" />
-                <Label 
-                    Content="{Binding Path=PhoneNumber}" 
-                    HorizontalAlignment="Left" 
-                    VerticalAlignment="Top" 
-                    Margin="3,3,0,3" 
-                    FontWeight="Bold" 
-                    Padding="5,1,1,0" 
-                    Height="18"/>
-                <Label 
-                    Content="Email:" 
-                    HorizontalAlignment="Left" 
-                    VerticalAlignment="Top" 
-                    Margin="3,3,0,3" />
-                <Label 
-                    Content="{Binding Path=Email}" 
-                    HorizontalAlignment="Left" 
-                    VerticalAlignment="Top" 
-                    Margin="3,3,0,3" 
-                    FontWeight="Bold" 
-                    Padding="5,1,1,0" 
-                    Height="18"/>
-            </StackPanel>
-        </GroupBox>
-        <Button 
-            Command="{Binding LoadCommand}" 
+
+        <Grid 
+            Background="#FFF8F8F8" 
+            MinWidth="50">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+            <TextBox 
+                TextWrapping="Wrap" 
+                VerticalAlignment="Center" 
+                Grid.ColumnSpan="3" 
+                Margin="39,8,8,0" 
+                Height="18"/>
+            <ListBox 
+                Grid.Row="1" 
+                SelectedItem="{Binding Path=SelectedContact, 
+                    UpdateSourceTrigger=PropertyChanged}" 
+                ItemsSource=
+                "{Binding Path=Contacts, 
+                UpdateSourceTrigger=PropertyChanged}" 
+                Grid.ColumnSpan="3" 
+                Margin="8,6,8,6" 
+                IsSynchronizedWithCurrentItem="True" >
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding Path=Name}"/>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+            <Label
+                Content="Find:"
+                HorizontalAlignment="Left" 
+                Margin="8,8,0,0"  
+                VerticalAlignment="Top" 
+                Padding="0,0,0,0" 
+                VerticalContentAlignment="Center" 
+                HorizontalContentAlignment="Center">
+            </Label>
+            <Grid Grid.Row="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Button 
+                    Content="Add" 
+                    Margin="8,0,3,8" 
+                    Grid.Row="2" 
+                    Height="25" 
+                    Command="{Binding Path=AddCommand}"
+                    IsEnabled="{Binding Path=IsReadOnly,
+                        UpdateSourceTrigger=PropertyChanged}"/>
+                <Button 
+                    Content="Edit" 
+                    Margin="3,0,3,8" 
+                    Grid.Column="1" 
+                    Grid.Row="2"
+                    Height="25" 
+                    IsEnabled= "{Binding Path=IsReadOnly, 
+                        UpdateSourceTrigger=PropertyChanged}" 
+                    Command="{Binding Path=EditCommand}"/>
+                <Button 
+                    Content="Remove" 
+                    Margin="3,0,8,8" 
+                    Grid.Column="2" 
+                    Grid.Row="2"
+                    Height="27" 
+                    Command="{Binding Path=RemoveCommand}"
+                    IsEnabled="{Binding Path=IsReadOnly,
+                        UpdateSourceTrigger=PropertyChanged}"/>
+            </Grid>
+        </Grid>
+        <GridSplitter 
+            HorizontalAlignment="Stretch" 
+            Width="3" 
             Grid.Column="1" 
-            Content="Load" 
-            HorizontalAlignment="Right" 
-            Grid.Row="1" 
-            VerticalAlignment="Bottom" 
-            Margin="3,3,15,15" 
-            MinWidth="75" 
-            MinHeight="25"/>
-        <Button 
-            Command="{Binding SaveCommand}" 
-            Grid.Column="1" 
-            Content="Save" 
-            HorizontalAlignment="Right" 
-            VerticalAlignment="Bottom" 
-            MinWidth="75" 
-            MinHeight="25" 
-            Margin="0,3,98,15" 
-            Grid.Row="1"/>
+            Background="White" />
+        <Grid 
+            Grid.Column="2" 
+              MinWidth="50">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="108"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Label 
+                Content="Name:" 
+                HorizontalAlignment="Left" 
+                Width="152" 
+                VerticalAlignment="Center" 
+                Margin="3,8,0,3" 
+                Padding="0" 
+                VerticalContentAlignment="Bottom" 
+                Grid.Column="1" 
+                UseLayoutRounding="False"/>
+            <TextBox 
+                Margin="3,3,8,3" 
+                Grid.Row="1" 
+                TextWrapping="Wrap" 
+                VerticalAlignment="Center" 
+                Text=
+                "{Binding Path=SelectedContact.Name, 
+                    UpdateSourceTrigger=PropertyChanged}" 
+                IsReadOnly="{Binding Path=IsReadOnly,
+                    UpdateSourceTrigger=PropertyChanged}"
+                Grid.Column="1" 
+                HorizontalContentAlignment="Stretch" 
+                VerticalContentAlignment="Center" 
+                Height="18"/>
+            <Label 
+                Content = "Phone Number:" 
+                HorizontalAlignment="Left" 
+                VerticalAlignment="Top" 
+                Margin="3,3,0,3" 
+                Grid.Row="2" 
+                Padding="0" 
+                UseLayoutRounding="True" 
+                Grid.Column="1"/>
+            <TextBox 
+                Margin="3,3,8,3" 
+                Grid.Row="3" 
+                TextWrapping="Wrap" 
+                VerticalAlignment="Top" 
+                Text=
+                "{Binding Path=SelectedContact.PhoneNumber, 
+                UpdateSourceTrigger=PropertyChanged}" 
+                IsReadOnly="{Binding Path=IsReadOnly,
+                    UpdateSourceTrigger=PropertyChanged}"
+                Padding="0" 
+                Grid.Column="1" 
+                Height="18"/>
+            <Label 
+                Content = "Email:" 
+                HorizontalAlignment="Left" 
+                Width="152" 
+                VerticalAlignment="Top" 
+                Margin="3,3,0,3" 
+                Grid.Row="4" 
+                Padding="0"
+                Grid.Column="1"/>
+            <TextBox 
+                Margin="3,3,8,3" 
+                Grid.Row="5" 
+                TextWrapping="Wrap" 
+                VerticalAlignment="Top" 
+                Text=
+                "{Binding Path=SelectedContact.Email, 
+                UpdateSourceTrigger=PropertyChanged}" 
+                IsReadOnly= "{Binding Path=IsReadOnly,
+                    UpdateSourceTrigger=PropertyChanged}"
+                Padding="0" 
+                Grid.Column="1" 
+                Height="18"/>
+            <Button 
+                Grid.Column="1" 
+                Content="Apply" 
+                HorizontalAlignment="Left" 
+                Margin="3,50,0,0" 
+                Grid.Row="6" 
+                VerticalAlignment="Top" 
+                Width="75" 
+                Height="25" 
+                Command="{Binding Path=ApplyCommand}"
+                Visibility="{Binding Path=IsReadOnly,
+                Converter={StaticResource VisibilityConverter}}"/>
+            <Rectangle 
+                HorizontalAlignment="Center" 
+                Height="100" 
+                Margin="8,3,3,0" 
+                Grid.Row="1" 
+                VerticalAlignment="Top" 
+                Width="100" 
+                Grid.RowSpan="5">
+                <Rectangle.Fill>
+                    <ImageBrush ImageSource=
+                                "Resources/photo_placeholder_100x100.png"/>
+                </Rectangle.Fill>
+            </Rectangle>
+        </Grid>
     </Grid>
 </Window>
