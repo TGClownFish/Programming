@@ -6,7 +6,7 @@ namespace View.Model
     /// <summary>
     /// Хранит данные о контакте.
     /// </summary>
-    public class Contact: ObservableObject, IDataErrorInfo
+    public partial class Contact: ObservableObject, IDataErrorInfo
     {
         /// <summary>
         /// Хранит имя. Должен быть не больше 50 символов.
@@ -24,20 +24,23 @@ namespace View.Model
         /// Должен быть не больше 100 символов и должен включать символ @.
         /// </summary>
         private string _email;
-        
+
         /// <summary>
         /// Хранит true, если имя контакта введено правильно.
         /// </summary>
+        [ObservableProperty]
         private bool _isNameValid = true;
 
         /// <summary>
         /// Хранит true, если телефонный номер контакта введен правильно.
         /// </summary>
+        [ObservableProperty]
         private bool _isPhoneNumberValid = true;
 
         /// <summary>
         /// Хранит true, если электронная почта контакта введена правильно.
         /// </summary>
+        [ObservableProperty]
         private bool _isEmailValid = true;
 
         /// <summary>
@@ -88,35 +91,8 @@ namespace View.Model
             set
             {
                 _email = value;
-                IsEmailValid = _email.Length <= 100 && _email.Contains('@');
+                IsEmailValid = _email == "" || (_email.Length <= 100 && _email.Contains('@'));
             }
-        }
-
-        /// <summary>
-        /// Хранит и возвращает true, если имя контакта введено правильно.
-        /// </summary>
-        public bool IsNameValid
-        {
-            get => _isNameValid;
-            set => SetProperty(ref _isNameValid, value, nameof(IsContactValid));
-        }
-
-        /// <summary>
-        /// Хранит и возвращает true, если телефонный номер контакта введен правильно.
-        /// </summary>
-        public bool IsPhoneNumberValid
-        {
-            get => _isPhoneNumberValid;
-            set => SetProperty(ref _isPhoneNumberValid, value, nameof(IsContactValid));
-        }
-
-        /// <summary>
-        /// Хранит и возвращает true, если электронная почта контакта введена правильно.
-        /// </summary>
-        public bool IsEmailValid
-        {
-            get => _isEmailValid;
-            set => SetProperty(ref _isEmailValid, value, nameof(IsContactValid));
         }
 
         /// <summary>
