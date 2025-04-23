@@ -1,7 +1,9 @@
 ﻿using System.Collections.ObjectModel;
 using View.Model;
-using View.ViewModel.Commands;
 using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
+using System.Windows.Input;
+using View.Model.Services;
 
 namespace View.ViewModel
 {
@@ -34,36 +36,6 @@ namespace View.ViewModel
         /// Хранаит true, если программа в режиме добавления контакта.
         /// </summary>
         private bool _isAdding = false;
-
-        /// <summary>
-        /// Хранит команду загрузки.
-        /// </summary>
-        private LoadCommand _loadCommand;
-
-        /// <summary>
-        /// Хранит команду сохранения.
-        /// </summary>
-        private SaveCommand _saveCommand;
-
-        /// <summary>
-        /// Хранит команду добавления.
-        /// </summary>
-        private AddCommand _addCommand;
-
-        /// <summary>
-        /// Хранит команду удаления.
-        /// </summary>
-        private RemoveCommand _removeCommand;
-
-        /// <summary>
-        /// Хранит команду редактирования.
-        /// </summary>
-        private EditCommand _editCommand;
-
-        /// <summary>
-        /// Хранит команду подтверждения.
-        /// </summary>
-        private ApplyCommand _applyCommand;
 
         /// <summary>
         /// Хранит и возвращает выбранный контакт.
@@ -125,75 +97,101 @@ namespace View.ViewModel
         }
 
         /// <summary>
+        /// Возвращает команду добавления. 
+        /// </summary>
+        public ICommand AddCommand { get; }
+
+        /// <summary>
+        /// Возвращает команду удаления.
+        /// </summary>
+        public ICommand RemoveCommand { get; }
+
+        /// <summary>
+        /// Возвращает команду редактирования.
+        /// </summary>
+        public ICommand EditCommand { get; }
+
+        /// <summary>
         /// Хранит и возвращает команду загрузки.
         /// </summary>
-        public LoadCommand LoadCommand
+        public ICommand LoadCommand { get; }
+
+        /// <summary>
+        /// Возвращает команду сохранения.
+        /// </summary>
+        public ICommand SaveCommand { get; }
+
+        /// <summary>
+        /// Возвращает команду подтверждения. 
+        /// </summary>
+        public ICommand ApplyCommand { get; }
+
+        /// <summary>
+        /// Начинает добавление контакта.
+        /// </summary>
+        private void Add()
         {
-            get
+            SelectedContact = new Contact();
+            IsAdding = true;
+        }
+
+        /// <summary>
+        /// Удалает контакт.
+        /// </summary>
+        private void Remove() => Contacts.Remove(SelectedContact);
+
+        /// <summary>
+        /// Начинает редактирование контакта.
+        /// </summary>
+        private void Edit()
+        {
+            if (IsReadOnly == true && SelectedContact != null)
             {
-                _loadCommand ??= new LoadCommand(this);
-                return _loadCommand;
+                IndexOfEditedContact = Contacts.IndexOf(SelectedContact);
+                SelectedContact = new Contact(SelectedContact);
+                IsEditing = true;
+            }
+        }
+        /// <summary>
+        /// Загружает контакты из файла.
+        /// </summary>
+        private void Load() => Contacts = ContactSerializer.Deserialize(); 
+
+        /// <summary>
+        /// Сохраняет контакты в файл.
+        /// </summary>
+        private void Save() => ContactSerializer.Serialize(Contacts);
+
+        /// <summary>
+        /// Подтверждает изменения, сделанные при редактирование или добавлении контакта.
+        /// </summary>
+        private void Apply()
+        {
+            if (IsEditing)
+            {
+                Contacts[IndexOfEditedContact] = SelectedContact;
+                IndexOfEditedContact = -1;
+                IsEditing = false;
+            }
+            if (IsAdding)
+            {
+                Contacts.Add(new Contact(SelectedContact));
+                SelectedContact = Contacts.Last();
+                IsAdding = false;
             }
         }
 
         /// <summary>
-        /// Хранит и возвращает команду сохранения.
+        /// Создаёт объект класса <see cref="MainVM"/>.
         /// </summary>
-        public SaveCommand SaveCommand
+        public MainVM()
         {
-            get
-            {
-                _saveCommand ??= new SaveCommand(this);
-                return _saveCommand;
-            }
-        }
-
-        /// <summary>
-        /// Хранит и возвращает команду подтверждения. 
-        /// </summary>
-        public ApplyCommand ApplyCommand
-        {
-            get
-            {
-                _applyCommand ??= new ApplyCommand(this);
-                return _applyCommand;
-            }
-        }
-
-        /// <summary>
-        /// Хранит и возвращает команду добавления. 
-        /// </summary>
-        public AddCommand AddCommand
-        {
-            get
-            {
-                _addCommand ??= new AddCommand(this);
-                return _addCommand;
-            }
-        }
-
-        /// <summary>
-        /// Хранит и возвращает команду удаления.
-        /// </summary>
-        public RemoveCommand RemoveCommand
-        {
-            get
-            {
-                _removeCommand ??= new RemoveCommand(this);
-                return _removeCommand;
-            }
-        }
-
-        /// <summary>
-        /// Хранит и возвращает команду редактирования.
-        /// </summary>
-        public EditCommand EditCommand
-        {
-            get
-            {
-                _editCommand ??= new EditCommand(this);
-                return _editCommand;
-            }
+            AddCommand = new RelayCommand(Add);
+            RemoveCommand = new RelayCommand(Remove);
+            EditCommand = new RelayCommand(Edit);
+            LoadCommand = new RelayCommand(Load);
+            SaveCommand = new RelayCommand(Save);
+            ApplyCommand = new RelayCommand(Apply);
         }
     }
 }
