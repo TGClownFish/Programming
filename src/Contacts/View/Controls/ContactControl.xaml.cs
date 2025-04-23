@@ -2,7 +2,7 @@
 using System.Runtime.CompilerServices;
 using System.Windows;
 using System.Windows.Controls;
-using View.Model;
+using Model;
 
 namespace View.Controls
 {
