@@ -4,13 +4,14 @@ using System.Runtime.CompilerServices;
 using System.Windows;
 using View.Model;
 using View.ViewModel.Commands;
+using CommunityToolkit.Mvvm.ComponentModel;
 
 namespace View.ViewModel
 {
     /// <summary>
     /// Хранит поля и методы, нужные для объединания View и Model.
     /// </summary>
-    public class MainVM : INotifyPropertyChanged
+    public class MainVM : ObservableObject
     {
         /// <summary>
         /// Хранит данные о выбранном контакте.
@@ -75,10 +76,9 @@ namespace View.ViewModel
             get => _selectedContact;
             set
             {
-                _selectedContact = value;
+                SetProperty(ref _selectedContact, value);
                 IsAdding = false;
                 IsEditing = false;
-                OnPropertyChanged();
             }
         }
 
@@ -88,11 +88,7 @@ namespace View.ViewModel
         public ObservableCollection<Contact> Contacts
         {
             get => _contacts;
-            set
-            {
-                _contacts = value;
-                OnPropertyChanged();
-            }
+            set => SetProperty(ref _contacts, value);
         }
 
         /// <summary>
@@ -101,11 +97,7 @@ namespace View.ViewModel
         public bool IsEditing
         {
             get => _isEditing;
-            set 
-            { 
-                _isEditing = value;
-                OnPropertyChanged(nameof(IsReadOnly));
-            }
+            set => SetProperty(ref _isEditing, value, nameof(IsReadOnly));
         }
 
         /// <summary>
@@ -114,11 +106,7 @@ namespace View.ViewModel
         public bool IsAdding
         {
             get => _isAdding;
-            set 
-            { 
-                _isAdding = value; 
-                OnPropertyChanged(nameof(IsReadOnly));
-            }
+            set => SetProperty(ref _isAdding, value, nameof(IsReadOnly));
         }
 
         /// <summary>
@@ -209,21 +197,6 @@ namespace View.ViewModel
                 _editCommand ??= new EditCommand(this);
                 return _editCommand;
             }
-        }
-
-        /// <summary>
-        /// Срабатывет, когда меняется свойство элемента.
-        /// </summary>
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        /// <summary>
-        /// Вызывает событие PropertyChanged.
-        /// </summary>
-        /// <param name="prop">Аргументы события.</param>
-        public void OnPropertyChanged([CallerMemberName] string prop = "")
-        {
-            if (PropertyChanged != null)
-                PropertyChanged(this, new PropertyChangedEventArgs(prop));
         }
     }
 }
