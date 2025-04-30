@@ -2,7 +2,7 @@
 using System.IO;
 using System.Text.Json;
 
-namespace View.Model.Services
+namespace Model.Services
 {
     /// <summary>
     /// Хранит функции для серилизации.

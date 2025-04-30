@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
         xmlns:local="clr-namespace:View"
-        xmlns:converters="clr-namespace:View.Converters"
+        xmlns:Converters="clr-namespace:View.Converters"
+        xmlns:Controls="clr-namespace:View.Controls"
         mc:Ignorable="d"
         Title="Contact" 
         Height="400" 
@@ -15,9 +16,39 @@
         WindowStartupLocation="CenterScreen" 
         Icon="Resources/ContactsApp_96x96.ico">
     <Window.Resources>
-        <converters:BoolToVisibilityConverter 
+        <Converters:BoolToVisibilityConverter 
             x:Key="VisibilityConverter" />
+        <DataTemplate x:Key="contactTemplate">
+            <Grid Margin="3">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Rectangle 
+                    Grid.Column="0" 
+                    Width="30" 
+                    Height="30" 
+                    Margin="0,0,3,0">
+                    <Rectangle.Fill>
+                        <ImageBrush ImageSource=
+                            "Resources/photo_placeholder_30x30.png"/>
+                    </Rectangle.Fill>
+                </Rectangle>
+                <StackPanel 
+                    Grid.Column="1"
+                    Margin="3,0,0,3">
+                    <TextBlock
+                        FontSize="12"
+                        FontWeight="SemiBold"
+                        Text="{Binding Name}"/>
+                    <TextBlock
+                        FontSize="10"
+                        Text="{Binding PhoneNumber}"/>
+                </StackPanel>
+            </Grid>
+        </DataTemplate>
     </Window.Resources>
+    
     <i:Interaction.Triggers>
         <i:EventTrigger EventName="Closing">
             <i:InvokeCommandAction 
@@ -28,6 +59,7 @@
                 Command="{Binding LoadCommand}"/>
         </i:EventTrigger>
     </i:Interaction.Triggers>
+    
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition 
@@ -53,22 +85,6 @@
                 Grid.ColumnSpan="3" 
                 Margin="39,8,8,0" 
                 Height="18"/>
-            <ListBox 
-                Grid.Row="1" 
-                SelectedItem="{Binding Path=SelectedContact, 
-                    UpdateSourceTrigger=PropertyChanged}" 
-                ItemsSource=
-                "{Binding Path=Contacts, 
-                UpdateSourceTrigger=PropertyChanged}" 
-                Grid.ColumnSpan="3" 
-                Margin="8,6,8,6" 
-                IsSynchronizedWithCurrentItem="True" >
-                <ListBox.ItemTemplate>
-                    <DataTemplate>
-                        <TextBlock Text="{Binding Path=Name}"/>
-                    </DataTemplate>
-                </ListBox.ItemTemplate>
-            </ListBox>
             <Label
                 Content="Find:"
                 HorizontalAlignment="Left" 
@@ -76,8 +92,17 @@
                 VerticalAlignment="Top" 
                 Padding="0,0,0,0" 
                 VerticalContentAlignment="Center" 
-                HorizontalContentAlignment="Center">
-            </Label>
+                HorizontalContentAlignment="Center" />
+            <ListBox 
+                Grid.Row="1" 
+                SelectedItem="{Binding Path=SelectedContact, 
+                    UpdateSourceTrigger=PropertyChanged}" 
+                ItemsSource= "{Binding Path=Contacts, 
+                    UpdateSourceTrigger=PropertyChanged}" 
+                Grid.ColumnSpan="3" 
+                Margin="8,6,8,6" 
+                IsSynchronizedWithCurrentItem="True" 
+                ItemTemplate="{StaticResource contactTemplate}" />
             <Grid Grid.Row="2">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
@@ -112,120 +137,35 @@
                         UpdateSourceTrigger=PropertyChanged}"/>
             </Grid>
         </Grid>
+
         <GridSplitter 
             HorizontalAlignment="Stretch" 
             Width="3" 
             Grid.Column="1" 
             Background="White" />
-        <Grid 
-            Grid.Column="2" 
-              MinWidth="50">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="108"/>
-                <ColumnDefinition/>
-            </Grid.ColumnDefinitions>
+        
+        <Grid Grid.Column="2">
             <Grid.RowDefinitions>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="auto"/>
+                <RowDefinition Height="Auto"/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
-            <Label 
-                Content="Name:" 
-                HorizontalAlignment="Left" 
-                Width="152" 
-                VerticalAlignment="Center" 
-                Margin="3,8,0,3" 
-                Padding="0" 
-                VerticalContentAlignment="Bottom" 
-                Grid.Column="1" 
-                UseLayoutRounding="False"/>
-            <TextBox 
-                Margin="3,3,8,3" 
-                Grid.Row="1" 
-                TextWrapping="Wrap" 
-                VerticalAlignment="Center" 
-                Text=
-                "{Binding Path=SelectedContact.Name, 
-                    UpdateSourceTrigger=PropertyChanged}" 
-                IsReadOnly="{Binding Path=IsReadOnly,
-                    UpdateSourceTrigger=PropertyChanged}"
-                Grid.Column="1" 
-                HorizontalContentAlignment="Stretch" 
-                VerticalContentAlignment="Center" 
-                Height="18"/>
-            <Label 
-                Content = "Phone Number:" 
-                HorizontalAlignment="Left" 
-                VerticalAlignment="Top" 
-                Margin="3,3,0,3" 
-                Grid.Row="2" 
-                Padding="0" 
-                UseLayoutRounding="True" 
-                Grid.Column="1"/>
-            <TextBox 
-                Margin="3,3,8,3" 
-                Grid.Row="3" 
-                TextWrapping="Wrap" 
-                VerticalAlignment="Top" 
-                Text=
-                "{Binding Path=SelectedContact.PhoneNumber, 
-                UpdateSourceTrigger=PropertyChanged}" 
-                IsReadOnly="{Binding Path=IsReadOnly,
-                    UpdateSourceTrigger=PropertyChanged}"
-                Padding="0" 
-                Grid.Column="1" 
-                Height="18"/>
-            <Label 
-                Content = "Email:" 
-                HorizontalAlignment="Left" 
-                Width="152" 
-                VerticalAlignment="Top" 
-                Margin="3,3,0,3" 
-                Grid.Row="4" 
-                Padding="0"
-                Grid.Column="1"/>
-            <TextBox 
-                Margin="3,3,8,3" 
-                Grid.Row="5" 
-                TextWrapping="Wrap" 
-                VerticalAlignment="Top" 
-                Text=
-                "{Binding Path=SelectedContact.Email, 
-                UpdateSourceTrigger=PropertyChanged}" 
-                IsReadOnly= "{Binding Path=IsReadOnly,
-                    UpdateSourceTrigger=PropertyChanged}"
-                Padding="0" 
-                Grid.Column="1" 
-                Height="18"/>
+            <Controls:ContactControl 
+                DataContext="{Binding SelectedContact}"
+                Grid.Column="2"/>
             <Button 
-                Grid.Column="1" 
-                Content="Apply" 
-                HorizontalAlignment="Left" 
-                Margin="3,50,0,0" 
-                Grid.Row="6" 
-                VerticalAlignment="Top" 
-                Width="75" 
-                Height="25" 
-                Command="{Binding Path=ApplyCommand}"
-                Visibility="{Binding Path=IsReadOnly,
+            Grid.Column="2" 
+            Content="Apply" 
+            HorizontalAlignment="Left" 
+            Margin="114,50,0,0" 
+            Grid.Row="6" 
+            VerticalAlignment="Top" 
+            Width="75" 
+            Height="25" 
+            Command="{Binding Path=ApplyCommand}"
+            IsEnabled="{Binding Path=SelectedContact.IsContactValid,
+                UpdateSourceTrigger=PropertyChanged}"
+            Visibility="{Binding Path=IsReadOnly,
                 Converter={StaticResource VisibilityConverter}}"/>
-            <Rectangle 
-                HorizontalAlignment="Center" 
-                Height="100" 
-                Margin="8,3,3,0" 
-                Grid.Row="1" 
-                VerticalAlignment="Top" 
-                Width="100" 
-                Grid.RowSpan="5">
-                <Rectangle.Fill>
-                    <ImageBrush ImageSource=
-                                "Resources/photo_placeholder_100x100.png"/>
-                </Rectangle.Fill>
-            </Rectangle>
         </Grid>
     </Grid>
 </Window>
